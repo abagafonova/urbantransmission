@@ -1,0 +1,1189 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Transmission — Urban Infrastructures of the Russian Empire, 1870–1914</title>
+<meta name="description" content="Interactive research platform on centralised water supply, sanitary conditions, and urban services in 950 cities of the Russian Empire, 1870–1914. By Anna B. Agafonova, PhD.">
+<meta name="keywords" content="urban history, water supply, Russian Empire, digital humanities, cholera epidemics, municipal infrastructure, 1870-1914, история городов, водоснабжение, Российская империя">
+<meta name="author" content="Anna B. Agafonova">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Transmission — Urban Infrastructures of the Russian Empire, 1870–1914">
+<meta property="og:description" content="Interactive digital research platform: waterworks maps, cholera data, original database of 950 cities. By Anna B. Agafonova, PhD.">
+<meta property="og:image" content="HEAD4.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ResearchProject","name":"Transmission: Urban Infrastructures of the Russian Empire, 1870–1914","description":"Interactive digital research platform on centralised water supply, sanitary conditions, and municipal infrastructure in 950 cities of the Russian Empire, 1870–1914.","temporalCoverage":"1870/1914","spatialCoverage":{"@type":"Place","name":"Russian Empire"},"author":{"@type":"Person","name":"Anna B. Agafonova","honorificSuffix":"PhD","sameAs":["https://orcid.org/0000-0003-3021-4002","https://scholar.google.com/citations?user=J7uQXacAAAAJ"]}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Space+Mono:wght@400;700&family=Playfair+Display:ital,wght@0,500;0,700;1,400;1,600&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+/* ─── TOKENS ─── */
+:root {
+  --ink:     #1a2b47;
+  --ink-dk:  #0f1e31;
+  --navy:    #2b4773;
+  --navy-m:  #3b5a86;
+  --navy-l:  #6e86a8;
+  --copper:  #8b5e3c;
+  --copper-l:#a67448;
+  --ochre:   #c79243;
+  --gold:    #b58a4a;
+  --turq:    #4f8781;
+  --turq-l:  #7aada8;
+  --cream:   #f6efdc;
+  --paper:   #ede4cf;
+  --ochre-bg:#e8d5a8;
+  --sky:     #d8e3e1;
+  --white:   #fdf9f2;
+  --muted:   #6f7d95;
+  --faint:   #a6aebc;
+  --border:  rgba(20,36,60,.15);
+  --sh:      rgba(20,36,60,.10);
+  --mono:    'Space Mono', 'Courier New', monospace;
+  --serif:   Cambria, 'Palatino Linotype', Georgia, serif;
+  --display: 'Playfair Display', serif;
+  --cinzel:  'Cinzel', 'Trajan Pro', serif;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--cream);color:var(--ink);font-family:var(--serif);font-weight:400;min-height:100vh;overflow-x:hidden}
+
+/* ─── BANNER ─── */
+.banner{width:100%;background:var(--paper);line-height:0;border-bottom:1px solid var(--border);}
+.banner img{width:100%;display:block;height:auto;max-height:272px;min-height:180px;object-fit:cover;object-position:center top}
+
+/* ─── NAV ─── */
+.site-nav{
+  position:sticky;top:0;z-index:900;
+  background:rgba(15,30,49,.96);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(255,255,255,.055);
+  display:flex;align-items:center;
+  padding:0 20px;height:46px;
+  overflow-x:auto;scrollbar-width:none;
+}
+.site-nav::-webkit-scrollbar{display:none}
+.site-nav a{
+  display:inline-flex;align-items:center;height:46px;
+  padding:0 13px;
+  font:400 .68rem/1 var(--mono);
+  letter-spacing:.06em;text-transform:uppercase;
+  color:rgba(255,255,255,.42);text-decoration:none;
+  white-space:nowrap;border-bottom:2px solid transparent;
+  transition:color .15s;flex-shrink:0;
+}
+.site-nav a:hover{color:rgba(255,255,255,.88)}
+.nav-gap{flex:1 1 auto;min-width:8px}
+.lang-sw{
+  display:flex;gap:0;flex-shrink:0;
+  border-left:1px solid rgba(255,255,255,.09);
+  margin-left:6px;
+}
+.lang-sw button{
+  background:transparent;border:none;cursor:pointer;
+  font:700 10px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;
+  color:rgba(255,255,255,.35);padding:0 11px;height:46px;transition:color .15s;
+}
+.lang-sw button.on{color:var(--ochre)}
+.lang-sw button:hover{color:rgba(255,255,255,.8)}
+
+/* ─── HERO ─── */
+.hero{
+  min-height:46vh;position:relative;overflow:hidden;
+  display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(160deg, #0d1b2e 0%, #1a2b47 60%, #1f3858 100%);
+  padding:44px 24px 54px;
+}
+#hero-cvs{
+  position:absolute;inset:0;width:100%;height:100%;
+  opacity:.28;pointer-events:none;
+}
+.hero-inner{
+  position:relative;z-index:2;
+  max-width:800px;margin:0 auto;text-align:center;color:#fff;
+}
+.hero-eyebrow{
+  font:400 .58rem/1 var(--mono);letter-spacing:.28em;text-transform:uppercase;
+  color:rgba(255,255,255,.55);margin-bottom:16px;
+  animation:fadeUp 1s ease both;
+}
+.hero-h1{
+  font-family: Century, 'Century Gothic', Helvetica, Arial, sans-serif;
+  font-size:clamp(1.5rem,4vw,2.8rem);
+  font-weight:400;
+  line-height:1.2;letter-spacing:.08em;
+  text-transform:uppercase;
+  color:#fff;margin-bottom:14px;
+  animation:fadeUp 1s .1s ease both;
+}
+.hero-h1 .emp{
+  display:block;font-family:var(--display);
+  font-size:clamp(.9rem,2.4vw,1.35rem);
+  font-weight:400;font-style:normal;
+  letter-spacing:.03em;color:rgba(255,255,255,.68);
+  line-height:1.6;margin-top:10px;
+}
+.hero-sub{
+  font-size:clamp(.84rem,1.7vw,.94rem);
+  color:rgba(255,255,255,.72);font-weight:400;line-height:1.85;
+  max-width:520px;margin:0 auto 30px;
+  animation:fadeUp 1s .22s ease both;
+}
+.hero-sub strong{color:rgba(255,255,255,.9);font-weight:600}
+.hero-cta{
+  display:flex;justify-content:center;gap:14px;flex-wrap:wrap;
+  animation:fadeUp 1s .34s ease both;
+}
+.btn-primary{
+  display:inline-flex;align-items:center;gap:8px;
+  font:700 .74rem/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;
+  color:var(--ink-dk);background:var(--ochre);
+  border:none;border-radius:10px;padding:13px 24px;
+  text-decoration:none;transition:background .2s,transform .15s;
+}
+.btn-primary:hover{background:var(--gold);transform:translateY(-1px)}
+.btn-outline{
+  display:inline-flex;align-items:center;gap:8px;
+  font:400 .74rem/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;
+  color:rgba(255,255,255,.55);
+  background:transparent;
+  border:1px solid rgba(255,255,255,.2);border-radius:10px;
+  padding:12px 20px;text-decoration:none;transition:border-color .2s,color .2s;
+}
+.btn-outline:hover{color:#fff;border-color:rgba(255,255,255,.5)}
+.hero-scroll{
+  position:absolute;bottom:28px;left:50%;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:8px;
+  color:rgba(255,255,255,.15);font:400 .56rem/1 var(--mono);
+  letter-spacing:.18em;text-transform:uppercase;
+  animation:fadeUp 1s 1.2s ease both;
+}
+.scroll-line{
+  width:1px;height:36px;
+  background:linear-gradient(180deg,rgba(255,255,255,.15),transparent);
+  animation:scrollPulse 2.4s 1.8s ease-in-out infinite;
+}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+@keyframes scrollPulse{0%,100%{opacity:.15}50%{opacity:.5}}
+
+/* ─── KEY FIGURES ─── */
+.figures{
+  background:var(--ink);
+  border-bottom:3px solid var(--turq);
+}
+.figures-inner{
+  max-width:1060px;margin:0 auto;
+  display:grid;grid-template-columns:repeat(3,1fr);
+}
+@media(max-width:600px){.figures-inner{grid-template-columns:1fr}}
+.fig-item{
+  padding:38px 28px;
+  border-right:1px solid rgba(255,255,255,.07);
+  display:flex;flex-direction:column;gap:8px;
+}
+.fig-item:last-child{border-right:none}
+.fig-num{
+  font-family: var(--cinzel);
+  font-size:clamp(2.6rem,5vw,3.8rem);
+  line-height:.9;letter-spacing:.02em;
+  color:#fff;
+}
+.fig-unit{
+  font:700 .62rem/1 Cambria, Georgia, serif;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--ochre);margin-bottom:4px;
+}
+.fig-label{
+  font:400 .84rem/1.5 Cambria, Georgia, serif;
+  color:rgba(255,255,255,.42);
+}
+
+/* ─── SECTION COMMONS ─── */
+.section{padding:80px 24px;border-top:1px solid var(--border)}
+.section-inner{max-width:1080px;margin:0 auto}
+.sec-tag{
+  font:700 .6rem/1 var(--mono);letter-spacing:.22em;text-transform:uppercase;
+  color:var(--copper);margin-bottom:14px;display:block;
+}
+.sec-h2{
+  font-family:var(--display);font-size:clamp(1.5rem,3.2vw,2.2rem);
+  font-weight:700;line-height:1.18;color:var(--ink);margin-bottom:12px;
+}
+.sec-lead{
+  font-size:.95rem;color:var(--muted);font-weight:400;
+  line-height:1.85;max-width:560px;margin-bottom:36px;
+}
+
+/* ─── MODULE SCENES ─── */
+.scene{padding:0;border-top:1px solid var(--border)}
+.scene-inner{
+  max-width:1080px;margin:0 auto;
+  padding:72px 24px;
+}
+.scene-split{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:72px;align-items:center;
+}
+@media(max-width:780px){
+  .scene-split{grid-template-columns:1fr;gap:40px}
+  .scene-split.flip .s-vis{order:-1}
+}
+.scene-split.flip .s-vis{order:2}
+.scene-split.flip .s-text{order:1}
+
+/* scroll reveal */
+.s-text,.s-vis{
+  opacity:0;transition:opacity .9s ease, transform .9s ease;
+}
+.s-text{transform:translateY(32px)}
+.s-vis{transform:translateX(-28px)}
+.scene-split.flip .s-vis{transform:translateX(28px)}
+.scene.iv .s-text{opacity:1;transform:translateY(0);transition-delay:.14s}
+.scene.iv .s-vis{opacity:1;transform:translateX(0)}
+
+.s-idx{
+  font:700 .6rem/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;
+  color:rgba(28,51,71,.3);margin-bottom:14px;display:block;
+}
+.badge{
+  display:inline-flex;align-items:center;gap:5px;
+  font:700 .58rem/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;
+  padding:5px 12px;border-radius:20px;margin-bottom:16px;
+}
+.badge-orig{color:var(--navy);background:rgba(43,71,115,.09);border:1px solid rgba(43,71,115,.22)}
+.badge-ctx{color:var(--muted);background:rgba(111,125,149,.08);border:1px solid rgba(111,125,149,.2)}
+.badge::before{content:'';display:inline-block;width:5px;height:5px;border-radius:50%;flex-shrink:0}
+.badge-orig::before{background:var(--navy-m)}
+.badge-ctx::before{background:var(--muted)}
+
+.s-h2{
+  font-family:var(--display);font-size:clamp(1.35rem,2.8vw,2rem);
+  font-weight:700;line-height:1.2;color:var(--ink);margin-bottom:14px;
+}
+.s-desc{font-size:.93rem;color:var(--muted);line-height:1.85;font-weight:400;margin-bottom:20px}
+.s-feats{
+  list-style:none;padding:0;margin:0 0 28px;
+  display:flex;flex-direction:column;gap:8px;
+}
+.s-feats li{
+  display:flex;align-items:baseline;gap:10px;
+  font-size:.86rem;color:var(--ink);line-height:1.6;font-weight:400;
+}
+.s-feats li::before{
+  content:'–';color:var(--copper);font-weight:700;flex-shrink:0;
+  font-family:var(--mono);
+}
+.s-cta{
+  display:flex;gap:12px;flex-wrap:wrap;align-items:center;
+}
+.cta-primary{
+  display:inline-flex;align-items:center;gap:7px;
+  font:700 .72rem/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;
+  color:#fff;background:var(--ink);border-radius:10px;
+  padding:12px 20px;text-decoration:none;transition:background .2s;
+}
+.cta-primary:hover{background:var(--turq)}
+.cta-link{
+  display:inline-flex;align-items:center;gap:6px;
+  font:600 .78rem/1 var(--serif);letter-spacing:.04em;
+  color:var(--navy);text-decoration:none;
+  border-bottom:1px solid rgba(46,79,107,.3);padding-bottom:2px;
+  transition:border-color .2s,color .2s;
+}
+.cta-link:hover{color:var(--ink);border-color:var(--ink)}
+.arr{display:inline-block;margin-left:2px}
+
+/* ─── VIS FRAMES ─── */
+.vis-dark{
+  border-radius:16px;overflow:hidden;
+  background:#0f1e31;box-shadow:0 8px 40px var(--sh),0 1px 2px rgba(20,36,60,.06);
+  position:relative;
+}
+.vis-light{
+  border-radius:16px;overflow:hidden;
+  background:var(--white);border:1px solid var(--border);
+  box-shadow:0 4px 20px var(--sh);
+  padding:28px 22px 16px;
+}
+.vis-dark canvas,.vis-dark svg,.vis-light svg{display:block;width:100%}
+
+/* ─── ALT SCENE backgrounds ─── */
+.scene.alt{background:var(--paper)}
+
+/* ─── HOW TO USE ─── */
+.howto{background:var(--ink);padding:80px 24px}
+.howto-inner{max-width:1060px;margin:0 auto}
+.howto-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:44px}
+@media(max-width:700px){.howto-grid{grid-template-columns:1fr}}
+.howto-card{
+  background:rgba(15,30,49,.7);
+  padding:36px 28px;display:flex;flex-direction:column;gap:14px;
+  border-radius:16px;border:1px solid rgba(255,255,255,.07);
+}
+.howto-icon{
+  width:44px;height:44px;border:1px solid rgba(255,255,255,.16);
+  border-radius:12px;display:flex;align-items:center;justify-content:center;
+}
+.howto-icon svg{width:20px;height:20px;stroke:var(--ochre);fill:none;stroke-width:1.5;stroke-linecap:round}
+.howto-role{
+  font:700 .58rem/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;
+  color:var(--ochre);
+}
+.howto-h3{
+  font-family:var(--display);font-size:1.1rem;font-weight:600;
+  color:#fff;line-height:1.3;
+}
+.howto-body{font-size:.86rem;color:rgba(255,255,255,.42);line-height:1.75;font-weight:300}
+
+/* ─── DATA & METHODS ─── */
+.methods{padding:80px 24px;background:var(--sky)}
+.methods-grid{
+  display:grid;grid-template-columns:3fr 2fr;
+  gap:64px;margin-top:40px;align-items:start;
+}
+@media(max-width:720px){.methods-grid{grid-template-columns:1fr;gap:36px}}
+.method-sources{
+  display:flex;flex-direction:column;gap:2px;
+}
+.ms-item{
+  display:grid;grid-template-columns:1fr 3fr;
+  border-top:1px solid var(--border);padding:14px 0;
+}
+.ms-item:last-child{border-bottom:1px solid var(--border)}
+.ms-key{
+  font:700 .64rem/1.4 var(--mono);letter-spacing:.1em;text-transform:uppercase;
+  color:var(--turq);padding-right:12px;
+}
+.ms-val{font:300 .88rem/1.6 var(--serif);color:var(--muted)}
+.methods-numbers{
+  background:var(--ink);border-radius:16px;padding:32px 28px;
+  display:flex;flex-direction:column;gap:18px;
+  box-shadow:0 6px 32px var(--sh);
+}
+.mn-row{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.mn-label{font:400 .86rem/1.5 var(--serif);color:rgba(255,255,255,.52)}
+.mn-val{
+  font:700 1.4rem/1 var(--cinzel);
+  letter-spacing:.08em;color:var(--ochre);white-space:nowrap;flex-shrink:0;
+}
+.mn-divider{border:none;border-top:1px solid rgba(255,255,255,.08)}
+
+/* ─── RESEARCHER ─── */
+.researcher{padding:80px 24px;background:var(--cream);border-top:1px solid var(--border)}
+.researcher-card{
+  max-width:860px;margin:0 auto;
+  display:grid;grid-template-columns:auto 1fr;gap:48px;align-items:start;
+  background:var(--white);border-radius:20px;padding:44px;
+  box-shadow:0 6px 40px var(--sh),0 1px 2px rgba(20,36,60,.06);
+  border:1px solid var(--border);
+}
+@media(max-width:640px){.researcher-card{grid-template-columns:1fr;padding:32px 24px;gap:28px}}
+.rc-photo{
+  width:128px;height:128px;border-radius:50%;overflow:hidden;
+  border:3px solid var(--border);flex-shrink:0;
+}
+.rc-photo img{width:100%;height:100%;object-fit:cover}
+.rc-name{
+  font-family:var(--display);font-size:1.6rem;font-weight:700;
+  color:var(--ink);margin-bottom:4px;
+}
+.rc-role{font:400 .84rem/1.5 var(--serif);color:var(--copper);margin-bottom:18px}
+.rc-bio{font:400 .92rem/1.85 var(--serif);color:var(--ink);margin-bottom:24px}
+.rc-links{display:flex;flex-wrap:wrap;gap:8px}
+.rc-link{
+  display:inline-flex;align-items:center;gap:5px;
+  font:700 .64rem/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;
+  color:var(--ink);background:rgba(26,43,71,.06);
+  border:1px solid rgba(26,43,71,.18);border-radius:20px;
+  padding:7px 14px;text-decoration:none;transition:background .2s,color .2s;
+}
+.rc-link:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
+.rc-tag{
+  font:700 .58rem/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;
+  color:var(--copper);display:block;margin-bottom:16px;
+}
+
+/* ─── FOOTER ─── */
+footer{
+  background:var(--ink-dk);color:rgba(255,255,255,.3);
+  padding:40px 24px;
+  border-top:2px solid var(--turq);
+}
+.footer-inner{
+  max-width:1060px;margin:0 auto;
+  display:grid;grid-template-columns:1fr auto;gap:24px;align-items:end;
+}
+@media(max-width:640px){.footer-inner{grid-template-columns:1fr}}
+.footer-left p{font:300 .82rem/1.8 var(--serif)}
+.footer-left a{color:rgba(255,255,255,.5);text-decoration:none}
+.footer-left a:hover{color:#fff}
+.footer-left strong{color:rgba(255,255,255,.75);font-weight:600}
+.footer-right{display:flex;flex-direction:column;gap:6px;align-items:flex-end}
+.footer-cite{
+  font:700 .62rem/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;
+  color:rgba(255,255,255,.18);
+}
+.footer-links{display:flex;gap:12px;flex-wrap:wrap;justify-content:flex-end}
+.footer-links a{
+  font:400 .72rem/1 var(--mono);letter-spacing:.05em;text-transform:uppercase;
+  color:rgba(255,255,255,.3);text-decoration:none;transition:color .15s;
+}
+.footer-links a:hover{color:rgba(255,255,255,.75)}
+
+/* ─── QUICK ACCESS ─── */
+.quick{background:var(--ink);border-top:1px solid rgba(255,255,255,.05)}
+.quick-inner{
+  max-width:1080px;margin:0 auto;
+  display:grid;grid-template-columns:repeat(4,1fr);
+}
+@media(max-width:560px){.quick-inner{grid-template-columns:repeat(2,1fr)}}
+.qi{
+  display:flex;flex-direction:column;gap:6px;
+  padding:26px 20px;text-decoration:none;color:inherit;
+  border-right:1px solid rgba(255,255,255,.05);
+  transition:background .2s;
+}
+.qi:last-child{border-right:none}
+.qi:hover{background:rgba(255,255,255,.04)}
+.qi-tag{font:400 .58rem/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:rgba(199,146,67,.7)}
+.qi-title{font-family:var(--display);font-size:.88rem;font-weight:600;color:rgba(255,255,255,.62);line-height:1.3}
+.qi-arr{font:400 .78rem/1 var(--mono);color:rgba(255,255,255,.2);margin-top:2px}
+.qi:hover .qi-arr{color:rgba(255,255,255,.55)}
+
+/* ─── INFRA BARCHART caption ─── */
+.chart-cap{font:300 .68rem/1.5 var(--mono);color:var(--muted);padding:8px 2px 4px;opacity:.75}
+
+/* ─── I18N ─── */
+[data-en] .ru{display:none}[data-en] .en{display:inline}
+.en{display:none}.ru{display:inline}
+[data-en] .ru-bl{display:none}[data-en] .en-bl{display:block}
+.en-bl{display:none}.ru-bl{display:block}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:600px){
+  .hero{padding:60px 18px 80px;min-height:75vh}
+  .section,.scene-inner{padding:56px 18px}
+  .howto{padding:56px 18px}
+  .methods{padding:56px 18px}
+  .researcher{padding:56px 18px}
+  .researcher-card{padding:28px 20px}
+  .banner img{max-height:180px}
+}
+
+/* ─── SIGNAL GRID overlay (dark sections) ─── */
+.grid-overlay{
+  position:absolute;inset:0;pointer-events:none;
+  background-image:
+    linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);
+  background-size:56px 56px;
+}
+
+/* ─── LIGHT PAGE TEXTURE ─── */
+body::before{
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(1000px 600px at 8% 4%, var(--sky) 0%, transparent 60%),
+    radial-gradient(800px 500px at 94% 2%, rgba(190,213,207,.4) 0%, transparent 55%),
+    radial-gradient(1100px 800px at 50% 110%, var(--ochre-bg) 0%, transparent 55%);
+  opacity:.5;
+}
+</style>
+</head>
+
+<body>
+
+<!-- BANNER -->
+<div class="banner">
+  <img src="HEAD4.png" alt="Transmission — Urban Infrastructures of the Russian Empire, 1870–1914">
+</div>
+
+<!-- NAV -->
+<nav class="site-nav" aria-label="Main navigation" id="top">
+  <a href="#map"><span class="ru">Карта водопроводов</span><span class="en">Waterworks map</span></a>
+  <a href="#infra"><span class="ru">Благоустройство 1910</span><span class="en">Urban services 1910</span></a>
+  <a href="#cholera"><span class="ru">Холера</span><span class="en">Cholera</span></a>
+  <a href="#novgorod"><span class="ru">Новгородская губ.</span><span class="en">Novgorod Province</span></a>
+  <a href="#methods"><span class="ru">Данные</span><span class="en">Data</span></a>
+  <a href="videos.html"><span class="ru">Видео</span><span class="en">Videos</span></a>
+  <div class="nav-gap"></div>
+  <a href="about.html"><span class="ru">Об авторе</span><span class="en">About</span></a>
+  <a href="collaborate.html"><span class="ru">Сотрудничество</span><span class="en">Collaborate</span></a>
+  <div class="lang-sw" role="group" aria-label="Language / Язык">
+    <button data-lang="ru" class="on" onclick="setLang('ru')">РУ</button>
+    <button data-lang="en" onclick="setLang('en')">EN</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero" aria-labelledby="h1">
+  <canvas id="hero-cvs"></canvas>
+  <div class="grid-overlay"></div>
+  <div class="hero-inner">
+    <p class="hero-eyebrow">
+      <span class="ru">Интерактивная исследовательская платформа · Digital Humanities</span>
+      <span class="en">Interactive Research Platform · Digital Humanities</span>
+    </p>
+    <h1 class="hero-h1" id="h1">
+      <span class="ru">Добро пожаловать на Transmission</span>
+      <span class="en">Welcome to Transmission</span>
+      <em class="emp">
+        <span class="ru">Городские инфраструктуры Российской империи, 1870–1914</span>
+        <span class="en">Urban Infrastructures of the Russian Empire, 1870–1914</span>
+      </em>
+    </h1>
+    <div class="hero-cta">
+      <a class="btn-primary" href="WaterSupply in Russian Empire/map.html">
+        <span class="ru">Открыть карту</span><span class="en">Open interactive map</span>
+      </a>
+      <a class="btn-outline" href="#methods">
+        <span class="ru">О проекте и методах</span><span class="en">About the project &amp; methods</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- KEY FIGURES -->
+<div class="figures" id="figures">
+  <div class="figures-inner">
+    <div class="fig-item">
+      <div class="fig-unit"><span class="ru">городов в базе</span><span class="en">cities in database</span></div>
+      <div class="fig-num" data-count="950">0</div>
+      <div class="fig-label"><span class="ru">Все города Российской империи по переписи 1897&nbsp;г.</span><span class="en">Central Statistical Committee (Ministry of the Interior), 1910</span></div>
+    </div>
+    <div class="fig-item">
+      <div class="fig-unit"><span class="ru">с централизованным водопроводом</span><span class="en">with centralised waterworks</span></div>
+      <div class="fig-num" data-count="187">0</div>
+      <div class="fig-label"><span class="ru">Города с задокументированным водоснабжением, 1804–1914&nbsp;гг.</span><span class="en">Cities with documented water supply systems, 1804–1914</span></div>
+    </div>
+    <div class="fig-item">
+      <div class="fig-unit"><span class="ru">временной охват</span><span class="en">temporal coverage</span></div>
+      <div class="fig-num" style="font-size:clamp(1.8rem,3.5vw,2.8rem);line-height:1">1870–1914</div>
+      <div class="fig-label"><span class="ru">Хроника строительства водопроводов: 1804–1914. Данные по холере: три пандемии.</span><span class="en">Waterworks construction chronicle 1804–1914. Cholera data: three pandemic waves.</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- MODULE 01: MAP -->
+<div class="scene" id="map">
+  <div class="scene-inner">
+    <div class="scene-split">
+      <div class="s-vis">
+        <div class="vis-dark" style="min-height:340px;">
+          <canvas id="map-cvs" height="340"></canvas>
+          <div id="map-cnt" style="position:absolute;bottom:14px;right:16px;font:700 1rem/1 var(--cinzel);color:rgba(196,167,107,.5);pointer-events:none;letter-spacing:.06em;"></div>
+        </div>
+      </div>
+      <div class="s-text">
+        <span class="s-idx">01 / 04</span>
+        <span class="badge badge-orig"><span class="ru">Оригинальное исследование</span><span class="en">Original research</span></span>
+        <h2 class="s-h2" id="map-h2">
+          <span class="ru">Карта городских водопроводов Российской империи</span>
+          <span class="en">Map of Urban Waterworks in the Russian Empire</span>
+        </h2>
+        <p class="s-desc">
+          <span class="ru">Интерактивная карта всех городов с централизованным водоснабжением — от Варшавы до Владивостока.</span>
+          <span class="en">Interactive map of all cities with centralised water supply — from Warsaw to Vladivostok.</span>
+        </p>
+        <ul class="s-feats">
+          <li><span class="ru">187 городов с водопроводом, точные даты строительства</span><span class="en">187 cities with waterworks, precise construction dates</span></li>
+          <li><span class="ru">7 инфраструктурных профилей (тип, владение, материалы)</span><span class="en">7 infrastructure profiles (type, ownership, materials)</span></li>
+          <li><span class="ru">Хронология строительства 1804–1914 гг.</span><span class="en">Construction timeline 1804–1914</span></li>
+          <li><span class="ru">Хороплет смертности от холеры по губерниям</span><span class="en">Cholera mortality choropleth by province</span></li>
+          <li><span class="ru">Фильтры, поиск, всплывающие карточки городов</span><span class="en">Filters, search, city popup cards</span></li>
+        </ul>
+        <div class="s-cta">
+          <a class="cta-primary" href="WaterSupply in Russian Empire/map.html">
+            <span class="ru">Открыть карту</span><span class="en">Open map</span> <span class="arr">→</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODULE 02: INFRASTRUCTURE -->
+<div class="scene alt" id="infra">
+  <div class="scene-inner">
+    <div class="scene-split flip">
+      <div class="s-text">
+        <span class="s-idx">02 / 04</span>
+        <span class="badge badge-ctx"><span class="ru">Контекстные данные · 1 источник</span><span class="en">Contextual data · 1 source</span></span>
+        <h2 class="s-h2" id="infra-h2">
+          <span class="ru">Городское благоустройство и инфраструктура · 1910</span>
+          <span class="en">Urban Services &amp; Infrastructure · 1910</span>
+        </h2>
+        <p class="s-desc">
+          <span class="ru">Сравнение охвата инфраструктурой по 50 губерниям Европейской России: электричество, трамваи, канализация, телефон, телеграф.</span>
+          <span class="en">Compare infrastructure coverage across 50 provinces of European Russia: electricity, trams, sewerage, telephone, telegraph.</span>
+        </p>
+        <ul class="s-feats">
+          <li><span class="ru">862 города · 50 губерний, данные за 1910&nbsp;г.</span><span class="en">862 cities · 50 provinces, 1910 data</span></li>
+          <li><span class="ru">Пожарная охрана 96% → Трамвай 4%: весь диапазон охвата</span><span class="en">Fire protection 96% → Tramway 4%: full coverage range</span></li>
+          <li><span class="ru">Сортируемая таблица с фильтрацией по типу инфраструктуры</span><span class="en">Sortable table with filtering by infrastructure type</span></li>
+          <li><span class="ru">Сравнение губерний и типов одновременно</span><span class="en">Compare provinces and infrastructure types side by side</span></li>
+        </ul>
+        <div class="s-cta">
+          <a class="cta-primary" href="urban_beautification1910.html">
+            <span class="ru">Открыть таблицу</span><span class="en">View table</span> <span class="arr">→</span>
+          </a>
+        </div>
+      </div>
+      <div class="s-vis">
+        <div class="vis-light">
+          <svg id="infra-svg" viewBox="0 0 360 300"></svg>
+          <p class="chart-cap">
+            <span class="ru">862 города · 50 губерний · Европейская Россия · 1910</span>
+            <span class="en">862 cities · 50 provinces · European Russia · 1910</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODULE 03: CHOLERA -->
+<div class="scene" id="cholera">
+  <div class="scene-inner">
+    <div class="scene-split">
+      <div class="s-vis">
+        <div class="vis-dark" style="min-height:300px;">
+          <svg id="chol-svg" viewBox="0 0 380 290" style="overflow:visible"></svg>
+        </div>
+      </div>
+      <div class="s-text">
+        <span class="s-idx">03 / 04</span>
+        <span class="badge badge-ctx"><span class="ru">Контекстные данные · источники карт</span><span class="en">Contextual data · map sources</span></span>
+        <h2 class="s-h2" id="chol-h2">
+          <span class="ru">Холерные эпидемии и водоснабжение</span>
+          <span class="en">Cholera Epidemics and Water Supply</span>
+        </h2>
+        <p class="s-desc">
+          <span class="ru">Три волны холеры сопоставлены с обеспеченностью городов централизованным водоснабжением.</span>
+          <span class="en">Three cholera waves correlated with municipal waterworks coverage across the empire.</span>
+        </p>
+        <ul class="s-feats">
+          <li><span class="ru">1823–1872: I–IV пандемии — масштаб катастрофы</span><span class="en">1823–1872: 1st–4th pandemics — catastrophic scale</span></li>
+          <li><span class="ru">1892: V пандемия — пик смертности в Российской империи</span><span class="en">1892: 5th pandemic — peak mortality in the Russian Empire</span></li>
+          <li><span class="ru">1910: VI пандемия — последняя крупная волна</span><span class="en">1910: 6th pandemic — last major wave</span></li>
+          <li><span class="ru">Смертность по губерниям и корреляция с водопроводом</span><span class="en">Provincial mortality correlated with waterworks presence</span></li>
+        </ul>
+        <div class="s-cta">
+          <a class="cta-primary" href="cholera_ranking.html">
+            <span class="ru">Смотреть данные</span><span class="en">View rankings</span> <span class="arr">→</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODULE 04: NOVGOROD -->
+<div class="scene alt" id="novgorod">
+  <div class="scene-inner">
+    <div class="scene-split flip">
+      <div class="s-text">
+        <span class="s-idx">04 / 04</span>
+        <span class="badge badge-orig"><span class="ru">Оригинальное исследование</span><span class="en">Original research</span></span>
+        <h2 class="s-h2" id="novg-h2">
+          <span class="ru">Новгородская губерния: региональный кейс</span>
+          <span class="en">Novgorod Province: Regional Case Study</span>
+        </h2>
+        <p class="s-desc">
+          <span class="ru">Детальная база данных по 11 городам губернии: думские решения, данные об эпидемиях, санитарные расходы, 1870–1917.</span>
+          <span class="en">Deep-dive database of 11 cities: municipal council decrees, epidemic records, sanitary expenditures, 1870–1917.</span>
+        </p>
+        <ul class="s-feats">
+          <li><span class="ru">Новгород, Старая Русса — водопровод; 9 городов — без водопровода</span><span class="en">Novgorod, Staraya Russa — waterworks; 9 cities — without</span></li>
+          <li><span class="ru">Постановления городских дум о санитарных расходах</span><span class="en">Municipal council decrees on sanitary expenditure</span></li>
+          <li><span class="ru">Данные об эпидемиях в каждом городе, 1870–1910&nbsp;гг.</span><span class="en">Epidemic records for each city, 1870–1910</span></li>
+          <li><span class="ru">Сравнение городов: временные шкалы и показатели</span><span class="en">City-by-city comparison: timelines and indicators</span></li>
+        </ul>
+        <div class="s-cta">
+          <a class="cta-primary" href="prototype/MVP_Новгородская_губерния_v4.html">
+            <span class="ru">Открыть кейс</span><span class="en">Explore case study</span> <span class="arr">→</span>
+          </a>
+        </div>
+      </div>
+      <div class="s-vis">
+        <div class="vis-light" style="padding:20px 18px 12px">
+          <svg id="novg-svg" viewBox="0 0 360 260"></svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- QUICK ACCESS -->
+<div class="quick">
+  <div class="quick-inner">
+    <a class="qi" href="WaterSupply in Russian Empire/map.html">
+      <span class="qi-tag"><span class="ru">Интерактивная карта</span><span class="en">Interactive map</span></span>
+      <span class="qi-title"><span class="ru">Городские водопроводы</span><span class="en">Urban waterworks</span></span>
+      <span class="qi-arr">→</span>
+    </a>
+    <a class="qi" href="urban_beautification1910.html">
+      <span class="qi-tag"><span class="ru">Таблица · губернии</span><span class="en">Table · provinces</span></span>
+      <span class="qi-title"><span class="ru">Благоустройство · 1910</span><span class="en">Urban services · 1910</span></span>
+      <span class="qi-arr">→</span>
+    </a>
+    <a class="qi" href="cholera_ranking.html">
+      <span class="qi-tag"><span class="ru">Рейтинг · статистика</span><span class="en">Rankings · statistics</span></span>
+      <span class="qi-title"><span class="ru">Холерные эпидемии</span><span class="en">Cholera epidemics</span></span>
+      <span class="qi-arr">→</span>
+    </a>
+    <a class="qi" href="prototype/MVP_Новгородская_губерния_v4.html">
+      <span class="qi-tag"><span class="ru">Региональный кейс</span><span class="en">Regional case study</span></span>
+      <span class="qi-title"><span class="ru">Новгородская губерния</span><span class="en">Novgorod Province</span></span>
+      <span class="qi-arr">→</span>
+    </a>
+  </div>
+</div>
+
+<!-- HOW TO USE -->
+<div class="howto" id="howto">
+  <div class="howto-inner">
+    <p class="sec-tag" style="color:var(--gold)"><span class="ru">Как использовать ресурс</span><span class="en">How to use this resource</span></p>
+    <h2 class="sec-h2" style="color:#fff;font-family:var(--display)">
+      <span class="ru">Ресурс для разных исследователей</span>
+      <span class="en">Designed for different researchers</span>
+    </h2>
+    <div class="howto-grid">
+      <div class="howto-card">
+        <div class="howto-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        </div>
+        <span class="howto-role"><span class="ru">Преподаватели</span><span class="en">Educators</span></span>
+        <h3 class="howto-h3"><span class="ru">Карты и таблицы для аудитории</span><span class="en">Maps and tables for teaching</span></h3>
+        <p class="howto-body">
+          <span class="ru">Используйте интерактивные карты и сортируемые таблицы в курсах по городской истории и истории окружающей среды. Визуальные данные сразу готовы к показу в аудитории.</span>
+          <span class="en">Use interactive maps and sortable tables in urban and environmental history courses. Visual data is ready for in-class display and discussion.</span>
+        </p>
+      </div>
+      <div class="howto-card">
+        <div class="howto-icon">
+          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </div>
+        <span class="howto-role"><span class="ru">Исследователи</span><span class="en">Researchers</span></span>
+        <h3 class="howto-h3"><span class="ru">Экспорт данных и анализ</span><span class="en">Data export and analysis</span></h3>
+        <p class="howto-body">
+          <span class="ru">Прослеживайте диффузию инфраструктуры, коррелируйте с показателями смертности, экспортируйте данные. Все источники и методы задокументированы.</span>
+          <span class="en">Trace infrastructure diffusion, correlate with mortality data, export datasets. All sources and methods are fully documented.</span>
+        </p>
+      </div>
+      <div class="howto-card">
+        <div class="howto-icon">
+          <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <span class="howto-role"><span class="ru">Краеведы</span><span class="en">Local historians</span></span>
+        <h3 class="howto-h3"><span class="ru">История вашего города</span><span class="en">Your city's infrastructure history</span></h3>
+        <p class="howto-body">
+          <span class="ru">Найдите свой город на карте водопроводов, изучите историю холерных эпидемий в губернии, сравните с региональным кейсом Новгородской губернии.</span>
+          <span class="en">Find your city on the waterworks map, explore your province's cholera history, compare with the Novgorod regional case study.</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DATA & METHODS -->
+<div class="methods" id="methods">
+  <div class="section-inner">
+    <span class="sec-tag"><span class="ru">Данные и методология</span><span class="en">Data &amp; methods</span></span>
+    <h2 class="sec-h2">
+      <span class="ru">О базе данных и источниках</span>
+      <span class="en">About the database and sources</span>
+    </h2>
+    <p class="sec-lead">
+      <span class="ru">Ресурс основан на оригинальном архивном исследовании и опубликованных источниках XIX — начала XX века. Все данные верифицированы и задокументированы.</span>
+      <span class="en">This resource is based on original archival research and published sources from the 19th–early 20th centuries. All data are verified and fully documented.</span>
+    </p>
+    <div class="methods-grid">
+      <div class="method-sources">
+        <div class="ms-item">
+          <div class="ms-key"><span class="ru">Перепись</span><span class="en">Census</span></div>
+          <div class="ms-val"><span class="ru">Первая всеобщая перепись населения Российской империи 1897&nbsp;г. — основа базы данных 950 городов</span><span class="en">First General Census of the Russian Empire, 1897 — basis of the 950-city database</span></div>
+        </div>
+        <div class="ms-item">
+          <div class="ms-key">GIS</div>
+          <div class="ms-val">RISTAT GIS 1897 · Kessler &amp; Markevich — <span class="ru">картографическая основа</span><span class="en">cartographic base</span></div>
+        </div>
+        <div class="ms-item">
+          <div class="ms-key"><span class="ru">Думы</span><span class="en">Councils</span></div>
+          <div class="ms-val"><span class="ru">Постановления городских дум (Новгородская губерния, 1870–1917)</span><span class="en">Municipal council decrees (Novgorod Province, 1870–1917)</span></div>
+        </div>
+        <div class="ms-item">
+          <div class="ms-key"><span class="ru">Холера</span><span class="en">Cholera</span></div>
+          <div class="ms-val"><span class="ru">Санитарно-эпидемиологические источники: три пандемические волны, 1823–1910</span><span class="en">Sanitary-epidemiological records: three pandemic waves, 1823–1910</span></div>
+        </div>
+        <div class="ms-item">
+          <div class="ms-key">1910</div>
+          <div class="ms-val"><span class="ru">Статистика городского благоустройства Российской империи · 862 города · 50 губерний</span><span class="en">Urban services statistics, Russian Empire · 862 cities · 50 provinces</span></div>
+        </div>
+        <div class="ms-item">
+          <div class="ms-key"><span class="ru">Расходы</span><span class="en">Expenditure</span></div>
+          <div class="ms-val"><span class="ru">Санитарные расходы городских бюджетов, архивные документы</span><span class="en">Municipal sanitary expenditure data, archival documents</span></div>
+        </div>
+      </div>
+      <div>
+        <div class="methods-numbers">
+          <div class="mn-row">
+            <span class="mn-label"><span class="ru">Городов в базе</span><span class="en">Cities in database</span></span>
+            <span class="mn-val">950</span>
+          </div>
+          <hr class="mn-divider">
+          <div class="mn-row">
+            <span class="mn-label"><span class="ru">С водопроводом</span><span class="en">With waterworks</span></span>
+            <span class="mn-val">187</span>
+          </div>
+          <hr class="mn-divider">
+          <div class="mn-row">
+            <span class="mn-label"><span class="ru">Данные 1910&nbsp;г.</span><span class="en">1910 data cities</span></span>
+            <span class="mn-val">862</span>
+          </div>
+          <hr class="mn-divider">
+          <div class="mn-row">
+            <span class="mn-label"><span class="ru">Губерний Европ. России</span><span class="en">Provinces, European Russia</span></span>
+            <span class="mn-val">50</span>
+          </div>
+          <hr class="mn-divider">
+          <div class="mn-row">
+            <span class="mn-label"><span class="ru">Строительство водопроводов</span><span class="en">Waterworks construction</span></span>
+            <span class="mn-val" style="font-size:1.1rem">1804–1914</span>
+          </div>
+        </div>
+        <p style="margin-top:16px">
+          <a class="cta-link" href="about.html#methods">
+            <span class="ru">Подробнее о методах</span><span class="en">Read more about methods</span> <span class="arr">→</span>
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- RESEARCHER -->
+<div class="researcher" id="about">
+  <div class="section-inner">
+    <span class="sec-tag"><span class="ru">Исследователь</span><span class="en">Researcher</span></span>
+    <div class="researcher-card">
+      <div class="rc-photo">
+        <img src="ab_agafonova1.jpg" alt="Anna B. Agafonova">
+      </div>
+      <div>
+        <h2 class="rc-name">
+          <span class="ru">Анна Борисовна Агафонова</span>
+          <span class="en">Anna B. Agafonova</span>
+        </h2>
+        <p class="rc-role">
+          <span class="ru">к.и.н. · независимый исследователь · специалист по экологической истории городов</span>
+          <span class="en">PhD (History) · independent researcher · specialist in environmental urban history</span>
+        </p>
+        <p class="rc-bio">
+          <span class="ru">Специалист в области экологической истории городов Российской империи и раннего СССР (1870–1930-е гг.). Сфера интересов: история водоснабжения и санитарных реформ, гидроэнергетика, городское самоуправление. Руководитель грантов РНФ и РФФИ, автор более 50 работ (Scopus, Web of Science). Доклады: EAUH (Антверп, 2022), ESEH (Бристоль, 2022), ICOHTEC (Острава, 2022), ВДНХ-XIX (ЕУ СПб, 2026).</span>
+          <span class="en">Specialist in the environmental history of Russian and Soviet cities (1870s–1930s). Research interests: water supply and sanitary reform, hydropower development, municipal self-government. PI on grants from the Russian Science Foundation and RFBR. Author of 50+ publications in Scopus and Web of Science journals. Conferences: EAUH (Antwerp, 2022), ESEH (Bristol, 2022), ICOHTEC (Ostrava, 2022), ВДНХ-XIX (EU SPb, 2026).</span>
+        </p>
+        <div class="rc-links">
+          <a class="rc-link" href="https://orcid.org/0000-0003-3021-4002" target="_blank" rel="noopener">ORCID</a>
+          <a class="rc-link" href="https://scholar.google.com/citations?user=J7uQXacAAAAJ" target="_blank" rel="noopener">Google Scholar</a>
+          <a class="rc-link" href="https://www.scopus.com/authid/detail.uri?authorId=57218302546" target="_blank" rel="noopener">Scopus</a>
+          <a class="rc-link" href="https://independentresearcher.academia.edu/AnnaAgafonova" target="_blank" rel="noopener">Academia.edu</a>
+          <a class="rc-link" href="about.html"><span class="ru">Полный профиль →</span><span class="en">Full profile →</span></a>
+          <a class="rc-link" href="mailto:a.b.agafonova@gmail.com"><span class="ru">Написать</span><span class="en">Contact</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-left">
+      <p><strong>Transmission</strong> · Urban Infrastructures of the Russian Empire, 1870–1914</p>
+      <p>© 2026 <span class="ru">Анна Б. Агафонова</span><span class="en">Anna B. Agafonova</span>
+        &nbsp;·&nbsp; <a href="https://orcid.org/0000-0003-3021-4002" target="_blank" rel="noopener">ORCID 0000-0003-3021-4002</a>
+        &nbsp;·&nbsp; <span class="ru">Картографическая основа:</span><span class="en">Map base:</span> RISTAT GIS 1897 · Kessler &amp; Markevich
+      </p>
+    </div>
+    <div class="footer-right">
+      <span class="footer-cite"><span class="ru">Для цитирования</span><span class="en">Cite this project</span></span>
+      <div class="footer-links">
+        <a href="about.html#methods"><span class="ru">Данные и методы</span><span class="en">Data &amp; methods</span></a>
+        <a href="collaborate.html"><span class="ru">Сотрудничество</span><span class="en">Collaborate</span></a>
+        <a href="#top">↑ Top</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ─── LANG ─── */
+function setLang(l){
+  try{localStorage.setItem('tx_lang',l)}catch(e){}
+  if(l==='en') document.documentElement.setAttribute('data-en','');
+  else document.documentElement.removeAttribute('data-en');
+  document.querySelectorAll('.lang-sw button').forEach(b=>b.classList.toggle('on',b.dataset.lang===l));
+  // Redraw charts on lang change
+  document.querySelectorAll('[id$="-svg"],[id$="-cvs"]').forEach(el=>{el._ok=false});
+  // Re-trigger visible scenes
+  document.querySelectorAll('.scene.iv').forEach(el=>{
+    const id=el.id;
+    if(id==='map') drawMap();
+    if(id==='infra') drawInfra();
+    if(id==='cholera') drawChol();
+    if(id==='novgorod') drawNovg();
+  });
+}
+(function(){
+  let s='ru';try{s=localStorage.getItem('tx_lang')||'ru'}catch(e){}
+  setLang(s);
+})();
+
+/* ─── HERO SIGNAL WAVE ─── */
+(function(){
+  const cvs=document.getElementById('hero-cvs');
+  if(!cvs) return;
+  const ctx=cvs.getContext('2d');
+  let w,h,t=0;
+  function resize(){
+    w=cvs.offsetWidth;h=cvs.offsetHeight;
+    cvs.width=w*(devicePixelRatio||1);
+    cvs.height=h*(devicePixelRatio||1);
+    ctx.scale(devicePixelRatio||1,devicePixelRatio||1);
+  }
+  window.addEventListener('resize',resize);
+  resize();
+
+  const LINES=18;
+  function draw(){
+    ctx.clearRect(0,0,w,h);
+    // vertical grid
+    ctx.strokeStyle='rgba(255,255,255,.025)';ctx.lineWidth=.5;
+    for(let x=0;x<w;x+=56){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,h);ctx.stroke();}
+    for(let y=0;y<h;y+=56){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(w,y);ctx.stroke();}
+
+    // horizontal signal lines (Joy Division–inspired stacked waveforms)
+    for(let i=0;i<LINES;i++){
+      const yBase=h*.12+i*(h*.76/LINES);
+      const amp=14+i*3.2;
+      const freq=.012+i*.0008;
+      const phase=t*.6+i*.38;
+      const alpha=.06+.1*Math.pow(i/LINES,.5);
+      ctx.beginPath();
+      ctx.strokeStyle=`rgba(255,255,255,${alpha})`;
+      ctx.lineWidth=.8;
+      for(let x=0;x<w;x+=2){
+        const distort=Math.sin(x*.005+t*.2)*0.5;
+        const y=yBase+amp*Math.sin(x*freq+phase+distort)+amp*.35*Math.sin(x*freq*2.1+phase*1.3);
+        if(x===0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
+      }
+      ctx.stroke();
+    }
+    t+=.018;
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+/* ─── COUNTER ANIMATION (figures) ─── */
+(function(){
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(!e.isIntersecting) return;
+      e.target.querySelectorAll('[data-count]').forEach(el=>{
+        const target=+el.dataset.count;
+        const t0=performance.now();
+        (function tick(now){
+          const p=Math.min((now-t0)/2200,1);
+          const ease=1-Math.pow(1-p,3);
+          el.textContent=Math.round(ease*target);
+          if(p<1) requestAnimationFrame(tick);
+        })(t0);
+      });
+      obs.unobserve(e.target);
+    });
+  },{threshold:.5});
+  const fig=document.querySelector('.figures');
+  if(fig) obs.observe(fig);
+})();
+
+/* ─── SCROLL REVEAL + CHART TRIGGERS ─── */
+const sceneObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(!e.isIntersecting) return;
+    e.target.classList.add('iv');
+    const id=e.target.id;
+    if(id==='map') setTimeout(drawMap,380);
+    if(id==='infra') setTimeout(drawInfra,380);
+    if(id==='cholera') setTimeout(drawChol,380);
+    if(id==='novgorod') setTimeout(drawNovg,380);
+    sceneObs.unobserve(e.target);
+  });
+},{threshold:.18});
+['map','infra','cholera','novgorod'].forEach(id=>{
+  const el=document.getElementById(id);if(el) sceneObs.observe(el);
+});
+
+/* ─── MAP CANVAS ─── */
+function drawMap(){
+  const cvs=document.getElementById('map-cvs');
+  if(!cvs||cvs._ok) return; cvs._ok=true;
+  const dpr=devicePixelRatio||1;
+  const W=cvs.offsetWidth,H=340;
+  cvs.width=W*dpr;cvs.height=H*dpr;
+  const ctx=cvs.getContext('2d');ctx.scale(dpr,dpr);
+  ctx.fillStyle='#0d1b2e';ctx.fillRect(0,0,W,H);
+  // Grid
+  ctx.strokeStyle='rgba(255,255,255,.028)';ctx.lineWidth=.5;
+  for(let x=0;x<W;x+=36){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,H);ctx.stroke();}
+  for(let y=0;y<H;y+=36){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(W,y);ctx.stroke();}
+  // All cities (dim)
+  let s=42;function pr(){s=(s*1664525+1013904223)&0xFFFFFFFF;return(s>>>0)/4294967296;}
+  for(let i=0;i<950;i++){
+    const xf=i<600?pr()*0.6+0.03:pr()*0.93+0.03;
+    const yf=pr()*0.82+0.05;
+    ctx.fillStyle='rgba(255,255,255,.065)';
+    ctx.beginPath();ctx.arc(xf*W,yf*H,1.3,0,6.28);ctx.fill();
+  }
+  const cnt=document.getElementById('map-cnt');
+  // Waterworks cities
+  const dots=[[.24,.14,2.2],[.22,.18,1.1],[.27,.16,1],[.20,.21,1],[.16,.13,1.5],[.14,.17,1],[.19,.24,1],
+    [.08,.26,1.7],[.09,.33,1.2],[.10,.39,1],[.07,.37,1],[.11,.30,1],[.35,.27,2.4],[.33,.31,1.2],
+    [.38,.26,1.1],[.36,.33,1.1],[.30,.29,1],[.40,.29,1],[.34,.23,1],[.37,.36,1],[.22,.44,1.6],
+    [.26,.50,1.9],[.28,.46,1.2],[.31,.48,1.2],[.20,.52,1.1],[.24,.56,1.3],[.18,.46,1],
+    [.45,.30,1.6],[.49,.37,1.5],[.47,.43,1.3],[.43,.41,1.1],[.51,.42,1.2],[.44,.47,1],
+    [.60,.22,1.5],[.63,.27,1.2],[.62,.31,1],[.34,.70,1.5],[.37,.76,1.3],[.41,.72,1.1],
+    [.43,.79,1],[.36,.66,1],[.72,.28,1],[.79,.32,1],[.84,.26,.9],[.91,.38,.8],
+    [.61,.70,.9],[.66,.76,.9],[.70,.68,.8],[.20,.31,1.1],[.17,.37,1]];
+  let shown=0;
+  const iv=setInterval(()=>{
+    if(!dots[shown]){clearInterval(iv);return;}
+    const[xf,yf,sz]=dots[shown];
+    const x=xf*W,y=yf*H,r=sz*3.5;
+    const g=ctx.createRadialGradient(x,y,0,x,y,r*3.2);
+    g.addColorStop(0,'rgba(196,167,107,.32)');g.addColorStop(1,'rgba(196,167,107,0)');
+    ctx.fillStyle=g;ctx.beginPath();ctx.arc(x,y,r*3.2,0,6.28);ctx.fill();
+    ctx.fillStyle='#c4a76b';ctx.beginPath();ctx.arc(x,y,r,0,6.28);ctx.fill();
+    shown++;
+    if(cnt) cnt.textContent=shown;
+  },55);
+}
+
+/* ─── INFRA BAR CHART ─── */
+function drawInfra(){
+  const svg=document.getElementById('infra-svg');
+  if(!svg||svg._ok) return; svg._ok=true;
+  const en=document.documentElement.hasAttribute('data-en');
+  const rows=[
+    {ru:'Пожарная охрана',en:'Fire protection',v:96,c:'#1c3347'},
+    {ru:'Освещение',      en:'Street lighting', v:87,c:'#2e4f6b'},
+    {ru:'Скотобойни',     en:'Slaughterhouses', v:81,c:'#3d6482'},
+    {ru:'Телеграф',       en:'Telegraph',        v:27,c:'#8b5e3c'},
+    {ru:'Водопровод',     en:'Waterworks',       v:20,c:'#b07a50'},
+    {ru:'Электричество',  en:'Electricity',      v:13,c:'#c4a76b'},
+    {ru:'Канализация',    en:'Sewerage',         v:5, c:'#6a7f8e'},
+    {ru:'Трамвай',        en:'Tramway',          v:4, c:'#7a6b5a'},
+  ];
+  const lp=118,rp=48,tp=12,bh=20,gap=12,cW=360-lp-rp;
+  let h='';
+  rows.forEach((d,i)=>{
+    const y=tp+i*(bh+gap),bw=(d.v/100)*cW,lbl=en?d.en:d.ru;
+    h+=`<rect x="${lp}" y="${y}" width="${cW}" height="${bh}" rx="2" fill="rgba(28,51,71,.07)"/>`;
+    h+=`<rect class="ib" x="${lp}" y="${y}" width="0" height="${bh}" rx="2" fill="${d.c}" opacity=".9" data-w="${bw}" style="transition:width .85s ${.1*i}s ease"/>`;
+    h+=`<text x="${lp-7}" y="${y+bh/2+4}" text-anchor="end" font-family="Source Serif 4,serif" font-size="10.5" fill="#6a7f8e">${lbl}</text>`;
+    h+=`<text x="${lp+Math.max(bw+5,20)}" y="${y+bh/2+4}" font-family="Space Mono,monospace" font-size="10" font-weight="700" fill="${d.c}">${d.v}%</text>`;
+  });
+  svg.innerHTML=h;
+  setTimeout(()=>svg.querySelectorAll('.ib').forEach(b=>b.setAttribute('width',b.dataset.w)),80);
+}
+
+/* ─── CHOLERA ─── */
+function drawChol(){
+  const svg=document.getElementById('chol-svg');
+  if(!svg||svg._ok) return; svg._ok=true;
+  const en=document.documentElement.hasAttribute('data-en');
+  const waves=[
+    {cx:72,cy:65, yr:'1823–1872',d_ru:'I–IV пандемии',      d_en:'1st–4th pandemics',  c:'#3d6482',r:24},
+    {cx:72,cy:150,yr:'1892',     d_ru:'V пандемия · пик',    d_en:'5th pandemic · peak',c:'#c4a76b',r:34},
+    {cx:72,cy:238,yr:'1910',     d_ru:'VI пандемия',          d_en:'6th pandemic',       c:'#8b5e3c',r:18},
+  ];
+  let h=`<defs><style>@keyframes cp{0%{opacity:.8;transform:scale(1)}100%{opacity:0;transform:scale(5.5)}}
+.cr{transform-origin:center;transform-box:fill-box}.cr.a{animation:cp 2.8s ease-out infinite}
+.cr.d1{animation-delay:.75s}.cr.d2{animation-delay:1.5s}</style>
+<rect x="0" y="0" width="380" height="290" fill="#0d1b2e"/>
+<line x1="0" y1="0" x2="380" y2="0" stroke="none"/>
+</defs>`;
+  // grid
+  h+=`<g stroke="rgba(255,255,255,.025)" stroke-width=".5">`;
+  for(let x=0;x<380;x+=40) h+=`<line x1="${x}" y1="0" x2="${x}" y2="290"/>`;
+  for(let y=0;y<290;y+=40) h+=`<line x1="0" y1="${y}" x2="380" y2="${y}"/>`;
+  h+='</g>';
+  waves.forEach(w=>{
+    const d=en?w.d_en:w.d_ru;
+    // rings
+    for(let k=0;k<3;k++){
+      h+=`<circle class="cr${k>0?' d'+k:''}" cx="${w.cx}" cy="${w.cy}" r="${w.r*.4}" fill="none" stroke="${w.c}" stroke-width="${2-k*.4}"/>`;
+    }
+    h+=`<circle cx="${w.cx}" cy="${w.cy}" r="5.5" fill="${w.c}"/>`;
+    h+=`<line x1="${w.cx+9}" y1="${w.cy}" x2="120" y2="${w.cy}" stroke="rgba(255,255,255,.1)" stroke-width=".8" stroke-dasharray="3,3"/>`;
+    h+=`<text x="126" y="${w.cy-6}" font-family="Bebas Neue,serif" font-size="18" letter-spacing=".04em" fill="rgba(255,255,255,.82)">${w.yr}</text>`;
+    h+=`<text x="126" y="${w.cy+12}" font-family="Space Mono,monospace" font-size="9" fill="rgba(255,255,255,.32)">${d}</text>`;
+  });
+  svg.innerHTML=h;
+  setTimeout(()=>{
+    svg.querySelectorAll('.cr').forEach((el,i)=>{
+      el.classList.add('a');
+      if(i%3===1) el.classList.add('d1');
+      if(i%3===2) el.classList.add('d2');
+    });
+  },200);
+}
+
+/* ─── NOVGOROD ─── */
+function drawNovg(){
+  const svg=document.getElementById('novg-svg');
+  if(!svg||svg._ok) return; svg._ok=true;
+  const en=document.documentElement.hasAttribute('data-en');
+  const cities=[
+    {n:en?'Novgorod':'Новгород',          w:1},
+    {n:en?'Staraya Russa':'Старая Русса', w:1},
+    {n:en?'Cherepovets':'Череповец',      w:.5,note:'1916'},
+    {n:en?'Borovichi':'Боровичи',         w:0},
+    {n:en?'Valdai':'Валдай',              w:0},
+    {n:en?'Tikhvin':'Тихвин',             w:0},
+    {n:en?'Belozersk':'Белозерск',        w:0},
+    {n:en?'Kirillov':'Кириллов',          w:0},
+    {n:en?'Kresttsy':'Крестцы',           w:0},
+    {n:en?'Demyansk':'Демянск',           w:0},
+    {n:en?'Ustyuzhna':'Устюжна',          w:0},
+  ];
+  const n=cities.length,cW=360,cH=260,bot=52,top=28;
+  const bw=Math.floor((cW-16)/n)-3,maxH=cH-bot-top;
+  const noH=[.22,.28,.18,.25,.30,.16,.22,.19,.24];
+  let h='';
+  // Legend
+  h+=`<rect x="10" y="6" width="8" height="8" rx="1.5" fill="#1c3347" opacity=".9"/>
+      <text x="22" y="14" font-family="Space Mono,monospace" font-size="8" fill="#6a7f8e">${en?'Waterworks (by 1912)':'Водопровод (до 1912 г.'}</text>
+      <rect x="10" y="20" width="8" height="8" rx="1.5" fill="#7a6b5a" opacity=".38"/>
+      <text x="22" y="28" font-family="Space Mono,monospace" font-size="8" fill="#6a7f8e">${en?'No waterworks':'Без водопровода'}</text>`;
+  cities.forEach((c,i)=>{
+    const x=10+i*((cW-14)/n);
+    const bh=c.w===1?maxH*.9:c.w===.5?maxH*.5:maxH*(noH[i-2]||.22);
+    const by=cH-bot-bh;
+    const col=c.w===1?'#1c3347':c.w===.5?'#b07a50':'#7a6b5a';
+    const op=c.w===1?.9:c.w===.5?.7:.35;
+    h+=`<rect class="nb" x="${x}" y="${cH-bot}" width="${bw}" height="0" rx="2" fill="${col}" opacity="${op}"
+        data-h="${bh}" data-y="${by}" style="transition:height .8s ${.06*i}s ease,y .8s ${.06*i}s ease"/>`;
+    if(c.note){
+      h+=`<text x="${x+bw/2}" y="${by-4}" text-anchor="middle" font-family="Space Mono,monospace" font-size="7" fill="#b07a50">${c.note}</text>`;
+    }
+    h+=`<text transform="rotate(-40,${x+bw/2},${cH-bot+5})" x="${x+bw/2}" y="${cH-bot+5}"
+        font-family="Source Serif 4,serif" font-size="8" fill="rgba(26,42,56,.5)" text-anchor="end">${c.n}</text>`;
+  });
+  svg.innerHTML=h;
+  setTimeout(()=>svg.querySelectorAll('.nb').forEach(b=>{
+    b.setAttribute('height',b.dataset.h);b.setAttribute('y',b.dataset.y);
+  }),80);
+}
+</script>
+</body>
+</html>
