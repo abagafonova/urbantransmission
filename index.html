@@ -477,6 +477,22 @@ footer{
   background-size:56px 56px;
 }
 
+/* ─── COMING SOON ─── */
+[data-soon]{cursor:default;opacity:.55;pointer-events:auto}
+[data-soon]:hover{opacity:.7}
+
+/* Toast notification */
+#soon-toast{
+  position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(16px);
+  background:var(--navy);color:rgba(255,255,255,.88);
+  font:700 .65rem/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;
+  padding:10px 20px;border-radius:6px;
+  box-shadow:0 4px 20px rgba(7,17,26,.35);
+  opacity:0;transition:opacity .2s,transform .2s;
+  pointer-events:none;z-index:9999;white-space:nowrap;
+}
+#soon-toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
 /* ─── LIGHT PAGE TEXTURE ─── */
 body::before{
   content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
@@ -503,10 +519,10 @@ body::before{
   <a href="#cholera"><span class="ru">Холера</span><span class="en">Cholera</span></a>
   <a href="#novgorod"><span class="ru">Новгородская губ.</span><span class="en">Novgorod Province</span></a>
   <a href="#methods"><span class="ru">Данные</span><span class="en">Data</span></a>
-  <a href="videos.html"><span class="ru">Видео</span><span class="en">Videos</span></a>
+  <a href="#" data-soon><span class="ru">Видео</span><span class="en">Videos</span></a>
   <div class="nav-gap"></div>
-  <a href="about.html"><span class="ru">Об авторе</span><span class="en">About</span></a>
-  <a href="collaborate.html"><span class="ru">Сотрудничество</span><span class="en">Collaborate</span></a>
+  <a href="#" data-soon><span class="ru">Об авторе</span><span class="en">About</span></a>
+  <a href="#" data-soon><span class="ru">Сотрудничество</span><span class="en">Collaborate</span></a>
   <div class="lang-sw" role="group" aria-label="Language / Язык">
     <button data-lang="ru" class="on" onclick="setLang('ru')">РУ</button>
     <button data-lang="en" onclick="setLang('en')">EN</button>
@@ -531,7 +547,7 @@ body::before{
       </em>
     </h1>
     <div class="hero-cta">
-      <a class="btn-primary" href="WaterSupply in Russian Empire/map.html">
+      <a class="btn-primary" href="#" data-soon>
         <span class="ru">Открыть карту</span><span class="en">Open interactive map</span>
       </a>
       <a class="btn-outline" href="#methods">
@@ -591,7 +607,7 @@ body::before{
           <li><span class="ru">Фильтры, поиск, всплывающие карточки городов</span><span class="en">Filters, search, city popup cards</span></li>
         </ul>
         <div class="s-cta">
-          <a class="cta-primary" href="WaterSupply in Russian Empire/map.html">
+          <a class="cta-primary" href="#" data-soon>
             <span class="ru">Открыть карту</span><span class="en">Open map</span> <span class="arr">→</span>
           </a>
         </div>
@@ -622,7 +638,7 @@ body::before{
           <li><span class="ru">Сравнение губерний и типов одновременно</span><span class="en">Compare provinces and infrastructure types side by side</span></li>
         </ul>
         <div class="s-cta">
-          <a class="cta-primary" href="urban_beautification1910.html">
+          <a class="cta-primary" href="#" data-soon>
             <span class="ru">Открыть таблицу</span><span class="en">View table</span> <span class="arr">→</span>
           </a>
         </div>
@@ -667,7 +683,7 @@ body::before{
           <li><span class="ru">Смертность по губерниям и корреляция с водопроводом</span><span class="en">Provincial mortality correlated with waterworks presence</span></li>
         </ul>
         <div class="s-cta">
-          <a class="cta-primary" href="cholera_ranking.html">
+          <a class="cta-primary" href="#" data-soon>
             <span class="ru">Смотреть данные</span><span class="en">View rankings</span> <span class="arr">→</span>
           </a>
         </div>
@@ -698,7 +714,7 @@ body::before{
           <li><span class="ru">Сравнение городов: временные шкалы и показатели</span><span class="en">City-by-city comparison: timelines and indicators</span></li>
         </ul>
         <div class="s-cta">
-          <a class="cta-primary" href="prototype/MVP_Новгородская_губерния_v4.html">
+          <a class="cta-primary" href="#" data-soon>
             <span class="ru">Открыть кейс</span><span class="en">Explore case study</span> <span class="arr">→</span>
           </a>
         </div>
@@ -715,22 +731,22 @@ body::before{
 <!-- QUICK ACCESS -->
 <div class="quick">
   <div class="quick-inner">
-    <a class="qi" href="WaterSupply in Russian Empire/map.html">
+    <a class="qi" href="#" data-soon>
       <span class="qi-tag"><span class="ru">Интерактивная карта</span><span class="en">Interactive map</span></span>
       <span class="qi-title"><span class="ru">Городские водопроводы</span><span class="en">Urban waterworks</span></span>
       <span class="qi-arr">→</span>
     </a>
-    <a class="qi" href="urban_beautification1910.html">
+    <a class="qi" href="#" data-soon>
       <span class="qi-tag"><span class="ru">Таблица · губернии</span><span class="en">Table · provinces</span></span>
       <span class="qi-title"><span class="ru">Благоустройство · 1910</span><span class="en">Urban services · 1910</span></span>
       <span class="qi-arr">→</span>
     </a>
-    <a class="qi" href="cholera_ranking.html">
+    <a class="qi" href="#" data-soon>
       <span class="qi-tag"><span class="ru">Рейтинг · статистика</span><span class="en">Rankings · statistics</span></span>
       <span class="qi-title"><span class="ru">Холерные эпидемии</span><span class="en">Cholera epidemics</span></span>
       <span class="qi-arr">→</span>
     </a>
-    <a class="qi" href="prototype/MVP_Новгородская_губерния_v4.html">
+    <a class="qi" href="#" data-soon>
       <span class="qi-tag"><span class="ru">Региональный кейс</span><span class="en">Regional case study</span></span>
       <span class="qi-title"><span class="ru">Новгородская губерния</span><span class="en">Novgorod Province</span></span>
       <span class="qi-arr">→</span>
@@ -851,7 +867,7 @@ body::before{
           </div>
         </div>
         <p style="margin-top:16px">
-          <a class="cta-link" href="about.html#methods">
+          <a class="cta-link" href="#" data-soon>
             <span class="ru">Подробнее о методах</span><span class="en">Read more about methods</span> <span class="arr">→</span>
           </a>
         </p>
@@ -886,7 +902,7 @@ body::before{
           <a class="rc-link" href="https://scholar.google.com/citations?user=J7uQXacAAAAJ" target="_blank" rel="noopener">Google Scholar</a>
           <a class="rc-link" href="https://www.scopus.com/authid/detail.uri?authorId=57218302546" target="_blank" rel="noopener">Scopus</a>
           <a class="rc-link" href="https://independentresearcher.academia.edu/AnnaAgafonova" target="_blank" rel="noopener">Academia.edu</a>
-          <a class="rc-link" href="about.html"><span class="ru">Полный профиль →</span><span class="en">Full profile →</span></a>
+          <a class="rc-link" href="#" data-soon><span class="ru">Полный профиль →</span><span class="en">Full profile →</span></a>
           <a class="rc-link" href="mailto:a.b.agafonova@gmail.com"><span class="ru">Написать</span><span class="en">Contact</span></a>
         </div>
       </div>
@@ -907,8 +923,8 @@ body::before{
     <div class="footer-right">
       <span class="footer-cite"><span class="ru">Для цитирования</span><span class="en">Cite this project</span></span>
       <div class="footer-links">
-        <a href="about.html#methods"><span class="ru">Данные и методы</span><span class="en">Data &amp; methods</span></a>
-        <a href="collaborate.html"><span class="ru">Сотрудничество</span><span class="en">Collaborate</span></a>
+        <a href="#" data-soon><span class="ru">Данные и методы</span><span class="en">Data &amp; methods</span></a>
+        <a href="#" data-soon><span class="ru">Сотрудничество</span><span class="en">Collaborate</span></a>
         <a href="#top">↑ Top</a>
       </div>
     </div>
@@ -1184,6 +1200,31 @@ function drawNovg(){
     b.setAttribute('height',b.dataset.h);b.setAttribute('y',b.dataset.y);
   }),80);
 }
+</script>
+
+<!-- COMING SOON TOAST -->
+<div id="soon-toast">
+  <span class="ru">Скоро будет доступно</span><span class="en" style="display:none">Coming soon</span>
+</div>
+<script>
+(function(){
+  const toast=document.getElementById('soon-toast');
+  let timer;
+  function showToast(){
+    const en=document.documentElement.hasAttribute('data-en');
+    toast.querySelector('.ru').style.display=en?'none':'inline';
+    toast.querySelector('.en').style.display=en?'inline':'none';
+    toast.classList.add('show');
+    clearTimeout(timer);
+    timer=setTimeout(()=>toast.classList.remove('show'),2200);
+  }
+  document.addEventListener('click',function(e){
+    const a=e.target.closest('[data-soon]');
+    if(!a) return;
+    e.preventDefault();
+    showToast();
+  });
+})();
 </script>
 </body>
 </html>
