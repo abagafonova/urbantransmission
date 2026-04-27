@@ -1,0 +1,13 @@
+{
+  "name": "Transmission — Urban Infrastructures of the Russian Empire",
+  "short_name": "Transmission",
+  "description": "Interactive research platform on centralised water supply and urban services, 1870–1914",
+  "icons": [
+    { "src": "favicon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "apple-touch-icon.png", "sizes": "512x512", "type": "image/png" }
+  ],
+  "theme_color": "#1c3347",
+  "background_color": "#f0eade",
+  "display": "browser",
+  "start_url": "/"
+}
