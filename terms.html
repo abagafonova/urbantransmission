@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Условия использования / Terms of Use — Transmission</title>
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Playfair+Display:wght@400;700&family=Source+Serif+4:ital,wght@0,300;0,400&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#f0eade;color:#07111a;font-family:'Source Serif 4',Georgia,serif;font-weight:300;line-height:1.85}
+
+/* NAV */
+nav{background:rgba(7,17,26,.96);padding:0 24px;height:46px;display:flex;align-items:center;gap:20px;position:sticky;top:0;z-index:100}
+nav a{color:rgba(255,255,255,.52);text-decoration:none;font:400 .68rem/1 'Space Mono',monospace;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}
+nav a:hover{color:#fff}
+nav .home{color:#c4a76b}
+
+/* LANG TOGGLE */
+.lang-sw{margin-left:auto;display:flex;gap:0;border-left:1px solid rgba(255,255,255,.09);padding-left:12px}
+.lang-sw button{background:transparent;border:none;cursor:pointer;font:700 10px/1 'Space Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.35);padding:0 10px;height:46px;transition:color .15s}
+.lang-sw button.on{color:#c4a76b}
+.lang-sw button:hover{color:rgba(255,255,255,.8)}
+
+/* I18N */
+[data-en] .ru{display:none}[data-en] .en{display:inline}
+.en{display:none}.ru{display:inline}
+[data-en] .ru-bl{display:none}[data-en] .en-bl{display:block}
+.en-bl{display:none}.ru-bl{display:block}
+
+/* LAYOUT */
+.wrap{max-width:760px;margin:0 auto;padding:60px 24px 100px}
+
+/* HEADER */
+.doc-title{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:#1c3347;line-height:1.15;margin-bottom:6px}
+.doc-sub{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:400;font-style:italic;color:#6a7f8e;margin-bottom:10px}
+.doc-meta{font:400 .7rem/1 'Space Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:#8a9aaa;margin-bottom:44px}
+
+/* SECTIONS */
+h2{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:#1c3347;margin:38px 0 12px;padding-bottom:6px;border-bottom:1px solid rgba(28,51,71,.12)}
+p{margin-bottom:14px;font-size:.93rem}
+ul{margin:0 0 16px 20px}
+ul li{font-size:.93rem;margin-bottom:7px}
+
+/* HIGHLIGHT BOX */
+.box{border-left:3px solid #c4a76b;background:rgba(196,167,107,.07);padding:14px 18px;border-radius:0 6px 6px 0;margin:20px 0}
+.box p{margin:0;font-size:.9rem}
+
+/* LICENCE BLOCK */
+.licence{background:#1c3347;border-radius:10px;padding:22px 24px;margin:20px 0;color:rgba(255,255,255,.8)}
+.licence .lc-head{font:700 .6rem/1 'Space Mono',monospace;letter-spacing:.16em;text-transform:uppercase;color:#c4a76b;margin-bottom:10px}
+.licence p{font-size:.88rem;line-height:1.75;color:rgba(255,255,255,.75);margin:0 0 8px}
+.licence p:last-child{margin:0}
+.licence a{color:#7aada8}
+.licence a:hover{color:#fff}
+
+a{color:#2e7a7a}
+a:hover{color:#07111a}
+
+/* FOOTER */
+footer{border-top:1px solid rgba(28,51,71,.12);padding:24px;text-align:center;font:400 .68rem/1.8 'Space Mono',monospace;letter-spacing:.05em;text-transform:uppercase;color:#6a7f8e}
+footer a{color:#6a7f8e;text-decoration:none}
+footer a:hover{color:#07111a}
+
+@media(max-width:600px){.wrap{padding:40px 18px 80px}.doc-title{font-size:1.6rem}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="home" href="index.html">← <span class="ru">Главная</span><span class="en">Home</span></a>
+  <a href="personal-data.html"><span class="ru">Политика ПД</span><span class="en">Privacy (RU)</span></a>
+  <a href="privacy.html"><span class="ru">Privacy Policy</span><span class="en">Privacy Policy</span></a>
+  <div class="lang-sw">
+    <button data-lang="ru" class="on" onclick="setLang('ru')">РУ</button>
+    <button data-lang="en" onclick="setLang('en')">EN</button>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <!-- RU HEADER -->
+  <div class="ru-bl">
+    <h1 class="doc-title">Условия использования</h1>
+    <p class="doc-sub">Terms of Use</p>
+    <p class="doc-meta">Сайт urbantransmission.org · Редакция: май 2026 г.</p>
+  </div>
+
+  <!-- EN HEADER -->
+  <div class="en-bl">
+    <h1 class="doc-title">Terms of Use</h1>
+    <p class="doc-sub">Условия использования</p>
+    <p class="doc-meta">urbantransmission.org · Last updated: May 2026</p>
+  </div>
+
+  <!-- 1. PURPOSE -->
+  <h2>
+    <span class="ru">1. Назначение ресурса</span>
+    <span class="en">1. Purpose of the resource</span>
+  </h2>
+  <p>
+    <span class="ru"><strong>Transmission</strong> (urbantransmission.org) — цифровая исследовательская платформа об инфраструктуре и санитарном состоянии городов Российской империи (1870–1914 гг.). Ресурс создан в исключительно <strong>информационных, академических и образовательных целях</strong>.</span>
+    <span class="en"><strong>Transmission</strong> (urbantransmission.org) is a digital research platform on urban infrastructure and sanitary conditions in the Russian Empire (1870–1914). The resource is provided exclusively for <strong>informational, academic, and educational purposes</strong>.</span>
+  </p>
+  <p>
+    <span class="ru">Используя сайт, вы соглашаетесь с настоящими Условиями. Если вы не согласны с какими-либо положениями, пожалуйста, воздержитесь от использования ресурса.</span>
+    <span class="en">By using this site, you agree to these Terms. If you do not agree with any part of these Terms, please refrain from using the resource.</span>
+  </p>
+
+  <!-- 2. NO PROFESSIONAL ADVICE -->
+  <h2>
+    <span class="ru">2. Отсутствие профессиональных рекомендаций</span>
+    <span class="en">2. No professional advice</span>
+  </h2>
+  <div class="box">
+    <p>
+      <span class="ru">Ничто на этом сайте не является юридической, медицинской, финансовой, инвестиционной или иной профессиональной консультацией. Исторические данные предоставляются исключительно в научных и образовательных целях.</span>
+      <span class="en">Nothing on this site constitutes legal, medical, financial, investment, or any other professional advice. Historical data is provided solely for scholarly and educational purposes.</span>
+    </p>
+  </div>
+
+  <!-- 3. INTELLECTUAL PROPERTY -->
+  <h2>
+    <span class="ru">3. Авторские права и интеллектуальная собственность</span>
+    <span class="en">3. Copyright and intellectual property</span>
+  </h2>
+  <p>
+    <span class="ru">Все оригинальные материалы платформы — тексты, карты, визуализации, базы данных, иллюстрации — являются интеллектуальной собственностью <strong>Агафоновой Анны Борисовны</strong>, если явно не указано иное.</span>
+    <span class="en">All original materials on this platform — texts, maps, visualisations, databases, illustrations — are the intellectual property of <strong>Anna B. Agafonova</strong>, unless explicitly stated otherwise.</span>
+  </p>
+
+  <div class="licence">
+    <p class="lc-head">
+      <span class="ru">Условия цитирования и повторного использования</span>
+      <span class="en">Citation and reuse conditions</span>
+    </p>
+    <p>
+      <span class="ru">✓ Разрешается использовать материалы в некоммерческих академических и образовательных целях с <strong>обязательным указанием авторства и ссылкой на источник</strong>.</span>
+      <span class="en">✓ Materials may be used for non-commercial academic and educational purposes with <strong>mandatory attribution and a link to the source</strong>.</span>
+    </p>
+    <p>
+      <span class="ru">✓ При цитировании рекомендуется использовать формат: <em>Агафонова А. Б. Transmission: цифровая исследовательская платформа об инфраструктуре городов Российской империи. URL: https://urbantransmission.org</em></span>
+      <span class="en">✓ Recommended citation format: <em>Agafonova, A. B. Transmission: Urban Infrastructures of the Russian Empire, 1870–1914 [Digital research platform]. URL: https://urbantransmission.org</em></span>
+    </p>
+    <p>
+      <span class="ru">✗ Коммерческое использование, перепродажа данных, воспроизведение без указания авторства — <strong>не допускаются</strong> без письменного согласия автора.</span>
+      <span class="en">✗ Commercial use, resale of data, or reproduction without attribution are <strong>not permitted</strong> without the author's written consent.</span>
+    </p>
+    <p>
+      <span class="ru">Исходный код сайта доступен по лицензии <a href="https://github.com/abagafonova/urbantransmission/blob/main/LICENSE" target="_blank" rel="noopener">Apache 2.0</a> (только код, но не данные и визуализации).</span>
+      <span class="en">The site's source code is available under the <a href="https://github.com/abagafonova/urbantransmission/blob/main/LICENSE" target="_blank" rel="noopener">Apache 2.0 licence</a> (code only — not the data or visualisations).</span>
+    </p>
+  </div>
+
+  <!-- 4. DISCLAIMER -->
+  <h2>
+    <span class="ru">4. Отказ от ответственности</span>
+    <span class="en">4. Disclaimer of liability</span>
+  </h2>
+  <p>
+    <span class="ru">Материалы платформы основаны на опубликованных исторических источниках и оригинальных архивных исследованиях. Автор прилагает все усилия для обеспечения точности данных, однако <strong>не несёт ответственности за решения, действия или последствия, основанные на информации, размещённой на сайте</strong>.</span>
+    <span class="en">The platform's materials are based on published historical sources and original archival research. The author makes every effort to ensure accuracy, but <strong>accepts no responsibility for decisions, actions, or consequences based on information published on this site</strong>.</span>
+  </p>
+  <p>
+    <span class="ru">Исторические данные отражают состояние источников на момент их создания (конец XIX — начало XX в.) и могут содержать неточности, присущие эпохе и методологии того времени.</span>
+    <span class="en">Historical data reflects the state of sources at the time of their creation (late 19th – early 20th century) and may contain inaccuracies inherent to the era and methodology of that period.</span>
+  </p>
+
+  <!-- 5. THIRD PARTY LINKS -->
+  <h2>
+    <span class="ru">5. Ссылки на сторонние ресурсы</span>
+    <span class="en">5. Third-party links</span>
+  </h2>
+  <p>
+    <span class="ru">Сайт может содержать ссылки на внешние ресурсы (архивы, базы данных, академические публикации). Автор не несёт ответственности за содержание, доступность или политику конфиденциальности сторонних сайтов.</span>
+    <span class="en">The site may contain links to external resources (archives, databases, academic publications). The author is not responsible for the content, availability, or privacy practices of third-party sites.</span>
+  </p>
+
+  <!-- 6. CHANGES -->
+  <h2>
+    <span class="ru">6. Изменения</span>
+    <span class="en">6. Changes</span>
+  </h2>
+  <p>
+    <span class="ru">Автор оставляет за собой право вносить изменения в настоящие Условия. Актуальная версия всегда доступна по адресу <strong>urbantransmission.org/terms.html</strong>.</span>
+    <span class="en">The author reserves the right to update these Terms at any time. The current version is always available at <strong>urbantransmission.org/terms.html</strong>.</span>
+  </p>
+
+  <!-- 7. CONTACT -->
+  <h2>
+    <span class="ru">7. Контакт</span>
+    <span class="en">7. Contact</span>
+  </h2>
+  <p>
+    <span class="ru">По вопросам использования материалов, лицензирования или сотрудничества: <a href="mailto:a.b.agafonova@gmail.com">a.b.agafonova@gmail.com</a></span>
+    <span class="en">For questions about use of materials, licensing, or collaboration: <a href="mailto:a.b.agafonova@gmail.com">a.b.agafonova@gmail.com</a></span>
+  </p>
+
+</div>
+
+<footer>
+  © 2026 <span class="ru">Агафонова Анна Борисовна</span><span class="en">Anna B. Agafonova</span>
+  &nbsp;·&nbsp; <a href="index.html">Transmission</a>
+  &nbsp;·&nbsp; <a href="personal-data.html"><span class="ru">Политика ПД</span><span class="en">Privacy (RU)</span></a>
+  &nbsp;·&nbsp; <a href="privacy.html">Privacy Policy</a>
+</footer>
+
+<script>
+function setLang(l){
+  if(l==='en') document.documentElement.setAttribute('data-en','');
+  else document.documentElement.removeAttribute('data-en');
+  document.querySelectorAll('.lang-sw button').forEach(b=>b.classList.toggle('on',b.dataset.lang===l));
+  try{localStorage.setItem('tx_lang',l)}catch(e){}
+}
+(function(){
+  let s='ru';try{s=localStorage.getItem('tx_lang')||'ru'}catch(e){}
+  setLang(s);
+})();
+</script>
+
+</body>
+</html>
