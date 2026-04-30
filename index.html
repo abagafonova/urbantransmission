@@ -54,8 +54,15 @@ html{scroll-behavior:smooth}
 body{background:var(--cream);color:var(--ink);font-family:var(--serif);font-weight:400;min-height:100vh;overflow-x:hidden}
 
 /* ─── BANNER ─── */
-.banner{width:100%;background:var(--paper);line-height:0;border-bottom:1px solid var(--border);}
-.banner img{width:100%;display:block;height:auto;max-height:272px;min-height:180px;object-fit:cover;object-position:center top}
+.banner{width:100%;background:#e8dece;line-height:0;border-bottom:1px solid rgba(28,51,71,.12);}
+.banner img{
+  display:block;
+  width:100%;max-width:1921px; /* prevents upscaling beyond native resolution */
+  height:auto;
+  margin:0 auto;
+}
+/* On mobile the 9:1 banner collapses to ~41px — hide it, hero covers the intro */
+@media(max-width:600px){.banner{display:none}}
 
 /* ─── NAV ─── */
 .site-nav{
@@ -483,6 +490,23 @@ footer{
   background-size:56px 56px;
 }
 
+/* ─── CITE & CONTACT BUTTONS ─── */
+.cite-btn{
+  width:100%;padding:11px 16px;border-radius:8px;cursor:pointer;
+  font:700 .68rem/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;
+  background:var(--ink);color:#fff;border:none;
+  transition:background .18s;text-align:left;
+}
+.cite-btn:hover{background:var(--teal)}
+.contact-btn{
+  display:block;width:100%;padding:11px 16px;border-radius:8px;
+  font:700 .68rem/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;
+  background:transparent;color:var(--ink);
+  border:1px solid rgba(28,51,71,.28);text-decoration:none;
+  transition:background .18s,border-color .18s;text-align:left;
+}
+.contact-btn:hover{background:rgba(28,51,71,.06);border-color:rgba(28,51,71,.5)}
+
 /* ─── COMING SOON ─── */
 [data-soon]{cursor:default;opacity:.55;pointer-events:auto}
 [data-soon]:hover{opacity:.7}
@@ -579,7 +603,7 @@ body::before{
     <div class="fig-item">
       <div class="fig-unit"><span class="ru">временной охват</span><span class="en">temporal coverage</span></div>
       <div class="fig-num" style="font-size:clamp(1.8rem,3.5vw,2.8rem);line-height:1">1870–1914</div>
-      <div class="fig-label"><span class="ru">Хроника строительства водопроводов. Данные по холере: три пандемии.</span><span class="en">Waterworks construction chronicle 1804–1914. Cholera data: three pandemic waves.</span></div>
+      <div class="fig-label"><span class="ru">Хроника строительства водопроводов: 1804–1914. Данные по холере: три пандемии.</span><span class="en">Waterworks construction chronicle 1804–1914. Cholera data: three pandemic waves.</span></div>
     </div>
   </div>
 </div>
@@ -872,11 +896,32 @@ body::before{
             <span class="mn-val" style="font-size:1.1rem">1804–1914</span>
           </div>
         </div>
-        <p style="margin-top:16px">
-          <a class="cta-link" href="#" data-soon>
-            <span class="ru">Подробнее о методах</span><span class="en">Read more about methods</span> <span class="arr">→</span>
+        <!-- CITE + CONTACT BUTTONS -->
+        <div style="margin-top:24px;display:flex;flex-direction:column;gap:10px">
+          <button class="cite-btn" id="cite-btn" onclick="toggleCite()">
+            <span class="ru">📋 Как сослаться</span><span class="en">📋 How to cite</span>
+          </button>
+          <a class="contact-btn" href="mailto:a.b.agafonova@gmail.com?subject=Transmission%20—%20enquiry">
+            <span class="ru">✉ Написать исследователю</span><span class="en">✉ Contact the researcher</span>
           </a>
-        </p>
+        </div>
+
+        <!-- CITATION BOX (hidden by default) -->
+        <div id="cite-box" style="display:none;margin-top:16px;background:var(--ink);border-radius:10px;padding:18px 20px">
+          <p style="font:700 .6rem/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:10px">
+            <span class="ru">Рекомендуемая ссылка</span><span class="en">Recommended citation</span>
+          </p>
+          <p id="cite-text-ru" class="cite-text ru" style="font:300 .82rem/1.7 var(--serif);color:rgba(255,255,255,.8)">
+            Агафонова А. Б. Transmission: цифровая исследовательская платформа об инфраструктуре городов Российской империи, 1870–1914. URL: https://urbantransmission.org (дата обращения: <span class="cite-date"></span>).
+          </p>
+          <p id="cite-text-en" class="cite-text en" style="font:300 .82rem/1.7 var(--serif);color:rgba(255,255,255,.8)">
+            Agafonova, A. B. <em>Transmission: Urban Infrastructures of the Russian Empire, 1870–1914</em> [Digital research platform]. URL: https://urbantransmission.org (accessed <span class="cite-date"></span>).
+          </p>
+          <button onclick="copyCite()" style="margin-top:12px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);color:rgba(255,255,255,.7);font:700 .62rem/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;padding:8px 14px;border-radius:6px;cursor:pointer;transition:background .2s" onmouseover="this.style.background='rgba(255,255,255,.14)'" onmouseout="this.style.background='rgba(255,255,255,.08)'">
+            <span class="ru">Скопировать</span><span class="en">Copy</span>
+          </button>
+          <span id="copy-ok" style="display:none;margin-left:10px;font:400 .68rem/1 var(--mono);color:#c4a76b">✓ <span class="ru">Скопировано</span><span class="en">Copied</span></span>
+        </div>
       </div>
     </div>
   </div>
@@ -931,6 +976,8 @@ body::before{
       <div class="footer-links">
         <a href="#" data-soon><span class="ru">Данные и методы</span><span class="en">Data &amp; methods</span></a>
         <a href="#" data-soon><span class="ru">Сотрудничество</span><span class="en">Collaborate</span></a>
+        <a href="personal-data.html"><span class="ru">Политика ПД</span><span class="en">Privacy (RU)</span></a>
+        <a href="privacy.html"><span class="ru">Privacy Policy</span><span class="en">Privacy Policy</span></a>
         <a href="#top">↑ Top</a>
       </div>
     </div>
@@ -1205,6 +1252,47 @@ function drawNovg(){
   setTimeout(()=>svg.querySelectorAll('.nb').forEach(b=>{
     b.setAttribute('height',b.dataset.h);b.setAttribute('y',b.dataset.y);
   }),80);
+}
+</script>
+
+<!-- CITATION WIDGET -->
+<script>
+(function(){
+  // Fill today's date into citation spans
+  const d = new Date();
+  const months_ru = ['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'];
+  const months_en = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  const ru_date = d.getDate() + ' ' + months_ru[d.getMonth()] + ' ' + d.getFullYear() + ' г.';
+  const en_date = months_en[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear();
+  document.querySelectorAll('#cite-text-ru .cite-date').forEach(el => el.textContent = ru_date);
+  document.querySelectorAll('#cite-text-en .cite-date').forEach(el => el.textContent = en_date);
+})();
+
+function toggleCite(){
+  const box = document.getElementById('cite-box');
+  box.style.display = box.style.display === 'none' ? 'block' : 'none';
+}
+
+function copyCite(){
+  const en = document.documentElement.hasAttribute('data-en');
+  const el = document.getElementById(en ? 'cite-text-en' : 'cite-text-ru');
+  const text = el ? el.innerText : '';
+  navigator.clipboard.writeText(text).then(function(){
+    const ok = document.getElementById('copy-ok');
+    ok.style.display = 'inline';
+    setTimeout(() => ok.style.display = 'none', 2000);
+  }).catch(function(){
+    // Fallback for older browsers
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+    const ok = document.getElementById('copy-ok');
+    ok.style.display = 'inline';
+    setTimeout(() => ok.style.display = 'none', 2000);
+  });
 }
 </script>
 
