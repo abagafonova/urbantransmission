@@ -6,97 +6,292 @@
 <title>Политика обработки персональных данных — Transmission</title>
 <link rel="icon" type="image/x-icon" href="favicon.ico">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Playfair+Display:wght@400;700&family=Source+Serif+4:wght@300;400&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{background:#f0eade;color:#07111a;font-family:'Source Serif 4',Georgia,serif;font-weight:300;line-height:1.85}
-nav{background:rgba(7,17,26,.96);padding:0 24px;height:46px;display:flex;align-items:center;gap:20px}
-nav a{color:rgba(255,255,255,.55);text-decoration:none;font:400 .68rem/1 'Space Mono',monospace;letter-spacing:.06em;text-transform:uppercase}
-nav a:hover{color:#fff}
-nav .home{color:#c4a76b}
-.wrap{max-width:760px;margin:0 auto;padding:60px 24px 100px}
-h1{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:#1c3347;margin-bottom:8px}
-.meta{font:400 .72rem/1 'Space Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:#6a7f8e;margin-bottom:16px}
-.law-ref{font:300 .84rem/1.6 'Source Serif 4',serif;color:#6a7f8e;border-left:3px solid #c4a76b;padding:10px 16px;margin-bottom:44px;background:rgba(196,167,107,.07);border-radius:0 6px 6px 0}
-h2{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:#1c3347;margin:36px 0 12px}
-p{margin-bottom:14px;font-size:.93rem}
-ul{margin:0 0 16px 20px}
-ul li{font-size:.93rem;margin-bottom:6px}
-a{color:#2e7a7a}
-a:hover{color:#07111a}
-.highlight{background:rgba(46,122,122,.08);border-radius:6px;padding:14px 18px;margin:20px 0;font-size:.9rem}
-footer{border-top:1px solid rgba(28,51,71,.12);padding:24px;text-align:center;font:400 .72rem/1 'Space Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:#6a7f8e}
+:root {
+  --page-cream:  #F6EFDC;
+  --page-ochre:  #E8D5A8;
+  --page-turq:   #BED5CF;
+  --page-sky:    #D8E3E1;
+  --glass-tint:  rgba(250,244,228,0.72);
+  --glass-edge:  rgba(20,36,60,0.18);
+  --ink:         #1A2B47;
+  --ink-soft:    #2B4773;
+  --muted:       #6F7D95;
+  --faint:       #A6AEBC;
+  --copper:      #8B5E3C;
+  --turq:        #4F8781;
+  --blue-deep:   #1A2B47;
+  --line:        rgba(20,36,60,0.12);
+  --line-copper: rgba(139,94,60,0.30);
+  --ochre:       #C79243;
+  --serif:       Cambria, 'Palatino Linotype', Georgia, serif;
+  --sans:        'Inter', system-ui, sans-serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--page-cream);
+  background-image:
+    radial-gradient(1100px 700px at 8% 4%, var(--page-sky) 0%, rgba(216,227,225,0) 55%),
+    radial-gradient(900px 600px at 95% 3%, var(--page-turq) 0%, rgba(190,213,207,0) 60%),
+    radial-gradient(1200px 900px at 50% 110%, var(--page-ochre) 0%, rgba(232,213,168,0) 55%),
+    linear-gradient(180deg, var(--page-cream) 0%, var(--page-cream) 30%, rgba(232,213,168,0.45) 70%, rgba(190,213,207,0.35) 100%);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 14px;
+  min-height: 100vh;
+  display: flex; flex-direction: column;
+}
+
+/* ── HEADER ── */
+header {
+  position: sticky; top: 0; z-index: 10;
+  padding: 14px 28px;
+  background: var(--glass-tint);
+  backdrop-filter: blur(18px) saturate(1.2);
+  border-bottom: 1px solid var(--glass-edge);
+  box-shadow: 0 1px 0 rgba(255,255,255,0.55) inset, 0 4px 16px rgba(30,40,70,0.07);
+}
+.header-inner {
+  max-width: 820px; margin: 0 auto;
+  display: flex; align-items: center; gap: 16px;
+}
+.header-title {
+  flex: 1; text-align: center;
+  font-family: var(--serif); font-weight: 500; font-variant: small-caps;
+  font-size: 1.05rem; letter-spacing: 0.07em; color: var(--ink);
+}
+.header-title span { font-variant: normal; font-weight: 400; color: var(--muted); font-size: 0.82rem; }
+.header-back {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 6px 13px; border-radius: 999px;
+  background: rgba(246,239,220,0.6); border: 1px solid var(--line-copper);
+  color: var(--ink-soft); font-size: 0.70rem; font-weight: 500;
+  letter-spacing: 0.04em; text-decoration: none; transition: all .18s; flex-shrink: 0;
+}
+.header-back:hover { background: var(--ink); color: var(--page-cream); border-color: var(--ink); }
+.header-back svg { width: 13px; height: 13px; }
+
+/* ── LANG ── */
+.en { display: none; }
+.en-bl { display: none; }
+[data-en] .ru { display: none; }
+[data-en] .en { display: inline; }
+[data-en] .ru-bl { display: none; }
+[data-en] .en-bl { display: block; }
+.lang-sw { display: flex; gap: 4px; flex-shrink: 0; }
+.lang-sw button { background: rgba(26,43,71,0.06); border: 1px solid var(--line); color: var(--muted); font: 700 .68rem/1 var(--sans); letter-spacing: .06em; padding: 5px 9px; cursor: pointer; transition: all .15s; border-radius: 3px; }
+.lang-sw button.on { color: var(--page-cream); background: var(--ink); border-color: var(--ink); }
+.lang-sw button:hover:not(.on) { color: var(--ink); border-color: var(--ink-soft); }
+
+/* ── CONTENT ── */
+.wrap { flex: 1; max-width: 820px; margin: 0 auto; padding: 52px 28px 72px; width: 100%; }
+
+.doc-header { margin-bottom: 42px; padding-bottom: 20px; border-bottom: 1px solid var(--line-copper); }
+.doc-title {
+  font-family: var(--serif); font-size: 1.9rem; font-weight: 600;
+  color: var(--ink); line-height: 1.15; margin-bottom: 5px;
+}
+.doc-sub {
+  font-family: var(--serif); font-size: 1.0rem; font-weight: 400;
+  font-style: italic; color: var(--muted); margin-bottom: 9px;
+}
+.doc-meta {
+  font: 400 .65rem/1 var(--sans); letter-spacing: .12em;
+  text-transform: uppercase; color: var(--faint);
+}
+.law-ref {
+  font: 300 .86rem/1.7 var(--serif); color: var(--muted);
+  border-left: 3px solid var(--ochre); padding: 10px 16px;
+  margin-top: 16px; background: rgba(199,146,67,0.07); border-radius: 0 6px 6px 0;
+}
+
+h2 {
+  font-family: var(--serif); font-size: 0.95rem; font-weight: 600;
+  color: var(--ink); margin: 34px 0 11px; padding-bottom: 6px;
+  border-bottom: 1px solid var(--line); position: relative;
+}
+h2::after {
+  content: ''; position: absolute; bottom: -1px; left: 0;
+  width: 40px; height: 1px; background: var(--copper);
+}
+p { margin-bottom: 13px; font-size: .88rem; line-height: 1.82; font-family: var(--serif); }
+ul { margin: 0 0 14px 18px; }
+ul li { font-size: .88rem; margin-bottom: 7px; line-height: 1.75; font-family: var(--serif); }
+a { color: var(--turq); }
+a:hover { color: var(--ink); }
+strong { font-weight: 600; }
+em { font-style: italic; }
+
+.highlight {
+  background: rgba(79,135,129,0.08); border-radius: 6px;
+  padding: 14px 18px; margin: 18px 0; font-size: .88rem;
+  border-left: 3px solid var(--turq); line-height: 1.75; font-family: var(--serif);
+}
+
+/* ── FOOTER ── */
+.tx-footer {
+  background: var(--blue-deep);
+  color: rgba(255,255,255,.38);
+  padding: 28px 32px;
+  border-top: 2px solid var(--turq);
+  font: 300 0.78rem/1.7 var(--serif);
+}
+.tx-footer-inner {
+  max-width: 820px; margin: 0 auto;
+  display: flex; flex-wrap: wrap; gap: 10px 24px;
+  justify-content: space-between; align-items: center;
+}
+.tx-footer strong { color: rgba(255,255,255,.72); }
+.tx-footer a { color: rgba(255,255,255,.45); text-decoration: none; }
+.tx-footer a:hover { color: #fff; }
+.tx-footer-nav { display: flex; gap: 16px; flex-wrap: wrap; }
+
+@media(max-width:600px){
+  .wrap { padding: 36px 18px 56px; }
+  .doc-title { font-size: 1.5rem; }
+}
 </style>
 </head>
 <body>
 
-<nav>
-  <a class="home" href="index.html">← Transmission</a>
-</nav>
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="header-back">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10 12L6 8l4-4"/></svg>
+      <span class="ru">Главная</span><span class="en">Home</span>
+    </a>
+    <div class="header-title">
+      Transmission
+      <span>· <span class="ru">Правовые документы</span><span class="en">Legal</span></span>
+    </div>
+    <div class="lang-sw" role="group" aria-label="Language / Язык">
+      <button data-lang="ru" class="on" onclick="setLang('ru')">РУ</button>
+      <button data-lang="en" onclick="setLang('en')">EN</button>
+    </div>
+  </div>
+</header>
 
 <div class="wrap">
 
-  <h1>Политика обработки<br>персональных данных</h1>
-  <p class="meta">Сайт urbantransmission.org · Редакция: май 2026&nbsp;г.</p>
-  <p class="law-ref">Настоящая Политика составлена в соответствии с требованиями Федерального закона № 152-ФЗ «О персональных данных» от 27.07.2006&nbsp;г. и Регламента ЕС 2016/679 (GDPR).</p>
+  <!-- RU CONTENT -->
+  <div class="ru-bl">
+    <div class="doc-header">
+      <h1 class="doc-title">Политика обработки<br>персональных данных</h1>
+      <p class="doc-meta">Сайт urbantransmission.org · Редакция: май 2026&nbsp;г.</p>
+      <p class="law-ref">Настоящая Политика составлена в соответствии с требованиями Федерального закона № 152-ФЗ «О персональных данных» от 27.07.2006&nbsp;г. и Регламента ЕС 2016/679 (GDPR).</p>
+    </div>
 
-  <h2>1. Оператор персональных данных</h2>
-  <p>Физическое лицо: <strong>Агафонова Анна Борисовна</strong>, независимый исследователь.<br>
-  Контактный адрес электронной почты: <a href="mailto:a.b.agafonova@gmail.com">a.b.agafonova@gmail.com</a></p>
+    <h2>1. Оператор персональных данных</h2>
+    <p>Физическое лицо: <strong>Агафонова Анна Борисовна</strong>, независимый исследователь.<br>
+    Контактный адрес электронной почты: <a href="mailto:a.b.agafonova@gmail.com">a.b.agafonova@gmail.com</a></p>
 
-  <h2>2. Какие данные обрабатываются и как</h2>
+    <h2>2. Какие данные обрабатываются и как</h2>
+    <div class="highlight">
+      <strong>Сайт не собирает персональные данные самостоятельно.</strong> На сайте отсутствуют регистрация, личный кабинет, формы сбора данных и файлы cookie, устанавливаемые оператором.
+    </div>
+    <p>Тем не менее при посещении сайта могут обрабатываться технические данные третьими сторонами:</p>
 
-  <div class="highlight">
-    <strong>Сайт не собирает персональные данные самостоятельно.</strong> На сайте отсутствуют регистрация, личный кабинет, формы сбора данных и файлы cookie, устанавливаемые оператором.
+    <h2>2.1. Хостинг-провайдер (GitHub Pages)</h2>
+    <p>Сайт размещён на платформе <strong>GitHub Pages</strong> (GitHub, Inc., США). GitHub автоматически сохраняет серверные журналы (логи), которые могут содержать IP-адрес посетителя, дату и время запроса, тип браузера. Обработка осуществляется GitHub в соответствии с его <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener">политикой конфиденциальности</a>. Оператор настоящего сайта не имеет доступа к этим журналам и не управляет ими.</p>
+
+    <h2>2.2. Шрифты Google Fonts</h2>
+    <p>Для отображения шрифтов сайт обращается к серверам <strong>Google Fonts</strong> (Google LLC, США). При загрузке шрифта ваш браузер отправляет запрос на серверы Google, включающий IP-адрес. Это техническое взаимодействие осуществляется в рамках <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Политики конфиденциальности Google</a>. Оператор настоящего сайта не получает и не хранит эти данные.</p>
+
+    <h2>2.3. Добровольное обращение по электронной почте</h2>
+    <p>Если вы самостоятельно отправляете письмо на адрес <a href="mailto:a.b.agafonova@gmail.com">a.b.agafonova@gmail.com</a>, вы передаёте свои контактные данные (электронный адрес, содержание письма) по собственной инициативе. Эти данные используются исключительно для ответа на ваше обращение и не передаются третьим лицам. Хранение осуществляется в сервисе Gmail (Google LLC, США).</p>
+
+    <h2>3. Цели обработки</h2>
+    <ul>
+      <li>Обеспечение функционирования сайта (технические логи хостинга).</li>
+      <li>Ответы на добровольные обращения посетителей по электронной почте.</li>
+    </ul>
+
+    <h2>4. Передача данных третьим лицам</h2>
+    <p>Оператор не продаёт, не передаёт и не раскрывает персональные данные посетителей коммерческим третьим лицам. Технические данные обрабатываются инфраструктурными провайдерами (GitHub, Google) в рамках их собственных политик.</p>
+
+    <h2>5. Права субъектов персональных данных</h2>
+    <p>В соответствии с 152-ФЗ и GDPR вы вправе:</p>
+    <ul>
+      <li>получить информацию об обрабатываемых данных;</li>
+      <li>потребовать уточнения или удаления данных;</li>
+      <li>отозвать согласие на обработку.</li>
+    </ul>
+    <p>Для реализации прав обращайтесь по адресу: <a href="mailto:a.b.agafonova@gmail.com">a.b.agafonova@gmail.com</a>. По данным, которые хранятся у GitHub или Google, следует обращаться непосредственно к этим операторам.</p>
+
+    <h2>6. Возраст пользователей</h2>
+    <p>Сайт является академическим исследовательским ресурсом и не направлен на обработку данных лиц младше 18 лет. Если вам не исполнилось 18 лет, пожалуйста, не отправляйте персональные данные через электронную почту.</p>
+
+    <h2>7. Изменения Политики</h2>
+    <p>Актуальная версия Политики всегда доступна по адресу <strong>urbantransmission.org/personal-data.html</strong>. Дата последней редакции указана в начале документа.</p>
+
+    <h2>8. Уведомление Роскомнадзора</h2>
+    <p>В связи с тем, что оператор не осуществляет систематическую обработку персональных данных граждан РФ и не ведёт базы данных субъектов, уведомление РКН в соответствии с ч. 2 ст. 22 152-ФЗ не требуется <em>(применяются исключения: данные не используются для продвижения товаров и услуг, не обрабатываются автоматизированно в базах данных, обработка ограничена разовыми обращениями по почте)</em>. При изменении характера обработки уведомление будет направлено в установленном порядке.</p>
   </div>
 
-  <p>Тем не менее при посещении сайта могут обрабатываться технические данные третьими сторонами:</p>
+  <!-- EN CONTENT -->
+  <div class="en-bl">
+    <div class="doc-header">
+      <h1 class="doc-title">Privacy Policy</h1>
+      <p class="doc-sub">Политика обработки персональных данных</p>
+      <p class="doc-meta">Transmission · urbantransmission.org · Last updated: May 2026</p>
+    </div>
 
-  <h2>2.1. Хостинг-провайдер (GitHub Pages)</h2>
-  <p>Сайт размещён на платформе <strong>GitHub Pages</strong> (GitHub, Inc., США). GitHub автоматически сохраняет серверные журналы (логи), которые могут содержать IP-адрес посетителя, дату и время запроса, тип браузера. Обработка осуществляется GitHub в соответствии с его <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener">политикой конфиденциальности</a>. Оператор настоящего сайта не имеет доступа к этим журналам и не управляет ими.</p>
+    <h2>Who we are</h2>
+    <p>This website (<strong>urbantransmission.org</strong>) is a personal academic research platform operated by <strong>Anna B. Agafonova</strong>, independent researcher. It is not a commercial service and does not collect personal data for commercial purposes.</p>
 
-  <h2>2.2. Шрифты Google Fonts</h2>
-  <p>Для отображения шрифтов сайт обращается к серверам <strong>Google Fonts</strong> (Google LLC, США). При загрузке шрифта ваш браузер отправляет запрос на серверы Google, включающий IP-адрес. Это техническое взаимодействие осуществляется в рамках <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Политики конфиденциальности Google</a>. Оператор настоящего сайта не получает и не хранит эти данные.</p>
+    <h2>What data is collected and why</h2>
+    <div class="highlight">
+      <strong>We do not use analytics, cookies, or tracking scripts of our own.</strong> We do not set cookies, run advertising, or sell data.
+    </div>
+    <p>However, this site loads fonts from <strong>Google Fonts</strong> (fonts.googleapis.com). When your browser requests a font file, Google receives your IP address and browser information as part of the standard HTTP request. This is subject to <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's Privacy Policy</a>. We use Google Fonts solely for typographic presentation.</p>
+    <p>The site is hosted on <strong>GitHub Pages</strong> (GitHub, Inc.). GitHub may collect server access logs including IP addresses as part of standard web hosting infrastructure. See <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener">GitHub's Privacy Statement</a>.</p>
 
-  <h2>2.3. Добровольное обращение по электронной почте</h2>
-  <p>Если вы самостоятельно отправляете письмо на адрес <a href="mailto:a.b.agafonova@gmail.com">a.b.agafonova@gmail.com</a>, вы передаёте свои контактные данные (электронный адрес, содержание письма) по собственной инициативе. Эти данные используются исключительно для ответа на ваше обращение и не передаются третьим лицам. Хранение осуществляется в сервисе Gmail (Google LLC, США).</p>
+    <h2>Contact data</h2>
+    <p>If you contact the researcher by email (<a href="mailto:a.b.agafonova@gmail.com">a.b.agafonova@gmail.com</a>), your email address and message content will be used solely to respond to your enquiry. No email data is shared with third parties.</p>
 
-  <h2>3. Цели обработки</h2>
-  <ul>
-    <li>Обеспечение функционирования сайта (технические логи хостинга).</li>
-    <li>Ответы на добровольные обращения посетителей по электронной почте.</li>
-  </ul>
+    <h2>Your rights (GDPR)</h2>
+    <p>If you are located in the European Economic Area, you have the right to access, correct, or request deletion of any personal data we hold about you. As this site does not collect personal data directly, the relevant contacts for data held by Google or GitHub are those services' respective privacy teams. For any questions, contact: <a href="mailto:a.b.agafonova@gmail.com">a.b.agafonova@gmail.com</a>.</p>
 
-  <h2>4. Передача данных третьим лицам</h2>
-  <p>Оператор не продаёт, не передаёт и не раскрывает персональные данные посетителей коммерческим третьим лицам. Технические данные обрабатываются инфраструктурными провайдерами (GitHub, Google) в рамках их собственных политик.</p>
+    <h2>Content licence</h2>
+    <p>Research data, maps, and visualisations on this platform are the original work of Anna B. Agafonova and are provided for academic and educational use. The site's source code is available under the <a href="https://github.com/abagafonova/urbantransmission/blob/main/LICENSE" target="_blank" rel="noopener">Apache 2.0 licence</a>. For citation and reuse of research content, see the <a href="terms.html">Terms of Use</a>.</p>
 
-  <h2>5. Права субъектов персональных данных</h2>
-  <p>В соответствии с 152-ФЗ и GDPR вы вправе:</p>
-  <ul>
-    <li>получить информацию об обрабатываемых данных;</li>
-    <li>потребовать уточнения или удаления данных;</li>
-    <li>отозвать согласие на обработку.</li>
-  </ul>
-  <p>Для реализации прав обращайтесь по адресу: <a href="mailto:a.b.agafonova@gmail.com">a.b.agafonova@gmail.com</a>. По данным, которые хранятся у GitHub или Google, следует обращаться непосредственно к этим операторам.</p>
-
-  <h2>6. Возраст пользователей</h2>
-  <p>Сайт является академическим исследовательским ресурсом и не направлен на обработку данных лиц младше 18 лет. Если вам не исполнилось 18 лет, пожалуйста, не отправляйте персональные данные через электронную почту.</p>
-
-  <h2>7. Изменения Политики</h2>
-  <p>Актуальная версия Политики всегда доступна по адресу <strong>urbantransmission.org/personal-data.html</strong>. Дата последней редакции указана в начале документа.</p>
-
-  <h2>8. Уведомление Роскомнадзора</h2>
-  <p>В связи с тем, что оператор не осуществляет систематическую обработку персональных данных граждан РФ и не ведёт базы данных субъектов, уведомление РКН в соответствии с ч. 2 ст. 22 152-ФЗ не требуется <em>(применяются исключения: данные не используются для продвижения товаров и услуг, не обрабатываются автоматизированно в базах данных, обработка ограничена разовыми обращениями по почте)</em>. При изменении характера обработки уведомление будет направлено в установленном порядке.</p>
+    <h2>Changes to this policy</h2>
+    <p>This policy may be updated as the platform grows. The date at the top of this page reflects the most recent revision.</p>
+  </div>
 
 </div>
 
-<footer>
-  © 2026 Агафонова Анна Борисовна ·
-  <a href="index.html">Transmission</a> ·
-  <a href="terms.html">Условия использования</a> ·
-  <a href="privacy.html">Privacy Policy (EN)</a> ·
-  <a href="mailto:a.b.agafonova@gmail.com">Контакт</a>
+<footer class="tx-footer">
+  <div class="tx-footer-inner">
+    <div>
+      <strong>Transmission</strong> &nbsp;·&nbsp;
+      <span class="ru">Цифровая исследовательская платформа</span><span class="en">Digital Research Platform</span>
+    </div>
+    <div>© 2026 <span class="ru">Агафонова Анна Борисовна</span><span class="en">Anna B. Agafonova</span> &nbsp;·&nbsp; <a href="https://orcid.org/0000-0003-3021-4002" target="_blank" rel="noopener">ORCID</a></div>
+    <nav class="tx-footer-nav">
+      <a href="index.html"><span class="ru">Главная</span><span class="en">Home</span></a>
+      <a href="terms.html"><span class="ru">Условия</span><span class="en">Terms</span></a>
+      <a href="personal-data.html" class="ru">Политика ПД</a>
+      <a href="privacy.html" class="en" style="display:none">Privacy Policy</a>
+    </nav>
+  </div>
 </footer>
+
+<script>
+function setLang(l) {
+  if (l === 'en') document.documentElement.setAttribute('data-en', '');
+  else document.documentElement.removeAttribute('data-en');
+  document.querySelectorAll('.lang-sw button').forEach(b => b.classList.toggle('on', b.dataset.lang === l));
+  try { localStorage.setItem('tx_lang', l); } catch(e) {}
+}
+(function() {
+  let s = 'ru';
+  try { s = localStorage.getItem('tx_lang') || 'ru'; } catch(e) {}
+  setLang(s);
+})();
+</script>
 
 </body>
 </html>

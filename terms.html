@@ -6,89 +6,196 @@
 <title>Условия использования / Terms of Use — Transmission</title>
 <link rel="icon" type="image/x-icon" href="favicon.ico">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Playfair+Display:wght@400;700&family=Source+Serif+4:ital,wght@0,300;0,400&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{background:#f0eade;color:#07111a;font-family:'Source Serif 4',Georgia,serif;font-weight:300;line-height:1.85}
+:root {
+  --page-cream:  #F6EFDC;
+  --page-ochre:  #E8D5A8;
+  --page-turq:   #BED5CF;
+  --page-sky:    #D8E3E1;
+  --glass-tint:  rgba(250,244,228,0.72);
+  --glass-edge:  rgba(20,36,60,0.18);
+  --ink:         #1A2B47;
+  --ink-soft:    #2B4773;
+  --muted:       #6F7D95;
+  --faint:       #A6AEBC;
+  --copper:      #8B5E3C;
+  --turq:        #4F8781;
+  --blue-deep:   #1A2B47;
+  --line:        rgba(20,36,60,0.12);
+  --line-copper: rgba(139,94,60,0.30);
+  --ochre:       #C79243;
+  --serif:       Cambria, 'Palatino Linotype', Georgia, serif;
+  --sans:        'Inter', system-ui, sans-serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--page-cream);
+  background-image:
+    radial-gradient(1100px 700px at 8% 4%, var(--page-sky) 0%, rgba(216,227,225,0) 55%),
+    radial-gradient(900px 600px at 95% 3%, var(--page-turq) 0%, rgba(190,213,207,0) 60%),
+    radial-gradient(1200px 900px at 50% 110%, var(--page-ochre) 0%, rgba(232,213,168,0) 55%),
+    linear-gradient(180deg, var(--page-cream) 0%, var(--page-cream) 30%, rgba(232,213,168,0.45) 70%, rgba(190,213,207,0.35) 100%);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 14px;
+  min-height: 100vh;
+  display: flex; flex-direction: column;
+}
 
-/* NAV */
-nav{background:rgba(7,17,26,.96);padding:0 24px;height:46px;display:flex;align-items:center;gap:20px;position:sticky;top:0;z-index:100}
-nav a{color:rgba(255,255,255,.52);text-decoration:none;font:400 .68rem/1 'Space Mono',monospace;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}
-nav a:hover{color:#fff}
-nav .home{color:#c4a76b}
+/* ── HEADER ── */
+header {
+  position: sticky; top: 0; z-index: 10;
+  padding: 14px 28px;
+  background: var(--glass-tint);
+  backdrop-filter: blur(18px) saturate(1.2);
+  border-bottom: 1px solid var(--glass-edge);
+  box-shadow: 0 1px 0 rgba(255,255,255,0.55) inset, 0 4px 16px rgba(30,40,70,0.07);
+}
+.header-inner {
+  max-width: 820px; margin: 0 auto;
+  display: flex; align-items: center; gap: 16px;
+}
+.header-title {
+  flex: 1; text-align: center;
+  font-family: var(--serif); font-weight: 500; font-variant: small-caps;
+  font-size: 1.05rem; letter-spacing: 0.07em; color: var(--ink);
+}
+.header-title span { font-variant: normal; font-weight: 400; color: var(--muted); font-size: 0.82rem; }
+.header-back {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 6px 13px; border-radius: 999px;
+  background: rgba(246,239,220,0.6); border: 1px solid var(--line-copper);
+  color: var(--ink-soft); font-size: 0.70rem; font-weight: 500;
+  letter-spacing: 0.04em; text-decoration: none; transition: all .18s; flex-shrink: 0;
+}
+.header-back:hover { background: var(--ink); color: var(--page-cream); border-color: var(--ink); }
+.header-back svg { width: 13px; height: 13px; }
 
-/* LANG TOGGLE */
-.lang-sw{margin-left:auto;display:flex;gap:0;border-left:1px solid rgba(255,255,255,.09);padding-left:12px}
-.lang-sw button{background:transparent;border:none;cursor:pointer;font:700 10px/1 'Space Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.35);padding:0 10px;height:46px;transition:color .15s}
-.lang-sw button.on{color:#c4a76b}
-.lang-sw button:hover{color:rgba(255,255,255,.8)}
+/* ── LANG ── */
+.en { display: none; }
+.en-bl { display: none; }
+[data-en] .ru { display: none; }
+[data-en] .en { display: inline; }
+[data-en] .ru-bl { display: none; }
+[data-en] .en-bl { display: block; }
+.lang-sw { display: flex; gap: 4px; flex-shrink: 0; }
+.lang-sw button { background: rgba(26,43,71,0.06); border: 1px solid var(--line); color: var(--muted); font: 700 .68rem/1 var(--sans); letter-spacing: .06em; padding: 5px 9px; cursor: pointer; transition: all .15s; border-radius: 3px; }
+.lang-sw button.on { color: var(--page-cream); background: var(--ink); border-color: var(--ink); }
+.lang-sw button:hover:not(.on) { color: var(--ink); border-color: var(--ink-soft); }
 
-/* I18N */
-[data-en] .ru{display:none}[data-en] .en{display:inline}
-.en{display:none}.ru{display:inline}
-[data-en] .ru-bl{display:none}[data-en] .en-bl{display:block}
-.en-bl{display:none}.ru-bl{display:block}
+/* ── CONTENT ── */
+.wrap { flex: 1; max-width: 820px; margin: 0 auto; padding: 52px 28px 72px; width: 100%; }
 
-/* LAYOUT */
-.wrap{max-width:760px;margin:0 auto;padding:60px 24px 100px}
+.doc-header { margin-bottom: 42px; padding-bottom: 20px; border-bottom: 1px solid var(--line-copper); }
+.doc-title {
+  font-family: var(--serif); font-size: 1.9rem; font-weight: 600;
+  color: var(--ink); line-height: 1.15; margin-bottom: 5px;
+}
+.doc-sub {
+  font-family: var(--serif); font-size: 1.0rem; font-weight: 400;
+  font-style: italic; color: var(--muted); margin-bottom: 9px;
+}
+.doc-meta {
+  font: 400 .65rem/1 var(--sans); letter-spacing: .12em;
+  text-transform: uppercase; color: var(--faint);
+}
 
-/* HEADER */
-.doc-title{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:#1c3347;line-height:1.15;margin-bottom:6px}
-.doc-sub{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:400;font-style:italic;color:#6a7f8e;margin-bottom:10px}
-.doc-meta{font:400 .7rem/1 'Space Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:#8a9aaa;margin-bottom:44px}
+h2 {
+  font-family: var(--serif); font-size: 0.95rem; font-weight: 600;
+  color: var(--ink); margin: 34px 0 11px; padding-bottom: 6px;
+  border-bottom: 1px solid var(--line);
+  position: relative;
+}
+h2::after {
+  content: ''; position: absolute; bottom: -1px; left: 0;
+  width: 40px; height: 1px; background: var(--copper);
+}
+p { margin-bottom: 13px; font-size: .88rem; line-height: 1.82; font-family: var(--serif); }
+ul { margin: 0 0 14px 18px; }
+ul li { font-size: .88rem; margin-bottom: 7px; line-height: 1.75; font-family: var(--serif); }
+a { color: var(--turq); }
+a:hover { color: var(--ink); }
+strong { font-weight: 600; }
+em { font-style: italic; }
 
-/* SECTIONS */
-h2{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:#1c3347;margin:38px 0 12px;padding-bottom:6px;border-bottom:1px solid rgba(28,51,71,.12)}
-p{margin-bottom:14px;font-size:.93rem}
-ul{margin:0 0 16px 20px}
-ul li{font-size:.93rem;margin-bottom:7px}
+.box {
+  border-left: 3px solid var(--ochre);
+  background: rgba(199,146,67,0.07);
+  padding: 14px 18px; border-radius: 0 6px 6px 0; margin: 18px 0;
+}
+.box p { margin: 0; }
 
-/* HIGHLIGHT BOX */
-.box{border-left:3px solid #c4a76b;background:rgba(196,167,107,.07);padding:14px 18px;border-radius:0 6px 6px 0;margin:20px 0}
-.box p{margin:0;font-size:.9rem}
+.licence {
+  background: var(--ink); border-radius: 10px;
+  padding: 22px 24px; margin: 20px 0; color: rgba(255,255,255,.78);
+}
+.licence .lc-head {
+  font: 700 .58rem/1 var(--sans); letter-spacing: .16em;
+  text-transform: uppercase; color: var(--ochre); margin-bottom: 12px;
+}
+.licence p { font-size: .86rem; line-height: 1.78; color: rgba(255,255,255,.72); margin: 0 0 8px; }
+.licence p:last-child { margin: 0; }
+.licence a { color: #7aada8; }
+.licence a:hover { color: #fff; }
 
-/* LICENCE BLOCK */
-.licence{background:#1c3347;border-radius:10px;padding:22px 24px;margin:20px 0;color:rgba(255,255,255,.8)}
-.licence .lc-head{font:700 .6rem/1 'Space Mono',monospace;letter-spacing:.16em;text-transform:uppercase;color:#c4a76b;margin-bottom:10px}
-.licence p{font-size:.88rem;line-height:1.75;color:rgba(255,255,255,.75);margin:0 0 8px}
-.licence p:last-child{margin:0}
-.licence a{color:#7aada8}
-.licence a:hover{color:#fff}
+/* ── FOOTER ── */
+.tx-footer {
+  background: var(--blue-deep);
+  color: rgba(255,255,255,.38);
+  padding: 28px 32px;
+  border-top: 2px solid var(--turq);
+  font: 300 0.78rem/1.7 var(--serif);
+}
+.tx-footer-inner {
+  max-width: 820px; margin: 0 auto;
+  display: flex; flex-wrap: wrap; gap: 10px 24px;
+  justify-content: space-between; align-items: center;
+}
+.tx-footer strong { color: rgba(255,255,255,.72); }
+.tx-footer a { color: rgba(255,255,255,.45); text-decoration: none; }
+.tx-footer a:hover { color: #fff; }
+.tx-footer-nav { display: flex; gap: 16px; flex-wrap: wrap; }
 
-a{color:#2e7a7a}
-a:hover{color:#07111a}
-
-/* FOOTER */
-footer{border-top:1px solid rgba(28,51,71,.12);padding:24px;text-align:center;font:400 .68rem/1.8 'Space Mono',monospace;letter-spacing:.05em;text-transform:uppercase;color:#6a7f8e}
-footer a{color:#6a7f8e;text-decoration:none}
-footer a:hover{color:#07111a}
-
-@media(max-width:600px){.wrap{padding:40px 18px 80px}.doc-title{font-size:1.6rem}}
+@media(max-width:600px){
+  .wrap { padding: 36px 18px 56px; }
+  .doc-title { font-size: 1.5rem; }
+  .header-inner { gap: 10px; }
+  .header-title { font-size: 0.90rem; }
+}
 </style>
 </head>
 <body>
 
-<nav>
-  <a class="home" href="index.html">← <span class="ru">Главная</span><span class="en">Home</span></a>
-  <a href="personal-data.html"><span class="ru">Политика ПД</span><span class="en">Privacy (RU)</span></a>
-  <a href="privacy.html"><span class="ru">Privacy Policy</span><span class="en">Privacy Policy</span></a>
-  <div class="lang-sw">
-    <button data-lang="ru" class="on" onclick="setLang('ru')">РУ</button>
-    <button data-lang="en" onclick="setLang('en')">EN</button>
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="header-back">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10 12L6 8l4-4"/></svg>
+      <span class="ru">Главная</span><span class="en">Home</span>
+    </a>
+    <div class="header-title">
+      Transmission
+      <span>· <span class="ru">Правовые документы</span><span class="en">Legal</span></span>
+    </div>
+    <div class="lang-sw" role="group" aria-label="Language / Язык">
+      <button data-lang="ru" class="on" onclick="setLang('ru')">РУ</button>
+      <button data-lang="en" onclick="setLang('en')">EN</button>
+    </div>
   </div>
-</nav>
+</header>
 
 <div class="wrap">
 
   <!-- RU HEADER -->
-  <div class="ru-bl">
+  <div class="doc-header ru-bl">
     <h1 class="doc-title">Условия использования</h1>
     <p class="doc-sub">Terms of Use</p>
     <p class="doc-meta">Сайт urbantransmission.org · Редакция: май 2026 г.</p>
   </div>
 
   <!-- EN HEADER -->
-  <div class="en-bl">
+  <div class="doc-header en-bl">
     <h1 class="doc-title">Terms of Use</h1>
     <p class="doc-sub">Условия использования</p>
     <p class="doc-meta">urbantransmission.org · Last updated: May 2026</p>
@@ -199,22 +306,32 @@ footer a:hover{color:#07111a}
 
 </div>
 
-<footer>
-  © 2026 <span class="ru">Агафонова Анна Борисовна</span><span class="en">Anna B. Agafonova</span>
-  &nbsp;·&nbsp; <a href="index.html">Transmission</a>
-  &nbsp;·&nbsp; <a href="personal-data.html"><span class="ru">Политика ПД</span><span class="en">Privacy (RU)</span></a>
-  &nbsp;·&nbsp; <a href="privacy.html">Privacy Policy</a>
+<footer class="tx-footer">
+  <div class="tx-footer-inner">
+    <div>
+      <strong>Transmission</strong> &nbsp;·&nbsp;
+      <span class="ru">Цифровая исследовательская платформа</span><span class="en">Digital Research Platform</span>
+    </div>
+    <div>© 2026 <span class="ru">Агафонова Анна Борисовна</span><span class="en">Anna B. Agafonova</span> &nbsp;·&nbsp; <a href="https://orcid.org/0000-0003-3021-4002" target="_blank" rel="noopener">ORCID</a></div>
+    <nav class="tx-footer-nav">
+      <a href="index.html"><span class="ru">Главная</span><span class="en">Home</span></a>
+      <a href="terms.html"><span class="ru">Условия</span><span class="en">Terms</span></a>
+      <a href="personal-data.html" class="ru">Политика ПД</a>
+      <a href="privacy.html" class="en" style="display:none">Privacy Policy</a>
+    </nav>
+  </div>
 </footer>
 
 <script>
-function setLang(l){
-  if(l==='en') document.documentElement.setAttribute('data-en','');
+function setLang(l) {
+  if (l === 'en') document.documentElement.setAttribute('data-en', '');
   else document.documentElement.removeAttribute('data-en');
-  document.querySelectorAll('.lang-sw button').forEach(b=>b.classList.toggle('on',b.dataset.lang===l));
-  try{localStorage.setItem('tx_lang',l)}catch(e){}
+  document.querySelectorAll('.lang-sw button').forEach(b => b.classList.toggle('on', b.dataset.lang === l));
+  try { localStorage.setItem('tx_lang', l); } catch(e) {}
 }
-(function(){
-  let s='ru';try{s=localStorage.getItem('tx_lang')||'ru'}catch(e){}
+(function() {
+  let s = 'ru';
+  try { s = localStorage.getItem('tx_lang') || 'ru'; } catch(e) {}
   setLang(s);
 })();
 </script>

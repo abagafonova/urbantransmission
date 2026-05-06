@@ -80,11 +80,11 @@ body{background:var(--cream);color:var(--ink);font-family:var(--serif);font-weig
   padding:0 13px;
   font:400 .68rem/1 var(--mono);
   letter-spacing:.06em;text-transform:uppercase;
-  color:rgba(255,255,255,.42);text-decoration:none;
+  color:rgba(255,255,255,.72);text-decoration:none;
   white-space:nowrap;border-bottom:2px solid transparent;
   transition:color .15s;flex-shrink:0;
 }
-.site-nav a:hover{color:rgba(255,255,255,.88)}
+.site-nav a:hover{color:rgba(255,255,255,.96)}
 .nav-gap{flex:1 1 auto;min-width:8px}
 .lang-sw{
   display:flex;gap:0;flex-shrink:0;
@@ -530,7 +530,11 @@ body::before{
     radial-gradient(1000px 600px at 8% 4%, var(--sky) 0%, transparent 60%),
     radial-gradient(800px 500px at 94% 2%, rgba(190,213,207,.4) 0%, transparent 55%),
     radial-gradient(1100px 800px at 50% 110%, var(--ochre-bg) 0%, transparent 55%);
-  opacity:.5;
+  opacity:.22;
+}
+/* On small screens the fixed radial blobs fill the entire viewport and look like glare — dial them down further */
+@media(max-width:900px){
+  body::before{ opacity:.10; }
 }
 </style>
 </head>
@@ -547,7 +551,7 @@ body::before{
   <a href="#map"><span class="ru">Карта водопроводов</span><span class="en">Waterworks map</span></a>
   <a href="#infra"><span class="ru">Благоустройство 1910</span><span class="en">Urban services 1910</span></a>
   <a href="#cholera"><span class="ru">Холера</span><span class="en">Cholera</span></a>
-  <a href="#novgorod"><span class="ru">Новгородская губ.</span><span class="en">Novgorod Province</span></a>
+  <a href="#novgorod"><span class="ru">Новгород. губ. · MVP</span><span class="en">Novgorod Gov. · MVP</span></a>
   <a href="#methods"><span class="ru">Данные</span><span class="en">Data</span></a>
   <a href="#" data-soon><span class="ru">Видео</span><span class="en">Videos</span></a>
   <div class="nav-gap"></div>
@@ -654,18 +658,18 @@ body::before{
         <span class="s-idx">02 / 04</span>
         <span class="badge badge-ctx"><span class="ru">Контекстные данные · 1 источник</span><span class="en">Contextual data · 1 source</span></span>
         <h2 class="s-h2" id="infra-h2">
-          <span class="ru">Городское благоустройство и инфраструктура · 1910</span>
+          <span class="ru">Городские услуги и инфраструктура · 1910</span>
           <span class="en">Urban Services &amp; Infrastructure · 1910</span>
         </h2>
         <p class="s-desc">
-          <span class="ru">Сравнение охвата инфраструктурой по 50 губерниям Европейской России: электричество, трамваи, канализация, телефон, телеграф.</span>
-          <span class="en">Compare infrastructure coverage across 50 provinces of European Russia: electricity, trams, sewerage, telephone, telegraph.</span>
+          <span class="ru">10 видов городской инфраструктуры по 89 губерниям и областям Российской империи: Европейская Россия, Привислинские губернии, Кавказ, Сибирь, Средняя Азия.</span>
+          <span class="en">10 types of urban infrastructure across 89 provinces and oblasts of the Russian Empire: European Russia, Vistula provinces, the Caucasus, Siberia, and Central Asia.</span>
         </p>
         <ul class="s-feats">
-          <li><span class="ru">862 города · 50 губерний, данные за 1910&nbsp;г.</span><span class="en">862 cities · 50 provinces, 1910 data</span></li>
-          <li><span class="ru">Пожарная охрана 96% → Трамвай 4%: весь диапазон охвата</span><span class="en">Fire protection 96% → Tramway 4%: full coverage range</span></li>
-          <li><span class="ru">Сортируемая таблица с фильтрацией по типу инфраструктуры</span><span class="en">Sortable table with filtering by infrastructure type</span></li>
-          <li><span class="ru">Сравнение губерний и типов одновременно</span><span class="en">Compare provinces and infrastructure types side by side</span></li>
+          <li><span class="ru">1&thinsp;231 город · 89 губерний и областей · данные за 1910&nbsp;г.</span><span class="en">1,231 cities · 89 provinces &amp; oblasts · 1910 data</span></li>
+          <li><span class="ru">Пожарная охрана 92% → Трамвай 4%: весь диапазон охвата</span><span class="en">Fire protection 92% → Tramway 4%: full coverage range</span></li>
+          <li><span class="ru">Сортируемая таблица с фильтрацией по виду инфраструктуры</span><span class="en">Sortable table with filtering by infrastructure type</span></li>
+          <li><span class="ru">Одновременное сравнение губерний и типов инфраструктуры</span><span class="en">Compare provinces and infrastructure types side by side</span></li>
         </ul>
         <div class="s-cta">
           <a class="cta-primary" href="#" data-soon>
@@ -677,8 +681,8 @@ body::before{
         <div class="vis-light">
           <svg id="infra-svg" viewBox="0 0 360 300"></svg>
           <p class="chart-cap">
-            <span class="ru">862 города · 50 губерний · Европейская Россия · 1910</span>
-            <span class="en">862 cities · 50 provinces · European Russia · 1910</span>
+            <span class="ru">1&thinsp;231 город · 89 губерний и областей · Российская империя · 1910</span>
+            <span class="en">1,231 cities · 89 provinces &amp; oblasts · Russian Empire · 1910</span>
           </p>
         </div>
       </div>
@@ -728,10 +732,10 @@ body::before{
     <div class="scene-split flip">
       <div class="s-text">
         <span class="s-idx">04 / 04</span>
-        <span class="badge badge-orig"><span class="ru">Оригинальное исследование</span><span class="en">Original research</span></span>
+        <span class="badge badge-orig"><span class="ru">MVP · Прототип</span><span class="en">MVP · Prototype</span></span>
         <h2 class="s-h2" id="novg-h2">
-          <span class="ru">Новгородская губерния: региональный кейс</span>
-          <span class="en">Novgorod Province: Regional Case Study</span>
+          <span class="ru">Санитарное состояние городов Российской империи (Новгородская губерния)</span>
+          <span class="en">Sanitary Conditions of Cities of the Russian Empire (Novgorod Province)</span>
         </h2>
         <p class="s-desc">
           <span class="ru">Детальная база данных по 11 городам губернии: думские решения, данные об эпидемиях, санитарные расходы, 1870–1917.</span>
@@ -744,7 +748,7 @@ body::before{
           <li><span class="ru">Сравнение городов: временные шкалы и показатели</span><span class="en">City-by-city comparison: timelines and indicators</span></li>
         </ul>
         <div class="s-cta">
-          <a class="cta-primary" href="#" data-soon>
+          <a class="cta-primary" href="empire/RussianEmpire.html">
             <span class="ru">Открыть кейс</span><span class="en">Explore case study</span> <span class="arr">→</span>
           </a>
         </div>
@@ -776,8 +780,8 @@ body::before{
       <span class="qi-title"><span class="ru">Холерные эпидемии</span><span class="en">Cholera epidemics</span></span>
       <span class="qi-arr">→</span>
     </a>
-    <a class="qi" href="#" data-soon>
-      <span class="qi-tag"><span class="ru">Региональный кейс</span><span class="en">Regional case study</span></span>
+    <a class="qi" href="empire/RussianEmpire.html">
+      <span class="qi-tag"><span class="ru">MVP · Региональный кейс</span><span class="en">MVP · Regional case study</span></span>
       <span class="qi-title"><span class="ru">Новгородская губерния</span><span class="en">Novgorod Province</span></span>
       <span class="qi-arr">→</span>
     </a>
@@ -862,7 +866,7 @@ body::before{
         </div>
         <div class="ms-item">
           <div class="ms-key">1910</div>
-          <div class="ms-val"><span class="ru">Статистика городского благоустройства Российской империи · 862 города · 50 губерний</span><span class="en">Urban services statistics, Russian Empire · 862 cities · 50 provinces</span></div>
+          <div class="ms-val"><span class="ru">Статистика городского благоустройства Российской империи · 1&thinsp;231 город · 89 губерний и областей</span><span class="en">Urban services statistics, Russian Empire · 1,231 cities · 89 provinces &amp; oblasts</span></div>
         </div>
         <div class="ms-item">
           <div class="ms-key"><span class="ru">Расходы</span><span class="en">Expenditure</span></div>
@@ -882,13 +886,13 @@ body::before{
           </div>
           <hr class="mn-divider">
           <div class="mn-row">
-            <span class="mn-label"><span class="ru">Данные 1910&nbsp;г.</span><span class="en">1910 data cities</span></span>
-            <span class="mn-val">862</span>
+            <span class="mn-label"><span class="ru">Городов в данных 1910&nbsp;г.</span><span class="en">Cities in 1910 data</span></span>
+            <span class="mn-val">1231</span>
           </div>
           <hr class="mn-divider">
           <div class="mn-row">
-            <span class="mn-label"><span class="ru">Губерний Европ. России</span><span class="en">Provinces, European Russia</span></span>
-            <span class="mn-val">50</span>
+            <span class="mn-label"><span class="ru">Губерний и областей</span><span class="en">Provinces &amp; oblasts</span></span>
+            <span class="mn-val">89</span>
           </div>
           <hr class="mn-divider">
           <div class="mn-row">
@@ -896,8 +900,19 @@ body::before{
             <span class="mn-val" style="font-size:1.1rem"><span class="ru">до 1914&nbsp;г.</span><span class="en">up to 1914</span></span>
           </div>
         </div>
+        <!-- NOTE: 950 vs 1231 -->
+        <div style="margin-top:18px;padding:14px 16px;border-radius:10px;background:rgba(111,125,149,.10);border-left:3px solid rgba(111,125,149,.35)">
+          <p style="font:700 .58rem/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:8px">
+            <span class="ru">Примечание об источниках</span><span class="en">Note on sources</span>
+          </p>
+          <p style="font:300 .82rem/1.7 var(--serif);color:var(--muted)">
+            <span class="ru"><strong style="color:var(--ink);font-weight:600">950</strong> — населённые пункты, официально числящиеся городами в источнике «Города России в 1910&nbsp;г.» (в т.&thinsp;ч. негородские поселения с городским управлением). <strong style="color:var(--ink);font-weight:600">1&thinsp;231</strong> — города и поселения с населением свыше 10&thinsp;000&nbsp;чел. по данным той же статистики благоустройства.</span>
+            <span class="en"><strong style="color:var(--ink);font-weight:600">950</strong> = settlements officially classified as cities in <em>Cities of Russia in 1910</em> (including non-urban settlements with a city administration). <strong style="color:var(--ink);font-weight:600">1,231</strong> = cities and settlements with a population over 10,000, as recorded in the same urban services census.</span>
+          </p>
+        </div>
+
         <!-- CITE + CONTACT BUTTONS -->
-        <div style="margin-top:24px;display:flex;flex-direction:column;gap:10px">
+        <div style="margin-top:18px;display:flex;flex-direction:column;gap:10px">
           <button class="cite-btn" id="cite-btn" onclick="toggleCite()">
             <span class="ru">📋 Как сослаться</span><span class="en">📋 How to cite</span>
           </button>
@@ -945,8 +960,8 @@ body::before{
           <span class="en">PhD (History) · independent researcher · specialist in environmental urban history</span>
         </p>
         <p class="rc-bio">
-          <span class="ru">Специалист в области экологической истории городов Российской империи и раннего СССР (1870–1930-е гг.). Сфера интересов: история водоснабжения и санитарных реформ, гидроэнергетика, городское самоуправление. Руководитель грантов РНФ и РФФИ, автор более 50 научных работ (в т.ч. публикации в Scopus и Web of Science). Доклады: EAUH (Антверп, 2022), ESEH (Бристоль, 2022), ICOHTEC (Острава, 2022), ВДНХ-XIX (ЕУ СПб, 2026).</span>
-          <span class="en">Specialist in the environmental history of Russian and Soviet cities (1870s–1930s). Research interests: water supply and sanitary reform, hydropower development, municipal self-government. PI on grants from the Russian Science Foundation and RFBR. Author of 50+ scholarly publications (including articles indexed in Scopus and Web of Science). Conferences: EAUH (Antwerp, 2022), ESEH (Bristol, 2022), ICOHTEC (Ostrava, 2022), ВДНХ-XIX (EU SPb, 2026).</span>
+          <span class="ru">Специалист в области экологической истории городов Российской империи и раннего СССР (1870–1930-е гг.). Сфера интересов: история водоснабжения и санитарных реформ, гидроэнергетика, городское самоуправление. Руководитель грантов РНФ (2022–2023) и РФФИ (2019), автор более 50 научных работ (в т.ч. публикации в Scopus и Web of Science). Доклады: EAUH (Антверп, 2022), ESEH (Бристоль, 2022; Таллин, 2019; Загреб, 2017), ICOHTEC (Острава, 2022; Катовице, 2019; Порту, 2016), ИИЕТ РАН (2023, 2025), ВДНХ-XIX (ЕУ СПб, 2026).</span>
+          <span class="en">Specialist in the environmental history of Russian and Soviet cities (1870s–1930s). Research interests: water supply and sanitary reform, hydropower development, municipal self-government. PI on grants from the Russian Science Foundation (2022–23) and RFBR (2019). Author of 50+ scholarly publications (including articles indexed in Scopus and Web of Science). Conferences: EAUH (Antwerp, 2022), ESEH (Bristol, 2022; Tallinn, 2019; Zagreb, 2017), ICOHTEC (Ostrava, 2022; Katowice, 2019; Porto, 2016), IIET RAS (2023, 2025), ВДНХ-XIX (EU SPb, 2026).</span>
         </p>
         <div class="rc-links">
           <a class="rc-link" href="https://orcid.org/0000-0003-3021-4002" target="_blank" rel="noopener">ORCID</a>
@@ -1145,14 +1160,14 @@ function drawInfra(){
   if(!svg||svg._ok) return; svg._ok=true;
   const en=document.documentElement.hasAttribute('data-en');
   const rows=[
-    {ru:'Пожарная охрана',en:'Fire protection',v:96,c:'#1c3347'},
-    {ru:'Освещение',      en:'Street lighting', v:87,c:'#2e4f6b'},
-    {ru:'Скотобойни',     en:'Slaughterhouses', v:81,c:'#3d6482'},
-    {ru:'Телеграф',       en:'Telegraph',        v:27,c:'#8b5e3c'},
-    {ru:'Водопровод',     en:'Waterworks',       v:20,c:'#b07a50'},
-    {ru:'Электричество',  en:'Electricity',      v:13,c:'#c4a76b'},
-    {ru:'Канализация',    en:'Sewerage',         v:5, c:'#6a7f8e'},
-    {ru:'Трамвай',        en:'Tramway',          v:4, c:'#7a6b5a'},
+    {ru:'Пожарная охрана',   en:'Fire protection',    v:92,c:'#1c3347'},
+    {ru:'Уличное освещение', en:'Street lighting',    v:87,c:'#2e4f6b'},
+    {ru:'Скотобойни',        en:'Slaughterhouses',    v:85,c:'#3d6482'},
+    {ru:'Телефон',           en:'Telephone',          v:26,c:'#8b5e3c'},
+    {ru:'Водопровод',        en:'Waterworks',         v:18,c:'#b07a50'},
+    {ru:'Электр. освещение', en:'Electric lighting',  v:13,c:'#c4a76b'},
+    {ru:'Канализация',       en:'Sewerage',           v:5, c:'#6a7f8e'},
+    {ru:'Трамвай',           en:'Tramway',            v:4, c:'#7a6b5a'},
   ];
   const lp=118,rp=48,tp=12,bh=20,gap=12,cW=360-lp-rp;
   let h='';
