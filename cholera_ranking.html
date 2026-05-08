@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Рейтинг губерний Российской империи по интенсивности холерных эпидемий 1823–1910 гг. Три волны: 1823–1872, 1892, 1910. Связь смертности с наличием городских водопроводов. Данные по 20 губерниям.">
+<title>Холера в губерниях Российской Империи · 1823–1910</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --page-cream:  #F6EFDC;
+  --page-ochre:  #E8D5A8;
+  --page-turq:   #BED5CF;
+  --page-sky:    #D8E3E1;
+  --glass-tint:  rgba(250,244,228,0.72);
+  --glass-edge:  rgba(20,36,60,0.18);
+  --ink:         #1A2B47;
+  --ink-soft:    #2B4773;
+  --muted:       #6F7D95;
+  --faint:       #A6AEBC;
+  --copper:      #8B5E3C;
+  --copper-hl:   #A67448;
+  --brass:       #B58A4A;
+  --ochre:       #C79243;
+  --turq:        #4F8781;
+  --blue-deep:   #1A2B47;
+  --blue-mid:    #3B5A86;
+  --line:        rgba(20,36,60,0.12);
+  --line-copper: rgba(139,94,60,0.30);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--page-cream);
+  background-image:
+    radial-gradient(1100px 700px at 8% 4%,  var(--page-sky)  0%, rgba(216,227,225,0) 55%),
+    radial-gradient(900px  600px at 95% 3%,  var(--page-turq) 0%, rgba(190,213,207,0) 60%),
+    radial-gradient(1200px 900px at 50% 110%,var(--page-ochre)0%, rgba(232,213,168,0) 55%),
+    linear-gradient(180deg, var(--page-cream) 0%, var(--page-cream) 30%,
+      rgba(232,213,168,0.45) 70%, rgba(190,213,207,0.35) 100%);
+  color: var(--ink);
+  font-family: 'Inter', 'Helvetica Neue', sans-serif;
+  font-size: 14px;
+  min-height: 100vh;
+}
+body::before {
+  content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 0;
+  opacity: 0.28; mix-blend-mode: multiply;
+  background-image:
+    radial-gradient(1px 1px at 23px 17px, rgba(139,94,60,0.06) 50%, transparent 51%),
+    radial-gradient(1px 1px at 71px 43px, rgba(79,135,129,0.05) 50%, transparent 51%),
+    radial-gradient(1px 1px at 113px 89px, rgba(26,43,71,0.05) 50%, transparent 51%);
+  background-size: 140px 120px;
+}
+
+/* ── HEADER ── */
+header {
+  position: relative; z-index: 10;
+  padding: 20px 32px 22px;
+  background: var(--glass-tint);
+  backdrop-filter: blur(18px) saturate(1.2);
+  border-bottom: 1px solid var(--glass-edge);
+  box-shadow: 0 1px 0 rgba(255,255,255,0.55) inset, 0 4px 16px rgba(30,40,70,0.07);
+}
+header::before, header::after, .hdr-bl, .hdr-br {
+  content: ''; position: absolute;
+  width: 28px; height: 28px;
+  border: 1px solid var(--line-copper); pointer-events: none;
+}
+header::before { top: 7px; left: 7px;  border-right: none; border-bottom: none; }
+header::after  { top: 7px; right: 7px; border-left:  none; border-bottom: none; }
+.hdr-bl { bottom: 7px; left: 7px;  border-right: none; border-top: none; }
+.hdr-br { bottom: 7px; right: 7px; border-left:  none; border-top: none; }
+.hdr-bl::before, .hdr-br::before {
+  content: ''; position: absolute; width: 3px; height: 3px;
+  border-radius: 50%; background: var(--copper); opacity: 0.55;
+}
+.hdr-bl::before { bottom: -1.5px; left: -1.5px; }
+.hdr-br::before { bottom: -1.5px; right: -1.5px; }
+
+.header-inner {
+  max-width: 1280px; margin: 0 auto;
+  display: flex; align-items: center; gap: 20px;
+}
+.header-icon { width: 56px; height: 56px; flex-shrink: 0; color: var(--copper); opacity: 0.88; }
+.header-icon svg { width: 100%; height: 100%; display: block; }
+.header-text { flex: 1; text-align: center; position: relative; padding: 4px 0; }
+.header-text::before, .header-text::after {
+  content: '';
+  position: absolute; left: 6%; right: 6%; height: 1px;
+  background: repeating-linear-gradient(90deg, var(--line-copper) 0 7px, transparent 7px 11px);
+}
+.header-text::before { top: -2px; }
+.header-text::after  { bottom: -4px; }
+.header-text h1 {
+  font-family: Cambria, 'Palatino Linotype', Georgia, serif;
+  font-weight: 500; font-variant: small-caps;
+  font-size: 1.9rem; letter-spacing: 0.05em;
+  color: var(--ink); line-height: 1.1;
+}
+.header-text h1 em { color: var(--copper); font-style: italic; font-variant: normal; }
+.header-text .sub {
+  margin-top: 5px;
+  font-size: 0.60rem; font-weight: 500;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--muted);
+  display: flex; gap: 14px; justify-content: center; align-items: center; flex-wrap: wrap;
+}
+.header-text .sub .sep { color: var(--copper); opacity: 0.6; }
+.header-back {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 7px 14px; border-radius: 999px;
+  background: rgba(246,239,220,0.6); border: 1px solid var(--line-copper);
+  color: var(--ink-soft); font-size: 0.72rem; font-weight: 500;
+  letter-spacing: 0.05em; text-decoration: none; transition: all .18s; flex-shrink: 0;
+  backdrop-filter: blur(6px);
+}
+.header-back:hover { background: var(--ink); color: var(--page-cream); border-color: var(--ink); }
+.header-back svg { width: 14px; height: 14px; }
+
+/* ── LANG SWITCHER ── */
+.en { display: none; }
+.en-bl { display: none; }
+[data-en] .ru { display: none; }
+[data-en] .en { display: inline; }
+[data-en] .ru-bl { display: none; }
+[data-en] .en-bl { display: block; }
+.lang-sw { display: flex; gap: 4px; flex-shrink: 0; }
+.lang-sw button {
+  background: rgba(26,43,71,0.06); border: 1px solid var(--line);
+  color: var(--muted); font: 700 .68rem/1 'Inter', sans-serif;
+  letter-spacing: .06em; padding: 5px 9px; cursor: pointer;
+  transition: all .15s; border-radius: 3px;
+}
+.lang-sw button.on { color: var(--page-cream); background: var(--ink); border-color: var(--ink); }
+.lang-sw button:hover:not(.on) { color: var(--ink); border-color: var(--ink-soft); }
+
+/* ── PAGE BODY ── */
+.page {
+  position: relative; z-index: 1;
+  max-width: 1280px; margin: 0 auto;
+  padding: 32px 24px 64px;
+}
+
+/* ── NOTE ── */
+.note {
+  background: rgba(246,239,220,0.65);
+  border: 1px solid var(--line-copper);
+  border-left: 3px solid var(--copper);
+  border-radius: 8px;
+  padding: 12px 18px;
+  font-size: 0.75rem; line-height: 1.75;
+  color: var(--ink-soft);
+  margin-bottom: 28px;
+  backdrop-filter: blur(8px);
+}
+.note strong { color: var(--copper); font-weight: 600; }
+
+/* ── LEGEND SCALES ── */
+.scale-legend {
+  display: flex; gap: 16px; flex-wrap: wrap;
+  margin-bottom: 28px;
+}
+.scale-card {
+  flex: 1; min-width: 200px;
+  background: rgba(246,239,220,0.72);
+  border: 1px solid var(--line-copper);
+  border-radius: 8px;
+  padding: 14px 16px;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 2px 8px rgba(30,40,70,0.05);
+}
+.scale-card h4 {
+  font-family: Cambria, 'Palatino Linotype', Georgia, serif;
+  font-size: 0.78rem; font-weight: 600;
+  color: var(--copper); margin-bottom: 10px;
+  letter-spacing: 0.04em; text-transform: uppercase;
+}
+.scale-row {
+  display: flex; align-items: center; gap: 7px;
+  margin-bottom: 4px; font-size: 0.72rem; color: var(--ink-soft);
+}
+.swatch {
+  width: 20px; height: 10px; border-radius: 2px;
+  border: 1px solid rgba(0,0,0,0.12); flex-shrink: 0;
+}
+
+/* ── SECTION TITLE ── */
+.section-title {
+  font-family: Cambria, 'Palatino Linotype', Georgia, serif;
+  font-weight: 500; font-size: 1.15rem; font-variant: small-caps;
+  letter-spacing: 0.04em; color: var(--ink);
+  margin: 0 0 16px;
+  padding-bottom: 9px;
+  border-bottom: 1px solid var(--line-copper);
+  position: relative;
+}
+.section-title + .table-scroll-wrap { margin-top: 0; }
+.section-title-spaced { margin-top: 36px; }
+.section-title::after {
+  content: '';
+  position: absolute; bottom: -1px; left: 0; width: 64px; height: 2px;
+  background: var(--copper);
+}
+
+/* ── TABLE ── */
+.table-scroll-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-radius: 10px;
+  box-shadow: 0 4px 22px rgba(30,40,70,0.09), 0 1px 0 rgba(255,255,255,0.6) inset;
+  border: 1px solid var(--line-copper);
+}
+table {
+  width: 100%; border-collapse: collapse;
+  font-size: 0.82rem;
+  background: rgba(246,239,220,0.85);
+  backdrop-filter: blur(10px);
+}
+thead tr {
+  background: var(--blue-deep); color: rgba(246,239,220,0.92);
+  position: sticky; top: 0; z-index: 2;
+}
+thead th {
+  padding: 10px 8px; text-align: left;
+  font-family: Cambria, 'Palatino Linotype', Georgia, serif;
+  font-weight: 500; font-size: 0.74rem;
+  letter-spacing: 0.04em; font-variant: small-caps;
+  border-right: 1px solid rgba(255,255,255,0.08);
+  white-space: nowrap;
+}
+thead th:last-child { border-right: none; }
+thead th.th-ww {
+  background: rgba(79,135,129,0.25);
+}
+tbody tr { border-bottom: 1px solid var(--line); transition: background .12s; }
+tbody tr:nth-child(even) { background: rgba(232,213,168,0.18); }
+tbody tr:hover { background: rgba(183,145,88,0.07) !important; }
+tbody tr.top3 { background: rgba(183,145,88,0.14) !important; }
+tbody tr.persistent { background: rgba(26,43,71,0.05) !important; }
+tbody td {
+  padding: 9px 8px; vertical-align: middle;
+  border-right: 1px solid var(--line);
+  line-height: 1.45;
+}
+tbody td:last-child { border-right: none; }
+
+.rank {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700; font-size: 0.62rem;
+  color: var(--faint); width: 26px; text-align: center;
+}
+tbody tr.top3 .rank { color: var(--copper); }
+.gubern-name { font-weight: 600; color: var(--ink); font-family: Cambria, 'Palatino Linotype', Georgia, serif; font-size: 0.88rem; }
+.gubern-num { font-size: 0.62rem; color: var(--faint); margin-left: 4px; font-weight: 400; font-family: 'Inter', sans-serif; }
+
+/* Cholera cells */
+.cell-value {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-size: 0.72rem;
+}
+.level-bar {
+  display: inline-block; height: 9px;
+  border-radius: 2px; min-width: 4px; flex-shrink: 0;
+}
+.cell-nodata { color: var(--faint); font-style: italic; font-size: 0.68rem; }
+
+/* Score */
+.score-wrap { display: flex; align-items: center; gap: 6px; }
+.score-bar {
+  height: 7px; border-radius: 2px; flex-shrink: 0;
+  background: linear-gradient(to right, var(--brass), #9B1C1C);
+}
+.score-num { font-size: 0.68rem; color: var(--muted); }
+
+/* Stability */
+.stability {
+  text-align: center; font-size: 0.82rem;
+  letter-spacing: -1px;
+}
+
+/* Waterworks */
+.ww-cell { font-size: 0.68rem; line-height: 1.55; }
+.ww-tag {
+  display: inline-block;
+  padding: 2px 6px; margin: 1px 2px 1px 0;
+  border-radius: 3px; font-size: 0.63rem;
+  background: rgba(26,43,71,0.07);
+  border: 1px solid rgba(26,43,71,0.18);
+  color: var(--ink);
+}
+.ww-tag .ww-year { opacity: 0.55; font-size: 0.60rem; margin-left: 2px; }
+.ww-none { color: var(--faint); font-style: italic; font-size: 0.68rem; }
+
+/* ── INSIGHT BOX ── */
+.insight-box {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px; margin: 28px 0;
+}
+.insight-card {
+  background: rgba(246,239,220,0.72);
+  border: 1px solid var(--line-copper);
+  border-radius: 8px;
+  padding: 16px 18px;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 2px 8px rgba(30,40,70,0.05);
+}
+.insight-card h4 {
+  font-family: Cambria, 'Palatino Linotype', Georgia, serif;
+  font-size: 0.78rem; font-weight: 600;
+  color: var(--copper); text-transform: uppercase;
+  letter-spacing: 0.06em; margin-bottom: 8px;
+}
+.insight-card p {
+  font-size: 0.76rem; line-height: 1.70;
+  color: var(--ink-soft);
+}
+.insight-card strong { color: var(--ink); font-weight: 600; }
+
+/* ── SEE ALSO ── */
+.see-also {
+  max-width: 860px; margin: 48px auto 0;
+  padding: 28px 24px;
+  background: rgba(232,213,168,0.28);
+  border: 1px solid rgba(183,145,88,0.25);
+  border-radius: 10px;
+}
+.see-also-label {
+  font-family: Cambria, 'Palatino Linotype', Georgia, serif;
+  font-size: 0.72rem; letter-spacing: .16em; text-transform: uppercase;
+  color: #B79158; margin-bottom: 14px;
+}
+.see-also-links { display: flex; flex-wrap: wrap; gap: 12px; }
+.see-also-links a {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: Cambria, 'Palatino Linotype', Georgia, serif;
+  font-size: 0.92rem; color: var(--ink); text-decoration: none;
+  border-bottom: 1px solid rgba(26,43,71,0.3);
+  padding-bottom: 2px; transition: opacity .2s;
+}
+.see-also-links a:hover { opacity: 0.65; }
+
+/* ── DARK FOOTER ── */
+.tx-footer {
+  background: var(--blue-deep);
+  color: rgba(255,255,255,.38);
+  padding: 28px 32px;
+  border-top: 2px solid var(--turq);
+  font: 300 0.78rem/1.7 Cambria, Georgia, serif;
+}
+.tx-footer-inner {
+  max-width: 1280px; margin: 0 auto;
+  display: flex; flex-wrap: wrap; gap: 10px 24px;
+  justify-content: space-between; align-items: center;
+}
+.tx-footer strong { color: rgba(255,255,255,.72); }
+.tx-footer a { color: rgba(255,255,255,.45); text-decoration: none; }
+.tx-footer a:hover { color: #fff; }
+.tx-footer-nav { display: flex; gap: 16px; flex-wrap: wrap; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  header { padding: 14px 18px 16px; }
+  .header-text h1 { font-size: 1.35rem; }
+  .page { padding: 20px 14px 48px; }
+  .scale-legend { flex-direction: column; }
+  table { min-width: 680px; font-size: 0.68rem; }
+  thead th { padding: 9px 6px; font-size: 0.68rem; }
+  tbody td { padding: 7px 6px; }
+  .insight-box { grid-template-columns: 1fr; }
+}
+@media (max-width: 480px) {
+  .header-text h1 { font-size: 1.15rem; }
+  table { min-width: 600px; font-size: 0.62rem; }
+  thead th { padding: 8px 5px; font-size: 0.62rem; }
+  tbody td { padding: 6px 5px; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="hdr-bl"></div>
+  <div class="hdr-br"></div>
+  <div class="header-inner">
+    <div class="header-icon">
+      <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="30" cy="30" r="28" stroke="currentColor" stroke-width="0.8" opacity="0.25"/>
+        <path d="M30 10 C30 10 18 24 18 34 C18 41.7 23.4 48 30 48 C36.6 48 42 41.7 42 34 C42 24 30 10 30 10Z"
+              fill="none" stroke="currentColor" stroke-width="1.4"/>
+        <path d="M30 22 C30 22 24 30 24 36 C24 39.3 26.7 42 30 42 C33.3 42 36 39.3 36 36 C36 30 30 22 30 22Z"
+              fill="currentColor" opacity="0.22"/>
+        <line x1="30" y1="6"  x2="30" y2="10" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+        <line x1="54" y1="30" x2="50" y2="30" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+        <line x1="6"  y1="30" x2="10" y2="30" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+      </svg>
+    </div>
+    <div class="header-text">
+      <h1>
+        <span class="ru">Холера <em>&</em> водоснабжение</span>
+        <span class="en">Cholera <em>&</em> Water Supply</span>
+      </h1>
+      <div class="sub">
+        <span><span class="ru">Губернии Российской Империи</span><span class="en">Provinces of the Russian Empire</span></span>
+        <span class="sep">·</span>
+        <span>1823–1910</span>
+        <span class="sep">·</span>
+        <span><span class="ru">Топ-20 по интенсивности эпидемий</span><span class="en">Top 20 by epidemic intensity</span></span>
+      </div>
+    </div>
+    <div class="lang-sw" role="group" aria-label="Language / Язык">
+      <button data-lang="ru" class="on" onclick="setLang('ru')">РУ</button>
+      <button data-lang="en" onclick="setLang('en')">EN</button>
+    </div>
+    <a href="index.html" class="header-back">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8">
+        <path d="M10 12L6 8l4-4"/>
+      </svg>
+      <span class="ru">На главную</span><span class="en">Home</span>
+    </a>
+  </div>
+</header>
+
+<div class="page">
+
+  <div class="note">
+    <span class="ru">
+      <strong>Методика:</strong> Рейтинг рассчитан на основе карт из книги Васильев К.Г., Сегал А.Е. «История эпидемий в России» (М., 1960)
+      по визуально считанным уровням интенсивности заболеваемости. Совокупный балл — сумма нормализованных
+      значений (1823–72: ÷6; 1892: ÷7; 1910: ÷8). Столбец «Уст.» показывает, в скольких из трёх периодов
+      губерния входила в верхнюю половину шкалы.
+      <br><strong>Примечание:</strong> данные приблизительны; будут уточнены после оцифровки отчётов
+      Медицинского департамента и Управления Главного Медицинского Инспектора МВД.
+    </span>
+    <span class="en">
+      <strong>Methodology:</strong> Rankings are based on maps from Vasiliev K.G. &amp; Segal A.E., <em>History of Epidemics in Russia</em> (Moscow, 1960),
+      with intensity levels read visually from hatch maps. Composite score = sum of normalised values (1823–72: ÷6; 1892: ÷7; 1910: ÷8).
+      The <em>Stab.</em> column shows in how many of the three periods the province ranked in the upper half of the scale.
+      <br><strong>Note:</strong> data are approximate and will be refined after digitisation of records from the Medical Department
+      and the Chief Medical Inspector's Office of the Ministry of Internal Affairs.
+    </span>
+  </div>
+
+  <!-- Scale legend -->
+  <div class="scale-legend">
+    <div class="scale-card">
+      <h4><span class="ru">Табл. 8 · 1823–1872 гг.</span><span class="en">Table 8 · 1823–1872</span></h4>
+      <div class="scale-row"><div class="swatch" style="background:#ffffd4"></div>1 — <span class="ru">0–15‰ заболевших</span><span class="en">0–15‰ infected</span></div>
+      <div class="scale-row"><div class="swatch" style="background:#fed976"></div>2 — 15–30‰</div>
+      <div class="scale-row"><div class="swatch" style="background:#fd8d3c"></div>3 — 30–45‰</div>
+      <div class="scale-row"><div class="swatch" style="background:#f03b20"></div>4 — 45–65‰</div>
+      <div class="scale-row"><div class="swatch" style="background:#bd0026"></div>5 — 65–75‰</div>
+      <div class="scale-row"><div class="swatch" style="background:#800026"></div>6 — 75–90‰</div>
+    </div>
+    <div class="scale-card">
+      <h4><span class="ru">Табл. 9 · 1892 г.</span><span class="en">Table 9 · 1892</span></h4>
+      <div class="scale-row"><div class="swatch" style="background:#ffffb2"></div>1–2 — <span class="ru">менее 1 на 1&thinsp;000</span><span class="en">less than 1 per 1,000</span></div>
+      <div class="scale-row"><div class="swatch" style="background:#fed976"></div>3 — 1–5 <span class="ru">на 1&thinsp;000</span><span class="en">per 1,000</span></div>
+      <div class="scale-row"><div class="swatch" style="background:#feb24c"></div>4 — 5–10 <span class="ru">на 1&thinsp;000</span><span class="en">per 1,000</span></div>
+      <div class="scale-row"><div class="swatch" style="background:#fd8d3c"></div>5 — 10–15 <span class="ru">на 1&thinsp;000</span><span class="en">per 1,000</span></div>
+      <div class="scale-row"><div class="swatch" style="background:#f03b20"></div>6 — 15–25 <span class="ru">на 1&thinsp;000</span><span class="en">per 1,000</span></div>
+      <div class="scale-row"><div class="swatch" style="background:#bd0026"></div>7 — 25–50 <span class="ru">на 1&thinsp;000</span><span class="en">per 1,000</span></div>
+    </div>
+    <div class="scale-card">
+      <h4><span class="ru">Табл. 10 · 1910 г.</span><span class="en">Table 10 · 1910</span></h4>
+      <div class="scale-row"><div class="swatch" style="background:#ffffb2"></div>1–2 — <span class="ru">менее 5 на 10&thinsp;000</span><span class="en">less than 5 per 10,000</span></div>
+      <div class="scale-row"><div class="swatch" style="background:#fed976"></div>3 — 5–15 <span class="ru">на 10&thinsp;000</span><span class="en">per 10,000</span></div>
+      <div class="scale-row"><div class="swatch" style="background:#feb24c"></div>4 — 15–25 <span class="ru">на 10&thinsp;000</span><span class="en">per 10,000</span></div>
+      <div class="scale-row"><div class="swatch" style="background:#fd8d3c"></div>5 — 25–50 <span class="ru">на 10&thinsp;000</span><span class="en">per 10,000</span></div>
+      <div class="scale-row"><div class="swatch" style="background:#f03b20"></div>6 — 50–75 <span class="ru">на 10&thinsp;000</span><span class="en">per 10,000</span></div>
+      <div class="scale-row"><div class="swatch" style="background:#bd0026"></div>7 — 75–100 <span class="ru">на 10&thinsp;000</span><span class="en">per 10,000</span></div>
+      <div class="scale-row"><div class="swatch" style="background:#67000d"></div>8 — <span class="ru">более 100 на 10&thinsp;000</span><span class="en">more than 100 per 10,000</span></div>
+    </div>
+  </div>
+
+  <h2 class="section-title section-title-spaced" style="margin-top:0">
+    <span class="ru">20 губерний по наибольшей совокупной интенсивности холеры</span>
+    <span class="en">20 provinces ranked by highest cumulative cholera intensity</span>
+  </h2>
+
+  <div class="table-scroll-wrap">
+  <table>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th><span class="ru">Губерния</span><span class="en">Province</span></th>
+      <th>1823–1872</th>
+      <th>1892</th>
+      <th>1910</th>
+      <th><span class="ru">Балл</span><span class="en">Score</span></th>
+      <th title="В скольких из трёх периодов губерния в верхней половине шкалы / Number of periods in the upper half of the scale">
+        <span class="ru">Уст.</span><span class="en">Stab.</span>
+      </th>
+      <th class="th-ww">
+        <span class="ru">Города с водопроводами</span><span class="en">Cities with water supply</span>
+      </th>
+    </tr>
+  </thead>
+  <tbody id="table-body"></tbody>
+  </table>
+  </div>
+
+  <div class="insight-box">
+    <div class="insight-card">
+      <h4><span class="ru">Зона стабильно высокой холеры</span><span class="en">Zone of persistent high cholera</span></h4>
+      <p>
+        <span class="ru">Сразу две губернии демонстрируют высокую интенсивность холеры во всех трёх периодах (●●●):
+        <strong>Область Войска Донского</strong> и <strong>Воронежская</strong>.
+        Волжско-Каспийский коридор (Саратовская, Астраханская, Самарская) и Кавказский фронтир
+        (Кубанская, Терская, Ставропольская) образуют хронически опасные зоны.</span>
+        <span class="en">Two provinces show high cholera intensity across all three periods (●●●):
+        <strong>Oblast of the Don Cossack Host</strong> and <strong>Voronezhskaya</strong>.
+        The Volga–Caspian corridor (Saratovskaya, Astrakhanskaya, Samarskaya) and the Caucasian frontier
+        (Kubanskaya, Terskaya, Stavropol'skaya) form chronically hazardous zones.</span>
+      </p>
+    </div>
+    <div class="insight-card">
+      <h4><span class="ru">Водопроводы и холера</span><span class="en">Water supply and cholera</span></h4>
+      <p>
+        <span class="ru">По данным переписи 1912 г., в губерниях топ-10 насчитывается свыше <strong>35 городов</strong>
+        с водопроводами. Лидируют <strong>Таврическая</strong> (9 городов: Ялта, Симферополь, Феодосия и др.),
+        <strong>Саратовская</strong> (8: Саратов, Царицын, Хвалынск и др.) и <strong>Терская</strong>
+        (5: Владикавказ, Пятигорск, Кисловодск и др.). Первые водопроводы появились ещё до 1870 г.;
+        основная часть построена в 1870–1892 гг. и после 1892 г. в ходе активной модернизации городских
+        инфраструктур.</span>
+        <span class="en">According to the 1912 census, the top-10 provinces counted more than <strong>35 cities</strong>
+        with water supply systems. Leaders: <strong>Tavricheskaya</strong> (9 cities: Yalta, Simferopol, Feodosiya, etc.),
+        <strong>Saratovskaya</strong> (8: Saratov, Tsaritsyn, Khvalyinsk, etc.) and <strong>Terskaya</strong>
+        (5: Vladikavkaz, Pyatigorsk, Kislovodsk, etc.). The earliest waterworks predated 1870;
+        most were built in 1870–1892 and after 1892 during intensive modernisation of urban infrastructures.</span>
+      </p>
+    </div>
+    <div class="insight-card">
+      <h4><span class="ru">После 1892 года</span><span class="en">After 1892</span></h4>
+      <p>
+        <span class="ru">Рост водопроводного строительства 1892–1913 гг. совпадает с общим снижением смертности от холеры.
+        К 1910 г. большинство губерний центра и запада показывают низкие уровни,
+        тогда как юг и Кавказ остаются зонами риска.</span>
+        <span class="en">The expansion of water supply infrastructure in 1892–1913 coincides with the overall decline in cholera mortality.
+        By 1910, most central and western provinces show low levels,
+        while the south and the Caucasus remain risk zones.</span>
+      </p>
+    </div>
+  </div>
+
+  <div class="see-also">
+    <p class="see-also-label"><span class="ru">См. также</span><span class="en">See also</span></p>
+    <div class="see-also-links">
+      <a href="WaterSupply in Russian Empire/map.html">
+        <span class="ru">Интерактивная карта городских водопроводов →</span>
+        <span class="en">Interactive map of urban water supply →</span>
+      </a>
+      <a href="urban_beautification1910.html">
+        <span class="ru">Городское благоустройство · 1910 →</span>
+        <span class="en">Urban amenities · 1910 →</span>
+      </a>
+      <a href="index.html">
+        <span class="ru">Главная страница проекта →</span>
+        <span class="en">Project home page →</span>
+      </a>
+    </div>
+  </div>
+
+</div><!-- /page -->
+
+<footer class="tx-footer">
+  <div class="tx-footer-inner">
+    <div>
+      <span class="ru">
+        <strong>Источники:</strong> карты «История эпидемий в России» (табл. 8–10).
+        Значения интенсивности считаны визуально со штриховых карт.
+        Данные по водопроводам: «Водоснабжение и способы удаления нечистот в городах России» (СПб., 1912).
+      </span>
+      <span class="en">
+        <strong>Sources:</strong> maps from <em>History of Epidemics in Russia</em> (tables 8–10).
+        Intensity values were visually read from hatch maps.
+        Water supply data: <em>Water Supply and Sewage Disposal in the Cities of Russia</em> (St. Petersburg, 1912).
+      </span>
+    </div>
+    <nav class="tx-footer-nav">
+      <a href="index.html"><span class="ru">Главная</span><span class="en">Home</span></a>
+      <a href="urban_beautification1910.html"><span class="ru">Благоустройство 1910</span><span class="en">Amenities 1910</span></a>
+      <a href="WaterSupply in Russian Empire/map.html"><span class="ru">Карта водопроводов</span><span class="en">Water supply map</span></a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+// ─── Language helpers ───
+function isEn() { return document.documentElement.hasAttribute('data-en'); }
+function t(ru, en) { return isEn() ? en : ru; }
+
+function setLang(l) {
+  try { localStorage.setItem('tx_lang', l); } catch(e) {}
+  if (l === 'en') document.documentElement.setAttribute('data-en', '');
+  else            document.documentElement.removeAttribute('data-en');
+  document.querySelectorAll('.lang-sw button').forEach(b => b.classList.toggle('on', b.dataset.lang === l));
+  renderTable();
+}
+// ─── Province name translations ───
+const PROV_EN = {
+  'Обл. Войска Донского': 'Don Cossack Oblast',
+  'Астраханская':         'Astrakhanskaya',
+  'Саратовская':          'Saratovskaya',
+  'Воронежская':          'Voronezhskaya',
+  'Кубанская':            'Kubanskaya',
+  'Екатеринославская':    'Yekaterinoslavskaya',
+  'Таврическая':          'Tavricheskaya',
+  'Терская':              'Terskaya',
+  'Харьковская':          'Kharkovskaya',
+  'Киевская':             'Kiyevskaya',
+  'Симбирская':           'Simbirskaya',
+  'Самарская':            'Samarskaya',
+  'Ставропольская':       "Stavropol'skaya",
+  'Тамбовская':           'Tambovskaya',
+  'Херсонская':           'Khersonskaya',
+  'Дагестанская':         'Dagestanskaya',
+  'Курская':              'Kurskaya',
+  'Полтавская':           'Poltavskaya',
+  'Пензенская':           'Penzenskaya',
+  'Нижегородская':        'Nizhegorodskaya',
+};
+
+// ─── Waterworks period label translations ───
+const YEAR_EN = {
+  'до 1870':      'before 1870',
+  '1870–92':      '1870–92',
+  'после 1892':   'after 1892',
+  'частный кап.': 'private capital',
+  'ведомств.':    'departmental',
+  'многоэтапн.':  'multi-stage',
+};
+
+// ─── Data ───
+const data = [
+  {id:47, name:"Обл. Войска Донского", v23:6, l23:"75–90‰",  v92:6, l92:"15–25", v10:6, l10:"50–75",  score:2.607, high:3,
+   all:["Новочеркасск (до 1870)","Ростов-на-Дону (частный кап.)","Таганрог (1870–92)"]},
+  {id:2,  name:"Астраханская",         v23:5, l23:"65–75‰",  v92:6, l92:"15–25", v10:3, l10:"5–15",   score:2.065, high:2,
+   all:["Астрахань (частный кап.)"]},
+  {id:35, name:"Саратовская",          v23:4, l23:"45–65‰",  v92:6, l92:"15–25", v10:4, l10:"15–25",  score:2.024, high:2,
+   all:["Саратов (1870–92)","Царицын (1870–92)","Хвалынск (1870–92)","Балашов (после 1892)","Камышин (после 1892)","Аткарск (частный кап.)","Кузнецк (частный кап.)","Вольск (частный кап.)"]},
+  {id:16, name:"Воронежская",          v23:4, l23:"45–65‰",  v92:4, l92:"5–10",  v10:5, l10:"25–50",  score:1.863, high:3,
+   all:["Валуйки (после 1892)","Новохопёрск (после 1892)","Борисоглебск (до 1870)"]},
+  {id:53, name:"Кубанская",            v23:0, l23:"",         v92:6, l92:"15–25", v10:8, l10:">100",   score:1.857, high:2,
+   all:["Екатеринодар (после 1892)","Новороссийск (после 1892)","Армавир (1870–92)","Майкоп (частный кап.)"]},
+  {id:18, name:"Екатеринославская",    v23:4, l23:"45–65‰",  v92:3, l92:"1–5",   v10:6, l10:"50–75",  score:1.845, high:2,
+   all:["Екатеринослав (после 1892)","Мариуполь (после 1892)","Луганск (1870–92)","Бахмут (частный кап.)"]},
+  {id:38, name:"Таврическая",          v23:4, l23:"45–65‰",  v92:3, l92:"1–5",   v10:6, l10:"50–75",  score:1.845, high:2,
+   all:["Балаклава (после 1892)","Керчь-Еникале (после 1892)","Симферополь (после 1892)","Бахчисарай (до 1870)","Евпатория (1870–92)","Карасубазар (1870–92)","Перекоп (частный кап.)","Феодосия (частный кап.)","Ялта (1870–92)"]},
+  {id:55, name:"Терская",              v23:0, l23:"",         v92:7, l92:"25–50", v10:6, l10:"50–75",  score:1.750, high:2,
+   all:["Кисловодск (ведомств.)","Пятигорск (ведомств.)","Грозный (1870–92)","Моздок (частный кап.)","Владикавказ (частный кап.)"]},
+  {id:43, name:"Харьковская",          v23:4, l23:"45–65‰",  v92:3, l92:"1–5",   v10:5, l10:"25–50",  score:1.720, high:2,
+   all:["Харьков (1870–92)","Славянск (после 1892)","Сумы (после 1892)"]},
+  {id:7,  name:"Киевская",             v23:4, l23:"45–65‰",  v92:3, l92:"1–5",   v10:5, l10:"25–50",  score:1.720, high:2,
+   all:["Киев (частный кап.)","Бердичев (1870–92)","Умань (1870–92)"]},
+  {id:36, name:"Симбирская",           v23:3, l23:"30–45‰",  v92:5, l92:"10–15", v10:4, l10:"15–25",  score:1.714, high:1,
+   all:["Симбирск (частный кап.)","Алатырь (1870–92)","Сенгилей (1870–92)"]},
+  {id:33, name:"Самарская",            v23:1, l23:"0–15‰",   v92:6, l92:"15–25", v10:5, l10:"25–50",  score:1.649, high:2,
+   all:["Самара (частный кап.)","Бузулук (после 1892)","Бугуруслан (частный кап.)","Бугульма (частный кап.)"]},
+  {id:54, name:"Ставропольская",       v23:0, l23:"",         v92:5, l92:"10–15", v10:7, l10:"75–100", score:1.589, high:2,
+   all:["Ставрополь (до 1870)"]},
+  {id:39, name:"Тамбовская",           v23:3, l23:"30–45‰",  v92:4, l92:"5–10",  v10:4, l10:"15–25",  score:1.571, high:1,
+   all:["Козлов (после 1892)","Моршанск (после 1892)","Спасск (после 1892)","Усмань (после 1892)","Липецк (частный кап.)","Тамбов (частный кап.)"]},
+  {id:44, name:"Херсонская",           v23:3, l23:"30–45‰",  v92:3, l92:"1–5",   v10:5, l10:"25–50",  score:1.554, high:1,
+   all:["Одесса (1870–92)","Херсон (1870–92)","Елисаветград (после 1892)","Николаев (после 1892)","Тирасполь (после 1892)"]},
+  {id:52, name:"Дагестанская",         v23:0, l23:"",         v92:7, l92:"25–50", v10:4, l10:"15–25",  score:1.500, high:1,
+   all:["Петровск (после 1892)","Темир-Хан-Шура (1870–92)"]},
+  {id:22, name:"Курская",              v23:3, l23:"30–45‰",  v92:3, l92:"1–5",   v10:4, l10:"15–25",  score:1.429, high:0,
+   all:["Белгород (до 1870)","Курск (1870–92)"]},
+  {id:30, name:"Полтавская",           v23:4, l23:"45–65‰",  v92:2, l92:"0.01–1",v10:3, l10:"5–15",   score:1.327, high:1,
+   all:["Константиноград (после 1892)","Полтава (после 1892)"]},
+  {id:28, name:"Пензенская",           v23:3, l23:"30–45‰",  v92:3, l92:"1–5",   v10:3, l10:"5–15",   score:1.304, high:0,
+   all:["Пенза (после 1892)"]},
+  {id:24, name:"Нижегородская",        v23:2, l23:"15–30‰",  v92:3, l92:"1–5",   v10:3, l10:"5–15",   score:1.137, high:0,
+   all:["Нижний Новгород (многоэтапн.)","Горбатов (после 1892)","Починки (после 1892)"]},
+];
+
+const colors23 = ['','#ffffd4','#fed976','#fd8d3c','#f03b20','#bd0026','#800026'];
+const colors92 = ['','#ffffd4','#ffffb2','#fed976','#feb24c','#fd8d3c','#f03b20','#bd0026'];
+const colors10 = ['','#ffffd4','#ffffb2','#fed976','#feb24c','#fd8d3c','#f03b20','#bd0026','#67000d'];
+
+function cellHtml(val, label, colors) {
+  if (!val) return `<span class="cell-nodata">${t('н/д','n/a')}</span>`;
+  const color = colors[val] || '#eee';
+  return `<div class="cell-value">
+    <div class="level-bar" style="width:${val*6+4}px;background:${color}"></div>
+    <span>${label}</span>
+  </div>`;
+}
+
+function parseCity(entry) {
+  const m = entry.match(/^(.+?)\s*\((.+)\)$/);
+  if (!m) return { name: entry, year: '' };
+  return { name: m[1].trim(), year: m[2].trim() };
+}
+
+function renderTable() {
+  const tbody = document.getElementById('table-body');
+  const maxScore = data[0].score;
+  tbody.innerHTML = '';
+
+  data.forEach((r, i) => {
+    const rank = i + 1;
+    const rowClass = rank <= 3 ? 'top3' : (r.high === 3 ? 'persistent' : '');
+    const stabilityDots = '●'.repeat(r.high);
+    const stabilityColor = r.high === 3 ? '#9B1C1C' : r.high === 2 ? '#C07A2A' : r.high === 1 ? '#8B9EB5' : '#ccc';
+    const barWidth = Math.round((r.score / maxScore) * 80);
+
+    const displayProvName = isEn() ? (PROV_EN[r.name] || r.name) : r.name;
+
+    const wwHtml = r.all.length
+      ? r.all.map(w => {
+          const {name, year} = parseCity(w);
+          const displayYear = isEn() ? (YEAR_EN[year] || year) : year;
+          const displayName = isEn() ? (CITY_EN[name] || name) : name;
+          return `<span class="ww-tag">${displayName}${displayYear ? `<span class="ww-year">(${displayYear})</span>` : ''}</span>`;
+        }).join('')
+      : `<span class="ww-none">${t('нет данных','no data')}</span>`;
+
+    const stabTooltip = t(
+      'В скольких из трёх периодов губерния в верхней половине шкалы',
+      'Number of periods in the upper half of the scale'
+    );
+
+    tbody.innerHTML += `<tr class="${rowClass}">
+      <td class="rank">${rank}</td>
+      <td class="gubern-name">${displayProvName}<span class="gubern-num">№${r.id}</span></td>
+      <td>${cellHtml(r.v23, r.l23, colors23)}</td>
+      <td>${cellHtml(r.v92, r.l92, colors92)}</td>
+      <td>${cellHtml(r.v10, r.l10, colors10)}</td>
+      <td>
+        <div class="score-wrap">
+          <div class="score-bar" style="width:${barWidth}px"></div>
+          <span class="score-num">${r.score.toFixed(2)}</span>
+        </div>
+      </td>
+      <td class="stability" style="color:${stabilityColor}" title="${stabTooltip}">${stabilityDots || '○'}</td>
+      <td class="ww-cell">${wwHtml}</td>
+    </tr>`;
+  });
+}
+
+// ─── City name transliterations (EN mode) ───
+const CITY_EN = {
+  'Новочеркасск':      'Novocherkassk',
+  'Ростов-на-Дону':    'Rostov-on-Don',
+  'Таганрог':          'Taganrog',
+  'Астрахань':         'Astrakhan',
+  'Саратов':           'Saratov',
+  'Царицын':           'Tsaritsyn',
+  'Хвалынск':          'Khvalyinsk',
+  'Балашов':           'Balashov',
+  'Камышин':           'Kamyshin',
+  'Аткарск':           'Atkarsk',
+  'Кузнецк':           'Kuznetsk',
+  'Вольск':            "Vol'sk",
+  'Валуйки':           'Valuyki',
+  'Новохопёрск':       'Novokhopyorsk',
+  'Борисоглебск':      'Borisoglebsk',
+  'Екатеринодар':      'Yekaterinodar',
+  'Новороссийск':      'Novorossiysk',
+  'Армавир':           'Armavir',
+  'Майкоп':            'Maykop',
+  'Екатеринослав':     'Yekaterinoslav',
+  'Мариуполь':         'Mariupol',
+  'Луганск':           'Lugansk',
+  'Бахмут':            'Bakhmut',
+  'Балаклава':         'Balaklava',
+  'Керчь-Еникале':     'Kerch-Yenikale',
+  'Симферополь':       'Simferopol',
+  'Бахчисарай':        'Bakhchisaray',
+  'Евпатория':         'Yevpatoriya',
+  'Карасубазар':       'Karasubazar',
+  'Перекоп':           'Perekop',
+  'Феодосия':          'Feodosiya',
+  'Ялта':              'Yalta',
+  'Кисловодск':        'Kislovodsk',
+  'Пятигорск':         'Pyatigorsk',
+  'Грозный':           'Grozny',
+  'Моздок':            'Mozdok',
+  'Владикавказ':       'Vladikavkaz',
+  'Харьков':           'Kharkov',
+  'Славянск':          'Slavyansk',
+  'Сумы':              'Sumy',
+  'Киев':              'Kyiv',
+  'Бердичев':          'Berdychiv',
+  'Умань':             "Uman'",
+  'Симбирск':          'Simbirsk',
+  'Алатырь':           "Alatyr'",
+  'Сенгилей':          'Sengiley',
+  'Самара':            'Samara',
+  'Бузулук':           'Buzuluk',
+  'Бугуруслан':        'Buguruslan',
+  'Бугульма':          'Bugulma',
+  'Ставрополь':        "Stavropol'",
+  'Козлов':            'Kozlov',
+  'Моршанск':          'Morshansk',
+  'Спасск':            'Spassk',
+  'Усмань':            "Usman'",
+  'Липецк':            'Lipetsk',
+  'Тамбов':            'Tambov',
+  'Одесса':            'Odessa',
+  'Херсон':            'Kherson',
+  'Елисаветград':      'Yelisavetgrad',
+  'Николаев':          'Nikolaev',
+  'Тирасполь':         'Tiraspol',
+  'Петровск':          'Petrovsk',
+  'Темир-Хан-Шура':    'Temir-Khan-Shura',
+  'Белгород':          'Belgorod',
+  'Курск':             'Kursk',
+  'Константиноград':   'Konstantinograd',
+  'Полтава':           'Poltava',
+  'Пенза':             'Penza',
+  'Нижний Новгород':   'Nizhny Novgorod',
+  'Горбатов':          'Gorbatov',
+  'Починки':           'Pochinki',
+};
+
+renderTable();
+
+// ─── Restore saved language (must run AFTER all data + functions are defined) ───
+(function() {
+  let s = 'ru';
+  try { s = localStorage.getItem('tx_lang') || 'ru'; } catch(e) {}
+  if (s !== 'ru') setLang(s);
+})();
+</script>
+
+</body>
+</html>
