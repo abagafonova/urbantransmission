@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Городское благоустройство и инфраструктура в губерниях и областях Российской империи в 1910 г.: водопровод, канализация, электрическое освещение, трамвай, телефон, телеграф. Данные Статистического ежегодника 1913 г.">
+<title>Благоустройство городов Российской Империи · 1910</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --page-cream:  #F6EFDC;
+  --page-ochre:  #E8D5A8;
+  --page-turq:   #BED5CF;
+  --page-sky:    #D8E3E1;
+  --glass-tint:  rgba(250,244,228,0.72);
+  --glass-edge:  rgba(20,36,60,0.18);
+  --ink:         #1A2B47;
+  --ink-soft:    #2B4773;
+  --muted:       #6F7D95;
+  --faint:       #A6AEBC;
+  --copper:      #8B5E3C;
+  --copper-hl:   #A67448;
+  --brass:       #B58A4A;
+  --ochre:       #C79243;
+  --turq:        #4F8781;
+  --blue-deep:   #1A2B47;
+  --line:        rgba(20,36,60,0.12);
+  --line-copper: rgba(139,94,60,0.30);
+  --c-elec:   #C4862A;
+  --c-gas:    #6B7E55;
+  --c-water:  #3D7EA6;
+  --c-sewer:  #5A7A9B;
+  --c-fire:   #9B3030;
+  --c-tram:   #7B4E8B;
+  --c-phone:  #3A7A6A;
+  --c-tele:   #2B5A8B;
+  --c-slaught:#7A5A3A;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--page-cream);
+  background-image:
+    radial-gradient(1100px 700px at 8% 4%, var(--page-sky) 0%, rgba(216,227,225,0) 55%),
+    radial-gradient(900px 600px at 95% 3%, var(--page-turq) 0%, rgba(190,213,207,0) 60%),
+    radial-gradient(1200px 900px at 50% 110%, var(--page-ochre) 0%, rgba(232,213,168,0) 55%),
+    linear-gradient(180deg, var(--page-cream) 0%, var(--page-cream) 30%, rgba(232,213,168,0.45) 70%, rgba(190,213,207,0.35) 100%);
+  color: var(--ink);
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  min-height: 100vh;
+}
+body::before {
+  content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 0;
+  opacity: 0.28; mix-blend-mode: multiply;
+  background-image:
+    radial-gradient(1px 1px at 23px 17px, rgba(139,94,60,0.06) 50%, transparent 51%),
+    radial-gradient(1px 1px at 71px 43px, rgba(79,135,129,0.05) 50%, transparent 51%),
+    radial-gradient(1px 1px at 113px 89px, rgba(26,43,71,0.05) 50%, transparent 51%);
+  background-size: 140px 120px;
+}
+svg.defs { position: absolute; width: 0; height: 0; }
+header {
+  position: relative; z-index: 10;
+  padding: 20px 32px 22px;
+  background: var(--glass-tint);
+  backdrop-filter: blur(18px) saturate(1.2);
+  border-bottom: 1px solid var(--glass-edge);
+  box-shadow: 0 1px 0 rgba(255,255,255,0.55) inset, 0 4px 16px rgba(30,40,70,0.07);
+}
+header::before, header::after, .hdr-bl, .hdr-br {
+  content: ''; position: absolute;
+  width: 28px; height: 28px;
+  border: 1px solid var(--line-copper); pointer-events: none;
+}
+header::before { top: 7px; left: 7px; border-right: none; border-bottom: none; }
+header::after  { top: 7px; right: 7px; border-left: none; border-bottom: none; }
+.hdr-bl { bottom: 7px; left: 7px; border-right: none; border-top: none; }
+.hdr-br { bottom: 7px; right: 7px; border-left: none; border-top: none; }
+.hdr-bl::before, .hdr-br::before {
+  content: ''; position: absolute; width: 3px; height: 3px;
+  border-radius: 50%; background: var(--copper); opacity: 0.55;
+}
+.hdr-bl::before { bottom: -1.5px; left: -1.5px; }
+.hdr-br::before { bottom: -1.5px; right: -1.5px; }
+.header-inner { max-width: 1280px; margin: 0 auto; display: flex; align-items: center; gap: 20px; }
+.header-icon { width: 56px; height: 56px; flex-shrink: 0; color: var(--copper); opacity: 0.88; }
+.header-icon svg { width: 100%; height: 100%; display: block; }
+.header-text { flex: 1; text-align: center; position: relative; padding: 4px 0; }
+.header-text::before, .header-text::after {
+  content: ''; position: absolute; left: 6%; right: 6%; height: 1px;
+  background: repeating-linear-gradient(90deg, var(--line-copper) 0 7px, transparent 7px 11px);
+}
+.header-text::before { top: -2px; }
+.header-text::after  { bottom: -4px; }
+.header-text h1 {
+  font-family: Cambria, 'Palatino Linotype', Georgia, serif;
+  font-weight: 500; font-variant: small-caps;
+  font-size: 1.9rem; letter-spacing: 0.05em; color: var(--ink); line-height: 1.1;
+}
+.header-text h1 em { color: var(--copper); font-style: italic; font-variant: normal; }
+.header-text .sub {
+  margin-top: 5px; font-size: 0.60rem; font-weight: 500;
+  letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted);
+  display: flex; gap: 14px; justify-content: center; align-items: center; flex-wrap: wrap;
+}
+.header-text .sub .sep { color: var(--copper); opacity: 0.6; }
+.header-back {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 7px 14px; border-radius: 999px;
+  background: rgba(246,239,220,0.6); border: 1px solid var(--line-copper);
+  color: var(--ink-soft); font-size: 0.72rem; font-weight: 500;
+  letter-spacing: 0.05em; text-decoration: none; transition: all .18s; flex-shrink: 0;
+  backdrop-filter: blur(6px);
+}
+.header-back:hover { background: var(--ink); color: var(--page-cream); border-color: var(--ink); }
+.header-back svg { width: 14px; height: 14px; }
+.page { position: relative; z-index: 1; max-width: 1280px; margin: 0 auto; padding: 32px 24px 72px; }
+.note {
+  background: rgba(246,239,220,0.65); border: 1px solid var(--line-copper);
+  border-left: 3px solid var(--copper); border-radius: 8px;
+  padding: 12px 18px; font-size: 0.75rem; line-height: 1.75;
+  color: var(--ink-soft); margin-bottom: 30px; backdrop-filter: blur(8px);
+}
+.note strong { color: var(--copper); font-weight: 600; }
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px; margin-bottom: 36px;
+}
+.stat-card {
+  background: rgba(246,239,220,0.75);
+  border: 1px solid var(--line-copper); border-radius: 10px;
+  padding: 14px 16px 12px; text-align: center;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 2px 8px rgba(30,40,70,0.05);
+  position: relative; overflow: hidden;
+}
+.stat-card::before { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; }
+.stat-icon { width: 28px; height: 28px; margin: 0 auto 8px; }
+.stat-icon svg { width: 100%; height: 100%; }
+.stat-num {
+  font-family: Cambria, 'Palatino Linotype', Georgia, serif;
+  font-size: 1.95rem; font-weight: 600; line-height: 1;
+  color: var(--ink); margin-bottom: 2px;
+}
+.stat-pct { font-size: 0.68rem; color: var(--muted); font-weight: 500; letter-spacing: 0.06em; }
+.stat-label { font-size: 0.62rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.10em; color: var(--muted); margin-top: 4px; }
+.stat-bar { position: absolute; bottom: 0; left: 0; height: 3px; border-radius: 0 0 10px 10px; opacity: 0.75; }
+.section-title {
+  font-family: Cambria, 'Palatino Linotype', Georgia, serif;
+  font-weight: 500; font-variant: small-caps;
+  font-size: 1.15rem; letter-spacing: 0.04em; color: var(--ink);
+  margin: 0 0 16px; padding-bottom: 9px;
+  border-bottom: 1px solid var(--line-copper); position: relative;
+}
+.section-title::after {
+  content: ''; position: absolute; bottom: -1px; left: 0;
+  width: 64px; height: 2px; background: var(--copper);
+}
+
+/* REGION SUMMARY CARDS */
+.region-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px; margin-bottom: 36px;
+}
+.region-card {
+  background: rgba(26,43,71,0.04);
+  border: 1px solid var(--line-copper); border-radius: 10px;
+  padding: 14px 16px; cursor: pointer; transition: all .18s;
+}
+.region-card:hover, .region-card.active {
+  background: var(--ink); color: white;
+  border-color: var(--ink);
+}
+.region-card.active .rc-name, .region-card.active .rc-stat { color: rgba(246,239,220,0.9); }
+.region-card.active .rc-meta { color: rgba(246,239,220,0.55); }
+.rc-name {
+  font-family: Cambria, 'Palatino Linotype', Georgia, serif;
+  font-size: 0.88rem; font-weight: 600;
+  color: var(--ink); margin-bottom: 8px; line-height: 1.3;
+}
+.rc-meta { font-size: 0.60rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px; }
+.rc-bars { display: flex; flex-direction: column; gap: 4px; }
+.rc-bar-row { display: flex; align-items: center; gap: 6px; }
+.rc-bar-label { font-size: 0.58rem; color: var(--muted); width: 48px; flex-shrink: 0; }
+.region-card.active .rc-bar-label { color: rgba(246,239,220,0.6); }
+.rc-bar-track { flex: 1; height: 5px; background: rgba(20,36,60,0.1); border-radius: 2px; overflow: hidden; }
+.region-card.active .rc-bar-track { background: rgba(255,255,255,0.15); }
+.rc-bar-fill { height: 100%; border-radius: 2px; }
+.rc-stat { font-size: 0.62rem; color: var(--muted); text-align: right; width: 28px; }
+
+/* REGION FILTER TABS */
+.region-tabs {
+  display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; align-items: center;
+}
+.region-tabs label { font-size: 0.7rem; color: var(--muted); font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; margin-right: 4px; }
+.region-tab {
+  padding: 4px 12px; border-radius: 4px; font-size: 0.68rem; font-weight: 500;
+  border: 1px solid var(--line-copper); background: rgba(246,239,220,0.8);
+  color: var(--ink-soft); cursor: pointer; transition: all .15s; letter-spacing: 0.03em;
+}
+.region-tab:hover { background: rgba(139,94,60,0.12); border-color: var(--copper); }
+.region-tab.active { background: var(--ink); color: var(--page-cream); border-color: var(--ink); }
+
+.controls {
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 14px;
+}
+.controls label { font-size: 0.7rem; color: var(--muted); font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; }
+.sort-btn {
+  padding: 4px 10px; border-radius: 4px; font-size: 0.68rem; font-weight: 500;
+  border: 1px solid var(--line-copper); background: rgba(246,239,220,0.8);
+  color: var(--ink-soft); cursor: pointer; transition: all .15s; letter-spacing: 0.04em;
+}
+.sort-btn:hover { background: var(--ink); color: var(--page-cream); border-color: var(--ink); }
+.sort-btn.active { background: var(--ink); color: var(--page-cream); border-color: var(--ink); }
+.table-wrap {
+  overflow-x: auto; -webkit-overflow-scrolling: touch;
+  border-radius: 10px;
+  box-shadow: 0 4px 22px rgba(30,40,70,0.09), 0 1px 0 rgba(255,255,255,0.6) inset;
+  border: 1px solid var(--line-copper);
+}
+table { width: 100%; border-collapse: collapse; font-size: 0.82rem; background: rgba(246,239,220,0.85); backdrop-filter: blur(10px); }
+thead tr { background: var(--blue-deep); position: sticky; top: 0; z-index: 2; }
+thead th {
+  padding: 10px 8px; text-align: left;
+  font-family: Cambria, 'Palatino Linotype', Georgia, serif;
+  font-weight: 500; font-variant: small-caps;
+  font-size: 0.74rem; letter-spacing: 0.04em;
+  color: rgba(246,239,220,0.90);
+  border-right: 1px solid rgba(255,255,255,0.08); white-space: nowrap;
+}
+thead th:last-child { border-right: none; }
+thead th.th-cat { text-align: center; padding: 8px 6px; cursor: pointer; transition: background .15s; }
+thead th.th-cat:hover { background: rgba(255,255,255,0.08); }
+thead th.th-cat.sorted { background: rgba(183,145,88,0.25); }
+.th-icon { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.th-icon svg { width: 15px; height: 15px; opacity: 0.85; }
+.th-icon span { font-size: 0.70rem; letter-spacing: 0.04em; opacity: 0.88; }
+tbody tr { border-bottom: 1px solid var(--line); transition: background .12s; }
+tbody tr:hover { background: rgba(183,145,88,0.07); }
+tbody tr:nth-child(even) { background: rgba(232,213,168,0.18); }
+tbody tr:nth-child(even):hover { background: rgba(183,145,88,0.10); }
+tbody td { padding: 9px 8px; vertical-align: middle; border-right: 1px solid var(--line); line-height: 1.45; }
+tbody td:last-child { border-right: none; }
+.td-rank { font-size: 0.62rem; color: var(--faint); text-align: center; width: 26px; }
+.td-name { font-family: Cambria, 'Palatino Linotype', Georgia, serif; font-size: 0.88rem; font-weight: 500; color: var(--ink); white-space: nowrap; min-width: 160px; }
+.td-region { font-size: 0.62rem; color: var(--muted); white-space: nowrap; }
+.td-total { text-align: center; font-weight: 600; color: var(--ink-soft); min-width: 44px; }
+.td-cat { text-align: center; min-width: 52px; }
+.gauge { display: flex; flex-direction: column; align-items: center; gap: 2px; }
+.gauge-track { width: 38px; height: 7px; border-radius: 2px; background: rgba(20,36,60,0.08); border: 1px solid rgba(20,36,60,0.12); overflow: hidden; position: relative; }
+.gauge-fill { height: 100%; border-radius: 1px; transition: width .3s; background-image: repeating-linear-gradient(-45deg, rgba(255,255,255,0.15) 0px, rgba(255,255,255,0.15) 2px, transparent 2px, transparent 4px); }
+.gauge-val { font-size: 0.60rem; color: var(--muted); font-weight: 500; line-height: 1; }
+.nd { font-size: 0.60rem; color: var(--faint); font-style: italic; }
+.tx-footer {
+  background: var(--blue-deep);
+  color: rgba(255,255,255,.38);
+  padding: 28px 32px;
+  border-top: 2px solid var(--turq);
+  font: 300 0.78rem/1.7 Cambria, Georgia, serif;
+}
+.tx-footer-inner {
+  max-width: 1280px; margin: 0 auto;
+  display: flex; flex-wrap: wrap; gap: 10px 24px;
+  justify-content: space-between; align-items: center;
+}
+.tx-footer strong { color: rgba(255,255,255,.72); }
+.tx-footer a { color: rgba(255,255,255,.45); text-decoration: none; }
+.tx-footer a:hover { color: #fff; }
+.tx-footer-nav { display: flex; gap: 16px; flex-wrap: wrap; }
+/* ─── LANG ─── */
+.en { display: none; }
+.en-bl { display: none; }
+[data-en] .ru { display: none; }
+[data-en] .en { display: inline; }
+[data-en] .ru-bl { display: none; }
+[data-en] .en-bl { display: block; }
+.lang-sw { display: flex; gap: 4px; flex-shrink: 0; }
+.lang-sw button { background: rgba(26,43,71,0.06); border: 1px solid var(--line); color: var(--muted); font: 700 .68rem/1 'Inter', sans-serif; letter-spacing: .06em; padding: 5px 9px; cursor: pointer; transition: all .15s; border-radius: 3px; }
+.lang-sw button.on { color: var(--page-cream); background: var(--ink); border-color: var(--ink); }
+.lang-sw button:hover:not(.on) { color: var(--ink); border-color: var(--ink-soft); }
+@media (max-width: 900px) { .region-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 768px) {
+  header { padding: 14px 18px 16px; }
+  .header-text h1 { font-size: 1.35rem; }
+  .page { padding: 20px 12px 48px; }
+  .stats-grid { grid-template-columns: repeat(3, 1fr); }
+  .region-grid { grid-template-columns: repeat(2, 1fr); }
+  table { min-width: 700px; font-size: 0.66rem; }
+  thead th { padding: 8px 5px; font-size: 0.68rem; }
+  tbody td { padding: 6px 5px; }
+}
+@media (max-width: 480px) {
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .region-grid { grid-template-columns: 1fr 1fr; }
+  .header-text h1 { font-size: 1.1rem; }
+  table { min-width: 620px; font-size: 0.60rem; }
+}
+</style>
+</head>
+<body>
+
+<svg class="defs" xmlns="http://www.w3.org/2000/svg"><defs></defs></svg>
+
+<header>
+  <div class="hdr-bl"></div><div class="hdr-br"></div>
+  <div class="header-inner">
+    <div class="header-icon">
+      <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="30" cy="30" r="28" stroke="currentColor" stroke-width="0.8" opacity="0.25"/>
+        <rect x="6" y="28" width="10" height="20" stroke="currentColor" stroke-width="1.2" fill="none"/>
+        <rect x="8" y="30" width="2" height="2" fill="currentColor" opacity="0.4"/>
+        <rect x="12" y="30" width="2" height="2" fill="currentColor" opacity="0.4"/>
+        <rect x="8" y="34" width="2" height="2" fill="currentColor" opacity="0.4"/>
+        <rect x="12" y="34" width="2" height="2" fill="currentColor" opacity="0.4"/>
+        <rect x="22" y="16" width="16" height="32" stroke="currentColor" stroke-width="1.2" fill="none"/>
+        <rect x="24" y="18" width="3" height="3" fill="currentColor" opacity="0.4"/>
+        <rect x="29" y="18" width="3" height="3" fill="currentColor" opacity="0.4"/>
+        <rect x="24" y="23" width="3" height="3" fill="currentColor" opacity="0.4"/>
+        <rect x="29" y="23" width="3" height="3" fill="currentColor" opacity="0.4"/>
+        <rect x="24" y="28" width="3" height="3" fill="currentColor" opacity="0.4"/>
+        <rect x="29" y="28" width="3" height="3" fill="currentColor" opacity="0.4"/>
+        <rect x="27" y="34" width="6" height="14" fill="currentColor" opacity="0.12"/>
+        <line x1="30" y1="16" x2="30" y2="8" stroke="currentColor" stroke-width="1.2"/>
+        <polygon points="30,6 32,10 28,10" fill="currentColor" opacity="0.6"/>
+        <rect x="44" y="24" width="10" height="24" stroke="currentColor" stroke-width="1.2" fill="none"/>
+        <rect x="46" y="26" width="2" height="2" fill="currentColor" opacity="0.4"/>
+        <rect x="50" y="26" width="2" height="2" fill="currentColor" opacity="0.4"/>
+        <rect x="46" y="30" width="2" height="2" fill="currentColor" opacity="0.4"/>
+        <rect x="50" y="30" width="2" height="2" fill="currentColor" opacity="0.4"/>
+        <line x1="4" y1="48" x2="56" y2="48" stroke="currentColor" stroke-width="1" opacity="0.4"/>
+        <line x1="18" y1="48" x2="18" y2="38" stroke="currentColor" stroke-width="0.8" opacity="0.6"/>
+        <path d="M15,38 Q18,35 21,38" stroke="currentColor" stroke-width="0.8" fill="none" opacity="0.6"/>
+        <circle cx="18" cy="38" r="1.5" fill="currentColor" opacity="0.7"/>
+        <line x1="42" y1="48" x2="42" y2="38" stroke="currentColor" stroke-width="0.8" opacity="0.6"/>
+        <path d="M39,38 Q42,35 45,38" stroke="currentColor" stroke-width="0.8" fill="none" opacity="0.6"/>
+        <circle cx="42" cy="38" r="1.5" fill="currentColor" opacity="0.7"/>
+        <line x1="4" y1="50" x2="56" y2="50" stroke="currentColor" stroke-width="0.6" stroke-dasharray="3,2" opacity="0.35"/>
+        <line x1="4" y1="52" x2="56" y2="52" stroke="currentColor" stroke-width="0.6" stroke-dasharray="3,2" opacity="0.35"/>
+      </svg>
+    </div>
+    <div class="header-text">
+      <h1><span class="ru">Городское благоустройство <em>&</em> инфраструктура</span><span class="en">Urban Amenities <em>&</em> Infrastructure</span></h1>
+      <div class="sub">
+        <span><span class="ru">Российская Империя</span><span class="en">Russian Empire</span></span>
+        <span class="sep">·</span>
+        <span><span class="ru">Данные 1910 г.</span><span class="en">Data from 1910</span></span>
+        <span class="sep">·</span>
+        <span>89 <span class="ru">губерний и областей</span><span class="en">provinces &amp; oblasts</span></span>
+        <span class="sep">·</span>
+        <span>5 <span class="ru">регионов</span><span class="en">regions</span></span>
+        <span class="sep">·</span>
+        <span><span class="ru">Источник: Стат. ежегодник России, 1914</span><span class="en">Source: Statistical Yearbook of Russia, 1914</span></span>
+      </div>
+    </div>
+    <div class="lang-sw" role="group" aria-label="Language / Язык">
+      <button data-lang="ru" class="on" onclick="setLang('ru')">РУ</button>
+      <button data-lang="en" onclick="setLang('en')">EN</button>
+    </div>
+    <a href="index.html" class="header-back">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10 12L6 8l4-4"/></svg>
+      <span class="ru">На главную</span><span class="en">Home</span>
+    </a>
+  </div>
+</header>
+
+<div class="page">
+
+  <div class="note">
+    <span class="ru"><strong>Источник:</strong> Сведения о городских поселениях в 1910 г. // Статистический ежегодник России. 1913 г. — СПб., 1914. Изд. Центрального статистического комитета МВД.
+    Данные показывают число городов в губернии / области, располагавших тем или иным видом благоустройства. Там, где в источнике указано «сведений нет», ячейка отмечена <em>н/д</em>.</span>
+    <span class="en"><strong>Source:</strong> Data on urban settlements in 1910 // Statistical Yearbook of Russia 1913. — St. Petersburg, 1914. Published by the Central Statistical Committee of the Ministry of Internal Affairs.
+    Figures show the number of towns in each province / oblast that had a given type of amenity. Cells marked <em>n/a</em> indicate "no data" in the source.</span>
+  </div>
+
+  <div class="note" style="margin-top:8px;border-left-color:rgba(111,125,149,.4);background:rgba(111,125,149,.07)">
+    <span class="ru"><strong>Примечание о числе городов.</strong> В таблице учтены городские и негородские поселения с населением свыше 10&thinsp;000 чел. по данным той же статистики благоустройства. В других разделах платформы фигурирует цифра <strong>950</strong> — это города и негородские поселения с городскими управами, обозначенные городами по данным источника «Города России в 1910&nbsp;г.» (Центральный статистический комитет МВД, 1914).</span>
+    <span class="en"><strong>Note on city counts.</strong> This table covers urban and non-urban settlements with a population over 10,000, as recorded in the urban services census. Elsewhere on this platform the figure <strong>950</strong> appears — this refers to settlements officially classified as cities in <em>Cities of Russia in 1910</em> (Central Statistical Committee, 1914), a category that also included non-urban settlements (posady, mestechki, and non-district towns) with their own municipal administrations.</span>
+  </div>
+
+  <!-- OVERALL STATS -->
+  <h2 class="section-title"><span class="ru">Охват инфраструктурой — по всей Империи</span><span class="en">Infrastructure Coverage — Empire-wide</span></h2>
+  <div class="stats-grid" id="stats-grid"></div>
+
+  <!-- REGION SUMMARY -->
+  <h2 class="section-title" style="margin-top:36px"><span class="ru">По регионам — сравнительный обзор</span><span class="en">By Region — Comparative Overview</span></h2>
+  <div class="region-grid" id="region-grid"></div>
+
+  <!-- TABLE -->
+  <h2 class="section-title" style="margin-top:36px"><span class="ru">Таблица по губерниям и областям</span><span class="en">Table by Province and Oblast</span></h2>
+
+  <div class="region-tabs" id="region-tabs">
+    <label><span class="ru">Регион:</span><span class="en">Region:</span></label>
+  </div>
+
+  <div class="controls">
+    <label><span class="ru">Сортировать:</span><span class="en">Sort:</span></label>
+    <button class="sort-btn active" data-sort="name"><span class="ru">По алфавиту</span><span class="en">Alphabetical</span></button>
+    <button class="sort-btn" data-sort="total"><span class="ru">Городов</span><span class="en">Cities</span></button>
+    <button class="sort-btn" data-sort="elec"><span class="ru">Электр. освещ.</span><span class="en">Electric light</span></button>
+    <button class="sort-btn" data-sort="water"><span class="ru">Водопровод</span><span class="en">Water supply</span></button>
+    <button class="sort-btn" data-sort="tram"><span class="ru">Трамвай</span><span class="en">Tram</span></button>
+    <button class="sort-btn" data-sort="sewer"><span class="ru">Канализация</span><span class="en">Sewerage</span></button>
+    <button class="sort-btn" data-sort="tele"><span class="ru">Телеграф</span><span class="en">Telegraph</span></button>
+  </div>
+
+  <div class="table-wrap">
+  <table id="main-table">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th><span class="ru">Губерния / Область</span><span class="en">Province / Oblast</span></th>
+      <th style="text-align:center"><span class="ru">Городов</span><span class="en">Cities</span></th>
+      <th class="th-cat" data-col="light">
+        <div class="th-icon">
+          <svg viewBox="0 0 16 16" fill="none" stroke="rgba(246,239,220,0.85)" stroke-width="1.3">
+            <circle cx="8" cy="7" r="3.5"/><line x1="8" y1="1" x2="8" y2="2.5"/>
+            <line x1="8" y1="11.5" x2="8" y2="13"/><line x1="1" y1="7" x2="2.5" y2="7"/>
+            <line x1="13.5" y1="7" x2="15" y2="7"/><line x1="3" y1="3" x2="4" y2="4"/>
+            <line x1="12" y1="10" x2="13" y2="11"/><line x1="13" y1="3" x2="12" y2="4"/>
+            <line x1="3" y1="11" x2="4" y2="10"/><line x1="6" y1="10.5" x2="10" y2="10.5"/>
+            <line x1="7" y1="12.5" x2="9" y2="12.5"/>
+          </svg>
+          <span class="ru">Освещ.</span><span class="en">Lighting</span>
+        </div>
+      </th>
+      <th class="th-cat" data-col="elec">
+        <div class="th-icon">
+          <svg viewBox="0 0 16 16" fill="rgba(246,239,220,0.85)" stroke="none"><polygon points="10,1 5,9 9,9 6,15 13,6 9,6"/></svg>
+          <span class="ru">Эл. освещ.</span><span class="en">Electric</span>
+        </div>
+      </th>
+      <th class="th-cat" data-col="gas">
+        <div class="th-icon">
+          <svg viewBox="0 0 16 16" fill="none" stroke="rgba(246,239,220,0.85)" stroke-width="1.3">
+            <path d="M8 14 C8 14 3 10 3 6.5 C3 4 5 2 8 2 C11 2 13 4 13 6.5 C13 10 8 14 8 14Z"/>
+            <path d="M8 11 C8 11 6 9 6 7.5 C6 6.5 7 5.5 8 5.5 C9 5.5 10 6.5 10 7.5 C10 9 8 11 8 11Z" fill="rgba(246,239,220,0.4)"/>
+          </svg>
+          <span class="ru">Газ. освещ.</span><span class="en">Gas light</span>
+        </div>
+      </th>
+      <th class="th-cat" data-col="water">
+        <div class="th-icon">
+          <svg viewBox="0 0 16 16" fill="none" stroke="rgba(246,239,220,0.85)" stroke-width="1.3"><path d="M8 2 C8 2 3 8 3 11 C3 13.2 5.2 15 8 15 C10.8 15 13 13.2 13 11 C13 8 8 2 8 2Z"/></svg>
+          <span class="ru">Водопр.</span><span class="en">Water</span>
+        </div>
+      </th>
+      <th class="th-cat" data-col="sewer">
+        <div class="th-icon">
+          <svg viewBox="0 0 16 16" fill="none" stroke="rgba(246,239,220,0.85)" stroke-width="1.3">
+            <rect x="2" y="5" width="12" height="8" rx="1"/><line x1="2" y1="8" x2="14" y2="8"/>
+            <line x1="5" y1="5" x2="5" y2="13"/><line x1="8" y1="5" x2="8" y2="13"/><line x1="11" y1="5" x2="11" y2="13"/>
+            <line x1="5" y1="3" x2="5" y2="5"/><line x1="11" y1="3" x2="11" y2="5"/><line x1="5" y1="2" x2="11" y2="2"/>
+          </svg>
+          <span class="ru">Канализ.</span><span class="en">Sewer</span>
+        </div>
+      </th>
+      <th class="th-cat" data-col="fire">
+        <div class="th-icon">
+          <svg viewBox="0 0 16 16" fill="none" stroke="rgba(246,239,220,0.85)" stroke-width="1.3">
+            <ellipse cx="8" cy="11" rx="6" ry="3"/><rect x="5" y="8" width="6" height="4"/>
+            <rect x="3" y="9" width="2" height="3"/><rect x="11" y="9" width="2" height="3"/>
+            <line x1="2" y1="14" x2="14" y2="14"/><line x1="8" y1="8" x2="8" y2="4"/><circle cx="8" cy="3.5" r="1.5"/>
+          </svg>
+          <span class="ru">Пожарн.</span><span class="en">Fire</span>
+        </div>
+      </th>
+      <th class="th-cat" data-col="tram">
+        <div class="th-icon">
+          <svg viewBox="0 0 16 16" fill="none" stroke="rgba(246,239,220,0.85)" stroke-width="1.3">
+            <rect x="2" y="5" width="12" height="7" rx="1.5"/><line x1="2" y1="9" x2="14" y2="9"/>
+            <circle cx="5" cy="14" r="1.5"/><circle cx="11" cy="14" r="1.5"/>
+            <line x1="5" y1="12.5" x2="5" y2="12"/><line x1="11" y1="12.5" x2="11" y2="12"/>
+            <line x1="4" y1="7" x2="4" y2="9"/><line x1="8" y1="7" x2="8" y2="9"/><line x1="12" y1="7" x2="12" y2="9"/>
+            <line x1="6" y1="3" x2="10" y2="3"/><line x1="8" y1="3" x2="8" y2="5"/>
+          </svg>
+          <span class="ru">Трамвай</span><span class="en">Tram</span>
+        </div>
+      </th>
+      <th class="th-cat" data-col="phone">
+        <div class="th-icon">
+          <svg viewBox="0 0 16 16" fill="none" stroke="rgba(246,239,220,0.85)" stroke-width="1.3">
+            <path d="M3 3 C3 3 5 3 6 5 C6 5 4 7 4 8 C4 9 7 12 8 12 C9 12 11 10 11 10 C13 11 13 13 13 13 C13 13 11 15 9 14 C5 13 2 9 2 5 C2 4 3 3 3 3 Z"/>
+          </svg>
+          <span class="ru">Телефон</span><span class="en">Phone</span>
+        </div>
+      </th>
+      <th class="th-cat" data-col="tele">
+        <div class="th-icon">
+          <svg viewBox="0 0 16 16" fill="none" stroke="rgba(246,239,220,0.85)" stroke-width="1.3">
+            <line x1="1" y1="13" x2="15" y2="13"/><line x1="8" y1="13" x2="8" y2="5"/>
+            <line x1="3" y1="9" x2="8" y2="5"/><line x1="13" y1="9" x2="8" y2="5"/>
+            <circle cx="4" cy="4" r="1.5"/><circle cx="8" cy="2" r="1.5"/><circle cx="12" cy="4" r="1.5"/>
+          </svg>
+          <span class="ru">Телеграф</span><span class="en">Telegraph</span>
+        </div>
+      </th>
+      <th class="th-cat" data-col="slaught">
+        <div class="th-icon">
+          <svg viewBox="0 0 16 16" fill="none" stroke="rgba(246,239,220,0.85)" stroke-width="1.3">
+            <rect x="3" y="6" width="10" height="8" rx="1"/><path d="M3 6 L8 2 L13 6"/>
+            <rect x="6" y="10" width="4" height="4"/><line x1="3" y1="6" x2="13" y2="6"/>
+          </svg>
+          <span class="ru">Бойни</span><span class="en">Slaughter</span>
+        </div>
+      </th>
+    </tr>
+  </thead>
+  <tbody id="tbody"></tbody>
+  </table>
+  </div>
+
+  <div style="max-width:1100px;margin:48px auto 0;padding:28px 24px;background:rgba(232,213,168,0.28);border:1px solid rgba(183,145,88,0.25);border-radius:10px;">
+    <p style="font-family:Cambria,'Palatino Linotype',Georgia,serif;font-size:0.72rem;letter-spacing:.16em;text-transform:uppercase;color:#B79158;margin-bottom:14px;"><span class="ru">См. также</span><span class="en">See also</span></p>
+    <div style="display:flex;flex-wrap:wrap;gap:12px;">
+      <a href="waterworks/map_draft.html" style="display:inline-flex;align-items:center;gap:8px;font-family:Cambria,'Palatino Linotype',Georgia,serif;font-size:0.92rem;color:#1A2B47;text-decoration:none;border-bottom:1px solid rgba(26,43,71,0.3);padding-bottom:2px;"><span class="ru">Интерактивная карта городов с водопроводами →</span><span class="en">Interactive map of waterworks →</span></a>
+      <a href="cholera_ranking.html" style="display:inline-flex;align-items:center;gap:8px;font-family:Cambria,'Palatino Linotype',Georgia,serif;font-size:0.92rem;color:#1A2B47;text-decoration:none;border-bottom:1px solid rgba(26,43,71,0.3);padding-bottom:2px;"><span class="ru">Холера в Российской империи →</span><span class="en">Province ranking by cholera →</span></a>
+      <a href="index.html" style="display:inline-flex;align-items:center;gap:8px;font-family:Cambria,'Palatino Linotype',Georgia,serif;font-size:0.92rem;color:#1A2B47;text-decoration:none;border-bottom:1px solid rgba(26,43,71,0.3);padding-bottom:2px;"><span class="ru">Главная страница проекта →</span><span class="en">Project home page →</span></a>
+    </div>
+  </div>
+
+</div>
+
+<footer class="tx-footer">
+  <div class="tx-footer-inner">
+    <div>
+      <strong>Transmission</strong> &nbsp;·&nbsp;
+      <span class="ru">Городские инфраструктуры Российской империи, 1870–1914</span>
+      <span class="en">Urban Infrastructures of the Russian Empire, 1870–1914</span>
+    </div>
+    <div>
+      © 2026
+      <span class="ru">Анна Б. Агафонова</span><span class="en">Anna B. Agafonova</span>
+      &nbsp;·&nbsp;
+      <a href="https://orcid.org/0000-0003-3021-4002" target="_blank" rel="noopener">ORCID 0000-0003-3021-4002</a>
+    </div>
+    <nav class="tx-footer-nav">
+      <a href="index.html"><span class="ru">Главная</span><span class="en">Home</span></a>
+      <a href="terms.html"><span class="ru">Условия использования</span><span class="en">Terms of Use</span></a>
+      <a href="personal-data.html" class="ru">Политика ПД</a>
+      <a href="privacy.html" class="en" style="display:none">Privacy Policy</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+const PROVINCES = [
+  {name:"Архангельская губерния",total:14,light:8,elec:1,gas:1,kero:8,water:1,sewer:1,slaught:5,fire:11,tram:0,tele:1,phone:1,region:"Европейская Россия"},
+  {name:"Вологодская губерния",total:13,light:12,elec:1,gas:0,kero:12,water:2,sewer:0,slaught:8,fire:13,tram:0,tele:1,phone:2,region:"Европейская Россия"},
+  {name:"Астраханская губерния",total:12,light:7,elec:1,gas:1,kero:7,water:1,sewer:0,slaught:10,fire:12,tram:1,tele:0,phone:1,region:"Европейская Россия"},
+  {name:"Бессарабская губерния",total:19,light:16,elec:2,gas:1,kero:14,water:4,sewer:1,slaught:15,fire:16,tram:1,tele:1,phone:3,region:"Европейская Россия"},
+  {name:"Виленская губерния",total:11,light:10,elec:1,gas:1,kero:10,water:1,sewer:0,slaught:11,fire:11,tram:1,tele:0,phone:0,region:"Европейская Россия"},
+  {name:"Витебская губерния",total:12,light:12,elec:0,gas:2,kero:11,water:2,sewer:0,slaught:12,fire:12,tram:1,tele:0,phone:4,region:"Европейская Россия"},
+  {name:"Владимирская губерния",total:18,light:18,elec:4,gas:1,kero:18,water:7,sewer:0,slaught:17,fire:17,tram:0,tele:0,phone:7,region:"Европейская Россия"},
+  {name:"Волынская губерния",total:18,light:17,elec:2,gas:2,kero:17,water:2,sewer:0,slaught:18,fire:18,tram:1,tele:0,phone:5,region:"Европейская Россия"},
+  {name:"Воронежская губерния",total:37,light:23,elec:4,gas:4,kero:23,water:3,sewer:0,slaught:14,fire:36,tram:1,tele:0,phone:4,region:"Европейская Россия"},
+  {name:"Вятская губерния",total:14,light:14,elec:3,gas:0,kero:13,water:8,sewer:2,slaught:9,fire:14,tram:0,tele:0,phone:6,region:"Европейская Россия"},
+  {name:"Гродненская губерния",total:27,light:15,elec:1,gas:0,kero:15,water:3,sewer:0,slaught:23,fire:23,tram:1,tele:0,phone:4,region:"Европейская Россия"},
+  {name:"Область Войска Донского",total:17,light:13,elec:4,gas:7,kero:10,water:6,sewer:2,slaught:12,fire:17,tram:2,tele:2,phone:7,region:"Европейская Россия"},
+  {name:"Екатеринославская губерния",total:21,light:18,elec:7,gas:1,kero:17,water:6,sewer:3,slaught:17,fire:20,tram:1,tele:1,phone:7,region:"Европейская Россия"},
+  {name:"Казанская губерния",total:16,light:14,elec:1,gas:1,kero:14,water:3,sewer:0,slaught:14,fire:16,tram:1,tele:0,phone:1,region:"Европейская Россия"},
+  {name:"Калужская губерния",total:14,light:14,elec:0,gas:0,kero:14,water:4,sewer:1,slaught:13,fire:13,tram:0,tele:0,phone:4,region:"Европейская Россия"},
+  {name:"Киевская губерния",total:28,light:27,elec:3,gas:5,kero:27,water:4,sewer:1,slaught:27,fire:26,tram:2,tele:2,phone:5,region:"Европейская Россия"},
+  {name:"Ковенская губерния",total:9,light:9,elec:1,gas:0,kero:9,water:0,sewer:0,slaught:9,fire:9,tram:1,tele:0,phone:1,region:"Европейская Россия"},
+  {name:"Костромская губерния",total:20,light:19,elec:1,gas:3,kero:18,water:4,sewer:0,slaught:16,fire:20,tram:0,tele:0,phone:4,region:"Европейская Россия"},
+  {name:"Курляндская губерния",total:22,light:22,elec:1,gas:1,kero:22,water:1,sewer:3,slaught:21,fire:22,tram:1,tele:0,phone:6,region:"Европейская Россия"},
+  {name:"Курская губерния",total:22,light:16,elec:1,gas:1,kero:16,water:2,sewer:0,slaught:16,fire:22,tram:1,tele:0,phone:6,region:"Европейская Россия"},
+  {name:"Лифляндская губерния",total:11,light:11,elec:3,gas:3,kero:11,water:3,sewer:8,slaught:11,fire:11,tram:1,tele:1,phone:5,region:"Европейская Россия"},
+  {name:"Минская губерния",total:12,light:12,elec:1,gas:3,kero:12,water:2,sewer:0,slaught:12,fire:12,tram:1,tele:1,phone:5,region:"Европейская Россия"},
+  {name:"Могилёвская губерния",total:13,light:12,elec:1,gas:1,kero:12,water:3,sewer:0,slaught:12,fire:13,tram:1,tele:1,phone:4,region:"Европейская Россия"},
+  {name:"Московская губерния",total:16,light:16,elec:1,gas:1,kero:16,water:3,sewer:1,slaught:16,fire:16,tram:1,tele:1,phone:7,region:"Европейская Россия"},
+  {name:"Нижегородская губерния",total:17,light:14,elec:2,gas:1,kero:13,water:2,sewer:0,slaught:10,fire:17,tram:1,tele:1,phone:2,region:"Европейская Россия"},
+  {name:"Новгородская губерния",total:14,light:13,elec:0,gas:0,kero:12,water:4,sewer:0,slaught:10,fire:14,tram:0,tele:1,phone:6,region:"Европейская Россия"},
+  {name:"Олонецкая губерния",total:7,light:7,elec:0,gas:0,kero:7,water:0,sewer:0,slaught:6,fire:7,tram:0,tele:0,phone:7,region:"Европейская Россия"},
+  {name:"Оренбургская губерния",total:10,light:8,elec:3,gas:2,kero:9,water:1,sewer:0,slaught:9,fire:10,tram:0,tele:0,phone:3,region:"Европейская Россия"},
+  {name:"Орловская губерния",total:13,light:13,elec:2,gas:2,kero:13,water:7,sewer:1,slaught:13,fire:13,tram:1,tele:0,phone:6,region:"Европейская Россия"},
+  {name:"Пензенская губерния",total:14,light:11,elec:1,gas:3,kero:11,water:1,sewer:0,slaught:11,fire:14,tram:0,tele:0,phone:5,region:"Европейская Россия"},
+  {name:"Пермская губерния",total:28,light:23,elec:10,gas:2,kero:21,water:6,sewer:2,slaught:25,fire:27,tram:0,tele:0,phone:12,region:"Европейская Россия"},
+  {name:"Подольская губерния",total:26,light:25,elec:3,gas:3,kero:22,water:1,sewer:0,slaught:25,fire:25,tram:0,tele:0,phone:4,region:"Европейская Россия"},
+  {name:"Полтавская губерния",total:21,light:18,elec:2,gas:3,kero:18,water:2,sewer:0,slaught:20,fire:21,tram:1,tele:0,phone:6,region:"Европейская Россия"},
+  {name:"Псковская губерния",total:12,light:10,elec:1,gas:0,kero:10,water:1,sewer:0,slaught:10,fire:12,tram:1,tele:0,phone:2,region:"Европейская Россия"},
+  {name:"Рязанская губерния",total:12,light:12,elec:0,gas:0,kero:12,water:3,sewer:1,slaught:11,fire:12,tram:0,tele:0,phone:3,region:"Европейская Россия"},
+  {name:"Самарская губерния",total:17,light:15,elec:1,gas:3,kero:15,water:4,sewer:2,slaught:15,fire:17,tram:1,tele:1,phone:7,region:"Европейская Россия"},
+  {name:"Санкт-Петербургская губерния",total:14,light:14,elec:4,gas:4,kero:13,water:10,sewer:3,slaught:10,fire:14,tram:1,tele:4,phone:9,region:"Европейская Россия"},
+  {name:"Саратовская губерния",total:12,light:12,elec:4,gas:5,kero:11,water:8,sewer:0,slaught:10,fire:12,tram:1,tele:null,phone:5,region:"Европейская Россия"},
+  {name:"Симбирская губерния",total:9,light:8,elec:1,gas:1,kero:8,water:3,sewer:0,slaught:6,fire:9,tram:0,tele:0,phone:1,region:"Европейская Россия"},
+  {name:"Смоленская губерния",total:12,light:12,elec:1,gas:0,kero:12,water:1,sewer:1,slaught:12,fire:12,tram:1,tele:0,phone:4,region:"Европейская Россия"},
+  {name:"Таврическая губерния",total:35,light:26,elec:12,gas:2,kero:24,water:7,sewer:3,slaught:23,fire:30,tram:1,tele:0,phone:10,region:"Европейская Россия"},
+  {name:"Тамбовская губерния",total:14,light:14,elec:2,gas:3,kero:14,water:7,sewer:0,slaught:11,fire:14,tram:0,tele:0,phone:2,region:"Европейская Россия"},
+  {name:"Тверская губерния",total:16,light:16,elec:1,gas:1,kero:16,water:3,sewer:0,slaught:14,fire:16,tram:1,tele:1,phone:6,region:"Европейская Россия"},
+  {name:"Тульская губерния",total:12,light:12,elec:1,gas:1,kero:12,water:4,sewer:0,slaught:11,fire:12,tram:1,tele:1,phone:1,region:"Европейская Россия"},
+  {name:"Уфимская губерния",total:8,light:7,elec:1,gas:0,kero:6,water:5,sewer:0,slaught:8,fire:8,tram:0,tele:0,phone:2,region:"Европейская Россия"},
+  {name:"Харьковская губерния",total:25,light:21,elec:6,gas:1,kero:20,water:2,sewer:0,slaught:22,fire:24,tram:1,tele:1,phone:10,region:"Европейская Россия"},
+  {name:"Херсонская губерния",total:39,light:34,elec:5,gas:3,kero:32,water:5,sewer:1,slaught:25,fire:33,tram:3,tele:0,phone:4,region:"Европейская Россия"},
+  {name:"Черниговская губерния",total:42,light:30,elec:4,gas:6,kero:28,water:2,sewer:1,slaught:33,fire:39,tram:1,tele:0,phone:5,region:"Европейская Россия"},
+  {name:"Эстляндская губерния",total:5,light:5,elec:0,gas:1,kero:5,water:0,sewer:1,slaught:4,fire:5,tram:1,tele:null,phone:4,region:"Европейская Россия"},
+  {name:"Ярославская губерния",total:12,light:12,elec:3,gas:1,kero:12,water:4,sewer:1,slaught:11,fire:12,tram:2,tele:0,phone:5,region:"Европейская Россия"},
+  {name:"Варшавская губерния",total:28,light:28,elec:7,gas:3,kero:23,water:3,sewer:5,slaught:24,fire:23,tram:2,tele:1,phone:10,region:"Привислинские губернии"},
+  {name:"Калишская губерния",total:13,light:13,elec:0,gas:3,kero:12,water:0,sewer:0,slaught:13,fire:13,tram:1,tele:0,phone:4,region:"Привислинские губернии"},
+  {name:"Келецкая губерния",total:9,light:9,elec:0,gas:0,kero:9,water:2,sewer:0,slaught:9,fire:9,tram:0,tele:1,phone:4,region:"Привислинские губернии"},
+  {name:"Ломжинская губерния",total:7,light:7,elec:0,gas:1,kero:7,water:0,sewer:0,slaught:7,fire:7,tram:0,tele:0,phone:1,region:"Привислинские губернии"},
+  {name:"Люблинская губерния",total:14,light:13,elec:1,gas:2,kero:13,water:1,sewer:1,slaught:14,fire:14,tram:0,tele:0,phone:2,region:"Привислинские губернии"},
+  {name:"Петроковская губерния",total:15,light:14,elec:5,gas:2,kero:10,water:2,sewer:0,slaught:15,fire:14,tram:2,tele:0,phone:8,region:"Привислинские губернии"},
+  {name:"Плоцкая губерния",total:9,light:9,elec:0,gas:1,kero:8,water:2,sewer:1,slaught:9,fire:9,tram:0,tele:0,phone:3,region:"Привислинские губернии"},
+  {name:"Радомская губерния",total:11,light:11,elec:1,gas:0,kero:11,water:0,sewer:0,slaught:11,fire:11,tram:0,tele:0,phone:2,region:"Привислинские губернии"},
+  {name:"Сувалкская губерния",total:10,light:10,elec:0,gas:0,kero:10,water:0,sewer:0,slaught:10,fire:10,tram:0,tele:0,phone:3,region:"Привислинские губернии"},
+  {name:"Седлецкая губерния",total:12,light:10,elec:0,gas:1,kero:10,water:0,sewer:2,slaught:12,fire:12,tram:0,tele:0,phone:2,region:"Привислинские губернии"},
+  {name:"Бакинская",total:6,light:6,elec:1,gas:0,kero:6,water:2,sewer:2,slaught:6,fire:4,tram:1,tele:null,phone:null,region:"Кавказ"},
+  {name:"Батумская",total:2,light:2,elec:1,gas:0,kero:2,water:1,sewer:1,slaught:2,fire:2,tram:0,tele:null,phone:0,region:"Кавказ"},
+  {name:"Дагестанская",total:11,light:7,elec:0,gas:0,kero:7,water:3,sewer:3,slaught:10,fire:2,tram:0,tele:0,phone:0,region:"Кавказ"},
+  {name:"Елисаветпольская",total:7,light:7,elec:1,gas:0,kero:6,water:4,sewer:1,slaught:6,fire:2,tram:1,tele:0,phone:0,region:"Кавказ"},
+  {name:"Каррская",total:4,light:4,elec:0,gas:1,kero:4,water:1,sewer:0,slaught:4,fire:2,tram:0,tele:0,phone:0,region:"Кавказ"},
+  {name:"Кубанская",total:54,light:39,elec:7,gas:13,kero:38,water:4,sewer:1,slaught:54,fire:54,tram:2,tele:1,phone:12,region:"Кавказ"},
+  {name:"Кутаисская",total:12,light:12,elec:2,gas:3,kero:12,water:2,sewer:1,slaught:10,fire:8,tram:1,tele:2,phone:3,region:"Кавказ"},
+  {name:"Ставропольская",total:6,light:6,elec:1,gas:1,kero:6,water:2,sewer:0,slaught:6,fire:6,tram:0,tele:0,phone:4,region:"Кавказ"},
+  {name:"Терская",total:11,light:10,elec:3,gas:0,kero:10,water:5,sewer:1,slaught:9,fire:9,tram:2,tele:0,phone:2,region:"Кавказ"},
+  {name:"Тифлисская",total:11,light:11,elec:1,gas:0,kero:11,water:4,sewer:2,slaught:11,fire:3,tram:1,tele:1,phone:3,region:"Кавказ"},
+  {name:"Черноморская",total:5,light:3,elec:0,gas:0,kero:3,water:2,sewer:1,slaught:4,fire:2,tram:0,tele:0,phone:0,region:"Кавказ"},
+  {name:"Эриванская",total:8,light:7,elec:2,gas:0,kero:7,water:1,sewer:1,slaught:7,fire:1,tram:1,tele:1,phone:1,region:"Кавказ"},
+  {name:"Амурская",total:2,light:1,elec:1,gas:0,kero:0,water:0,sewer:0,slaught:2,fire:2,tram:0,tele:1,phone:0,region:"Сибирь"},
+  {name:"Енисейская",total:6,light:6,elec:0,gas:0,kero:6,water:0,sewer:0,slaught:5,fire:5,tram:0,tele:null,phone:0,region:"Сибирь"},
+  {name:"Забайкальская",total:9,light:4,elec:2,gas:0,kero:3,water:1,sewer:0,slaught:8,fire:9,tram:0,tele:0,phone:2,region:"Сибирь"},
+  {name:"Иркутская",total:6,light:2,elec:1,gas:0,kero:2,water:0,sewer:0,slaught:5,fire:6,tram:0,tele:1,phone:1,region:"Сибирь"},
+  {name:"Приморская",total:4,light:4,elec:4,gas:3,kero:4,water:1,sewer:2,slaught:4,fire:4,tram:0,tele:0,phone:2,region:"Сибирь"},
+  {name:"Тобольская",total:10,light:8,elec:2,gas:1,kero:8,water:2,sewer:0,slaught:8,fire:10,tram:0,tele:0,phone:4,region:"Сибирь"},
+  {name:"Томская",total:10,light:8,elec:3,gas:1,kero:8,water:1,sewer:0,slaught:9,fire:10,tram:0,tele:0,phone:3,region:"Сибирь"},
+  {name:"Якутская",total:5,light:2,elec:0,gas:0,kero:2,water:0,sewer:0,slaught:1,fire:2,tram:0,tele:0,phone:0,region:"Сибирь"},
+  {name:"Акмолинская",total:6,light:5,elec:0,gas:0,kero:5,water:1,sewer:0,slaught:6,fire:5,tram:0,tele:0,phone:0,region:"Средняя Азия"},
+  {name:"Закаспийская",total:5,light:5,elec:0,gas:1,kero:5,water:1,sewer:0,slaught:5,fire:2,tram:0,tele:0,phone:3,region:"Средняя Азия"},
+  {name:"Самаркандская",total:6,light:6,elec:0,gas:0,kero:6,water:0,sewer:0,slaught:5,fire:4,tram:0,tele:0,phone:1,region:"Средняя Азия"},
+  {name:"Семипалатинская",total:6,light:4,elec:0,gas:0,kero:4,water:1,sewer:0,slaught:6,fire:6,tram:0,tele:0,phone:0,region:"Средняя Азия"},
+  {name:"Семиречинская",total:6,light:5,elec:0,gas:0,kero:5,water:1,sewer:0,slaught:6,fire:5,tram:0,tele:0,phone:0,region:"Средняя Азия"},
+  {name:"Сыр-Дарьинская",total:7,light:7,elec:0,gas:0,kero:7,water:1,sewer:0,slaught:7,fire:6,tram:1,tele:1,phone:1,region:"Средняя Азия"},
+  {name:"Тургайская",total:4,light:4,elec:0,gas:1,kero:4,water:0,sewer:0,slaught:3,fire:4,tram:0,tele:0,phone:0,region:"Средняя Азия"},
+  {name:"Уральская",total:5,light:5,elec:1,gas:0,kero:5,water:0,sewer:0,slaught:5,fire:4,tram:0,tele:0,phone:1,region:"Средняя Азия"},
+  {name:"Ферганская",total:7,light:7,elec:0,gas:2,kero:7,water:0,sewer:0,slaught:6,fire:6,tram:0,tele:0,phone:2,region:"Средняя Азия"},
+];
+
+const REGIONS_ORDER = ["Европейская Россия","Привислинские губернии","Кавказ","Сибирь","Средняя Азия"];
+
+const COLS = [
+  {key:'light',  label:'Уличное освещение',        color:'#C4862A'},
+  {key:'elec',   label:'Электрическое освещение',   color:'#C4862A'},
+  {key:'gas',    label:'Газовое освещение',          color:'#6B7E55'},
+  {key:'water',  label:'Водопровод',                 color:'#3D7EA6'},
+  {key:'sewer',  label:'Канализация',                color:'#5A7A9B'},
+  {key:'fire',   label:'Пожарная охрана',            color:'#9B3030'},
+  {key:'tram',   label:'Трамвай',                    color:'#7B4E8B'},
+  {key:'phone',  label:'Телефон',                    color:'#3A7A6A'},
+  {key:'tele',   label:'Телеграф',                   color:'#2B5A8B'},
+  {key:'slaught',label:'Скотобойни',                 color:'#7A5A3A'},
+];
+
+const STATS_DEF = [
+  {key:'total',  label:'Всего городов',              label_en:'Total towns',           color:'#1A2B47', icon:'city'},
+  {key:'fire',   label:'Пожарная охрана',            label_en:'Fire service',          color:'#9B3030', icon:'fire'},
+  {key:'water',  label:'Водопровод',                 label_en:'Water supply',          color:'#3D7EA6', icon:'water'},
+  {key:'sewer',  label:'Канализация',                label_en:'Sewerage',              color:'#5A7A9B', icon:'sewer'},
+  {key:'slaught',label:'Скотобойни',                 label_en:'Slaughterhouses',       color:'#7A5A3A', icon:'slaught'},
+  {key:'light',  label:'Уличное освещение',          label_en:'Street lighting',       color:'#C4862A', icon:'light'},
+  {key:'elec',   label:'Электрическое освещение',    label_en:'Electric lighting',     color:'#C4862A', icon:'elec'},
+  {key:'tram',   label:'Трамвай',                    label_en:'Tramway',               color:'#7B4E8B', icon:'tram'},
+  {key:'tele',   label:'Телеграф',                   label_en:'Telegraph',             color:'#2B5A8B', icon:'tele'},
+  {key:'phone',  label:'Телефон',                    label_en:'Telephone',             color:'#3A7A6A', icon:'phone'},
+];
+
+function isEn() { return document.documentElement.hasAttribute('data-en'); }
+function t(ru, en) { return isEn() ? en : ru; }
+
+const iconSVGs = {
+  city: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="10" width="8" height="12"/><rect x="10" y="4" width="12" height="18"/><line x1="14" y1="8" x2="14" y2="10"/><line x1="18" y1="8" x2="18" y2="10"/><line x1="14" y1="13" x2="14" y2="15"/><line x1="18" y1="13" x2="18" y2="15"/><rect x="14" y="18" width="4" height="4"/><line x1="2" y1="22" x2="22" y2="22"/></svg>`,
+  light: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="10" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="17" x2="12" y2="19"/><line x1="1" y1="10" x2="3" y2="10"/><line x1="21" y1="10" x2="23" y2="10"/><line x1="4" y1="3" x2="5.5" y2="4.5"/><line x1="18.5" y1="15.5" x2="20" y2="17"/><line x1="20" y1="3" x2="18.5" y2="4.5"/><line x1="4" y1="17" x2="5.5" y2="15.5"/><line x1="9" y1="15" x2="15" y2="15"/><line x1="10" y1="18" x2="14" y2="18"/></svg>`,
+  elec: `<svg viewBox="0 0 24 24" fill="currentColor"><polygon points="13,2 5,13 12,13 11,22 19,10 12,10"/></svg>`,
+  water: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2 C12 2 4 10 4 15 C4 19.4 7.6 23 12 23 C16.4 23 20 19.4 20 15 C20 10 12 2 12 2Z"/></svg>`,
+  sewer: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="8" width="18" height="11" rx="1"/><line x1="3" y1="13" x2="21" y2="13"/><line x1="8" y1="8" x2="8" y2="19"/><line x1="12" y1="8" x2="12" y2="19"/><line x1="16" y1="8" x2="16" y2="19"/><line x1="8" y1="5" x2="8" y2="8"/><line x1="16" y1="5" x2="16" y2="8"/><line x1="8" y1="4" x2="16" y2="4"/></svg>`,
+  fire: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><ellipse cx="12" cy="17" rx="9" ry="4"/><rect x="7" y="12" width="10" height="6"/><rect x="4" y="14" width="3" height="5"/><rect x="17" y="14" width="3" height="5"/><line x1="2" y1="21" x2="22" y2="21"/><line x1="12" y1="12" x2="12" y2="5"/><circle cx="12" cy="4" r="2"/></svg>`,
+  tram: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="8" width="18" height="9" rx="2"/><line x1="3" y1="14" x2="21" y2="14"/><circle cx="7.5" cy="20" r="2"/><circle cx="16.5" cy="20" r="2"/><line x1="7.5" y1="18" x2="7.5" y2="17"/><line x1="16.5" y1="18" x2="16.5" y2="17"/><line x1="7" y1="11" x2="7" y2="14"/><line x1="12" y1="11" x2="12" y2="14"/><line x1="17" y1="11" x2="17" y2="14"/><line x1="9" y1="5" x2="15" y2="5"/><line x1="12" y1="5" x2="12" y2="8"/></svg>`,
+  tele: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="2" y1="20" x2="22" y2="20"/><line x1="12" y1="20" x2="12" y2="10"/><line x1="5" y1="14" x2="12" y2="10"/><line x1="19" y1="14" x2="12" y2="10"/><circle cx="5" cy="6" r="2.5"/><circle cx="12" cy="4" r="2.5"/><circle cx="19" cy="6" r="2.5"/></svg>`,
+  phone: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 4 C5 4 7 4 9 7 C9 7 6 10 6 12 C6 14 10 18 12 18 C14 18 17 15 17 15 C20 17 20 19 20 19 C20 19 18 22 15 21 C8 19 3 14 3 8 C3 6 5 4 5 4Z"/></svg>`,
+  slaught:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="10" width="16" height="12" rx="1"/><path d="M4 10 L12 3 L20 10"/><rect x="9" y="16" width="6" height="6"/><line x1="4" y1="10" x2="20" y2="10"/></svg>`,
+};
+
+function sumKey(arr, k) { return arr.reduce((s,p) => s + (p[k] || 0), 0); }
+function pct(v, tot) { return tot ? Math.round(100 * v / tot) : 0; }
+
+const allTotal = PROVINCES.reduce((s,p) => s + p.total, 0);
+
+function renderStats() {
+  const statsGrid = document.getElementById('stats-grid');
+  statsGrid.innerHTML = '';
+  STATS_DEF.forEach(s => {
+    const val = s.key === 'total' ? allTotal : sumKey(PROVINCES, s.key);
+    const p = s.key === 'total' ? null : Math.round(100 * val / allTotal);
+    const lbl = isEn() ? s.label_en : s.label;
+    statsGrid.innerHTML += `<div class="stat-card">
+      <div class="stat-icon" style="color:${s.color}">${iconSVGs[s.icon]}</div>
+      <div class="stat-num" style="color:${s.color}">${val}</div>
+      ${p !== null ? `<div class="stat-pct">${p}% ${t('городов','of towns')}</div>` : ''}
+      <div class="stat-label">${lbl}</div>
+      <div class="stat-bar" style="width:${p !== null ? p : 100}%;background:${s.color}"></div>
+    </div>`;
+  });
+}
+renderStats();
+
+// Region name translations
+const REGION_EN = {
+  'Европейская Россия':   'European Russia',
+  'Привислинские губернии': 'Vistula Provinces',
+  'Кавказ':              'Caucasus',
+  'Сибирь':              'Siberia',
+  'Средняя Азия':        'Central Asia',
+};
+
+function renderRegionCards() {
+  const regionGrid = document.getElementById('region-grid');
+  regionGrid.innerHTML = '';
+  REGIONS_ORDER.forEach(rname => {
+    const rdata = PROVINCES.filter(p => p.region === rname);
+    const rtotal = rdata.reduce((s,p) => s + p.total, 0);
+    const rprovs = rdata.length;
+    const bars = [
+      {ru:'Водопровод', en:'Water supply', key:'water', color:'#3D7EA6'},
+      {ru:'Эл. освещ.', en:'Electric light',key:'elec',  color:'#C4862A'},
+      {ru:'Канализ.',   en:'Sewerage',      key:'sewer', color:'#5A7A9B'},
+      {ru:'Трамвай',    en:'Tram',          key:'tram',  color:'#7B4E8B'},
+    ];
+    const barsHtml = bars.map(b => {
+      const v = sumKey(rdata, b.key);
+      const w = pct(v, rtotal);
+      return `<div class="rc-bar-row">
+        <span class="rc-bar-label">${isEn() ? b.en : b.ru}</span>
+        <div class="rc-bar-track"><div class="rc-bar-fill" style="width:${w}%;background:${b.color}"></div></div>
+        <span class="rc-stat">${w}%</span>
+      </div>`;
+    }).join('');
+    const cardLabel = isEn() ? (REGION_EN[rname] || rname) : rname;
+    regionGrid.innerHTML += `<div class="region-card" data-region="${rname}" onclick="filterRegion('${rname}',this)">
+      <div class="rc-name">${cardLabel}</div>
+      <div class="rc-meta">${rprovs} ${t('губ./обл.','prov./obl.')} · ${rtotal} ${t('городов','towns')}</div>
+      <div class="rc-bars">${barsHtml}</div>
+    </div>`;
+  });
+  // Re-apply active state
+  document.querySelectorAll('.region-card').forEach(c => {
+    c.classList.toggle('active', c.dataset.region === activeRegion);
+  });
+}
+// Build region tabs
+let activeRegion = 'all';
+
+renderRegionCards();
+
+function renderTabs() {
+  const tabsEl = document.getElementById('region-tabs');
+  const label = tabsEl.querySelector('label');
+  tabsEl.innerHTML = '';
+  tabsEl.appendChild(label);
+  const allTab = document.createElement('button');
+  allTab.className = 'region-tab' + (activeRegion === 'all' ? ' active' : '');
+  allTab.dataset.region = 'all';
+  allTab.textContent = t('Все регионы', 'All regions');
+  allTab.onclick = () => filterRegion('all', allTab);
+  tabsEl.appendChild(allTab);
+  REGIONS_ORDER.forEach(rname => {
+    const btn = document.createElement('button');
+    btn.className = 'region-tab' + (activeRegion === rname ? ' active' : '');
+    btn.dataset.region = rname;
+    btn.textContent = isEn() ? (REGION_EN[rname] || rname) : rname;
+    btn.onclick = () => filterRegion(rname, btn);
+    tabsEl.appendChild(btn);
+  });
+}
+renderTabs();
+
+function filterRegion(region, el) {
+  activeRegion = region;
+  // Update tab buttons
+  document.querySelectorAll('.region-tab').forEach(b => b.classList.remove('active'));
+  if (el && el.classList.contains('region-tab')) el.classList.add('active');
+  // Update region cards
+  document.querySelectorAll('.region-card').forEach(c => {
+    c.classList.toggle('active', c.dataset.region === region);
+  });
+  renderTable();
+}
+
+// Table rendering
+let sortKey = 'name';
+let sortAsc = true;
+
+const PROVINCE_EN = {
+  'Архангельская губерния': 'Arkhangel\'skaya Governorate',
+  'Вологодская губерния': 'Vologodskaya Governorate',
+  'Астраханская губерния': 'Astrakhanskaya Governorate',
+  'Бессарабская губерния': 'Bessarabskaya Governorate',
+  'Виленская губерния': 'Vilenskaya Governorate',
+  'Витебская губерния': 'Vitebskaya Governorate',
+  'Владимирская губерния': 'Vladimirskaya Governorate',
+  'Волынская губерния': 'Volynskaya Governorate',
+  'Воронежская губерния': 'Voronezhskaya Governorate',
+  'Вятская губерния': 'Vyatskaya Governorate',
+  'Гродненская губерния': 'Grodnenskaya Governorate',
+  'Область Войска Донского': 'Oblast of the Don Cossack Host',
+  'Екатеринославская губерния': 'Yekaterinoslavskaya Governorate',
+  'Казанская губерния': 'Kazanskaya Governorate',
+  'Калужская губерния': 'Kaluzhskaya Governorate',
+  'Киевская губерния': 'Kiyevskaya Governorate',
+  'Ковенская губерния': 'Kovenskaya Governorate',
+  'Костромская губерния': 'Kostromskaya Governorate',
+  'Курляндская губерния': 'Kurlyandskaya Governorate',
+  'Курская губерния': 'Kurskaya Governorate',
+  'Лифляндская губерния': 'Liflyandskaya Governorate',
+  'Минская губерния': 'Minskaya Governorate',
+  'Могилёвская губерния': 'Mogilyovskaya Governorate',
+  'Московская губерния': 'Moscow Governorate',
+  'Нижегородская губерния': 'Nizhegorodskaya Governorate',
+  'Новгородская губерния': 'Novgorodskaya Governorate',
+  'Олонецкая губерния': 'Olonetskaya Governorate',
+  'Оренбургская губерния': 'Orenburgskaya Governorate',
+  'Орловская губерния': 'Orlovskaya Governorate',
+  'Пензенская губерния': 'Penzenskaya Governorate',
+  'Пермская губерния': 'Permskaya Governorate',
+  'Подольская губерния': 'Podol\'skaya Governorate',
+  'Полтавская губерния': 'Poltavskaya Governorate',
+  'Псковская губерния': 'Pskovskaya Governorate',
+  'Рязанская губерния': 'Ryazanskaya Governorate',
+  'Самарская губерния': 'Samarskaya Governorate',
+  'Санкт-Петербургская губерния': 'Saint Petersburg Governorate',
+  'Саратовская губерния': 'Saratovskaya Governorate',
+  'Симбирская губерния': 'Simbirskaya Governorate',
+  'Смоленская губерния': 'Smolenskaya Governorate',
+  'Таврическая губерния': 'Tavricheskaya Governorate',
+  'Тамбовская губерния': 'Tambovskaya Governorate',
+  'Тверская губерния': 'Tverskaya Governorate',
+  'Тульская губерния': 'Tul\'skaya Governorate',
+  'Уфимская губерния': 'Ufimskaya Governorate',
+  'Харьковская губерния': 'Khar\'kovskaya Governorate',
+  'Херсонская губерния': 'Khersonskaya Governorate',
+  'Черниговская губерния': 'Chernigovskaya Governorate',
+  'Эстляндская губерния': 'Estlyandskaya Governorate',
+  'Ярославская губерния': 'Yaroslavskaya Governorate',
+  'Варшавская губерния': 'Warsaw Governorate',
+  'Калишская губерния': 'Kalishskaya Governorate',
+  'Келецкая губерния': 'Keletskaya Governorate',
+  'Ломжинская губерния': 'Lomzhinskaya Governorate',
+  'Люблинская губерния': 'Lyublinskaya Governorate',
+  'Петроковская губерния': 'Petrokovskaya Governorate',
+  'Плоцкая губерния': 'Plotskaya Governorate',
+  'Радомская губерния': 'Radomskaya Governorate',
+  'Сувалкская губерния': 'Suvalkskaya Governorate',
+  'Седлецкая губерния': 'Sedletskaya Governorate',
+  'Бакинская': 'Bakinskaya Governorate',
+  'Батумская': 'Batumskaya Oblast',
+  'Дагестанская': 'Dagestanskaya Oblast',
+  'Елисаветпольская': 'Yelisavetpol\'skaya Governorate',
+  'Каррская': 'Karsskaya Oblast',
+  'Кубанская': 'Kubanskaya Oblast',
+  'Кутаисская': 'Kutaisskaya Governorate',
+  'Ставропольская': 'Stavropol\'skaya Governorate',
+  'Терская': 'Terskaya Oblast',
+  'Тифлисская': 'Tiflisskaya Governorate',
+  'Черноморская': 'Chernomorskaya Governorate',
+  'Эриванская': 'Erivanskaya Governorate',
+  'Амурская': 'Amurskaya Oblast',
+  'Енисейская': 'Yeniseyskaya Governorate',
+  'Забайкальская': 'Zabaykal\'skaya Oblast',
+  'Иркутская': 'Irkutskaya Governorate',
+  'Приморская': 'Primorskaya Oblast',
+  'Тобольская': 'Tobol\'skaya Governorate',
+  'Томская': 'Tomskaya Governorate',
+  'Якутская': 'Yakutskaya Oblast',
+  'Акмолинская': 'Akmolinskaya Oblast',
+  'Закаспийская': 'Zakaspiyskaya Oblast',
+  'Самаркандская': 'Samarkandskaya Oblast',
+  'Семипалатинская': 'Semipalatinskaya Oblast',
+  'Семиречинская': 'Semirechenskaya Oblast',
+  'Сыр-Дарьинская': 'Syr-Dar\'inskaya Oblast',
+  'Тургайская': 'Turgayskaya Oblast',
+  'Уральская': 'Ural\'skaya Oblast',
+  'Ферганская': 'Ferganskaya Oblast'
+};
+
+// Display province name: strip suffix in RU, use EN map in EN mode
+const STRIP_SUF = /\s+(губерния|область|Область)$/;
+function displayName(name) {
+  if (isEn()) return PROVINCE_EN[name] || name;
+  // Strip suffix for consistent RU display
+  return name.replace(STRIP_SUF, '');
+}
+
+function gaugeCell(val, total, color) {
+  if (val === null || val === undefined) {
+    return `<td class="td-cat" title="${t('Сведений нет','No data')}"><span class="nd">${t('н/д','n/a')}</span></td>`;
+  }
+  const w = pct(val, total);
+  return `<td class="td-cat">
+    <div class="gauge">
+      <div class="gauge-track"><div class="gauge-fill" style="width:${w}%;background:${color}"></div></div>
+      <div class="gauge-val" style="color:${color}">${val}/${total}</div>
+    </div>
+  </td>`;
+}
+
+function renderTable() {
+  let data = activeRegion === 'all' ? [...PROVINCES] : PROVINCES.filter(p => p.region === activeRegion);
+  data.sort((a,b) => {
+    if (sortKey === 'name') return sortAsc ? a.name.localeCompare(b.name,'ru') : b.name.localeCompare(a.name,'ru');
+    const va = a[sortKey] ?? -1, vb = b[sortKey] ?? -1;
+    return sortAsc ? vb - va : va - vb;
+  });
+  const tbody = document.getElementById('tbody');
+  tbody.innerHTML = '';
+  data.forEach((p, i) => {
+    tbody.innerHTML += `<tr>
+      <td class="td-rank">${i+1}</td>
+      <td class="td-name">${displayName(p.name)}<br><span class="td-region">${isEn() ? (REGION_EN[p.region] || p.region) : p.region}</span></td>
+      <td class="td-total">${p.total}</td>
+      ${gaugeCell(p.light,  p.total,'#C4862A')}
+      ${gaugeCell(p.elec,   p.total,'#C4862A')}
+      ${gaugeCell(p.gas,    p.total,'#6B7E55')}
+      ${gaugeCell(p.water,  p.total,'#3D7EA6')}
+      ${gaugeCell(p.sewer,  p.total,'#5A7A9B')}
+      ${gaugeCell(p.fire,   p.total,'#9B3030')}
+      ${gaugeCell(p.tram,   p.total,'#7B4E8B')}
+      ${gaugeCell(p.phone,  p.total,'#3A7A6A')}
+      ${gaugeCell(p.tele,   p.total,'#2B5A8B')}
+      ${gaugeCell(p.slaught,p.total,'#7A5A3A')}
+    </tr>`;
+  });
+  document.querySelectorAll('thead th.th-cat').forEach(th => th.classList.remove('sorted'));
+  const sortedTh = document.querySelector(`thead th[data-col="${sortKey}"]`);
+  if (sortedTh) sortedTh.classList.add('sorted');
+}
+
+document.querySelectorAll('.sort-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const k = btn.dataset.sort;
+    if (sortKey === k) sortAsc = !sortAsc;
+    else { sortKey = k; sortAsc = k === 'name'; }
+    document.querySelectorAll('.sort-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    renderTable();
+  });
+});
+document.querySelectorAll('thead th.th-cat').forEach(th => {
+  th.addEventListener('click', () => {
+    const k = th.dataset.col;
+    if (sortKey === k) sortAsc = !sortAsc;
+    else { sortKey = k; sortAsc = false; }
+    document.querySelectorAll('.sort-btn').forEach(b => b.classList.remove('active'));
+    renderTable();
+  });
+});
+
+renderTable();
+
+// ─── Language switcher ───
+function setLang(l) {
+  try { localStorage.setItem('tx_lang', l); } catch(e) {}
+  if (l === 'en') document.documentElement.setAttribute('data-en', '');
+  else document.documentElement.removeAttribute('data-en');
+  document.querySelectorAll('.lang-sw button').forEach(b => b.classList.toggle('on', b.dataset.lang === l));
+  // Re-render dynamic content
+  renderStats();
+  renderRegionCards();
+  renderTabs();
+  renderTable();
+}
+// Restore saved language
+(function() {
+  let s = 'ru';
+  try { s = localStorage.getItem('tx_lang') || 'ru'; } catch(e) {}
+  if (s === 'en') setLang('en');
+})();
+</script>
+</body>
+</html>

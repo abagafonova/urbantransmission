@@ -536,6 +536,23 @@ body::before{
 @media(max-width:900px){
   body::before{ opacity:.10; }
 }
+
+/* ── BACK TO TOP ── */
+#back-to-top {
+  position: fixed; right: 22px; bottom: 28px; z-index: 200;
+  width: 40px; height: 40px; border-radius: 50%;
+  background: rgba(26,43,71,0.82);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.12);
+  color: rgba(246,239,220,0.85);
+  font-size: 1rem; line-height: 1; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; pointer-events: none;
+  transition: opacity .25s, background .18s, transform .18s;
+  box-shadow: 0 2px 12px rgba(20,36,60,0.22);
+}
+#back-to-top.visible { opacity: 1; pointer-events: auto; }
+#back-to-top:hover { background: rgba(26,43,71,0.96); transform: translateY(-2px); }
 </style>
 </head>
 
@@ -555,7 +572,7 @@ body::before{
   <a href="#methods"><span class="ru">Данные</span><span class="en">Data</span></a>
   <a href="#" data-soon><span class="ru">Видео</span><span class="en">Videos</span></a>
   <div class="nav-gap"></div>
-  <a href="#" data-soon><span class="ru">Об авторе</span><span class="en">About</span></a>
+  <a href="about.html"><span class="ru">Об авторе</span><span class="en">About</span></a>
   <a href="#" data-soon><span class="ru">Сотрудничество</span><span class="en">Collaborate</span></a>
   <div class="lang-sw" role="group" aria-label="Language / Язык">
     <button data-lang="ru" class="on" onclick="setLang('ru')">РУ</button>
@@ -581,7 +598,7 @@ body::before{
       </em>
     </h1>
     <div class="hero-cta">
-      <a class="btn-primary" href="#" data-soon>
+      <a class="btn-primary" href="waterworks/map_draft.html">
         <span class="ru">Открыть карту</span><span class="en">Open interactive map</span>
       </a>
       <a class="btn-outline" href="#methods">
@@ -641,7 +658,7 @@ body::before{
           <li><span class="ru">Фильтры, поиск, всплывающие карточки городов</span><span class="en">Filters, search, city popup cards</span></li>
         </ul>
         <div class="s-cta">
-          <a class="cta-primary" href="#" data-soon>
+          <a class="cta-primary" href="waterworks/map_draft.html">
             <span class="ru">Открыть карту</span><span class="en">Open map</span> <span class="arr">→</span>
           </a>
         </div>
@@ -672,7 +689,7 @@ body::before{
           <li><span class="ru">Одновременное сравнение губерний и типов инфраструктуры</span><span class="en">Compare provinces and infrastructure types side by side</span></li>
         </ul>
         <div class="s-cta">
-          <a class="cta-primary" href="#" data-soon>
+          <a class="cta-primary" href="urban_beautification1910.html">
             <span class="ru">Открыть таблицу</span><span class="en">View table</span> <span class="arr">→</span>
           </a>
         </div>
@@ -738,13 +755,13 @@ body::before{
           <span class="en">Sanitary Conditions of Cities of the Russian Empire (Novgorod Province)</span>
         </h2>
         <p class="s-desc">
-          <span class="ru">Детальная база данных по 11 городам губернии: думские решения, данные об эпидемиях, санитарные расходы, 1870–1917.</span>
-          <span class="en">Deep-dive database of 11 cities: municipal council decrees, epidemic records, sanitary expenditures, 1870–1917.</span>
+          <span class="ru">Детальная база данных по 11 городам губернии: постановления городских дум, данные об эпидемиях, городах и инфраструктуре, санитарные расходы, 1870–1917.</span>
+          <span class="en">Deep-dive database of 11 cities: decrees of municipal councils, epidemic and urban infrastrutures records, sanitary expenditures, 1870–1917.</span>
         </p>
         <ul class="s-feats">
           <li><span class="ru">Новгород, Старая Русса — водопровод; 9 городов — без водопровода</span><span class="en">Novgorod, Staraya Russa — waterworks; 9 cities — without</span></li>
-          <li><span class="ru">Постановления городских дум о санитарных расходах</span><span class="en">Municipal council decrees on sanitary expenditure</span></li>
-          <li><span class="ru">Данные об эпидемиях в каждом городе, 1870–1910&nbsp;гг.</span><span class="en">Epidemic records for each city, 1870–1910</span></li>
+          <li><span class="ru">Постановления городских дум о благоустройстве</span><span class="en">Municipal council decrees on urban beautification</span></li>
+          <li><span class="ru">Данные об эпидемиях в губернии, 1870–1910&nbsp;гг.</span><span class="en">Epidemic records for the province, 1870–1910</span></li>
           <li><span class="ru">Сравнение городов: временные шкалы и показатели</span><span class="en">City-by-city comparison: timelines and indicators</span></li>
         </ul>
         <div class="s-cta">
@@ -765,12 +782,12 @@ body::before{
 <!-- QUICK ACCESS -->
 <div class="quick">
   <div class="quick-inner">
-    <a class="qi" href="#" data-soon>
+    <a class="qi" href="waterworks/map_draft.html">
       <span class="qi-tag"><span class="ru">Интерактивная карта</span><span class="en">Interactive map</span></span>
       <span class="qi-title"><span class="ru">Городские водопроводы</span><span class="en">Urban waterworks</span></span>
       <span class="qi-arr">→</span>
     </a>
-    <a class="qi" href="#" data-soon>
+    <a class="qi" href="urban_beautification1910.html">
       <span class="qi-tag"><span class="ru">Таблица · губернии</span><span class="en">Table · provinces</span></span>
       <span class="qi-title"><span class="ru">Благоустройство · 1910</span><span class="en">Urban services · 1910</span></span>
       <span class="qi-arr">→</span>
@@ -849,8 +866,8 @@ body::before{
     <div class="methods-grid">
       <div class="method-sources">
         <div class="ms-item">
-          <div class="ms-key"><span class="ru">Перепись</span><span class="en">Census</span></div>
-          <div class="ms-val"><span class="ru">Первая всеобщая перепись населения Российской империи 1897&nbsp;г. — основа базы данных 950 городов</span><span class="en">First General Census of the Russian Empire, 1897 — basis of the 950-city database</span></div>
+          <div class="ms-key"><span class="ru">Численность насления</span><span class="en">Urban Population</span></div>
+          <div class="ms-val"><span class="ru">Первая всеобщая перепись населения Российской империи 1897 г.; Сборники "Города России в 1904 г." и "Города России в 1910 г." — основа базы данных 950 городов</span><span class="en">First General Census of the Russian Empire, 1897; Goroda Rossii v 1904 godu [Cities of Russia in 1904]; Goroda Rossii v 1910 godu [Cities of Russia in 1910] — basis of the 950-city database</span></div>
         </div>
         <div class="ms-item">
           <div class="ms-key">GIS</div>
@@ -862,15 +879,11 @@ body::before{
         </div>
         <div class="ms-item">
           <div class="ms-key"><span class="ru">Холера</span><span class="en">Cholera</span></div>
-          <div class="ms-val"><span class="ru">Санитарно-эпидемиологические источники: три пандемические волны, 1823–1910</span><span class="en">Sanitary-epidemiological records: three pandemic waves, 1823–1910</span></div>
+          <div class="ms-val"><span class="ru">Васильев К.Г., Сегал А.Е, История эпидемий в России (Материалы и очерки). М. 1960</span><span class="en">Vasil'yev K.G., Segal A.Ye, Istoriya epidemiy v Rossii (Materialy i ocherki) [A History of Epidemics in Russia: Materials and Essays]. M. 1960</span></div>
         </div>
         <div class="ms-item">
           <div class="ms-key">1910</div>
           <div class="ms-val"><span class="ru">Статистика городского благоустройства Российской империи · 1&thinsp;231 город · 89 губерний и областей</span><span class="en">Urban services statistics, Russian Empire · 1,231 cities · 89 provinces &amp; oblasts</span></div>
-        </div>
-        <div class="ms-item">
-          <div class="ms-key"><span class="ru">Расходы</span><span class="en">Expenditure</span></div>
-          <div class="ms-val"><span class="ru">Санитарные расходы городских бюджетов, архивные документы</span><span class="en">Municipal sanitary expenditure data, archival documents</span></div>
         </div>
       </div>
       <div>
@@ -927,7 +940,7 @@ body::before{
             <span class="ru">Рекомендуемая ссылка</span><span class="en">Recommended citation</span>
           </p>
           <p id="cite-text-ru" class="cite-text ru" style="font:300 .82rem/1.7 var(--serif);color:rgba(255,255,255,.8)">
-            Агафонова А. Б. Transmission: цифровая исследовательская платформа об инфраструктуре городов Российской империи, 1870–1914. URL: https://urbantransmission.org (дата обращения: <span class="cite-date"></span>).
+            Агафонова А. Б. Transmission: инфраструктуры городов Российской империи, 1870–1914 [Цифровая исследовательская платформа]. URL: https://urbantransmission.org (дата обращения: <span class="cite-date"></span>).
           </p>
           <p id="cite-text-en" class="cite-text en" style="font:300 .82rem/1.7 var(--serif);color:rgba(255,255,255,.8)">
             Agafonova, A. B. <em>Transmission: Urban Infrastructures of the Russian Empire, 1870–1914</em> [Digital research platform]. URL: https://urbantransmission.org (accessed <span class="cite-date"></span>).
@@ -956,19 +969,19 @@ body::before{
           <span class="en">Anna B. Agafonova</span>
         </h2>
         <p class="rc-role">
-          <span class="ru">к.и.н. · независимый исследователь · специалист по экологической истории городов</span>
-          <span class="en">PhD (History) · independent researcher · specialist in environmental urban history</span>
+          <span class="ru">к.и.н. · независимый исследователь · специалист по городской экологической истории</span>
+          <span class="en">PhD (History) · independent researcher · specialist in urban environmental history</span>
         </p>
         <p class="rc-bio">
-          <span class="ru">Специалист в области экологической истории городов Российской империи и раннего СССР (1870–1930-е гг.). Сфера интересов: история водоснабжения и санитарных реформ, гидроэнергетика, городское самоуправление. Руководитель грантов РНФ (2022–2023) и РФФИ (2019), автор более 50 научных работ (в т.ч. публикации в Scopus и Web of Science). Доклады: EAUH (Антверп, 2022), ESEH (Бристоль, 2022; Таллин, 2019; Загреб, 2017), ICOHTEC (Острава, 2022; Катовице, 2019; Порту, 2016), ИИЕТ РАН (2023, 2025), ВДНХ-XIX (ЕУ СПб, 2026).</span>
-          <span class="en">Specialist in the environmental history of Russian and Soviet cities (1870s–1930s). Research interests: water supply and sanitary reform, hydropower development, municipal self-government. PI on grants from the Russian Science Foundation (2022–23) and RFBR (2019). Author of 50+ scholarly publications (including articles indexed in Scopus and Web of Science). Conferences: EAUH (Antwerp, 2022), ESEH (Bristol, 2022; Tallinn, 2019; Zagreb, 2017), ICOHTEC (Ostrava, 2022; Katowice, 2019; Porto, 2016), IIET RAS (2023, 2025), ВДНХ-XIX (EU SPb, 2026).</span>
+          <span class="ru">Специалист в области городской экологической истории Российской империи и раннего СССР (1870–1930-е гг.). Сфера интересов: история водоснабжения и санитарных реформ, гидроэнергетика, городское самоуправление. Руководитель грантов РНФ (2022–2023) и РФФИ (2019), автор более 50 научных работ (в т.ч. публикации в Scopus и Web of Science). Доклады: EAUH (Антверп, 2022), ESEH (Бристоль, 2022; Таллин, 2019; Загреб, 2017), ICOHTEC (Острава, 2022; Катовице, 2019; Порту, 2016), ИИЕТ РАН (2023, 2025), ВДНХ-XIX (ЕУ СПб, 2026).</span>
+          <span class="en">Specialist in the urban environmental history of Russian and Soviet cities (1870s–1930s). Research interests: water supply and sanitary reform, hydropower development, municipal self-government. PI on grants from the Russian Science Foundation (2022–23) and RFBR (2019). Author of 50+ scholarly publications (including articles indexed in Scopus and Web of Science). Conferences: EAUH (Antwerp, 2022), ESEH (Bristol, 2022; Tallinn, 2019; Zagreb, 2017), ICOHTEC (Ostrava, 2022; Katowice, 2019; Porto, 2016), IIET RAS (2023, 2025), ВДНХ-XIX (EU SPb, 2026).</span>
         </p>
         <div class="rc-links">
           <a class="rc-link" href="https://orcid.org/0000-0003-3021-4002" target="_blank" rel="noopener">ORCID</a>
           <a class="rc-link" href="https://scholar.google.com/citations?user=J7uQXacAAAAJ" target="_blank" rel="noopener">Google Scholar</a>
           <a class="rc-link" href="https://www.scopus.com/authid/detail.uri?authorId=57218302546" target="_blank" rel="noopener">Scopus</a>
           <a class="rc-link" href="https://independentresearcher.academia.edu/AnnaAgafonova" target="_blank" rel="noopener">Academia.edu</a>
-          <a class="rc-link" href="#" data-soon><span class="ru">Полный профиль →</span><span class="en">Full profile →</span></a>
+          <a class="rc-link" href="about.html"><span class="ru">Полный профиль →</span><span class="en">Full profile →</span></a>
           <a class="rc-link" href="mailto:a.b.agafonova@gmail.com"><span class="ru">Написать</span><span class="en">Contact</span></a>
         </div>
       </div>
@@ -989,13 +1002,12 @@ body::before{
     <div class="footer-right">
       <span class="footer-cite"><span class="ru">Для цитирования</span><span class="en">Cite this project</span></span>
       <div class="footer-links">
-        <a href="#" data-soon><span class="ru">Данные и методы</span><span class="en">Data &amp; methods</span></a>
+        <a href="about.html#data"><span class="ru">Данные и методы</span><span class="en">Data &amp; methods</span></a>
         <a href="#" data-soon><span class="ru">Сотрудничество</span><span class="en">Collaborate</span></a>
         <a href="terms.html" class="ru">Условия использования</a>
         <a href="terms.html" class="en">Terms of Use</a>
         <a href="personal-data.html" class="ru">Политика ПД</a>
         <a href="privacy.html" class="en">Privacy Policy</a>
-        <a href="#top">↑ Top</a>
       </div>
     </div>
   </div>
@@ -1335,6 +1347,17 @@ function copyCite(){
     e.preventDefault();
     showToast();
   });
+})();
+</script>
+
+<!-- ── BACK TO TOP ── -->
+<button id="back-to-top" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<script>
+(function(){
+  var btn = document.getElementById('back-to-top');
+  window.addEventListener('scroll', function(){
+    btn.classList.toggle('visible', window.scrollY > 320);
+  }, {passive:true});
 })();
 </script>
 </body>
