@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Российская империя · Городская инфраструктура</title>
+<title>Российская империя / Russian Empire · Urban Infrastructure — Transmission</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -459,13 +459,13 @@ header::after  { top: 5px; right: 5px; border-left: none; border-bottom: none; }
 <meta property="og:url" content="https://urbantransmission.org/empire/RussianEmpire.html">
 <meta property="og:site_name" content="Transmission">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Российская империя · Городская инфраструктура — Transmission">
+<meta property="og:title" content="Russian Empire · Urban Infrastructure — Transmission">
 <meta property="og:description" content="MVP-кейс: городская инфраструктура и санитарные условия в губерниях Российской империи, 1870–1914. Интерактивная карта и база данных.">
 <meta property="og:image" content="https://urbantransmission.org/HEAD4.png">
 <meta property="og:locale" content="ru_RU">
 <meta property="og:locale:alternate" content="en_GB">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Российская империя · Городская инфраструктура — Transmission">
+<meta name="twitter:title" content="Russian Empire · Urban Infrastructure — Transmission">
 <meta name="twitter:description" content="MVP-кейс: городская инфраструктура и санитарные условия в губерниях Российской империи, 1870–1914. Интерактивная карта и база данных.">
 <meta name="twitter:image" content="https://urbantransmission.org/HEAD4.png">
 <link rel="alternate" hreflang="ru" href="https://urbantransmission.org/empire/RussianEmpire.html">
@@ -520,15 +520,15 @@ header::after  { top: 5px; right: 5px; border-left: none; border-bottom: none; }
     </svg></div>
 
     <div class="header-title-block">
-      <h1>Российская <span class="amp">империя</span></h1>
+      <h1 data-i18n="hdr.title">Российская <span class="amp">империя</span></h1>
       <div class="sub">
-        <span>Городская инфраструктура</span>
+        <span data-i18n="hdr.infra">Городская инфраструктура</span>
         <span class="sep">·</span>
         <span class="mono">1870–1917</span>
         <span class="sep">✦</span>
-        <span><span class="mono">99</span> губерний и областей</span>
+        <span><span class="mono">99</span> <span data-i18n="hdr.regions">губерний и областей</span></span>
         <span class="sep">·</span>
-        <span><span class="mono">950</span> городов</span>
+        <span><span class="mono">950</span> <span data-i18n="hdr.cities">городов</span></span>
       </div>
     </div>
 
@@ -547,13 +547,13 @@ header::after  { top: 5px; right: 5px; border-left: none; border-bottom: none; }
     <div class="header-tools">
       <a href="../index.html" class="header-back">
         <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" width="12" height="12"><path d="M10 3 L5 8 L10 13"/></svg>
-        На главную
+        <span data-i18n="nav.home">На главную</span>
       </a>
       <div class="lang-toggle" role="group" aria-label="Language">
         <button data-lang="ru" class="on" onclick="setLang('ru')">RU</button>
         <button data-lang="en" onclick="setLang('en')">EN</button>
       </div>
-      <button class="tool-btn" aria-label="Тема" onclick="document.body.classList.toggle('theme-dark')">
+      <button class="tool-btn" aria-label="Тема / Theme" onclick="document.body.classList.toggle('theme-dark')">
         <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"><path d="M13 10 a 6 6 0 1 1 -7 -7 a 5 5 0 0 0 7 7 z"/></svg>
       </button>
     </div>
@@ -643,13 +643,13 @@ header::after  { top: 5px; right: 5px; border-left: none; border-bottom: none; }
         </div>
         <div class="epi-badge">
           <span class="epi-icon">🦠</span>
-          <div><strong>Холера:</strong> три крупные волны — 1847–1851, 1892–1895, 1908–1910. Наиболее пострадавшие — Поволжье, Причерноморье, Центральная Азия.</div>
+          <div data-i18n="epi.cholera"><strong>Холера:</strong> три крупные волны — 1847–1851, 1892–1895, 1908–1910. Наиболее пострадавшие — Поволжье, Причерноморье, Центральная Азия.</div>
         </div>
         <div class="epi-badge">
           <span class="epi-icon">🌡</span>
-          <div><strong>Тиф и дизентерия:</strong> постоянный фон во всех губерниях. Коррелирует с отсутствием централизованного водоснабжения.</div>
+          <div data-i18n="epi.typhus"><strong>Тиф и дизентерия:</strong> постоянный фон во всех губерниях. Коррелирует с отсутствием централизованного водоснабжения.</div>
         </div>
-        <p style="font-size:0.68rem;color:var(--faint);font-style:italic;font-family:'Cormorant Garamond',serif;margin-top:6px;">* Данные предварительные. Полная база в разработке.</p>
+        <p style="font-size:0.68rem;color:var(--faint);font-style:italic;font-family:'Cormorant Garamond',serif;margin-top:6px;" data-i18n="epi.note">* Данные предварительные. Полная база в разработке.</p>
       </div>
 
     </div><!-- /stab-content-overview -->
@@ -763,6 +763,7 @@ function switchStab(tab) {
 // ══════════════════════════════════════════════════════════════
 let map, tileLayer, activeLayer = 'tiles';
 let selectedProvinceId = null;
+let selectedCity = null;
 let highlightedProvinceId = null;
 let geoLayer = null;
 let cityMarker = null;
@@ -838,15 +839,16 @@ function highlightProvince(id) {
 function showProvinceCard(props) {
   const name = props.name;
   const hasMVP = !!MVP_PAGES[name];
+  const isEn = currentLang === 'en';
   document.getElementById('province-info-card').innerHTML = `
     <div class="province-card">
-      <div class="pc-name">${name}</div>
-      <div class="pc-sub">${props.name_eng || ''}</div>
-      <div class="pc-row"><span class="pc-lbl">Датасет ID</span><span class="pc-val">${props.ristat_id || props.id}</span></div>
-      <div class="pc-row"><span class="pc-lbl">Данные MVP</span>
-        <span class="pc-val" style="color:${hasMVP ? 'var(--turq)' : 'var(--faint)'}">${hasMVP ? 'Доступны' : 'В разработке'}</span>
+      <div class="pc-name">${isEn ? (props.name_eng || name) : name}</div>
+      <div class="pc-sub">${isEn ? name : (props.name_eng || '')}</div>
+      <div class="pc-row"><span class="pc-lbl">${isEn ? 'Dataset ID' : 'Датасет ID'}</span><span class="pc-val">${props.ristat_id || props.id}</span></div>
+      <div class="pc-row"><span class="pc-lbl">${isEn ? 'MVP data' : 'Данные MVP'}</span>
+        <span class="pc-val" style="color:${hasMVP ? 'var(--turq)' : 'var(--faint)'}">${hasMVP ? (isEn ? 'Available' : 'Доступны') : (isEn ? 'In development' : 'В разработке')}</span>
       </div>
-      ${hasMVP ? `<a class="pc-link-btn" href="${MVP_PAGES[name]}">Открыть страницу губернии →</a>` : ''}
+      ${hasMVP ? `<a class="pc-link-btn" href="${MVP_PAGES[name]}">${isEn ? 'Open province page →' : 'Открыть страницу губернии →'}</a>` : ''}
     </div>`;
 }
 
@@ -868,7 +870,7 @@ function searchProvince(val) {
   const results = GUBERNII_GEOJSON.features
     .filter(f => f.properties.name.toLowerCase().includes(q) || (f.properties.name_eng||'').toLowerCase().includes(q))
     .slice(0, 12);
-  if (!results.length) { el.innerHTML = '<div class="search-empty">Не найдено</div>'; return; }
+  if (!results.length) { el.innerHTML = `<div class="search-empty">${currentLang === 'en' ? 'No results' : 'Не найдено'}</div>`; return; }
   el.innerHTML = results.map(f => {
     const hasMVP = !!MVP_PAGES[f.properties.name];
     return `<div class="search-result-item" onclick="selectProvinceById('${f.properties.id}')">
@@ -905,13 +907,15 @@ function searchCity(val) {
   const results = CITIES.filter(c =>
     c.city.toLowerCase().includes(q) || c.gubern.toLowerCase().includes(q)
   ).slice(0, 18);
-  if (!results.length) { el.innerHTML = '<div class="search-empty">Не найдено</div>'; return; }
+  if (!results.length) { el.innerHTML = `<div class="search-empty">${currentLang === 'en' ? 'No results' : 'Не найдено'}</div>`; return; }
 
   // Detect duplicate city names
   const nameCount = {};
   results.forEach(c => { nameCount[c.city] = (nameCount[c.city]||0) + 1; });
 
-  const profiles = {1:'Самотёчный',2:'Насосный',3:'Смешанный',4:'Арт. скважина',5:'Частный',6:'—'};
+  const profiles = currentLang === 'en'
+    ? {1:'Gravity-fed',2:'Pumping',3:'Combined',4:'Artesian well',5:'Private',6:'—'}
+    : {1:'Самотёчный',2:'Насосный',3:'Смешанный',4:'Арт. скважина',5:'Частный',6:'—'};
   el.innerHTML = results.map((c, i) => {
     const isDup = nameCount[c.city] > 1;
     const hasMVP = !!MVP_PAGES[c.gubern];
@@ -919,9 +923,9 @@ function searchCity(val) {
     return `<div class="city-result-item" onclick="focusCity(${c.lat},${c.lon},'${c.gubern.replace(/'/g,"\\'")}','${c.city.replace(/'/g,"\\'")}')">
       <div class="cr-name">${c.city}</div>
       <div class="cr-gubern">${c.gubern}</div>
-      ${isDup ? '<div style="font-size:0.60rem;color:var(--faint);font-family:Inter,sans-serif;margin-top:2px;">⚠ Несколько городов с таким названием</div>' : ''}
+      ${isDup ? `<div style="font-size:0.60rem;color:var(--faint);font-family:Inter,sans-serif;margin-top:2px;">⚠ ${currentLang === 'en' ? 'Multiple cities with this name' : 'Несколько городов с таким названием'}</div>` : ''}
       <div style="display:flex;gap:4px;margin-top:3px;flex-wrap:wrap;">
-        ${hasWW ? `<span class="cr-badge">Водопровод ${c.year ? c.year : ''}</span>` : ''}
+        ${hasWW ? `<span class="cr-badge">${currentLang === 'en' ? 'Waterworks' : 'Водопровод'} ${c.year ? c.year : ''}</span>` : ''}
         ${hasMVP ? '<span class="cr-badge" style="background:rgba(79,135,129,0.15);color:var(--turq);">MVP</span>' : ''}
       </div>
     </div>`;
@@ -957,19 +961,23 @@ function focusCity(lat, lon, gubern, cityName) {
 }
 
 function showCityCard(city) {
+  selectedCity = city;
   const hasMVP = !!MVP_PAGES[city.gubern];
-  const profiles = {1:'Самотёчный водопровод',2:'Насосный водопровод',3:'Смешанный водопровод',4:'Арт. скважина',5:'Частный водопровод',6:'Без водопровода'};
+  const isEn = currentLang === 'en';
+  const profiles = isEn
+    ? {1:'Gravity-fed waterworks',2:'Pumping waterworks',3:'Combined waterworks',4:'Artesian well',5:'Private waterworks',6:'No waterworks'}
+    : {1:'Самотёчный водопровод',2:'Насосный водопровод',3:'Смешанный водопровод',4:'Арт. скважина',5:'Частный водопровод',6:'Без водопровода'};
   const sec = document.getElementById('selected-city-section');
   sec.style.display = 'block';
   document.getElementById('city-info-card').innerHTML = `
     <div class="province-card">
       <div class="pc-name">${city.city}</div>
       <div class="pc-sub">${city.gubern}</div>
-      ${city.pop1897 ? `<div class="pc-row"><span class="pc-lbl">Население (1897)</span><span class="pc-val">${city.pop1897.toLocaleString('ru')} чел.</span></div>` : ''}
-      ${city.year ? `<div class="pc-row"><span class="pc-lbl">Водопровод с</span><span class="pc-val">${city.year} г.</span></div>` : ''}
-      <div class="pc-row"><span class="pc-lbl">Тип водоснабжения</span><span class="pc-val" style="font-size:0.76rem;">${profiles[city.profile]||'—'}</span></div>
-      ${city.status ? `<div class="pc-row"><span class="pc-lbl">Статус</span><span class="pc-val" style="font-size:0.74rem;">${city.status}</span></div>` : ''}
-      ${hasMVP ? `<a class="pc-link-btn" href="${MVP_PAGES[city.gubern]}">Открыть страницу губернии →</a>` : ''}
+      ${city.pop1897 ? `<div class="pc-row"><span class="pc-lbl">${isEn ? 'Population (1897)' : 'Население (1897)'}</span><span class="pc-val">${city.pop1897.toLocaleString(isEn ? 'en' : 'ru')} ${isEn ? 'inh.' : 'чел.'}</span></div>` : ''}
+      ${city.year ? `<div class="pc-row"><span class="pc-lbl">${isEn ? 'Waterworks since' : 'Водопровод с'}</span><span class="pc-val">${city.year}${isEn ? '' : ' г.'}</span></div>` : ''}
+      <div class="pc-row"><span class="pc-lbl">${isEn ? 'Water supply type' : 'Тип водоснабжения'}</span><span class="pc-val" style="font-size:0.76rem;">${profiles[city.profile]||'—'}</span></div>
+      ${city.status ? `<div class="pc-row"><span class="pc-lbl">${isEn ? 'Status' : 'Статус'}</span><span class="pc-val" style="font-size:0.74rem;">${city.status}</span></div>` : ''}
+      ${hasMVP ? `<a class="pc-link-btn" href="${MVP_PAGES[city.gubern]}">${isEn ? 'Open province page →' : 'Открыть страницу губернии →'}</a>` : ''}
     </div>`;
 }
 
@@ -991,6 +999,14 @@ const I18N_EMPIRE = {
     'footer.empire':'Российская империя',
     'footer.sub':'Городская инфраструктура · MVP · Прототип',
     'footer.source':'Electronic Repository of Russian Historical Statistics',
+    'hdr.title':'Российская <span class="amp">империя</span>',
+    'hdr.infra':'Городская инфраструктура',
+    'hdr.regions':'губерний и областей',
+    'hdr.cities':'городов',
+    'nav.home':'На главную',
+    'epi.cholera':'<strong>Холера:</strong> три крупные волны — 1847–1851, 1892–1895, 1908–1910. Наиболее пострадавшие — Поволжье, Причерноморье, Центральная Азия.',
+    'epi.typhus':'<strong>Тиф и дизентерия:</strong> постоянный фон во всех губерниях. Коррелирует с отсутствием централизованного водоснабжения.',
+    'epi.note':'* Данные предварительные. Полная база в разработке.',
   },
   en: {
     'stats':'Empire statistics','stat.regions':'Provinces<br>& regions','stat.cities':'Cities<br>in database',
@@ -1006,6 +1022,14 @@ const I18N_EMPIRE = {
     'footer.empire':'Russian Empire',
     'footer.sub':'Urban Infrastructure · MVP · Prototype',
     'footer.source':'Electronic Repository of Russian Historical Statistics',
+    'hdr.title':'Russian <span class="amp">Empire</span>',
+    'hdr.infra':'Urban Infrastructure',
+    'hdr.regions':'provinces & regions',
+    'hdr.cities':'cities',
+    'nav.home':'Home',
+    'epi.cholera':'<strong>Cholera:</strong> three major waves — 1847–1851, 1892–1895, 1908–1910. Most affected regions: Volga, Black Sea coast, Central Asia.',
+    'epi.typhus':'<strong>Typhoid & dysentery:</strong> endemic in all provinces. Strongly correlated with the absence of centralised water supply.',
+    'epi.note':'* Preliminary data. Full database under development.',
   }
 };
 let currentLang = 'ru';
@@ -1024,6 +1048,12 @@ function setLang(lang) {
   document.getElementById('stab-overview').textContent = lang === 'ru' ? 'Обзор'    : 'Overview';
   document.getElementById('stab-province').textContent = lang === 'ru' ? 'Губерния' : 'Province';
   document.getElementById('stab-city').textContent     = lang === 'ru' ? 'Город'    : 'City';
+  // Перерисовать открытые карточки с новым языком
+  if (selectedProvinceId) {
+    const feat = GUBERNII_GEOJSON && GUBERNII_GEOJSON.features.find(f => f.properties.id === selectedProvinceId);
+    if (feat) showProvinceCard(feat.properties);
+  }
+  if (selectedCity) showCityCard(selectedCity);
 }
 
 // ══════════════════════════════════════════════════════════════
