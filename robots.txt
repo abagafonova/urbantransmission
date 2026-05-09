@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+
+# Черновики и внутренние файлы — не индексировать
+Disallow: /waterworks/map_draft.html
+Disallow: /empire/Novgorod.html
+Disallow: /prototype/
+Disallow: /index_old.html
+Disallow: /waterworks/admin_refs.html
+Disallow: /waterworks/uploads/
+
+Sitemap: https://urbantransmission.org/sitemap.xml
