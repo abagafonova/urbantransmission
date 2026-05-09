@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Educational Video on Urban Infrastructure · Transmission</title>
+<meta name="description" content="Видеолекции и научно-популярные ролики по истории водоснабжения и городских инфраструктур Российской империи. Anna B. Agafonova, PhD.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Educational Video on Urban Infrastructure · Transmission">
+<meta property="og:description" content="Video lectures on the history of urban water supply and municipal infrastructure in the Russian Empire, 1870–1914.">
+<meta property="og:image" content="https://urbantransmission.org/HEAD4.png">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --page-cream:  #F6EFDC;
+  --page-ochre:  #E8D5A8;
+  --page-turq:   #BED5CF;
+  --page-sky:    #D8E3E1;
+  --glass-tint:  rgba(250,244,228,0.72);
+  --glass-edge:  rgba(20,36,60,0.18);
+  --ink:         #1A2B47;
+  --ink-soft:    #2B4773;
+  --muted:       #6F7D95;
+  --faint:       #A6AEBC;
+  --copper:      #8B5E3C;
+  --turq:        #4F8781;
+  --blue-deep:   #1A2B47;
+  --line:        rgba(20,36,60,0.12);
+  --line-copper: rgba(139,94,60,0.30);
+  --ochre:       #C79243;
+  --serif:       Cambria, 'Palatino Linotype', Georgia, serif;
+  --sans:        'Inter', system-ui, sans-serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--page-cream);
+  background-image:
+    radial-gradient(1100px 700px at 8% 4%, var(--page-sky) 0%, rgba(216,227,225,0) 55%),
+    radial-gradient(900px 600px at 95% 3%, var(--page-turq) 0%, rgba(190,213,207,0) 60%),
+    radial-gradient(1200px 900px at 50% 110%, var(--page-ochre) 0%, rgba(232,213,168,0) 55%),
+    linear-gradient(180deg, var(--page-cream) 0%, var(--page-cream) 30%, rgba(232,213,168,0.45) 70%, rgba(190,213,207,0.35) 100%);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 14px;
+  min-height: 100vh;
+  display: flex; flex-direction: column;
+}
+
+/* ── HEADER ── */
+header {
+  position: sticky; top: 0; z-index: 10;
+  padding: 14px 28px;
+  background: var(--glass-tint);
+  backdrop-filter: blur(18px) saturate(1.2);
+  border-bottom: 1px solid var(--glass-edge);
+  box-shadow: 0 1px 0 rgba(255,255,255,0.55) inset, 0 4px 16px rgba(30,40,70,0.07);
+}
+.header-inner {
+  max-width: 1060px; margin: 0 auto;
+  display: flex; align-items: center; gap: 16px;
+}
+.header-title {
+  flex: 1; text-align: center;
+  font-family: var(--serif); font-weight: 500; font-variant: small-caps;
+  font-size: 1.05rem; letter-spacing: 0.07em; color: var(--ink);
+}
+.header-title span { font-variant: normal; font-weight: 400; color: var(--muted); font-size: 0.82rem; }
+.header-back {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 6px 13px; border-radius: 999px;
+  background: rgba(246,239,220,0.6); border: 1px solid var(--line-copper);
+  color: var(--ink-soft); font-size: 0.70rem; font-weight: 500;
+  letter-spacing: 0.04em; text-decoration: none; transition: all .18s; flex-shrink: 0;
+}
+.header-back:hover { background: var(--ink); color: var(--page-cream); border-color: var(--ink); }
+.header-back svg { width: 13px; height: 13px; }
+
+/* ── LANG ── */
+.en { display: none; }
+.en-bl { display: none; }
+[data-en] .ru { display: none; }
+[data-en] .en { display: inline; }
+[data-en] .ru-bl { display: none; }
+[data-en] .en-bl { display: block; }
+.lang-sw { display: flex; gap: 4px; flex-shrink: 0; }
+.lang-sw button {
+  background: rgba(26,43,71,0.06); border: 1px solid var(--line);
+  color: var(--muted); font: 700 .68rem/1 var(--sans); letter-spacing: .06em;
+  padding: 5px 9px; cursor: pointer; transition: all .15s; border-radius: 3px;
+}
+.lang-sw button.on { color: var(--page-cream); background: var(--ink); border-color: var(--ink); }
+.lang-sw button:hover:not(.on) { color: var(--ink); border-color: var(--ink-soft); }
+
+/* ── PAGE HERO ── */
+.page-hero {
+  background: rgba(246,239,220,0.55);
+  border-bottom: 1px solid var(--line-copper);
+  padding: 44px 28px 36px;
+  text-align: center;
+}
+.page-label {
+  font: 600 0.62rem/1 var(--sans);
+  text-transform: uppercase; letter-spacing: .16em;
+  color: var(--copper); margin-bottom: 12px;
+}
+.page-title {
+  font-family: var(--serif); font-variant: small-caps;
+  font-size: clamp(1.5rem, 4vw, 2.1rem);
+  font-weight: 500; color: var(--ink);
+  line-height: 1.2; margin-bottom: 14px;
+  letter-spacing: 0.03em;
+}
+.page-desc {
+  max-width: 640px; margin: 0 auto;
+  font-family: var(--serif); font-size: 0.88rem;
+  color: var(--muted); line-height: 1.75;
+}
+
+/* ── CHANNELS BAR ── */
+.channels-bar {
+  max-width: 1060px; margin: 32px auto 0;
+  padding: 0 20px;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+}
+@media (max-width: 620px) { .channels-bar { grid-template-columns: 1fr; } }
+.channel-card {
+  background: rgba(246,239,220,0.7);
+  border: 1px solid var(--line-copper); border-radius: 10px;
+  padding: 16px 18px; display: flex; align-items: center; gap: 14px;
+  text-decoration: none; color: var(--ink); transition: all .18s;
+}
+.channel-card:hover { background: var(--ink); color: var(--page-cream); border-color: var(--ink); }
+.channel-card:hover .ch-label, .channel-card:hover .ch-sub { color: rgba(246,239,220,0.65); }
+.ch-yt-icon {
+  width: 36px; height: 36px; flex-shrink: 0;
+  border-radius: 7px; display: flex; align-items: center; justify-content: center;
+  background: rgba(204,0,0,0.1);
+}
+.channel-card:hover .ch-yt-icon { background: rgba(255,255,255,0.15); }
+.ch-yt-icon svg { width: 20px; height: 20px; }
+.ch-label {
+  font-family: var(--serif); font-size: 0.88rem; font-weight: 600;
+  color: var(--ink); line-height: 1.2; margin-bottom: 2px;
+}
+.ch-sub { font-size: 0.68rem; color: var(--muted); letter-spacing: 0.03em; }
+.ch-arrow { margin-left: auto; font-size: 0.80rem; color: var(--copper); flex-shrink: 0; }
+.channel-card:hover .ch-arrow, .channel-card:hover .ch-label { color: rgba(246,239,220,0.9); }
+.channel-card:hover .ch-sub { color: rgba(246,239,220,0.55); }
+
+/* ── FILTER BAR ── */
+.filter-bar {
+  display: flex; gap: 8px; justify-content: center;
+  flex-wrap: wrap; padding: 28px 16px 0;
+}
+.filter-chip {
+  background: rgba(246,239,220,0.8); border: 1px solid var(--line-copper);
+  color: var(--muted); font-family: var(--sans);
+  font-size: 0.72rem; font-weight: 600; padding: 5px 16px;
+  border-radius: 20px; cursor: pointer; transition: all .15s;
+}
+.filter-chip:hover { border-color: var(--ink); color: var(--ink); }
+.filter-chip.active { background: var(--ink); border-color: var(--ink); color: var(--page-cream); }
+.filter-chip.lang-chip-ru.active { background: var(--copper); border-color: var(--copper); }
+.filter-chip.topic-chip { border-style: dashed; }
+.filter-chip.topic-chip:hover { border-style: solid; }
+.filter-chip.topic-chip.active { background: var(--turq); border-color: var(--turq); border-style: solid; }
+.filter-sep { width: 1px; height: 18px; background: var(--line-copper); align-self: center; margin: 0 2px; }
+
+/* ── VIDEO GRID ── */
+.section-inner {
+  flex: 1; max-width: 1060px; margin: 0 auto;
+  padding: 32px 20px 72px;
+}
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(440px, 1fr));
+  gap: 24px;
+}
+@media (max-width: 540px) { .video-grid { grid-template-columns: 1fr; } }
+
+.video-card {
+  background: rgba(250,246,238,0.88);
+  border: 1px solid var(--line-copper); border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(30,40,70,0.06);
+  transition: transform .18s, box-shadow .18s;
+}
+.video-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(30,40,70,0.10);
+}
+.video-card.hidden { display: none; }
+
+/* Click-to-play */
+.video-wrap {
+  position: relative; padding-top: 56.25%;
+  background: var(--ink); cursor: pointer;
+}
+.video-wrap iframe {
+  position: absolute; inset: 0; width: 100%; height: 100%; border: none;
+}
+.video-thumb {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; transition: opacity .2s;
+}
+.play-btn {
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60px; height: 60px;
+  background: rgba(0,0,0,0.6); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  pointer-events: none; transition: background .2s;
+}
+.video-wrap:hover .play-btn { background: #c00; }
+.play-btn svg { width: 26px; height: 26px; fill: #fff; margin-left: 4px; }
+.video-wrap.loaded .video-thumb,
+.video-wrap.loaded .play-btn { display: none; }
+
+/* Card body */
+.video-body { padding: 16px 18px 18px; }
+.video-badges {
+  display: flex; gap: 6px; align-items: center;
+  margin-bottom: 10px; flex-wrap: wrap;
+}
+.badge-lang {
+  font-size: 0.60rem; font-weight: 700; letter-spacing: .06em;
+  padding: 2px 8px; border-radius: 3px; text-transform: uppercase;
+}
+.badge-ru {
+  background: rgba(139,94,60,0.1); color: var(--copper);
+  border: 1px solid rgba(139,94,60,0.25);
+}
+.badge-en {
+  background: rgba(26,43,71,0.1); color: var(--ink);
+  border: 1px solid rgba(26,43,71,0.2);
+}
+.badge-topic {
+  font-size: 0.62rem; color: var(--muted);
+  background: rgba(111,125,149,0.08); border: 1px solid rgba(111,125,149,0.18);
+  padding: 2px 8px; border-radius: 3px;
+}
+.video-title {
+  font-family: var(--serif); font-size: 0.95rem; font-weight: 600;
+  color: var(--ink); line-height: 1.35; margin: 0 0 7px;
+}
+.video-desc {
+  font-family: var(--serif); font-size: 0.80rem;
+  color: var(--muted); line-height: 1.68; margin-bottom: 14px;
+}
+.video-footer {
+  display: flex; align-items: center; justify-content: space-between;
+  border-top: 1px solid var(--line); padding-top: 11px;
+  gap: 8px; flex-wrap: wrap;
+}
+.video-channel {
+  font-size: 0.66rem; color: var(--muted);
+  display: flex; align-items: center; gap: 5px;
+}
+.video-channel svg { width: 12px; height: 12px; flex-shrink: 0; }
+.video-yt-link {
+  font-size: 0.70rem; font-weight: 600; color: var(--ink-soft);
+  text-decoration: none; display: inline-flex; align-items: center; gap: 4px;
+  padding: 4px 10px; border: 1px solid var(--line-copper); border-radius: 4px;
+  transition: all .15s; white-space: nowrap; background: rgba(246,239,220,0.6);
+}
+.video-yt-link:hover { background: var(--ink); color: var(--page-cream); border-color: var(--ink); }
+
+/* Coming soon */
+.video-card-soon {
+  background: rgba(246,239,220,0.5);
+  border: 1px dashed rgba(139,94,60,0.28);
+  border-radius: 10px; padding: 32px 24px;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center; min-height: 220px;
+}
+.video-card-soon strong {
+  display: block; font-family: var(--serif); font-size: 0.88rem;
+  color: var(--ink); margin-bottom: 8px; font-weight: 600;
+}
+.video-card-soon p {
+  font-family: var(--serif); font-size: 0.80rem; color: var(--muted); line-height: 1.7;
+}
+
+/* ── FOOTER ── */
+.tx-footer {
+  background: var(--blue-deep);
+  color: rgba(255,255,255,.38);
+  padding: 28px 32px;
+  border-top: 2px solid var(--turq);
+  font: 300 0.78rem/1.7 var(--serif);
+}
+.tx-footer-inner {
+  max-width: 1060px; margin: 0 auto;
+  display: flex; flex-wrap: wrap; gap: 10px 24px;
+  justify-content: space-between; align-items: center;
+}
+.tx-footer strong { color: rgba(255,255,255,.72); }
+.tx-footer a { color: rgba(255,255,255,.45); text-decoration: none; }
+.tx-footer a:hover { color: #fff; }
+.tx-footer-nav { display: flex; gap: 16px; flex-wrap: wrap; }
+
+@media (max-width: 700px) {
+  .header-inner { gap: 10px; }
+  .header-title { font-size: 0.90rem; }
+  .page-hero { padding: 32px 18px 28px; }
+  .channels-bar, .section-inner { padding-left: 14px; padding-right: 14px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ── HEADER ── -->
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="header-back">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10 12L6 8l4-4"/></svg>
+      <span class="ru">Главная</span><span class="en">Home</span>
+    </a>
+    <div class="header-title">
+      Transmission <span>· <span class="ru">Видео</span><span class="en">Videos</span></span>
+    </div>
+    <div class="lang-sw" role="group" aria-label="Language / Язык">
+      <button data-lang="ru" class="on" onclick="setLang('ru')">РУ</button>
+      <button data-lang="en" onclick="setLang('en')">EN</button>
+    </div>
+  </div>
+</header>
+
+<!-- ── HERO ── -->
+<div class="page-hero">
+  <p class="page-label">Transmission · Video</p>
+  <h1 class="page-title">
+    <span class="ru">Образовательные видео</span>
+    <span class="en">Educational Videos</span>
+  </h1>
+  <p class="page-desc">
+    <span class="ru">Научно-популярные ролики по истории водоснабжения, городского благоустройства и инфраструктур Российской империи. Два канала: русскоязычный и англоязычный.</span>
+    <span class="en">Research and public-outreach videos on the history of urban water supply, municipal services, and infrastructure in the Russian Empire. Two channels: Russian- and English-language.</span>
+  </p>
+</div>
+
+<!-- ── CHANNEL LINKS ── -->
+<div class="channels-bar">
+  <a class="channel-card" href="https://www.youtube.com/@ab_agafonova" target="_blank" rel="noopener">
+    <div class="ch-yt-icon">
+      <svg viewBox="0 0 24 24"><path fill="#cc0000" d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.54C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon fill="white" points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg>
+    </div>
+    <div style="flex:1;min-width:0">
+      <div class="ch-label"><span class="ru">Русскоязычный канал</span><span class="en">Russian-language channel</span></div>
+      <div class="ch-sub">@ab_agafonova &nbsp;·&nbsp; <span class="ru">История городов</span><span class="en">Urban history</span></div>
+    </div>
+    <div class="ch-arrow">↗</div>
+  </a>
+  <a class="channel-card" href="https://www.youtube.com/@UrbanEnvironmentalHistory" target="_blank" rel="noopener">
+    <div class="ch-yt-icon">
+      <svg viewBox="0 0 24 24"><path fill="#cc0000" d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.54C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon fill="white" points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg>
+    </div>
+    <div style="flex:1;min-width:0">
+      <div class="ch-label"><span class="ru">Англоязычный канал</span><span class="en">English-language channel</span></div>
+      <div class="ch-sub">@UrbanEnvironmentalHistory &nbsp;·&nbsp; Urban &amp; Environmental History</div>
+    </div>
+    <div class="ch-arrow">↗</div>
+  </a>
+</div>
+
+<!-- ── FILTER ── -->
+<div class="filter-bar">
+  <button class="filter-chip active" data-filter="all" onclick="filterVideos('all')">
+    <span class="ru">Все</span><span class="en">All</span>
+  </button>
+  <button class="filter-chip lang-chip-ru" data-filter="ru" onclick="filterVideos('ru')">
+    <span class="ru">Русскоязычные</span><span class="en">Russian</span>
+  </button>
+  <button class="filter-chip lang-chip-en" data-filter="en" onclick="filterVideos('en')">
+    <span class="ru">Англоязычные</span><span class="en">English</span>
+  </button>
+  <span class="filter-sep" aria-hidden="true"></span>
+  <button class="filter-chip topic-chip" data-filter="energy" onclick="filterVideos('energy')">
+    <span class="ru">Энергетика</span><span class="en">Energy history</span>
+  </button>
+  <button class="filter-chip topic-chip" data-filter="urban" onclick="filterVideos('urban')">
+    <span class="ru">Благоустройство</span><span class="en">Urban improvement</span>
+  </button>
+  <button class="filter-chip topic-chip" data-filter="sanitary" onclick="filterVideos('sanitary')">
+    <span class="ru">Санитарные институты</span><span class="en">Sanitary institutions</span>
+  </button>
+</div>
+
+<!-- ── VIDEO GRID ── -->
+<div class="section-inner">
+  <div class="video-grid" id="video-grid">
+
+    <!-- VIDEO 1 — RU: Череповец (@ab_agafonova) -->
+    <div class="video-card" data-lang="ru" data-topic="urban">
+      <div class="video-wrap" id="wrap-1"
+           data-src="https://www.youtube-nocookie.com/embed/J5oVjXurSTI?rel=0&modestbranding=1"
+           onclick="loadVideo('wrap-1')">
+        <img class="video-thumb" src="https://i.ytimg.com/vi/J5oVjXurSTI/hqdefault.jpg" alt="История водоснабжения Череповца">
+        <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+      </div>
+      <div class="video-body">
+        <div class="video-badges">
+          <span class="badge-lang badge-ru">RU</span>
+          <span class="badge-topic ru">История водоснабжения</span>
+          <span class="badge-topic en">Water supply history</span>
+        </div>
+        <h2 class="video-title">
+          <span class="ru">История водоснабжения Череповца</span>
+          <span class="en">History of Water Supply in Cherepovets</span>
+        </h2>
+        <p class="video-desc">
+          <span class="ru">Как Череповец получил централизованный водопровод: от первых проектов до реализации. История городской инфраструктуры в контексте санитарных реформ позднеимперской России.</span>
+          <span class="en">How Cherepovets acquired its centralised waterworks: from early proposals to implementation. A case study in late imperial Russia's sanitary reform.</span>
+        </p>
+        <div class="video-footer">
+          <span class="video-channel">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.54C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="currentColor" stroke="none"/></svg>
+            @ab_agafonova
+          </span>
+          <a class="video-yt-link" href="https://www.youtube.com/watch?v=J5oVjXurSTI" target="_blank" rel="noopener">
+            <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" width="12" height="12"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
+            <span class="ru">Смотреть на YouTube</span><span class="en">Watch on YouTube</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- VIDEO 2 — EN: Electrifying Russia Part 2 -->
+    <div class="video-card" data-lang="en" data-topic="energy">
+      <div class="video-wrap" id="wrap-2"
+           data-src="https://www.youtube-nocookie.com/embed/UTD09DXsNFM?rel=0&modestbranding=1"
+           onclick="loadVideo('wrap-2')">
+        <img class="video-thumb" src="https://i.ytimg.com/vi/UTD09DXsNFM/hqdefault.jpg" alt="Electrifying Russia 1890–1930. Part 2">
+        <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+      </div>
+      <div class="video-body">
+        <div class="video-badges">
+          <span class="badge-lang badge-en">EN</span>
+          <span class="badge-topic ru">Электрификация · часть 2</span>
+          <span class="badge-topic en">Electrification · Part 2</span>
+        </div>
+        <h2 class="video-title">Electrifying Russia 1890–1930. Part 2 (1914–1930s)</h2>
+        <p class="video-desc">
+          <span class="ru">Как военный кризис и Гражданская война изменили энергетические приоритеты российских городов: от минерального топлива к растительному. Финансовые ограничения и политические потрясения как факторы выбора городской инфраструктуры.</span>
+          <span class="en">How the First World War and Civil War reshaped urban energy choices in Russia. Financial constraints and political upheavals pushed city governments from mineral fuels toward alternatives — tracing the path to early Soviet electrification policy.</span>
+        </p>
+        <div class="video-footer">
+          <span class="video-channel">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.54C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="currentColor" stroke="none"/></svg>
+            @UrbanEnvironmentalHistory
+          </span>
+          <a class="video-yt-link" href="https://www.youtube.com/watch?v=UTD09DXsNFM" target="_blank" rel="noopener">
+            <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" width="12" height="12"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
+            <span class="ru">Смотреть на YouTube</span><span class="en">Watch on YouTube</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- VIDEO 3 — EN: Electrifying Russia Part 1 -->
+    <div class="video-card" data-lang="en" data-topic="energy">
+      <div class="video-wrap" id="wrap-3"
+           data-src="https://www.youtube-nocookie.com/embed/J9mc2YjBB9o?rel=0&modestbranding=1"
+           onclick="loadVideo('wrap-3')">
+        <img class="video-thumb" src="https://i.ytimg.com/vi/J9mc2YjBB9o/hqdefault.jpg" alt="Electrifying Russia 1890–1930. Part 1">
+        <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+      </div>
+      <div class="video-body">
+        <div class="video-badges">
+          <span class="badge-lang badge-en">EN</span>
+          <span class="badge-topic ru">Электрификация · часть 1</span>
+          <span class="badge-topic en">Electrification · Part 1</span>
+        </div>
+        <h2 class="video-title">Electrifying Russia 1890–1930. Part 1 (1890–1914)</h2>
+        <p class="video-desc">
+          <span class="ru">Ранние десятилетия городской электрификации: большинство электростанций работало на угле и нефти. Топливный кризис 1901–1908 гг. начал менять логику энергетических решений городских властей.</span>
+          <span class="en">The early decades of urban electrification in the Russian Empire. Most city power plants ran on coal and petroleum. The fuel crisis of 1901–1908 began shifting the logic of energy choices for city governments.</span>
+        </p>
+        <div class="video-footer">
+          <span class="video-channel">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.54C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="currentColor" stroke="none"/></svg>
+            @UrbanEnvironmentalHistory
+          </span>
+          <a class="video-yt-link" href="https://www.youtube.com/watch?v=J9mc2YjBB9o" target="_blank" rel="noopener">
+            <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" width="12" height="12"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
+            <span class="ru">Смотреть на YouTube</span><span class="en">Watch on YouTube</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- VIDEO 4 — EN: The 1870 Urban Reform -->
+    <div class="video-card" data-lang="en" data-topic="urban">
+      <div class="video-wrap" id="wrap-4"
+           data-src="https://www.youtube-nocookie.com/embed/-hFsx2_GFm8?rel=0&modestbranding=1"
+           onclick="loadVideo('wrap-4')">
+        <img class="video-thumb" src="https://i.ytimg.com/vi/-hFsx2_GFm8/hqdefault.jpg" alt="The 1870 Urban Reform & Urban Environment">
+        <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+      </div>
+      <div class="video-body">
+        <div class="video-badges">
+          <span class="badge-lang badge-en">EN</span>
+          <span class="badge-topic ru">Реформа 1870 г.</span>
+          <span class="badge-topic en">Urban reform 1870</span>
+        </div>
+        <h2 class="video-title">The 1870 Urban Reform &amp; Urban Environment</h2>
+        <p class="video-desc">
+          <span class="ru">Реформа 1870 г. как поворотный момент в политике городских властей по отношению к природной среде. Как природные компоненты вошли в повестку городского благоустройства.</span>
+          <span class="en">How the 1870 urban reform became a turning point in the incorporation of natural elements into city management policy — marking a shift in how Russian municipalities treated their natural surroundings.</span>
+        </p>
+        <div class="video-footer">
+          <span class="video-channel">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.54C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="currentColor" stroke="none"/></svg>
+            @UrbanEnvironmentalHistory
+          </span>
+          <a class="video-yt-link" href="https://www.youtube.com/watch?v=-hFsx2_GFm8" target="_blank" rel="noopener">
+            <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" width="12" height="12"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
+            <span class="ru">Смотреть на YouTube</span><span class="en">Watch on YouTube</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- VIDEO 5 — EN: Urban Life vs Energy Crises Part 2 -->
+    <div class="video-card" data-lang="en" data-topic="energy">
+      <div class="video-wrap" id="wrap-5"
+           data-src="https://www.youtube-nocookie.com/embed/G93fY7iKStA?rel=0&modestbranding=1"
+           onclick="loadVideo('wrap-5')">
+        <img class="video-thumb" src="https://i.ytimg.com/vi/G93fY7iKStA/hqdefault.jpg" alt="Urban Life vs Energy Crises. Part 2">
+        <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+      </div>
+      <div class="video-body">
+        <div class="video-badges">
+          <span class="badge-lang badge-en">EN</span>
+          <span class="badge-topic ru">Энергетические кризисы · часть 2</span>
+          <span class="badge-topic en">Energy crises · Part 2</span>
+        </div>
+        <h2 class="video-title">Urban Life vs Energy Crises. Part 2</h2>
+        <p class="video-desc">
+          <span class="ru">Социальные последствия новых электрических технологий: дебаты об уличном освещении, трамвайный этикет, нехватка топлива в годы Первой мировой войны и Гражданской войны.</span>
+          <span class="en">The social response to electric street lighting and trams, and the restrictions imposed by fuel crises. Covers the 1909 Moscow public debate, tram etiquette conflicts, and the upheavals triggered by electrifying city life.</span>
+        </p>
+        <div class="video-footer">
+          <span class="video-channel">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.54C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="currentColor" stroke="none"/></svg>
+            @UrbanEnvironmentalHistory
+          </span>
+          <a class="video-yt-link" href="https://www.youtube.com/watch?v=G93fY7iKStA" target="_blank" rel="noopener">
+            <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" width="12" height="12"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
+            <span class="ru">Смотреть на YouTube</span><span class="en">Watch on YouTube</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- VIDEO 6 — EN: Urban Life vs Energy Crises Part 1 -->
+    <div class="video-card" data-lang="en" data-topic="energy">
+      <div class="video-wrap" id="wrap-6"
+           data-src="https://www.youtube-nocookie.com/embed/qEAZp1k3GZM?rel=0&modestbranding=1"
+           onclick="loadVideo('wrap-6')">
+        <img class="video-thumb" src="https://i.ytimg.com/vi/qEAZp1k3GZM/hqdefault.jpg" alt="Urban Life vs Energy Crises. Part 1">
+        <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+      </div>
+      <div class="video-body">
+        <div class="video-badges">
+          <span class="badge-lang badge-en">EN</span>
+          <span class="badge-topic ru">Энергетические кризисы · часть 1</span>
+          <span class="badge-topic en">Energy crises · Part 1</span>
+        </div>
+        <h2 class="video-title">Urban Life vs Energy Crises. Part 1</h2>
+        <p class="video-desc">
+          <span class="ru">Топливный кризис 1901–1908 гг. и городская жизнь: почему горожане почти не заметили кризиса — перебои на электростанциях были вызваны забастовками, а не дефицитом топлива.</span>
+          <span class="en">The fuel crisis of 1901–1908 and urban populations: why city-dwellers hardly noticed — power plant disruptions were caused more by worker strikes than actual shortages. Traces growing social awareness of energy dependencies.</span>
+        </p>
+        <div class="video-footer">
+          <span class="video-channel">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.54C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="currentColor" stroke="none"/></svg>
+            @UrbanEnvironmentalHistory
+          </span>
+          <a class="video-yt-link" href="https://www.youtube.com/watch?v=qEAZp1k3GZM" target="_blank" rel="noopener">
+            <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" width="12" height="12"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
+            <span class="ru">Смотреть на YouTube</span><span class="en">Watch on YouTube</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- VIDEO 7 — EN: Sanitary Guardianships -->
+    <div class="video-card" data-lang="en" data-topic="sanitary">
+      <div class="video-wrap" id="wrap-7"
+           data-src="https://www.youtube-nocookie.com/embed/pYEdD7eQhfY?rel=0&modestbranding=1"
+           onclick="loadVideo('wrap-7')">
+        <img class="video-thumb" src="https://i.ytimg.com/vi/pYEdD7eQhfY/hqdefault.jpg" alt="Sanitary Guardianships in the Russian Empire">
+        <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+      </div>
+      <div class="video-body">
+        <div class="video-badges">
+          <span class="badge-lang badge-en">EN</span>
+          <span class="badge-topic ru">Санитарные институты</span>
+          <span class="badge-topic en">Sanitary institutions</span>
+        </div>
+        <h2 class="video-title">Sanitary Guardianships in the Russian Empire</h2>
+        <p class="video-desc">
+          <span class="ru">История санитарных попечительств в городах Российской империи: борьба с эпидемиями, конфликты с домовладельцами из-за права на осмотр частной собственности, пределы общественного участия.</span>
+          <span class="en">The history of sanitary guardian boards (<em>sanitarnye popechitelstva</em>) established to fight epidemics. The boards notified officials, conducted inspections, and engaged homeowners — yet frequently clashed with property owners and proved largely ineffective long-term.</span>
+        </p>
+        <div class="video-footer">
+          <span class="video-channel">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.54C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="currentColor" stroke="none"/></svg>
+            @UrbanEnvironmentalHistory
+          </span>
+          <a class="video-yt-link" href="https://www.youtube.com/watch?v=pYEdD7eQhfY" target="_blank" rel="noopener">
+            <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" width="12" height="12"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
+            <span class="ru">Смотреть на YouTube</span><span class="en">Watch on YouTube</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- VIDEO 8 — EN: White Coal -->
+    <div class="video-card" data-lang="en" data-topic="energy">
+      <div class="video-wrap" id="wrap-8"
+           data-src="https://www.youtube-nocookie.com/embed/NQYqlwvgTcM?rel=0&modestbranding=1"
+           onclick="loadVideo('wrap-8')">
+        <img class="video-thumb" src="https://i.ytimg.com/vi/NQYqlwvgTcM/hqdefault.jpg" alt="White Coal for the Russian Empire">
+        <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+      </div>
+      <div class="video-body">
+        <div class="video-badges">
+          <span class="badge-lang badge-en">EN</span>
+          <span class="badge-topic ru">История гидроэнергетики</span>
+          <span class="badge-topic en">History of hydropower</span>
+        </div>
+        <h2 class="video-title">White Coal for the Russian Empire</h2>
+        <p class="video-desc">
+          <span class="ru">У истоков российской гидроэнергетики: от малых промышленных станций 1880-х гг. до государственных проектов WWI. Военный финансовый кризис как катализатор поиска дешёвых источников энергии.</span>
+          <span class="en">The origins of Russian hydropower — from small industrial stations of the 1880s to WWI-era state projects. The wartime fuel and financial crises sparked legislative and engineering efforts that traced a path from early experiments to large-scale hydroelectric infrastructure.</span>
+        </p>
+        <div class="video-footer">
+          <span class="video-channel">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.54C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="currentColor" stroke="none"/></svg>
+            @UrbanEnvironmentalHistory
+          </span>
+          <a class="video-yt-link" href="https://www.youtube.com/watch?v=NQYqlwvgTcM" target="_blank" rel="noopener">
+            <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" width="12" height="12"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
+            <span class="ru">Смотреть на YouTube</span><span class="en">Watch on YouTube</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- VIDEO 9 — EN: Greening of Public Spaces -->
+    <div class="video-card" data-lang="en" data-topic="urban">
+      <div class="video-wrap" id="wrap-9"
+           data-src="https://www.youtube-nocookie.com/embed/xsP--Di99MI?rel=0&modestbranding=1"
+           onclick="loadVideo('wrap-9')">
+        <img class="video-thumb" src="https://i.ytimg.com/vi/xsP--Di99MI/hqdefault.jpg" alt="Greening of Public Spaces in Cherepovets, 1870–1930s">
+        <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+      </div>
+      <div class="video-body">
+        <div class="video-badges">
+          <span class="badge-lang badge-en">EN</span>
+          <span class="badge-topic ru">Городские зелёные пространства</span>
+          <span class="badge-topic en">Urban green spaces</span>
+        </div>
+        <h2 class="video-title">Greening of Public Spaces in Cherepovets, 1870–1930s</h2>
+        <p class="video-desc">
+          <span class="ru">Эволюция городских парков и бульваров Череповца: от санитарных оазисов конца XIX в. до советских парков культуры. Урбанизация и утилитарное отношение к природной среде как противоречие устойчивого развития.</span>
+          <span class="en">Based on original archival research: the evolution of public green spaces in Cherepovets from 1870 to the 1930s — from sanitary oases to Soviet cultural parks, tracing contradictions of sustainable development within Russian modernization.</span>
+        </p>
+        <div class="video-footer">
+          <span class="video-channel">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.54C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="currentColor" stroke="none"/></svg>
+            @UrbanEnvironmentalHistory
+          </span>
+          <a class="video-yt-link" href="https://www.youtube.com/watch?v=xsP--Di99MI" target="_blank" rel="noopener">
+            <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" width="12" height="12"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
+            <span class="ru">Смотреть на YouTube</span><span class="en">Watch on YouTube</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- VIDEO 10 — RU: Промышленность доиндустриального Череповца -->
+    <div class="video-card" data-lang="ru" data-topic="industry">
+      <div class="video-wrap" id="wrap-10"
+           data-src="https://www.youtube-nocookie.com/embed/7nOUP8Ztu2s?rel=0&modestbranding=1"
+           onclick="loadVideo('wrap-10')">
+        <img class="video-thumb" src="https://i.ytimg.com/vi/7nOUP8Ztu2s/hqdefault.jpg" alt="Промышленность доиндустриального Череповца">
+        <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+      </div>
+      <div class="video-body">
+        <div class="video-badges">
+          <span class="badge-lang badge-ru">RU</span>
+          <span class="badge-topic ru">Промышленная история</span>
+          <span class="badge-topic en">Industrial history</span>
+        </div>
+        <h2 class="video-title">
+          <span class="ru">Промышленность доиндустриального Череповца</span>
+          <span class="en">Industry in Pre-Industrial Cherepovets</span>
+        </h2>
+        <p class="video-desc">
+          <span class="ru">Как промышленные объекты формировали городскую среду Череповца в 1880–1940-е гг. — в период, предшествовавший масштабной индустриализации. История провинциального города, впоследствии ставшего домом для «Северстали». Создано с помощью NotebookLM.</span>
+          <span class="en">How industrial sites shaped the urban environment of Cherepovets in the 1880s–1940s — before large-scale Soviet industrialisation. A case study of a provincial city that would later become home to the Severstal steel complex. Made with NotebookLM.</span>
+        </p>
+        <div class="video-footer">
+          <span class="video-channel">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.54C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="currentColor" stroke="none"/></svg>
+            @ab_agafonova
+          </span>
+          <a class="video-yt-link" href="https://www.youtube.com/watch?v=7nOUP8Ztu2s" target="_blank" rel="noopener">
+            <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" width="12" height="12"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
+            <span class="ru">Смотреть на YouTube</span><span class="en">Watch on YouTube</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- VIDEO 11 — RU: Парки, люди, конфликты -->
+    <div class="video-card" data-lang="ru" data-topic="urban">
+      <div class="video-wrap" id="wrap-11"
+           data-src="https://www.youtube-nocookie.com/embed/9rDwKKvaQUs?rel=0&modestbranding=1"
+           onclick="loadVideo('wrap-11')">
+        <img class="video-thumb" src="https://i.ytimg.com/vi/9rDwKKvaQUs/hqdefault.jpg" alt="Парки, люди, конфликты: история озеленения Череповца">
+        <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+      </div>
+      <div class="video-body">
+        <div class="video-badges">
+          <span class="badge-lang badge-ru">RU</span>
+          <span class="badge-topic ru">Городские зелёные пространства</span>
+          <span class="badge-topic en">Urban green spaces</span>
+        </div>
+        <h2 class="video-title">
+          <span class="ru">Парки, люди, конфликты: история озеленения Череповца, 1870-е — 1930-е гг.</span>
+          <span class="en">Parks, People, Conflicts: Urban Greening in Cherepovets, 1870s–1930s</span>
+        </h2>
+        <p class="video-desc">
+          <span class="ru">Как городские сады и бульвары Череповца менялись вместе с его социальным обликом: от рекреационных оазисов позднего XIX в. до культурно-идеологических объектов советского времени. Какие конфликты сопровождали эту трансформацию. Создано с помощью NotebookLM.</span>
+          <span class="en">How public gardens and boulevards in Cherepovets changed alongside the city's social fabric — from recreational oases of the late 19th century to Soviet cultural parks, and the conflicts that accompanied this transformation. Made with NotebookLM.</span>
+        </p>
+        <div class="video-footer">
+          <span class="video-channel">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.54C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="currentColor" stroke="none"/></svg>
+            @ab_agafonova
+          </span>
+          <a class="video-yt-link" href="https://www.youtube.com/watch?v=9rDwKKvaQUs" target="_blank" rel="noopener">
+            <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" width="12" height="12"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
+            <span class="ru">Смотреть на YouTube</span><span class="en">Watch on YouTube</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /video-grid -->
+</div><!-- /section-inner -->
+
+<footer class="tx-footer">
+  <div class="tx-footer-inner">
+    <div>
+      <strong>Transmission</strong> &nbsp;·&nbsp;
+      <span class="ru">Цифровая исследовательская платформа</span><span class="en">Digital Research Platform</span>
+    </div>
+    <div>© 2026 <span class="ru">Агафонова Анна Борисовна</span><span class="en">Anna B. Agafonova</span> &nbsp;·&nbsp; <a href="https://orcid.org/0000-0003-3021-4002" target="_blank" rel="noopener">ORCID</a></div>
+    <nav class="tx-footer-nav">
+      <a href="index.html"><span class="ru">Главная</span><span class="en">Home</span></a>
+      <a href="about.html"><span class="ru">Об авторе</span><span class="en">About</span></a>
+      <a href="terms.html"><span class="ru">Условия</span><span class="en">Terms</span></a>
+      <a href="personal-data.html" class="ru">Политика ПД</a>
+      <a href="privacy.html" class="en" style="display:none">Privacy</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+function setLang(l) {
+  if (l === 'en') document.documentElement.setAttribute('data-en', '');
+  else document.documentElement.removeAttribute('data-en');
+  document.querySelectorAll('.lang-sw button').forEach(b => b.classList.toggle('on', b.dataset.lang === l));
+  try { localStorage.setItem('tx_lang', l); } catch(e) {}
+  sortVideosByLang(l);
+}
+(function() {
+  let s = 'ru';
+  try { s = localStorage.getItem('tx_lang') || 'ru'; } catch(e) {}
+  setLang(s);
+})();
+
+function filterVideos(filter) {
+  document.querySelectorAll('.filter-chip').forEach(c => {
+    c.classList.toggle('active', c.dataset.filter === filter);
+  });
+  document.querySelectorAll('#video-grid [data-lang]').forEach(card => {
+    let show;
+    if (filter === 'all') {
+      show = true;
+    } else if (filter === 'ru' || filter === 'en') {
+      show = card.dataset.lang === filter || card.dataset.lang === 'any';
+    } else {
+      show = card.dataset.topic === filter;
+    }
+    card.classList.toggle('hidden', !show);
+  });
+}
+
+function sortVideosByLang(lang) {
+  const grid = document.getElementById('video-grid');
+  const cards = Array.from(grid.children);
+  cards.sort((a, b) => {
+    const aL = a.dataset.lang || 'any';
+    const bL = b.dataset.lang || 'any';
+    return (aL === lang ? 0 : aL === 'any' ? 2 : 1) - (bL === lang ? 0 : bL === 'any' ? 2 : 1);
+  });
+  cards.forEach(c => grid.appendChild(c));
+}
+
+function loadVideo(wrapId) {
+  const wrap = document.getElementById(wrapId);
+  if (wrap.classList.contains('loaded')) return;
+  const iframe = document.createElement('iframe');
+  iframe.src = wrap.dataset.src + '&autoplay=1';
+  iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+  iframe.allowFullscreen = true;
+  iframe.loading = 'lazy';
+  wrap.appendChild(iframe);
+  wrap.classList.add('loaded');
+}
+</script>
+
+</body>
+</html>
