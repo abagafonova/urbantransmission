@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Российская империя · Городская инфраструктура</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<style>
+:root {
+  --map-bg: #F1E9D6;
+  --page-cream: #F6EFDC;
+  --page-ochre: #E8D5A8;
+  --page-turq:  #BED5CF;
+  --page-sky:   #D8E3E1;
+  --surface: #F6EFDC;
+  --surface-2: #E9DFC6;
+  --glass-tint: rgba(250,244,228,0.62);
+  --glass-edge: rgba(20,36,60,0.20);
+  --glass-shadow: 0 10px 32px rgba(30,40,70,0.10),0 1px 2px rgba(30,40,70,0.06);
+  --glass-inner: inset 0 1px 0 rgba(255,255,255,0.75),inset 0 -1px 0 rgba(20,36,60,0.06);
+  --ink: #1A2B47;
+  --ink-soft: #2B4773;
+  --muted: #6F7D95;
+  --faint: #A6AEBC;
+  --blue-deep: #1A2B47;
+  --blue-mid:  #3B5A86;
+  --copper:    #8B5E3C;
+  --copper-hl: #A67448;
+  --brass:     #B58A4A;
+  --ochre:     #C79243;
+  --turq:      #4F8781;
+  --line: rgba(20,36,60,0.18);
+  --line-strong: rgba(20,36,60,0.32);
+  --line-copper: rgba(139,94,60,0.35);
+  --sidebar-bg: rgba(246,239,220,0.72);
+  --sidebar-width: 320px;
+  --section-pad: 16px;
+  --r-s: 4px; --r-m: 8px; --r-l: 14px;
+}
+
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{height:100%;}
+
+body {
+  background: var(--page-cream);
+  background-image:
+    radial-gradient(1100px 700px at 8% 4%, var(--page-sky) 0%, rgba(216,227,225,0) 55%),
+    radial-gradient(900px 600px at 95% 3%, var(--page-turq) 0%, rgba(190,213,207,0) 60%),
+    radial-gradient(1200px 900px at 50% 110%, var(--page-ochre) 0%, rgba(232,213,168,0) 55%),
+    linear-gradient(180deg, var(--page-cream) 0%, var(--page-cream) 30%, rgba(232,213,168,0.45) 70%, rgba(190,213,207,0.35) 100%);
+  color: var(--ink);
+  font-family: 'Inter','Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size: 14px;
+  display: flex; flex-direction: column;
+  overflow: hidden; height: 100vh; position: relative;
+}
+body::before {
+  content: ''; position: fixed; inset: 0;
+  pointer-events: none; z-index: 0; opacity: 0.35; mix-blend-mode: multiply;
+  background-image:
+    radial-gradient(1px 1px at 23px 17px, rgba(139,94,60,0.06) 50%, transparent 51%),
+    radial-gradient(1px 1px at 71px 43px, rgba(79,135,129,0.05) 50%, transparent 51%),
+    radial-gradient(1px 1px at 113px 89px, rgba(26,43,71,0.05) 50%, transparent 51%);
+  background-size: 140px 120px;
+}
+
+/* Page decor */
+.page-decor { position: fixed; pointer-events: none; z-index: 0; color: var(--copper); opacity: 0.13; }
+.page-decor svg { display: block; width: 100%; height: 100%; }
+.decor-left  { left: -4px; bottom: 0; width: 80px; height: 55vh; }
+.decor-right { right: -4px; top: 0; width: 80px; height: 55vh; }
+@media(max-width:1100px){ .decor-left,.decor-right{display:none;} }
+
+/* HEADER */
+header {
+  position: relative; padding: 12px 24px 14px;
+  background: var(--glass-tint);
+  -webkit-backdrop-filter: blur(22px) saturate(1.25);
+  backdrop-filter: blur(22px) saturate(1.25);
+  border-bottom: 1px solid var(--glass-edge);
+  box-shadow: 0 1px 0 rgba(255,255,255,0.55) inset, 0 6px 18px rgba(30,40,70,0.06);
+  flex-shrink: 0; z-index: 400;
+}
+header::before,header::after,.hdr-corner-bl,.hdr-corner-br {
+  content: ''; position: absolute; width: 24px; height: 24px;
+  border: 1px solid var(--line-copper); pointer-events: none;
+}
+header::before { top: 5px; left: 5px; border-right: none; border-bottom: none; }
+header::after  { top: 5px; right: 5px; border-left: none; border-bottom: none; }
+.hdr-corner-bl { bottom: 5px; left: 5px; border-right: none; border-top: none; }
+.hdr-corner-br { bottom: 5px; right: 5px; border-left: none; border-top: none; }
+.hdr-corner-bl::before,.hdr-corner-br::before {
+  content: ''; position: absolute; width: 3px; height: 3px;
+  border-radius: 50%; background: var(--copper); opacity: 0.6;
+}
+.hdr-corner-bl::before { bottom: -1.5px; left: -1.5px; }
+.hdr-corner-br::before { bottom: -1.5px; right: -1.5px; }
+
+.header-row { display: flex; align-items: center; gap: 20px; max-width: 1800px; margin: 0 auto; }
+.header-ornament { width: 52px; height: 52px; flex-shrink: 0; color: var(--copper); opacity: 0.90; }
+.header-ornament svg { width: 100%; height: 100%; display: block; }
+.header-ornament-right { width: 48px; height: 48px; flex-shrink: 0; color: var(--turq); opacity: 0.70; transform: scaleX(-1); }
+.header-ornament-right svg { width: 100%; height: 100%; display: block; }
+
+.header-title-block { flex: 1; text-align: center; position: relative; padding: 2px 0; }
+.header-title-block::before,.header-title-block::after {
+  content: ''; position: absolute; left: 8%; right: 8%; height: 1px;
+  background: repeating-linear-gradient(90deg, var(--line-copper) 0 8px, transparent 8px 12px);
+}
+.header-title-block::before { top: -2px; }
+.header-title-block::after  { bottom: -4px; }
+.header-title-block h1 {
+  font-family: 'Cormorant Garamond',serif; font-weight: 500;
+  font-size: 1.65rem; letter-spacing: 0.03em;
+  color: var(--ink); line-height: 1.1; font-variant: small-caps;
+}
+.header-title-block h1 .amp { color: var(--copper); font-style: italic; font-variant: normal; padding: 0 4px; }
+.header-title-block .sub {
+  margin-top: 5px; font-family: 'Inter',sans-serif;
+  font-size: 0.6rem; font-weight: 500; letter-spacing: 0.20em;
+  text-transform: uppercase; color: var(--muted);
+  display: flex; gap: 12px; flex-wrap: wrap; align-items: center; justify-content: center;
+}
+.header-title-block .sub .sep { color: var(--copper); opacity: 0.65; }
+.header-title-block .sub .mono { color: var(--ink-soft); font-weight: 600; letter-spacing: 0.05em; }
+
+.header-tools { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+.lang-toggle {
+  display: inline-flex; border: 1px solid var(--line-copper);
+  border-radius: 999px; overflow: hidden;
+  font-family: 'Inter',sans-serif; font-size: 0.62rem; font-weight: 600;
+  letter-spacing: 0.14em; background: rgba(255,255,255,0.4); backdrop-filter: blur(6px);
+}
+.lang-toggle button {
+  border: none; background: transparent; padding: 5px 11px;
+  cursor: pointer; color: var(--muted); transition: all .2s;
+  font-family: 'Inter',sans-serif; font-size: 0.62rem; font-weight: 600; letter-spacing: 0.14em;
+}
+.lang-toggle button.on { background: var(--ink); color: var(--page-cream); }
+.lang-toggle button:not(.on):hover { color: var(--copper); }
+.tool-btn {
+  width: 34px; height: 34px; border-radius: 50%;
+  border: 1px solid var(--line-copper); background: rgba(255,255,255,0.45);
+  color: var(--ink-soft); cursor: pointer;
+  display: inline-flex; align-items: center; justify-content: center;
+  transition: all .2s ease; backdrop-filter: blur(6px);
+}
+.tool-btn:hover { background: var(--ink); color: var(--page-cream); border-color: var(--ink); }
+.header-back {
+  display: inline-flex; align-items: center; gap: 6px;
+  font: 600 0.62rem/1 'Inter',sans-serif; letter-spacing: 0.10em; text-transform: uppercase;
+  color: var(--muted); text-decoration: none;
+  border: 1px solid var(--line); border-radius: 3px; padding: 5px 10px;
+  background: rgba(255,255,255,0.35); transition: all .18s;
+}
+.header-back:hover { color: var(--ink); border-color: var(--ink-soft); background: rgba(255,255,255,0.6); }
+.tool-btn svg { width: 15px; height: 15px; }
+
+/* LAYOUT */
+.main-layout { flex: 1; display: flex; overflow: hidden; position: relative; gap: 10px; padding: 10px; }
+
+/* SIDEBAR */
+.sidebar {
+  width: var(--sidebar-width); min-width: 260px; flex-shrink: 0;
+  display: flex; flex-direction: column; overflow-y: auto; overflow-x: hidden;
+  background: var(--sidebar-bg);
+  -webkit-backdrop-filter: blur(22px) saturate(1.2);
+  backdrop-filter: blur(22px) saturate(1.2);
+  border: 1px solid var(--glass-edge);
+  box-shadow: var(--glass-shadow), var(--glass-inner);
+  border-radius: var(--r-l);
+  background-image:
+    radial-gradient(500px 300px at 100% 0%, rgba(107,143,168,0.10), transparent 70%),
+    radial-gradient(400px 300px at 0% 100%, rgba(139,94,60,0.06), transparent 70%);
+  z-index: 10;
+}
+.sidebar::-webkit-scrollbar { width: 5px; }
+.sidebar::-webkit-scrollbar-thumb { background: var(--line-strong); border-radius: 3px; }
+.sidebar::-webkit-scrollbar-thumb:hover { background: var(--copper); }
+
+.sidebar-section { padding: var(--section-pad); position: relative; }
+.sidebar-section + .sidebar-section { border-top: none; }
+
+/* Section heading — draftsman style */
+.sec-head {
+  font-family: 'Cormorant Garamond',serif; font-weight: 500;
+  font-size: 0.72rem; letter-spacing: 0.26em; text-transform: uppercase;
+  color: var(--blue-deep); margin-bottom: 14px;
+  display: flex; align-items: center; gap: 9px;
+  padding-bottom: 7px; position: relative;
+}
+.sec-head::after {
+  content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 7px;
+  background:
+    linear-gradient(to right, var(--line-copper) 0 46%, transparent 46% 54%, var(--line-copper) 54% 100%) no-repeat,
+    linear-gradient(to right, transparent 0 47.5%, var(--copper) 47.5% 52.5%, transparent 52.5% 100%) no-repeat;
+  background-size: 100% 1px, 100% 7px; background-position: 0 0, 0 0;
+}
+.sec-icon { width: 16px; height: 16px; color: var(--copper); flex-shrink: 0; display: inline-flex; align-items: center; justify-content: center; }
+.sec-icon svg { width: 100%; height: 100%; display: block; }
+
+/* Divider */
+.sidebar-divider {
+  height: 20px; display: flex; align-items: center; justify-content: center;
+  color: var(--copper); opacity: 0.55;
+  margin: 0 var(--section-pad);
+  border-top: 1px dashed var(--line);
+}
+.sidebar-divider svg { width: 80px; height: 12px; margin-top: -8px; background: var(--sidebar-bg); padding: 0 6px; }
+
+/* Stats grid */
+.stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.stat-card {
+  padding: 11px 11px 10px;
+  background: rgba(255,255,255,0.55); border: 1px solid var(--glass-edge);
+  border-radius: var(--r-m); backdrop-filter: blur(8px);
+  display: flex; flex-direction: column; gap: 3px;
+  position: relative; overflow: hidden;
+}
+.stat-card::after {
+  content: ''; position: absolute; bottom: 0; left: 8px; right: 8px; height: 1px;
+  background: linear-gradient(to right, transparent 0, var(--copper) 20%, var(--copper) 80%, transparent 100%);
+  opacity: 0.20;
+}
+.stat-card .stat-orn {
+  position: absolute; top: 5px; right: 5px;
+  width: 12px; height: 12px; color: var(--copper); opacity: 0.45; pointer-events: none;
+}
+.stat-card .stat-orn svg { width: 100%; height: 100%; display: block; }
+.stat-num {
+  font-family: 'Cormorant Garamond',serif; font-weight: 500;
+  font-size: 1.75rem; color: var(--blue-deep); line-height: 1;
+  letter-spacing: -0.01em; font-variant-numeric: oldstyle-nums;
+}
+.stat-label {
+  font-family: 'Inter',sans-serif; font-size: 0.58rem; font-weight: 500;
+  letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); line-height: 1.35;
+}
+.stat-note { font-family: 'Cormorant Garamond',serif; font-size: 0.72rem; color: var(--faint); font-style: italic; margin-top: 2px; }
+
+/* Epidemic badge */
+.epi-badge {
+  display: flex; align-items: flex-start; gap: 10px;
+  background: rgba(199,146,67,0.10); border: 1px solid var(--line-copper);
+  border-radius: var(--r-m); padding: 10px 12px;
+  font-size: 0.78rem; line-height: 1.55; color: var(--ink-soft);
+  margin-bottom: 8px;
+}
+.epi-badge .epi-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 1px; }
+.epi-badge strong { color: var(--copper); }
+
+/* Search */
+.search-box {
+  width: 100%; padding: 8px 12px;
+  background: rgba(255,255,255,0.55); border: 1px solid var(--line);
+  border-radius: var(--r-s); color: var(--ink);
+  font-family: 'Cormorant Garamond',serif; font-size: 0.95rem;
+  outline: none; transition: border-color .2s, background .2s;
+  margin-bottom: 6px;
+}
+.search-box::placeholder { color: var(--faint); font-style: italic; }
+.search-box:focus { border-color: var(--copper); background: rgba(255,255,255,0.82); }
+
+.search-results { max-height: 180px; overflow-y: auto; font-size: 0.84rem; }
+.search-results::-webkit-scrollbar { width: 4px; }
+.search-results::-webkit-scrollbar-thumb { background: var(--line-strong); border-radius: 2px; }
+.search-result-item {
+  padding: 6px 8px; cursor: pointer; border-radius: var(--r-s);
+  transition: background .15s; display: flex; align-items: center; gap: 8px;
+  font-family: 'Cormorant Garamond',serif; font-size: 0.92rem;
+}
+.search-result-item:hover { background: rgba(139,94,60,0.08); }
+.search-result-item .res-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; background: var(--copper); opacity: 0.6; }
+.search-result-item .res-sub { color: var(--muted); font-size: 0.72rem; font-style: italic; }
+.search-empty { color: var(--faint); font-style: italic; font-size: 0.82rem; padding: 8px 4px; font-family: 'Cormorant Garamond',serif; }
+
+/* Selected province info card */
+.province-card {
+  background: rgba(255,255,255,0.55); border: 1px solid var(--glass-edge);
+  border-radius: var(--r-m); padding: 13px 14px;
+  backdrop-filter: blur(8px); box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
+  position: relative;
+}
+.province-card::before,.province-card::after {
+  content: ''; position: absolute; width: 10px; height: 10px;
+  border: 1px solid var(--line-copper); pointer-events: none;
+}
+.province-card::before { top: 4px; left: 4px; border-right: none; border-bottom: none; }
+.province-card::after  { bottom: 4px; right: 4px; border-left: none; border-top: none; }
+.province-card .pc-name {
+  font-family: 'Cormorant Garamond',serif; font-size: 1.3rem;
+  font-weight: 500; color: var(--ink); margin-bottom: 4px; line-height: 1.1;
+}
+.province-card .pc-sub { font-size: 0.68rem; color: var(--muted); font-family: 'Inter',sans-serif; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 10px; }
+.province-card .pc-row { display: flex; justify-content: space-between; padding: 3px 0; border-bottom: 1px solid var(--line); font-size: 0.78rem; }
+.province-card .pc-row:last-child { border-bottom: none; }
+.province-card .pc-lbl { color: var(--muted); }
+.province-card .pc-val { font-weight: 600; color: var(--ink); font-family: 'Cormorant Garamond',serif; font-size: 0.9rem; }
+.province-card .pc-link {
+  display: block; margin-top: 10px; padding: 6px 14px;
+  background: var(--copper); color: white; border: none;
+  border-radius: var(--r-s); font-family: 'Inter',sans-serif;
+  font-size: 0.65rem; font-weight: 600; letter-spacing: 0.1em;
+  text-transform: uppercase; cursor: pointer; transition: background .2s; width: 100%; text-align: center;
+  text-decoration: none;
+}
+.province-card .pc-link:hover { background: var(--copper-hl); }
+.province-placeholder {
+  display: flex; align-items: center; gap: 12px;
+  color: var(--muted); font-style: italic;
+  font-family: 'Cormorant Garamond',serif; font-size: 0.92rem;
+  padding: 10px 4px; line-height: 1.45;
+}
+
+/* MAP */
+.map-wrap {
+  flex: 1; position: relative;
+  border-radius: var(--r-l); overflow: hidden;
+  border: 1px solid var(--glass-edge); box-shadow: var(--glass-shadow);
+  background: var(--map-bg);
+}
+#map { width: 100%; height: 100%; background: var(--map-bg); }
+.leaflet-container { background: var(--map-bg) !important; font-family: 'Cormorant Garamond',serif !important; }
+.leaflet-control-attribution {
+  font-family: 'Inter',monospace !important; font-size: 9px !important;
+  background: rgba(247,251,253,0.78) !important; color: var(--muted) !important;
+  backdrop-filter: blur(6px); border-radius: 4px 0 0 0 !important;
+}
+.leaflet-control-attribution a { color: var(--copper) !important; }
+.leaflet-control-zoom { border: 1px solid var(--glass-edge) !important; border-radius: 8px !important; overflow: hidden; box-shadow: 0 4px 14px rgba(30,58,82,0.15) !important; }
+.leaflet-control-zoom a { background: rgba(247,251,253,0.78) !important; color: var(--ink-soft) !important; border-bottom: 1px solid var(--line) !important; }
+.leaflet-control-zoom a:hover { background: var(--copper) !important; color: #fff !important; }
+
+.province-tooltip-map {
+  background: rgba(246,239,220,0.92) !important; color: var(--ink) !important;
+  border: 1px solid var(--glass-edge) !important; border-radius: var(--r-m) !important;
+  padding: 5px 10px !important; font-family: 'Cormorant Garamond',serif !important;
+  font-size: 0.95rem !important; backdrop-filter: blur(10px) !important;
+  box-shadow: 0 2px 10px rgba(30,58,82,0.15) !important;
+}
+
+/* Map controls */
+.map-controls { position: absolute; top: 12px; right: 12px; z-index: 900; display: flex; flex-direction: column; gap: 6px; }
+.layer-toggle {
+  background: var(--glass-tint); border: 1px solid var(--glass-edge);
+  border-radius: var(--r-m); overflow: hidden;
+  box-shadow: var(--glass-shadow); backdrop-filter: blur(12px);
+}
+.layer-btn {
+  display: block; padding: 6px 12px; font-size: 0.65rem;
+  font-family: 'Inter',sans-serif; font-weight: 500; letter-spacing: 0.08em;
+  text-transform: uppercase; cursor: pointer; background: none; border: none;
+  color: var(--ink-soft); text-align: left; width: 100%; white-space: nowrap; transition: all .15s;
+}
+.layer-btn.active { background: var(--copper); color: white; }
+.layer-btn:hover:not(.active) { background: rgba(139,94,60,0.12); color: var(--copper); }
+
+/* ── SIDEBAR TABS ── */
+.sidebar-tabs {
+  display: flex; gap: 0; padding: 10px 12px 0; flex-shrink: 0;
+  border-bottom: 1px solid var(--glass-edge);
+}
+.stab {
+  flex: 1; padding: 7px 4px; font-size: 0.60rem;
+  font-family: 'Inter',sans-serif; font-weight: 500;
+  text-transform: uppercase; letter-spacing: 0.11em;
+  background: none; border: none; border-bottom: 2px solid transparent;
+  cursor: pointer; color: var(--muted); transition: all .15s;
+  white-space: nowrap;
+}
+.stab.active { color: var(--copper); border-bottom-color: var(--copper); }
+.stab:hover:not(.active) { color: var(--ink-soft); background: rgba(139,94,60,0.04); }
+
+.stab-content { display: none; flex: 1; overflow-y: auto; flex-direction: column; }
+.stab-content.active { display: flex; }
+.stab-content::-webkit-scrollbar { width: 5px; }
+.stab-content::-webkit-scrollbar-thumb { background: var(--line-strong); border-radius: 3px; }
+.stab-content::-webkit-scrollbar-thumb:hover { background: var(--copper); }
+
+/* ── CITY RESULT ITEM (with duplicate handling) ── */
+.city-result-item {
+  padding: 7px 9px; cursor: pointer; border-radius: var(--r-s);
+  transition: background .15s; font-family: 'Cormorant Garamond',serif;
+  border: 1px solid transparent; margin-bottom: 3px;
+}
+.city-result-item:hover { background: rgba(139,94,60,0.08); border-color: var(--line-copper); }
+.city-result-item .cr-name { font-size: 1.05rem; color: var(--ink); font-weight: 500; }
+.city-result-item .cr-gubern { font-size: 0.70rem; color: var(--muted); font-family: 'Inter',sans-serif; margin-top: 1px; letter-spacing: 0.02em; }
+.city-result-item .cr-badge {
+  display: inline-block; font-size: 0.58rem; font-family: 'Inter',sans-serif;
+  padding: 1px 6px; border-radius: 999px; margin-top: 3px;
+  background: rgba(79,135,129,0.15); color: var(--turq); font-weight: 600; letter-spacing: 0.06em;
+}
+
+/* ── MAP HIGHLIGHT PULSE ── */
+@keyframes province-pulse {
+  0%   { opacity: 1; }
+  50%  { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+.province-highlighted { animation: province-pulse 1.2s ease-in-out 3; }
+
+/* ── CITY MARKER POPUP ── */
+.city-popup {
+  font-family: 'Cormorant Garamond',serif; min-width: 160px; padding: 2px;
+}
+.city-popup .cp-name { font-size: 1.15rem; font-weight: 600; color: var(--ink); margin-bottom: 2px; }
+.city-popup .cp-gubern { font-size: 0.78rem; color: var(--muted); font-style: italic; margin-bottom: 6px; }
+.city-popup .cp-row { font-size: 0.80rem; color: var(--ink-soft); margin-bottom: 2px; }
+.city-popup a {
+  display: inline-block; margin-top: 8px; padding: 4px 12px;
+  background: var(--copper); color: white; border-radius: var(--r-s);
+  font-family: 'Inter',sans-serif; font-size: 0.62rem; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none;
+  transition: background .2s;
+}
+.city-popup a:hover { background: var(--copper-hl); }
+
+/* ── PROVINCE CARD LINK BUTTON ── */
+.pc-link-btn {
+  display: block; margin-top: 10px; padding: 7px 14px;
+  background: var(--copper); color: white; border: none;
+  border-radius: var(--r-s); font-family: 'Inter',sans-serif;
+  font-size: 0.65rem; font-weight: 600; letter-spacing: 0.10em;
+  text-transform: uppercase; cursor: pointer; transition: background .2s;
+  width: 100%; text-align: center; text-decoration: none;
+}
+.pc-link-btn:hover { background: var(--copper-hl); }
+
+/* Footer */
+.app-footer {
+  flex-shrink: 0; padding: 6px 24px;
+  display: flex; align-items: center; gap: 12px;
+  font-family: 'Inter',sans-serif; font-size: 0.58rem; font-weight: 500;
+  letter-spacing: 0.14em; color: var(--muted);
+  border-top: 1px solid var(--glass-edge);
+  background: var(--glass-tint); backdrop-filter: blur(10px);
+  position: relative; text-transform: uppercase; z-index: 1;
+}
+.app-footer .spacer { flex: 1; }
+.app-footer em { font-style: italic; font-family: 'Cormorant Garamond',serif; text-transform: none; font-size: 0.82rem; letter-spacing: 0; color: var(--ink-soft); font-weight: 500; }
+.app-footer::before,.app-footer::after,.ftr-corner-tl,.ftr-corner-tr {
+  content: ''; position: absolute; width: 14px; height: 14px;
+  border: 1px solid var(--line-copper); pointer-events: none;
+}
+.app-footer::before { bottom: 4px; left: 4px; border-right: none; border-top: none; }
+.app-footer::after  { bottom: 4px; right: 4px; border-left: none; border-top: none; }
+.ftr-corner-tl { top: 4px; left: 4px; border-right: none; border-bottom: none; }
+.ftr-corner-tr { top: 4px; right: 4px; border-left: none; border-bottom: none; }
+.footer-orn { color: var(--copper); opacity: 0.7; display: inline-flex; }
+.footer-orn svg { width: 68px; height: 12px; }
+</style>
+</head>
+<body>
+
+<!-- Decorative page edges -->
+<div class="page-decor decor-left" aria-hidden="true"><svg viewBox="0 0 80 620" preserveAspectRatio="xMidYMax meet" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+  <rect x="22" y="40" width="36" height="520"/>
+  <path d="M22 40 L22 32 L26 32 L26 40 M30 32 L34 32 L34 40 M38 32 L42 32 L42 40 M46 32 L50 32 L50 40 M54 32 L58 32 L58 40"/>
+  <rect x="30" y="14" width="20" height="20"/><polygon points="30,14 50,14 40,2"/><line x1="40" y1="2" x2="40" y2="-2"/>
+  <rect x="35" y="90" width="10" height="16"/><rect x="35" y="170" width="10" height="16"/>
+  <rect x="35" y="250" width="10" height="16"/><rect x="35" y="330" width="10" height="16"/>
+  <rect x="35" y="410" width="10" height="16"/><rect x="35" y="490" width="10" height="16"/>
+  <line x1="22" y1="60" x2="58" y2="60"/><line x1="22" y1="150" x2="58" y2="150"/>
+  <line x1="22" y1="230" x2="58" y2="230"/><line x1="22" y1="310" x2="58" y2="310"/>
+  <line x1="22" y1="390" x2="58" y2="390"/><line x1="22" y1="470" x2="58" y2="470"/>
+  <rect x="14" y="560" width="52" height="14"/><rect x="8" y="574" width="64" height="10"/>
+</svg></div>
+<div class="page-decor decor-right" aria-hidden="true"><svg viewBox="0 0 80 640" preserveAspectRatio="xMidYMin meet" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+  <line x1="40" y1="8" x2="40" y2="26"/><circle cx="40" cy="8" r="2.5"/>
+  <path d="M24 50 Q 40 20 56 50"/><line x1="24" y1="50" x2="56" y2="50"/>
+  <rect x="20" y="50" width="40" height="12"/>
+  <path d="M22 50 L22 44 L26 44 L26 50 M30 44 L34 44 L34 50 M38 44 L42 44 L42 50 M46 44 L50 44 L50 50 M54 44 L58 44 L58 50"/>
+  <rect x="26" y="62" width="28" height="470"/>
+  <line x1="40" y1="62" x2="40" y2="530" stroke-dasharray="3 3" opacity="0.55"/>
+  <path d="M34 110 Q 40 100 46 110 L46 130 L34 130 Z"/>
+  <path d="M34 220 Q 40 210 46 220 L46 240 L34 240 Z"/>
+  <path d="M34 330 Q 40 320 46 330 L46 350 L34 350 Z"/>
+  <path d="M34 440 Q 40 430 46 440 L46 460 L34 460 Z"/>
+  <line x1="26" y1="160" x2="54" y2="160"/><line x1="26" y1="270" x2="54" y2="270"/>
+  <line x1="26" y1="380" x2="54" y2="380"/><line x1="26" y1="490" x2="54" y2="490"/>
+  <rect x="18" y="532" width="44" height="16"/><rect x="10" y="548" width="60" height="12"/><rect x="2" y="560" width="76" height="14"/>
+</svg></div>
+
+<!-- HEADER -->
+<header>
+  <div class="hdr-corner-bl"></div>
+  <div class="hdr-corner-br"></div>
+  <div class="header-row">
+    <div class="header-ornament" aria-hidden="true"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="32" r="14"/><circle cx="32" cy="32" r="22" stroke-dasharray="2 3" opacity="0.55"/>
+      <circle cx="32" cy="32" r="27" opacity="0.28"/><circle cx="32" cy="32" r="4" fill="currentColor" opacity="0.22"/>
+      <path d="M32 8 L35 28 L32 32 L29 28 Z" fill="currentColor" opacity="0.5"/>
+      <path d="M32 56 L29 36 L32 32 L35 36 Z" opacity="0.6"/>
+      <line x1="8" y1="32" x2="18" y2="32"/><line x1="46" y1="32" x2="56" y2="32"/>
+      <line x1="14" y1="14" x2="20" y2="20"/><line x1="44" y1="44" x2="50" y2="50"/>
+      <line x1="50" y1="14" x2="44" y2="20"/><line x1="14" y1="50" x2="20" y2="44"/>
+      <text x="32" y="6" text-anchor="middle" font-size="5" font-family="Cormorant Garamond" fill="currentColor" opacity="0.7">N</text>
+    </svg></div>
+
+    <div class="header-title-block">
+      <h1>Российская <span class="amp">империя</span></h1>
+      <div class="sub">
+        <span>Городская инфраструктура</span>
+        <span class="sep">·</span>
+        <span class="mono">1870–1917</span>
+        <span class="sep">✦</span>
+        <span><span class="mono">99</span> губерний и областей</span>
+        <span class="sep">·</span>
+        <span><span class="mono">950</span> городов</span>
+      </div>
+    </div>
+
+    <div class="header-ornament-right" aria-hidden="true"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M32 58 C 30 46 28 34 30 22 C 32 12 38 7 44 4"/>
+      <path d="M31 50 C 34 49 38 46 40 42"/><path d="M30 44 C 26 43 22 41 20 37"/>
+      <path d="M30 38 C 34 37 38 34 40 30"/><path d="M29 32 C 25 31 21 28 20 24"/>
+      <path d="M30 26 C 34 25 38 22 40 18"/><path d="M29 20 C 26 18 24 15 23 11"/>
+      <ellipse cx="40" cy="42" rx="3" ry="1.8" transform="rotate(-25 40 42)" opacity="0.8"/>
+      <ellipse cx="20" cy="37" rx="3" ry="1.8" transform="rotate(25 20 37)" opacity="0.8"/>
+      <ellipse cx="40" cy="30" rx="3" ry="1.8" transform="rotate(-25 40 30)" opacity="0.8"/>
+      <ellipse cx="20" cy="24" rx="3" ry="1.8" transform="rotate(25 20 24)" opacity="0.8"/>
+      <ellipse cx="40" cy="18" rx="2.5" ry="1.5" transform="rotate(-30 40 18)" opacity="0.8"/>
+    </svg></div>
+
+    <div class="header-tools">
+      <a href="../index.html" class="header-back">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" width="12" height="12"><path d="M10 3 L5 8 L10 13"/></svg>
+        На главную
+      </a>
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <button data-lang="ru" class="on" onclick="setLang('ru')">RU</button>
+        <button data-lang="en" onclick="setLang('en')">EN</button>
+      </div>
+      <button class="tool-btn" aria-label="Тема" onclick="document.body.classList.toggle('theme-dark')">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"><path d="M13 10 a 6 6 0 1 1 -7 -7 a 5 5 0 0 0 7 7 z"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- MAIN -->
+<div class="main-layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+
+    <!-- ВКЛАДКИ -->
+    <div class="sidebar-tabs">
+      <button class="stab active" onclick="switchStab('overview')" id="stab-overview" data-ru="Обзор" data-en="Overview">Обзор</button>
+      <button class="stab" onclick="switchStab('province')" id="stab-province" data-ru="Губерния" data-en="Province">Губерния</button>
+      <button class="stab" onclick="switchStab('city')" id="stab-city" data-ru="Город" data-en="City">Город</button>
+    </div>
+
+    <!-- ══ TAB: ОБЗОР ══ -->
+    <div class="stab-content active" id="stab-content-overview">
+
+      <div class="sidebar-section">
+        <div class="sec-head">
+          <span class="sec-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><line x1="2" y1="13" x2="14" y2="13"/><rect x="3" y="8" width="2.2" height="5"/><rect x="7" y="5" width="2.2" height="8"/><rect x="11" y="9" width="2.2" height="4"/></svg></span>
+          <span data-i18n="stats">Статистика империи</span>
+        </div>
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-orn"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1"><circle cx="6" cy="6" r="4"/><line x1="6" y1="0" x2="6" y2="2"/><line x1="6" y1="10" x2="6" y2="12"/><line x1="0" y1="6" x2="2" y2="6"/><line x1="10" y1="6" x2="12" y2="6"/></svg></div>
+            <div class="stat-num">99</div>
+            <div class="stat-label" data-i18n="stat.regions">Губерний<br>и областей</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">~950</div>
+            <div class="stat-label" data-i18n="stat.cities">Городов<br>в базе</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">187</div>
+            <div class="stat-label" data-i18n="stat.waterworks">Городских<br>водопроводов</div>
+            <div class="stat-note">~19,7%</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">6</div>
+            <div class="stat-label" data-i18n="stat.profiles">Инфраструктурных<br>профилей</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sidebar-divider"><svg viewBox="0 0 80 12" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"><line x1="2" y1="6" x2="30" y2="6"/><circle cx="36" cy="6" r="3"/><line x1="44" y1="6" x2="78" y2="6"/><circle cx="40" cy="6" r="1" fill="currentColor"/></svg></div>
+
+      <div class="sidebar-section">
+        <div class="sec-head">
+          <span class="sec-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="8" width="12" height="6"/><path d="M4 8 V5 L8 2 L12 5 V8"/><line x1="6" y1="14" x2="6" y2="10"/><line x1="10" y1="14" x2="10" y2="11"/></svg></span>
+          <span data-i18n="infra">Городское хозяйство</span>
+        </div>
+        <div class="stats-grid" style="margin-bottom:10px;">
+          <div class="stat-card">
+            <div class="stat-num" style="font-size:1.3rem;">~30%</div>
+            <div class="stat-label" data-i18n="stat.electric">Городов с<br>электроснабжением</div>
+            <div class="stat-note">черновые данные</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num" style="font-size:1.3rem;">~12%</div>
+            <div class="stat-label" data-i18n="stat.phone">Городов с<br>телефоном</div>
+            <div class="stat-note">черновые данные</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num" style="font-size:1.3rem;">~8%</div>
+            <div class="stat-label" data-i18n="stat.tram">Городов<br>с трамваем</div>
+            <div class="stat-note">черновые данные</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num" style="font-size:1.3rem;">~25%</div>
+            <div class="stat-label" data-i18n="stat.sewer">Городов с<br>канализацией</div>
+            <div class="stat-note">черновые данные</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sidebar-divider"><svg viewBox="0 0 80 12" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"><line x1="2" y1="6" x2="30" y2="6"/><circle cx="36" cy="6" r="3"/><line x1="44" y1="6" x2="78" y2="6"/><circle cx="40" cy="6" r="1" fill="currentColor"/></svg></div>
+
+      <div class="sidebar-section">
+        <div class="sec-head">
+          <span class="sec-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><path d="M8 2 C4 2 2 5 2 8 C2 11 4 14 8 14 C12 14 14 11 14 8 C14 5 12 2 8 2"/><path d="M8 5 L8 9 M8 11 L8 11.5" stroke-width="1.8"/></svg></span>
+          <span data-i18n="epi">Эпидемиологическая обстановка</span>
+        </div>
+        <div class="epi-badge">
+          <span class="epi-icon">🦠</span>
+          <div><strong>Холера:</strong> три крупные волны — 1847–1851, 1892–1895, 1908–1910. Наиболее пострадавшие — Поволжье, Причерноморье, Центральная Азия.</div>
+        </div>
+        <div class="epi-badge">
+          <span class="epi-icon">🌡</span>
+          <div><strong>Тиф и дизентерия:</strong> постоянный фон во всех губерниях. Коррелирует с отсутствием централизованного водоснабжения.</div>
+        </div>
+        <p style="font-size:0.68rem;color:var(--faint);font-style:italic;font-family:'Cormorant Garamond',serif;margin-top:6px;">* Данные предварительные. Полная база в разработке.</p>
+      </div>
+
+    </div><!-- /stab-content-overview -->
+
+    <!-- ══ TAB: ГУБЕРНИЯ ══ -->
+    <div class="stab-content" id="stab-content-province">
+      <div class="sidebar-section">
+        <div class="sec-head">
+          <span class="sec-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><circle cx="7" cy="7" r="4.5"/><line x1="10.5" y1="10.5" x2="14" y2="14"/></svg></span>
+          <span data-i18n="search.province">Поиск губернии</span>
+        </div>
+        <input type="text" class="search-box" id="search-province" placeholder="Введите название губернии…" oninput="searchProvince(this.value)" autocomplete="off">
+        <div class="search-results" id="province-results"></div>
+      </div>
+
+      <div class="sidebar-divider"><svg viewBox="0 0 80 12" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"><line x1="2" y1="6" x2="30" y2="6"/><circle cx="36" cy="6" r="3"/><line x1="44" y1="6" x2="78" y2="6"/><circle cx="40" cy="6" r="1" fill="currentColor"/></svg></div>
+
+      <div class="sidebar-section" id="selected-province-section">
+        <div class="sec-head">
+          <span class="sec-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><circle cx="8" cy="8" r="6.5"/><line x1="8" y1="7" x2="8" y2="11.5"/><circle cx="8" cy="4.8" r="0.4" fill="currentColor"/></svg></span>
+          <span data-i18n="province.info">Сведения о губернии</span>
+        </div>
+        <div id="province-info-card">
+          <div class="province-placeholder">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1" opacity="0.4"><circle cx="16" cy="14" r="7"/><path d="M16 21 L16 28 M10 28 L22 28"/></svg>
+            <span data-i18n="province.placeholder">Нажмите на губернию<br>на карте или найдите<br>через поиск выше</span>
+          </div>
+        </div>
+      </div>
+    </div><!-- /stab-content-province -->
+
+    <!-- ══ TAB: ГОРОД ══ -->
+    <div class="stab-content" id="stab-content-city">
+      <div class="sidebar-section">
+        <div class="sec-head">
+          <span class="sec-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><circle cx="7" cy="7" r="4.5"/><line x1="10.5" y1="10.5" x2="14" y2="14"/></svg></span>
+          <span data-i18n="search.city">Поиск города</span>
+        </div>
+        <input type="text" class="search-box" id="search-city" placeholder="Введите название города…" oninput="searchCity(this.value)" autocomplete="off">
+        <div id="city-results" style="margin-top:4px;"></div>
+      </div>
+
+      <div class="sidebar-divider"><svg viewBox="0 0 80 12" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"><line x1="2" y1="6" x2="30" y2="6"/><circle cx="36" cy="6" r="3"/><line x1="44" y1="6" x2="78" y2="6"/><circle cx="40" cy="6" r="1" fill="currentColor"/></svg></div>
+
+      <div class="sidebar-section" id="selected-city-section" style="display:none;">
+        <div class="sec-head">
+          <span class="sec-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><rect x="3" y="7" width="10" height="7"/><path d="M5 7 V4 L8 2 L11 4 V7"/></svg></span>
+          <span data-i18n="city.info">Сведения о городе</span>
+        </div>
+        <div id="city-info-card"></div>
+      </div>
+    </div><!-- /stab-content-city -->
+
+  </aside><!-- /sidebar -->
+
+  <!-- MAP -->
+  <div class="map-wrap">
+    <div id="map"></div>
+    <div class="map-controls">
+      <div class="layer-toggle">
+        <button class="layer-btn active" id="btn-tiles" onclick="setLayer('tiles')" data-i18n="layer.tiles">С подложкой</button>
+        <button class="layer-btn" id="btn-blank" onclick="setLayer('blank')" data-i18n="layer.blank">Без подложки</button>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /main-layout -->
+
+<!-- FOOTER -->
+<footer class="app-footer">
+  <div class="ftr-corner-tl"></div><div class="ftr-corner-tr"></div>
+  <span class="footer-orn"><svg viewBox="0 0 68 12" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round">
+    <line x1="0" y1="6" x2="24" y2="6"/><circle cx="30" cy="6" r="3"/><line x1="36" y1="6" x2="42" y2="6"/>
+    <circle cx="39" cy="6" r="1" fill="currentColor"/><line x1="48" y1="6" x2="68" y2="6"/>
+  </svg></span>
+  <span data-i18n="footer.empire">Российская империя</span>
+  <span>·</span>
+  <span class="mono">1870–1917</span>
+  <span class="spacer"></span>
+  <em data-i18n="footer.sub">Городская инфраструктура · MVP · Прототип</em>
+  <span class="spacer"></span>
+  <span data-i18n="footer.source">Electronic Repository of Russian Historical Statistics</span>
+</footer>
+
+<script>
+// ══════════════════════════════════════════════════════════════
+// DATA
+// ══════════════════════════════════════════════════════════════
+</script>
+<script src="empire_data_snippet.js"></script>
+<script>
+// ══════════════════════════════════════════════════════════════
+// KNOWN PROVINCES with MVP pages
+// ══════════════════════════════════════════════════════════════
+const MVP_PAGES = {
+  'Новгородская губерния': 'Novgorod.html',
+};
+
+// ══════════════════════════════════════════════════════════════
+// SIDEBAR TABS
+// ══════════════════════════════════════════════════════════════
+function switchStab(tab) {
+  document.querySelectorAll('.stab').forEach(b => b.classList.toggle('active', b.id === 'stab-' + tab));
+  document.querySelectorAll('.stab-content').forEach(c => c.classList.toggle('active', c.id === 'stab-content-' + tab));
+  if (tab === 'province') { const el = document.getElementById('search-province'); if (el) setTimeout(()=>el.focus(),50); }
+  if (tab === 'city')     { const el = document.getElementById('search-city');     if (el) setTimeout(()=>el.focus(),50); }
+}
+
+// ══════════════════════════════════════════════════════════════
+// MAP INIT
+// ══════════════════════════════════════════════════════════════
+let map, tileLayer, activeLayer = 'tiles';
+let selectedProvinceId = null;
+let highlightedProvinceId = null;
+let geoLayer = null;
+let cityMarker = null;
+let highlightTimeout = null;
+
+function initMap() {
+  map = L.map('map', {
+    center: [58.0, 55.0], zoom: 4,
+    attributionControl: true, minZoom: 3, maxZoom: 10
+  });
+  map.attributionControl.setPrefix('<a href="https://leafletjs.com" target="_blank">Leaflet</a>');
+  tileLayer = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
+    maxZoom: 15
+  }).addTo(map);
+  renderProvinceLayer();
+}
+
+function getProvinceStyle(feature, isSelected, isHighlighted) {
+  const name = feature.properties.name;
+  const hasMVP = !!MVP_PAGES[name];
+  if (isSelected)    return { fillColor: '#8B5E3C', fillOpacity: 0.32, color: '#5a3a1a', weight: 2.5, opacity: 1 };
+  if (isHighlighted) return { fillColor: '#C79243', fillOpacity: 0.38, color: '#8B5E3C', weight: 2.2, opacity: 1 };
+  if (hasMVP)        return { fillColor: '#4F8781', fillOpacity: 0.20, color: '#2d5a55', weight: 1.5, opacity: 0.85 };
+  return { fillColor: '#c9b99a', fillOpacity: 0.12, color: '#7a5c3a', weight: 0.8, opacity: 0.55 };
+}
+
+function renderProvinceLayer() {
+  if (geoLayer) map.removeLayer(geoLayer);
+  geoLayer = L.geoJSON(GUBERNII_GEOJSON, {
+    style: f => getProvinceStyle(f, f.properties.id === selectedProvinceId, f.properties.id === highlightedProvinceId),
+    onEachFeature: function(feature, layer) {
+      const name = feature.properties.name;
+      const hasMVP = !!MVP_PAGES[name];
+      layer.bindTooltip(name + (hasMVP ? ' <span style="color:#4F8781;font-size:.75em">●</span>' : ''), { sticky: true, className: 'province-tooltip-map' });
+      layer.on('click', () => {
+        selectedProvinceId = feature.properties.id;
+        highlightedProvinceId = null;
+        renderProvinceLayer();
+        showProvinceCard(feature.properties);
+        switchStab('province');
+      });
+      layer.on('mouseover', function() {
+        if (feature.properties.id !== selectedProvinceId && feature.properties.id !== highlightedProvinceId)
+          layer.setStyle({ fillOpacity: 0.22, weight: 1.4 });
+      });
+      layer.on('mouseout', function() {
+        geoLayer.resetStyle(layer);
+        if (feature.properties.id === selectedProvinceId)      layer.setStyle(getProvinceStyle(feature, true, false));
+        else if (feature.properties.id === highlightedProvinceId) layer.setStyle(getProvinceStyle(feature, false, true));
+      });
+    }
+  }).addTo(map);
+}
+
+function findLayer(id) {
+  let found = null;
+  if (geoLayer) geoLayer.eachLayer(l => { if (l.feature && l.feature.properties.id === id) found = l; });
+  return found;
+}
+
+function highlightProvince(id) {
+  highlightedProvinceId = id;
+  renderProvinceLayer();
+  if (highlightTimeout) clearTimeout(highlightTimeout);
+  highlightTimeout = setTimeout(() => {
+    if (highlightedProvinceId === id) { highlightedProvinceId = null; renderProvinceLayer(); }
+  }, 3500);
+  const layer = findLayer(id);
+  if (layer) { try { map.fitBounds(layer.getBounds(), { padding: [50,50], maxZoom: 7 }); } catch(e){} }
+}
+
+function showProvinceCard(props) {
+  const name = props.name;
+  const hasMVP = !!MVP_PAGES[name];
+  document.getElementById('province-info-card').innerHTML = `
+    <div class="province-card">
+      <div class="pc-name">${name}</div>
+      <div class="pc-sub">${props.name_eng || ''}</div>
+      <div class="pc-row"><span class="pc-lbl">Датасет ID</span><span class="pc-val">${props.ristat_id || props.id}</span></div>
+      <div class="pc-row"><span class="pc-lbl">Данные MVP</span>
+        <span class="pc-val" style="color:${hasMVP ? 'var(--turq)' : 'var(--faint)'}">${hasMVP ? 'Доступны' : 'В разработке'}</span>
+      </div>
+      ${hasMVP ? `<a class="pc-link-btn" href="${MVP_PAGES[name]}">Открыть страницу губернии →</a>` : ''}
+    </div>`;
+}
+
+function setLayer(type) {
+  activeLayer = type;
+  document.getElementById('btn-tiles').classList.toggle('active', type === 'tiles');
+  document.getElementById('btn-blank').classList.toggle('active', type === 'blank');
+  if (type === 'tiles') { if (!map.hasLayer(tileLayer)) tileLayer.addTo(map); }
+  else { if (map.hasLayer(tileLayer)) map.removeLayer(tileLayer); }
+}
+
+// ══════════════════════════════════════════════════════════════
+// SEARCH PROVINCE
+// ══════════════════════════════════════════════════════════════
+function searchProvince(val) {
+  const el = document.getElementById('province-results');
+  if (!val || val.length < 2) { el.innerHTML = ''; return; }
+  const q = val.toLowerCase();
+  const results = GUBERNII_GEOJSON.features
+    .filter(f => f.properties.name.toLowerCase().includes(q) || (f.properties.name_eng||'').toLowerCase().includes(q))
+    .slice(0, 12);
+  if (!results.length) { el.innerHTML = '<div class="search-empty">Не найдено</div>'; return; }
+  el.innerHTML = results.map(f => {
+    const hasMVP = !!MVP_PAGES[f.properties.name];
+    return `<div class="search-result-item" onclick="selectProvinceById('${f.properties.id}')">
+      <div class="res-dot" style="background:${hasMVP ? 'var(--turq)' : 'var(--copper)'}"></div>
+      <div style="flex:1">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1.0rem;">${f.properties.name}</div>
+        <div class="res-sub">${f.properties.name_eng || ''}</div>
+        ${hasMVP ? '<span style="font-size:0.58rem;font-family:Inter,sans-serif;background:rgba(79,135,129,0.15);color:var(--turq);padding:1px 6px;border-radius:999px;font-weight:600;">MVP</span>' : ''}
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function selectProvinceById(id) {
+  const feature = GUBERNII_GEOJSON.features.find(f => f.properties.id === id);
+  if (!feature) return;
+  selectedProvinceId = id;
+  highlightedProvinceId = null;
+  renderProvinceLayer();
+  showProvinceCard(feature.properties);
+  const layer = findLayer(id);
+  if (layer) { try { map.fitBounds(layer.getBounds(), { padding: [40,40], maxZoom: 7 }); } catch(e){} }
+  document.getElementById('province-results').innerHTML = '';
+  document.getElementById('search-province').value = feature.properties.name;
+}
+
+// ══════════════════════════════════════════════════════════════
+// SEARCH CITY — handles duplicates
+// ══════════════════════════════════════════════════════════════
+function searchCity(val) {
+  const el = document.getElementById('city-results');
+  if (!val || val.length < 2) { el.innerHTML = ''; return; }
+  const q = val.toLowerCase();
+  const results = CITIES.filter(c =>
+    c.city.toLowerCase().includes(q) || c.gubern.toLowerCase().includes(q)
+  ).slice(0, 18);
+  if (!results.length) { el.innerHTML = '<div class="search-empty">Не найдено</div>'; return; }
+
+  // Detect duplicate city names
+  const nameCount = {};
+  results.forEach(c => { nameCount[c.city] = (nameCount[c.city]||0) + 1; });
+
+  const profiles = {1:'Самотёчный',2:'Насосный',3:'Смешанный',4:'Арт. скважина',5:'Частный',6:'—'};
+  el.innerHTML = results.map((c, i) => {
+    const isDup = nameCount[c.city] > 1;
+    const hasMVP = !!MVP_PAGES[c.gubern];
+    const hasWW  = c.profile && c.profile !== 6;
+    return `<div class="city-result-item" onclick="focusCity(${c.lat},${c.lon},'${c.gubern.replace(/'/g,"\\'")}','${c.city.replace(/'/g,"\\'")}')">
+      <div class="cr-name">${c.city}</div>
+      <div class="cr-gubern">${c.gubern}</div>
+      ${isDup ? '<div style="font-size:0.60rem;color:var(--faint);font-family:Inter,sans-serif;margin-top:2px;">⚠ Несколько городов с таким названием</div>' : ''}
+      <div style="display:flex;gap:4px;margin-top:3px;flex-wrap:wrap;">
+        ${hasWW ? `<span class="cr-badge">Водопровод ${c.year ? c.year : ''}</span>` : ''}
+        ${hasMVP ? '<span class="cr-badge" style="background:rgba(79,135,129,0.15);color:var(--turq);">MVP</span>' : ''}
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function focusCity(lat, lon, gubern, cityName) {
+  // Remove previous marker
+  if (cityMarker) { map.removeLayer(cityMarker); cityMarker = null; }
+
+  // Animate to city
+  map.setView([lat, lon], 8, { animate: true });
+
+  // Place copper marker
+  const icon = L.divIcon({
+    className: '',
+    html: `<div style="width:18px;height:18px;background:#8B5E3C;border:3px solid white;border-radius:50%;box-shadow:0 2px 10px rgba(0,0,0,0.4);"></div>`,
+    iconSize: [18,18], iconAnchor: [9,9]
+  });
+  cityMarker = L.marker([lat, lon], { icon }).addTo(map);
+
+  // Highlight province on map
+  const feature = GUBERNII_GEOJSON.features.find(f => f.properties.name === gubern);
+  if (feature) highlightProvince(feature.properties.id);
+
+  // Show city card
+  const city = CITIES.find(c => c.city === cityName && c.gubern === gubern);
+  if (city) showCityCard(city);
+
+  // Clear search UI
+  document.getElementById('city-results').innerHTML = '';
+  document.getElementById('search-city').value = cityName + (gubern ? ` (${gubern.split(' ')[0]})` : '');
+}
+
+function showCityCard(city) {
+  const hasMVP = !!MVP_PAGES[city.gubern];
+  const profiles = {1:'Самотёчный водопровод',2:'Насосный водопровод',3:'Смешанный водопровод',4:'Арт. скважина',5:'Частный водопровод',6:'Без водопровода'};
+  const sec = document.getElementById('selected-city-section');
+  sec.style.display = 'block';
+  document.getElementById('city-info-card').innerHTML = `
+    <div class="province-card">
+      <div class="pc-name">${city.city}</div>
+      <div class="pc-sub">${city.gubern}</div>
+      ${city.pop1897 ? `<div class="pc-row"><span class="pc-lbl">Население (1897)</span><span class="pc-val">${city.pop1897.toLocaleString('ru')} чел.</span></div>` : ''}
+      ${city.year ? `<div class="pc-row"><span class="pc-lbl">Водопровод с</span><span class="pc-val">${city.year} г.</span></div>` : ''}
+      <div class="pc-row"><span class="pc-lbl">Тип водоснабжения</span><span class="pc-val" style="font-size:0.76rem;">${profiles[city.profile]||'—'}</span></div>
+      ${city.status ? `<div class="pc-row"><span class="pc-lbl">Статус</span><span class="pc-val" style="font-size:0.74rem;">${city.status}</span></div>` : ''}
+      ${hasMVP ? `<a class="pc-link-btn" href="${MVP_PAGES[city.gubern]}">Открыть страницу губернии →</a>` : ''}
+    </div>`;
+}
+
+// ══════════════════════════════════════════════════════════════
+// I18N
+// ══════════════════════════════════════════════════════════════
+const I18N_EMPIRE = {
+  ru: {
+    'stats':'Статистика империи','stat.regions':'Губерний<br>и областей','stat.cities':'Городов<br>в базе',
+    'stat.waterworks':'Городских<br>водопроводов','stat.profiles':'Инфраструктурных<br>профилей',
+    'stat.electric':'Городов с<br>электроснабжением','stat.phone':'Городов с<br>телефоном',
+    'stat.tram':'Городов<br>с трамваем','stat.sewer':'Городов с<br>канализацией',
+    'infra':'Городское хозяйство','epi':'Эпидемиологическая обстановка',
+    'search.province':'Поиск губернии','search.city':'Поиск города',
+    'province.info':'Сведения о губернии',
+    'province.placeholder':'Нажмите на губернию<br>на карте или найдите<br>через поиск выше',
+    'city.info':'Сведения о городе',
+    'layer.tiles':'С подложкой','layer.blank':'Без подложки',
+    'footer.empire':'Российская империя',
+    'footer.sub':'Городская инфраструктура · MVP · Прототип',
+    'footer.source':'Electronic Repository of Russian Historical Statistics',
+  },
+  en: {
+    'stats':'Empire statistics','stat.regions':'Provinces<br>& regions','stat.cities':'Cities<br>in database',
+    'stat.waterworks':'Cities with<br>waterworks','stat.profiles':'Infrastructure<br>profiles',
+    'stat.electric':'Cities with<br>electricity','stat.phone':'Cities with<br>telephone',
+    'stat.tram':'Cities<br>with tram','stat.sewer':'Cities with<br>sewerage',
+    'infra':'Urban infrastructure','epi':'Epidemiological situation',
+    'search.province':'Search province','search.city':'Search city',
+    'province.info':'Province details',
+    'province.placeholder':'Click a province<br>on the map or search<br>above',
+    'city.info':'City details',
+    'layer.tiles':'With basemap','layer.blank':'No basemap',
+    'footer.empire':'Russian Empire',
+    'footer.sub':'Urban Infrastructure · MVP · Prototype',
+    'footer.source':'Electronic Repository of Russian Historical Statistics',
+  }
+};
+let currentLang = 'ru';
+
+function setLang(lang) {
+  currentLang = lang;
+  document.querySelectorAll('.lang-toggle button').forEach(b => b.classList.toggle('on', b.dataset.lang === lang));
+  const t = I18N_EMPIRE[lang];
+  document.querySelectorAll('[data-i18n]').forEach(el => { const k = el.dataset.i18n; if (t[k]) el.innerHTML = t[k]; });
+  const sp = document.getElementById('search-province');
+  if (sp) sp.placeholder = lang === 'ru' ? 'Введите название губернии…' : 'Enter province name…';
+  const sc = document.getElementById('search-city');
+  if (sc) sc.placeholder = lang === 'ru' ? 'Введите название города…' : 'Enter city name…';
+  document.getElementById('btn-tiles').textContent = t['layer.tiles'];
+  document.getElementById('btn-blank').textContent = t['layer.blank'];
+  document.getElementById('stab-overview').textContent = lang === 'ru' ? 'Обзор'    : 'Overview';
+  document.getElementById('stab-province').textContent = lang === 'ru' ? 'Губерния' : 'Province';
+  document.getElementById('stab-city').textContent     = lang === 'ru' ? 'Город'    : 'City';
+}
+
+// ══════════════════════════════════════════════════════════════
+// INIT
+// ══════════════════════════════════════════════════════════════
+initMap();
+</script>
+</body>
+</html>
