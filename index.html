@@ -95,6 +95,67 @@ body{background:var(--cream);color:var(--ink);font-family:var(--serif);font-weig
 .lang-sw button.on{color:var(--ochre)}
 .lang-sw button:hover{color:rgba(255,255,255,.8)}
 
+/* ─── HAMBURGER / MOBILE NAV ─── */
+.nav-burger{
+  display:none;
+  align-items:center;justify-content:center;
+  background:none;border:none;cursor:pointer;
+  padding:0 14px;height:46px;flex-shrink:0;
+  color:rgba(255,255,255,.72);
+}
+.nav-burger:hover{color:#fff}
+.nav-burger-icon{
+  display:flex;flex-direction:column;justify-content:center;
+  gap:5px;width:20px;height:16px;
+}
+.nav-burger-icon span{
+  display:block;height:1.5px;border-radius:1px;
+  background:currentColor;
+  transform-origin:center;
+  transition:transform .22s ease,opacity .18s ease,top .18s ease;
+}
+/* open state */
+.nav-burger[aria-expanded="true"] .nav-burger-icon span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.nav-burger[aria-expanded="true"] .nav-burger-icon span:nth-child(2){opacity:0;transform:scaleX(0)}
+.nav-burger[aria-expanded="true"] .nav-burger-icon span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+
+/* dropdown */
+.nav-dropdown{
+  display:none;
+  position:fixed;top:46px;left:0;right:0;
+  background:rgba(10,22,38,.98);
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(255,255,255,.07);
+  z-index:898;
+  flex-direction:column;
+  padding:6px 0 18px;
+  box-shadow:0 8px 32px rgba(0,0,0,.35);
+}
+.nav-dropdown.open{display:flex}
+.nav-dropdown a{
+  display:flex;align-items:center;
+  padding:13px 24px;
+  font:400 .7rem/1 var(--mono);letter-spacing:.07em;text-transform:uppercase;
+  color:rgba(255,255,255,.7);text-decoration:none;
+  border-bottom:1px solid rgba(255,255,255,.045);
+  transition:color .12s,background .12s;
+}
+.nav-dropdown a:last-child{border-bottom:none}
+.nav-dropdown a:hover{color:#fff;background:rgba(255,255,255,.04)}
+.nav-dropdown a[data-soon]{opacity:.45}
+.nav-dropdown-divider{
+  height:1px;background:rgba(255,255,255,.07);margin:6px 24px;
+}
+
+@media(max-width:768px){
+  /* скрыть десктопные ссылки и разделитель */
+  .site-nav > a{display:none}
+  /* показать бургер */
+  .nav-burger{display:flex}
+  /* nav-gap остаётся — он раздвигает бургер и lang-sw */
+}
+
+
 /* ─── HERO ─── */
 .hero{
   min-height:46vh;position:relative;overflow:hidden;
@@ -578,6 +639,11 @@ body::before{
 
 <!-- NAV -->
 <nav class="site-nav" aria-label="Main navigation" id="top">
+  <button class="nav-burger" id="nav-burger" aria-expanded="false" aria-controls="nav-dropdown" aria-label="Открыть меню / Open menu">
+    <span class="nav-burger-icon">
+      <span></span><span></span><span></span>
+    </span>
+  </button>
   <a href="#map"><span class="ru">Карта водопроводов</span><span class="en">Waterworks map</span></a>
   <a href="#infra"><span class="ru">Благоустройство 1910</span><span class="en">Urban services 1910</span></a>
   <a href="#cholera"><span class="ru">Холера</span><span class="en">Cholera</span></a>
@@ -592,6 +658,18 @@ body::before{
     <button data-lang="en" onclick="setLang('en')">EN</button>
   </div>
 </nav>
+<!-- MOBILE DROPDOWN NAV -->
+<div class="nav-dropdown" id="nav-dropdown" role="dialog" aria-label="Мобильное меню / Mobile menu">
+  <a href="#map"><span class="ru">Карта водопроводов</span><span class="en">Waterworks map</span></a>
+  <a href="#infra"><span class="ru">Благоустройство 1910</span><span class="en">Urban services 1910</span></a>
+  <a href="#cholera"><span class="ru">Холера</span><span class="en">Cholera</span></a>
+  <a href="#novgorod"><span class="ru">Новгород. губ. · MVP</span><span class="en">Novgorod Gov. · MVP</span></a>
+  <a href="#methods"><span class="ru">Данные</span><span class="en">Data</span></a>
+  <a href="#" data-soon><span class="ru">Видео</span><span class="en">Videos</span></a>
+  <div class="nav-dropdown-divider"></div>
+  <a href="about.html"><span class="ru">Об авторе</span><span class="en">About</span></a>
+  <a href="#" data-soon><span class="ru">Сотрудничество</span><span class="en">Collaborate</span></a>
+</div>
 
 <!-- HERO -->
 <section class="hero" id="hero" aria-labelledby="h1">
@@ -1366,6 +1444,51 @@ function copyCite(){
 <!-- ── BACK TO TOP ── -->
 <button id="back-to-top" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
 <script>
+
+/* ─── HAMBURGER MENU ─── */
+(function(){
+  var burger   = document.getElementById('nav-burger');
+  var dropdown = document.getElementById('nav-dropdown');
+  if(!burger || !dropdown) return;
+
+  function openMenu(){
+    dropdown.classList.add('open');
+    burger.setAttribute('aria-expanded','true');
+    document.body.style.overflow = '';   // не блокируем скролл страницы
+  }
+  function closeMenu(){
+    dropdown.classList.remove('open');
+    burger.setAttribute('aria-expanded','false');
+  }
+  function toggleMenu(){ dropdown.classList.contains('open') ? closeMenu() : openMenu(); }
+
+  burger.addEventListener('click', function(e){ e.stopPropagation(); toggleMenu(); });
+
+  // Закрыть по клику на ссылку (включая data-soon — там уже preventDefault)
+  dropdown.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){ closeMenu(); });
+  });
+
+  // Закрыть по клику вне меню
+  document.addEventListener('click', function(e){
+    if(dropdown.classList.contains('open') &&
+       !dropdown.contains(e.target) &&
+       !burger.contains(e.target)){
+      closeMenu();
+    }
+  });
+
+  // Закрыть при ресайзе до десктопа
+  window.addEventListener('resize', function(){
+    if(window.innerWidth > 768) closeMenu();
+  });
+
+  // Закрыть по Escape
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape') closeMenu();
+  });
+})();
+
 (function(){
   var btn = document.getElementById('back-to-top');
   window.addEventListener('scroll', function(){

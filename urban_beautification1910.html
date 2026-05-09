@@ -217,7 +217,9 @@ header::after  { top: 7px; right: 7px; border-left: none; border-bottom: none; }
 .sort-btn:hover { background: var(--ink); color: var(--page-cream); border-color: var(--ink); }
 .sort-btn.active { background: var(--ink); color: var(--page-cream); border-color: var(--ink); }
 .table-wrap {
-  overflow-x: auto; -webkit-overflow-scrolling: touch;
+  overflow-x: auto; overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  max-height: calc(100vh - 180px);
   border-radius: 10px;
   box-shadow: 0 4px 22px rgba(30,40,70,0.09), 0 1px 0 rgba(255,255,255,0.6) inset;
   border: 1px solid var(--line-copper);
@@ -396,6 +398,11 @@ tbody td:last-child { border-right: none; }
   <div class="note" style="margin-top:8px;border-left-color:rgba(111,125,149,.4);background:rgba(111,125,149,.07)">
     <span class="ru"><strong>Примечание о числе городов.</strong> В таблице учтены городские и негородские поселения с населением свыше 10&thinsp;000 чел. по данным той же статистики благоустройства. В других разделах платформы фигурирует цифра <strong>950</strong> — это города и негородские поселения с городскими управами, обозначенные городами по данным источника «Города России в 1910&nbsp;г.» (Центральный статистический комитет МВД, 1914).</span>
     <span class="en"><strong>Note on city counts.</strong> This table covers urban and non-urban settlements with a population over 10,000, as recorded in the urban services census. Elsewhere on this platform the figure <strong>950</strong> appears — this refers to settlements officially classified as cities in <em>Cities of Russia in 1910</em> (Central Statistical Committee, 1914), a category that also included non-urban settlements (posady, mestechki, and non-district towns) with their own municipal administrations.</span>
+  </div>
+
+  <div class="note" style="margin-top:8px;border-left-color:rgba(183,145,88,.55);background:rgba(183,145,88,.07)">
+    <span class="ru"><strong>Примечание о составе данных.</strong> Статистика благоустройства 1910&nbsp;г. охватывает не только города в строгом смысле, но и негородские поселения (посады, местечки, безуездные города), а также фиксирует объекты, которые обслуживали не население, а железные дороги, воинские части или иные ведомства. Так, в статистику по Новгородской губернии попал водопровод станции Тихвин, снабжавший исключительно нужды железной дороги, а не жителей города. При использовании данных о конкретном населённом пункте рекомендуется проверять, для чьих нужд была построена та или иная инфраструктура.</span>
+    <span class="en"><strong>Note on data coverage.</strong> The 1910 urban services census includes not only towns proper, but also non-urban settlements (posady, mestechki, district-free towns), and records infrastructure that served railways, military units, or government agencies rather than the civilian population. For example, the waterworks attributed to Tikhvin in Novgorod Province supplied only the railway station, not the town itself. When working with data on individual settlements, it is advisable to verify whose needs a given infrastructure facility actually served.</span>
   </div>
 
   <!-- OVERALL STATS -->
