@@ -433,26 +433,45 @@ header::after  { top: 5px; right: 5px; border-left: none; border-bottom: none; }
 
 /* Footer */
 .app-footer {
-  flex-shrink: 0; padding: 6px 24px;
-  display: flex; align-items: center; gap: 12px;
-  font-family: 'Inter',sans-serif; font-size: 0.58rem; font-weight: 500;
-  letter-spacing: 0.14em; color: var(--muted);
-  border-top: 1px solid var(--glass-edge);
-  background: var(--glass-tint); backdrop-filter: blur(10px);
+  flex-shrink: 0; padding: 8px 26px;
+  display: flex; align-items: center; gap: 14px;
+  font-family: 'Inter',sans-serif; font-size: 0.6rem; font-weight: 500;
+  letter-spacing: 0.14em;
+  /* тёмный футер, как map.html в dark mode */
+  color: rgba(200,215,235,0.65);
+  border-top: 1px solid rgba(200,215,235,0.15);
+  background: rgba(12,24,38,0.90);
+  -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
   position: relative; text-transform: uppercase; z-index: 1;
 }
 .app-footer .spacer { flex: 1; }
-.app-footer em { font-style: italic; font-family: 'Cormorant Garamond',serif; text-transform: none; font-size: 0.82rem; letter-spacing: 0; color: var(--ink-soft); font-weight: 500; }
+.app-footer em { font-style: italic; font-family: Cambria,'Palatino Linotype',Georgia,serif; text-transform: none; font-size: 0.86rem; letter-spacing: 0; color: rgba(210,225,245,0.88); font-weight: 500; }
 .app-footer::before,.app-footer::after,.ftr-corner-tl,.ftr-corner-tr {
-  content: ''; position: absolute; width: 14px; height: 14px;
-  border: 1px solid var(--line-copper); pointer-events: none;
+  content: ''; position: absolute; width: 18px; height: 18px;
+  border: 1px solid rgba(210,158,113,0.40); pointer-events: none;
 }
 .app-footer::before { bottom: 4px; left: 4px; border-right: none; border-top: none; }
 .app-footer::after  { bottom: 4px; right: 4px; border-left: none; border-top: none; }
 .ftr-corner-tl { top: 4px; left: 4px; border-right: none; border-bottom: none; }
 .ftr-corner-tr { top: 4px; right: 4px; border-left: none; border-bottom: none; }
-.footer-orn { color: var(--copper); opacity: 0.7; display: inline-flex; }
+.footer-orn { color: rgba(210,158,113,0.70); display: inline-flex; }
 .footer-orn svg { width: 68px; height: 12px; }
+.tx-footer {
+  background: var(--ink-dk, #0f1e31);
+  color: rgba(255,255,255,.38);
+  padding: 24px 32px;
+  border-top: 2px solid var(--turq, #4f8781);
+  font: 300 0.76rem/1.7 Cambria, Georgia, serif;
+}
+.tx-footer-inner {
+  max-width: 1280px; margin: 0 auto;
+  display: flex; flex-wrap: wrap; gap: 8px 24px;
+  justify-content: space-between; align-items: center;
+}
+.tx-footer strong { color: rgba(255,255,255,.72); }
+.tx-footer a { color: rgba(255,255,255,.45); text-decoration: none; }
+.tx-footer a:hover { color: #fff; }
+.tx-footer-nav { display: flex; gap: 16px; flex-wrap: wrap; }
 </style>
 <!-- ── SEO: canonical / OG / Twitter / hreflang ── -->
 <link rel="canonical" href="https://urbantransmission.org/empire/RussianEmpire.html">
@@ -720,18 +739,27 @@ header::after  { top: 5px; right: 5px; border-left: none; border-bottom: none; }
 
 <!-- FOOTER -->
 <footer class="app-footer">
-  <div class="ftr-corner-tl"></div><div class="ftr-corner-tr"></div>
-  <span class="footer-orn"><svg viewBox="0 0 68 12" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round">
-    <line x1="0" y1="6" x2="24" y2="6"/><circle cx="30" cy="6" r="3"/><line x1="36" y1="6" x2="42" y2="6"/>
-    <circle cx="39" cy="6" r="1" fill="currentColor"/><line x1="48" y1="6" x2="68" y2="6"/>
+  <div class="ftr-corner-tl"></div>
+  <div class="ftr-corner-tr"></div>
+  <span class="footer-orn"><svg viewBox="0 0 90 14" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round">
+    <line x1="2" y1="7" x2="36" y2="7"/>
+    <line x1="54" y1="7" x2="88" y2="7"/>
+    <circle cx="45" cy="7" r="4"/>
+    <circle cx="45" cy="7" r="1.5" fill="currentColor"/>
+    <line x1="40" y1="2" x2="40" y2="12"/>
+    <line x1="50" y1="2" x2="50" y2="12"/>
   </svg></span>
-  <span data-i18n="footer.empire">Российская империя</span>
-  <span>·</span>
-  <span class="mono">1870–1917</span>
+  <em data-i18n="footer.author">© 2026 Анна Б. Агафонова</em>
   <span class="spacer"></span>
-  <em data-i18n="footer.sub">Городская инфраструктура · MVP · Прототип</em>
-  <span class="spacer"></span>
-  <span data-i18n="footer.source">Electronic Repository of Russian Historical Statistics</span>
+  <span data-i18n="footer.source">RISTAT GIS 1897 · Kessler &amp; Markevich</span>
+  <span class="footer-orn"><svg viewBox="0 0 90 14" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round">
+    <line x1="2" y1="7" x2="36" y2="7"/>
+    <line x1="54" y1="7" x2="88" y2="7"/>
+    <circle cx="45" cy="7" r="4"/>
+    <circle cx="45" cy="7" r="1.5" fill="currentColor"/>
+    <line x1="40" y1="2" x2="40" y2="12"/>
+    <line x1="50" y1="2" x2="50" y2="12"/>
+  </svg></span>
 </footer>
 
 <script>
@@ -779,6 +807,11 @@ function initMap() {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
     maxZoom: 15
   }).addTo(map);
+  // Атрибуция границ губерний
+  L.control.attribution({prefix: false}).addTo(map);
+  map.attributionControl.addAttribution(
+    'Границы губерний: Kessler &amp; Markevich, <a href="https://doi.org/10.34894/NQOASN" target="_blank" rel="noopener">RISTAT GIS 1897</a>'
+  );
   renderProvinceLayer();
 }
 
@@ -996,14 +1029,19 @@ const I18N_EMPIRE = {
     'province.placeholder':'Нажмите на губернию<br>на карте или найдите<br>через поиск выше',
     'city.info':'Сведения о городе',
     'layer.tiles':'С подложкой','layer.blank':'Без подложки',
-    'footer.empire':'Российская империя',
-    'footer.sub':'Городская инфраструктура · MVP · Прототип',
-    'footer.source':'Electronic Repository of Russian Historical Statistics',
+    'footer.author':'© 2026 Анна Б. Агафонова',
+    'footer.source':'RISTAT GIS 1897 · Kessler &amp; Markevich',
+    'footer.tagline':'Городские инфраструктуры Российской империи, 1870–1917',
+    'footer.author2':'Анна Б. Агафонова',
+    'nav.home':'На главную',
+    'nav.home2':'Главная',
+    'nav.map':'Карта водопроводов',
+    'nav.terms':'Условия использования',
+    'nav.pd':'Политика ПД',
     'hdr.title':'Российская <span class="amp">империя</span>',
     'hdr.infra':'Городская инфраструктура',
     'hdr.regions':'губерний и областей',
     'hdr.cities':'городов',
-    'nav.home':'На главную',
     'epi.cholera':'<strong>Холера:</strong> три крупные волны — 1847–1851, 1892–1895, 1908–1910. Наиболее пострадавшие — Поволжье, Причерноморье, Центральная Азия.',
     'epi.typhus':'<strong>Тиф и дизентерия:</strong> постоянный фон во всех губерниях. Коррелирует с отсутствием централизованного водоснабжения.',
     'epi.note':'* Данные предварительные. Полная база в разработке.',
@@ -1019,14 +1057,19 @@ const I18N_EMPIRE = {
     'province.placeholder':'Click a province<br>on the map or search<br>above',
     'city.info':'City details',
     'layer.tiles':'With basemap','layer.blank':'No basemap',
-    'footer.empire':'Russian Empire',
-    'footer.sub':'Urban Infrastructure · MVP · Prototype',
-    'footer.source':'Electronic Repository of Russian Historical Statistics',
+    'footer.author':'© 2026 Anna B. Agafonova',
+    'footer.source':'RISTAT GIS 1897 · Kessler &amp; Markevich',
+    'footer.tagline':'Urban Infrastructures of the Russian Empire, 1870–1917',
+    'footer.author2':'Anna B. Agafonova',
+    'nav.home':'Home',
+    'nav.home2':'Home',
+    'nav.map':'Water supply map',
+    'nav.terms':'Terms of Use',
+    'nav.pd':'Privacy Policy',
     'hdr.title':'Russian <span class="amp">Empire</span>',
     'hdr.infra':'Urban Infrastructure',
     'hdr.regions':'provinces & regions',
     'hdr.cities':'cities',
-    'nav.home':'Home',
     'epi.cholera':'<strong>Cholera:</strong> three major waves — 1847–1851, 1892–1895, 1908–1910. Most affected regions: Volga, Black Sea coast, Central Asia.',
     'epi.typhus':'<strong>Typhoid & dysentery:</strong> endemic in all provinces. Strongly correlated with the absence of centralised water supply.',
     'epi.note':'* Preliminary data. Full database under development.',
@@ -1061,6 +1104,27 @@ function setLang(lang) {
 // ══════════════════════════════════════════════════════════════
 initMap();
 </script>
+
+<footer class="tx-footer">
+  <div class="tx-footer-inner">
+    <div>
+      <strong>Transmission</strong> &nbsp;·&nbsp;
+      <span data-i18n="footer.tagline">Городские инфраструктуры Российской империи, 1870–1917</span>
+    </div>
+    <div>
+      © 2026
+      <em data-i18n="footer.author2">Анна Б. Агафонова</em>
+      &nbsp;·&nbsp;
+      <a href="https://orcid.org/0000-0003-3021-4002" target="_blank" rel="noopener">ORCID 0000-0003-3021-4002</a>
+    </div>
+    <nav class="tx-footer-nav">
+      <a href="../index.html" data-i18n="nav.home2">Главная</a>
+      <a href="../waterworks/map.html" data-i18n="nav.map">Карта водопроводов</a>
+      <a href="../terms.html" data-i18n="nav.terms">Условия использования</a>
+      <a href="../personal-data.html" data-i18n="nav.pd">Политика ПД</a>
+    </nav>
+  </div>
+</footer>
+
 </body>
 </html>
- 
