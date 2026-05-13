@@ -429,11 +429,12 @@ header {
       Transmission <span>· <span class="ru">Об авторе</span><span class="en">About</span></span>
     </div>
     <div class="lang-sw" role="group" aria-label="Language / Язык">
-      <button data-lang="ru" class="on" onclick="setLang('ru')">РУ</button>
-      <button data-lang="en" onclick="setLang('en')">EN</button>
+      <button type="button" data-lang="ru" class="on" onclick="setLang('ru')">РУ</button>
+      <button type="button" data-lang="en" onclick="setLang('en')">EN</button>
     </div>
   </div>
 </header>
+<main id="content">
 
 <!-- ── PAGE HERO ── -->
 <div class="page-hero">
@@ -491,7 +492,7 @@ header {
           <p class="profile-card-title"><span class="ru">Академические профили</span><span class="en">Academic profiles</span></p>
           <div class="profile-links">
 
-            <a class="profile-link" href="https://orcid.org/0000-0003-3021-4002" target="_blank" rel="noopener">
+            <a class="profile-link" href="https://orcid.org/0000-0003-3021-4002" target="_blank" rel="noopener noreferrer">
               <div class="profile-link-icon" style="background:#a6ce39; color:white; font-size:0.60rem; font-weight:800;">iD</div>
               <div>
                 <div class="profile-link-label">ORCID</div>
@@ -500,7 +501,7 @@ header {
               <span class="profile-link-warn" title="Requires update">↻</span>
             </a>
 
-            <a class="profile-link" href="https://scholar.google.com/citations?user=J7uQXacAAAAJ" target="_blank" rel="noopener">
+            <a class="profile-link" href="https://scholar.google.com/citations?user=J7uQXacAAAAJ" target="_blank" rel="noopener noreferrer">
               <div class="profile-link-icon" style="background:#4285f4; color:white;">
                 <svg viewBox="0 0 24 24" fill="white" width="13" height="13"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
               </div>
@@ -510,7 +511,7 @@ header {
               </div>
             </a>
 
-            <a class="profile-link" href="https://www.scopus.com/authid/detail.uri?authorId=57218302546" target="_blank" rel="noopener">
+            <a class="profile-link" href="https://www.scopus.com/authid/detail.uri?authorId=57218302546" target="_blank" rel="noopener noreferrer">
               <div class="profile-link-icon" style="background:#e87722; color:white; font-size:0.58rem; font-weight:800;">SC</div>
               <div>
                 <div class="profile-link-label">Scopus</div>
@@ -518,7 +519,7 @@ header {
               </div>
             </a>
 
-            <a class="profile-link" href="https://www.webofscience.com/wos/author/record/C-1335-2014" target="_blank" rel="noopener">
+            <a class="profile-link" href="https://www.webofscience.com/wos/author/record/C-1335-2014" target="_blank" rel="noopener noreferrer">
               <div class="profile-link-icon" style="background:#5e33bf; color:white; font-size:0.58rem; font-weight:800;">WS</div>
               <div>
                 <div class="profile-link-label">Web of Science</div>
@@ -526,7 +527,7 @@ header {
               </div>
             </a>
 
-            <a class="profile-link" href="https://www.linkedin.com/in/a-b-agafonova/" target="_blank" rel="noopener">
+            <a class="profile-link" href="https://www.linkedin.com/in/a-b-agafonova/" target="_blank" rel="noopener noreferrer">
               <div class="profile-link-icon" style="background:#0a66c2; color:white;">
                 <svg viewBox="0 0 24 24" fill="white" width="13" height="13"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
               </div>
@@ -536,7 +537,7 @@ header {
               </div>
             </a>
 
-            <a class="profile-link" href="https://independentresearcher.academia.edu/AnnaAgafonova" target="_blank" rel="noopener">
+            <a class="profile-link" href="https://independentresearcher.academia.edu/AnnaAgafonova" target="_blank" rel="noopener noreferrer">
               <div class="profile-link-icon" style="background:#333; color:white; font-size:0.58rem; font-weight:800;">AC</div>
               <div>
                 <div class="profile-link-label">Academia.edu</div>
@@ -544,7 +545,7 @@ header {
               </div>
             </a>
 
-            <a class="profile-link" href="https://www.elibrary.ru/author_items.asp?authorid=687627" target="_blank" rel="noopener">
+            <a class="profile-link" href="https://www.elibrary.ru/author_items.asp?authorid=687627" target="_blank" rel="noopener noreferrer">
               <div class="profile-link-icon" style="background:#e05a00; color:white; font-size:0.50rem; font-weight:800;">РИНЦ</div>
               <div>
                 <div class="profile-link-label">РИНЦ / eLibrary</div>
@@ -586,7 +587,7 @@ header {
           <span class="pub-compact-tags">
             <span class="pub-compact-tag">Open Data</span>
             <span class="pub-compact-tag">Zenodo</span>
-            <a href="https://doi.org/10.5281/zenodo.20005304" target="_blank" rel="noopener" class="pub-compact-tag" style="color:var(--turq);text-decoration:none;">DOI 10.5281/zenodo.20005304</a>
+            <a href="https://doi.org/10.5281/zenodo.20005304" target="_blank" rel="noopener noreferrer" class="pub-compact-tag" style="color:var(--turq);text-decoration:none;">DOI 10.5281/zenodo.20005304</a>
           </span>
         </div>
       </div>
@@ -600,7 +601,7 @@ header {
           <span class="pub-compact-venue"><em>Уральский исторический вестник</em>. <span class="ru">2024. № 2 (83). С. 174–184.</span><span class="en">2024, no. 2 (83), pp. 174–184.</span></span>
           <span class="pub-compact-tags">
             <span class="pub-compact-tag">Scopus</span>
-            <a href="https://doi.org/10.30759/1728-9718-2024-2(83)-174-184" target="_blank" rel="noopener" class="pub-compact-tag" style="color:var(--turq);text-decoration:none;">DOI</a>
+            <a href="https://doi.org/10.30759/1728-9718-2024-2(83)-174-184" target="_blank" rel="noopener noreferrer" class="pub-compact-tag" style="color:var(--turq);text-decoration:none;">DOI</a>
           </span>
         </div>
       </div>
@@ -614,7 +615,7 @@ header {
           <span class="pub-compact-venue"><em>Научный диалог</em>. <span class="ru">Т. 12. № 10. С. 230–247.</span><span class="en">Vol. 12, no. 10, pp. 230–247.</span></span>
           <span class="pub-compact-tags">
             <span class="pub-compact-tag">Scopus</span>
-            <a href="https://doi.org/10.24224/2227-1295-2023-12-10-230-247" target="_blank" rel="noopener" class="pub-compact-tag" style="color:var(--turq);text-decoration:none;">DOI</a>
+            <a href="https://doi.org/10.24224/2227-1295-2023-12-10-230-247" target="_blank" rel="noopener noreferrer" class="pub-compact-tag" style="color:var(--turq);text-decoration:none;">DOI</a>
           </span>
         </div>
       </div>
@@ -628,7 +629,7 @@ header {
           <span class="pub-compact-venue"><em>Уральский исторический вестник</em>. <span class="ru">2021. № 1 (70). С. 30–38.</span><span class="en">2021, no. 1 (70), pp. 30–38.</span></span>
           <span class="pub-compact-tags">
             <span class="pub-compact-tag">Scopus</span>
-            <a href="https://doi.org/10.30759/1728-9718-2021-1(70)-30-38" target="_blank" rel="noopener" class="pub-compact-tag" style="color:var(--turq);text-decoration:none;">DOI</a>
+            <a href="https://doi.org/10.30759/1728-9718-2021-1(70)-30-38" target="_blank" rel="noopener noreferrer" class="pub-compact-tag" style="color:var(--turq);text-decoration:none;">DOI</a>
           </span>
         </div>
       </div>
@@ -642,7 +643,7 @@ header {
           <span class="pub-compact-tags">
             <span class="pub-compact-tag">Scopus</span>
             <span class="pub-compact-tag">English</span>
-            <a href="https://doi.org/10.14207/ejsd.2020.v9n1p99" target="_blank" rel="noopener" class="pub-compact-tag" style="color:var(--turq);text-decoration:none;">DOI</a>
+            <a href="https://doi.org/10.14207/ejsd.2020.v9n1p99" target="_blank" rel="noopener noreferrer" class="pub-compact-tag" style="color:var(--turq);text-decoration:none;">DOI</a>
           </span>
         </div>
       </div>
@@ -668,7 +669,7 @@ header {
           <span class="en">Sanitary Conditions and Beautification of Urban Environment in Vologda and Novgorod Regions, 1870–1914.</span>
           <span class="pub-compact-venue"><span class="ru">Дис. … к.и.н. РГГУ.</span><span class="en">PhD diss., Russian State University for the Humanities.</span></span>
           <span class="pub-compact-tags"><span class="pub-compact-tag"><span class="ru">Диссертация</span><span class="en">Dissertation</span></span></span>
-          <a href="https://www.rsuh.ru/upload/main/dissov/Agafonova1.pdf" target="_blank" rel="noopener" class="pub-compact-tag" style="color:var(--turq);text-decoration:none;">Text</a>
+          <a href="https://www.rsuh.ru/upload/main/dissov/Agafonova1.pdf" target="_blank" rel="noopener noreferrer" class="pub-compact-tag" style="color:var(--turq);text-decoration:none;">Text</a>
         </span>
         </div>
       </div>
@@ -704,7 +705,7 @@ header {
           <span class="data-stat"><strong>75</strong> <span class="ru">переменных</span><span class="en">variables</span></span>
           <span class="data-stat"><strong>187</strong> <span class="ru">с водопроводом</span><span class="en">with waterworks</span></span>
           <span class="data-stat">
-            <a href="https://doi.org/10.5281/zenodo.20005304" target="_blank" rel="noopener" style="color:var(--turq);text-decoration:none;font-weight:600">→ Zenodo</a>
+            <a href="https://doi.org/10.5281/zenodo.20005304" target="_blank" rel="noopener noreferrer" style="color:var(--turq);text-decoration:none;font-weight:600">→ Zenodo</a>
           </span>
         </div>
       </div>
@@ -749,7 +750,7 @@ header {
 
     <div class="channel-grid">
 
-      <a class="channel-card-about" href="https://www.youtube.com/@ab_agafonova" target="_blank" rel="noopener">
+      <a class="channel-card-about" href="https://www.youtube.com/@ab_agafonova" target="_blank" rel="noopener noreferrer">
         <div class="channel-card-header">
           <div class="channel-yt-icon">
             <svg viewBox="0 0 24 24"><path fill="#cc0000" d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.54C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon fill="white" points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg>
@@ -772,7 +773,7 @@ header {
         </div>
       </a>
 
-      <a class="channel-card-about" href="https://www.youtube.com/@UrbanEnvironmentalHistory" target="_blank" rel="noopener">
+      <a class="channel-card-about" href="https://www.youtube.com/@UrbanEnvironmentalHistory" target="_blank" rel="noopener noreferrer">
         <div class="channel-card-header">
           <div class="channel-yt-icon">
             <svg viewBox="0 0 24 24"><path fill="#cc0000" d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.54C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon fill="white" points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg>
@@ -802,13 +803,14 @@ header {
 </div>
 
 <!-- ── FOOTER ── -->
+</main>
 <footer class="tx-footer">
   <div class="tx-footer-inner">
     <div>
       <strong>Transmission</strong> &nbsp;·&nbsp;
       <span class="ru">Цифровая исследовательская платформа</span><span class="en">Digital Research Platform</span>
     </div>
-    <div>© 2026 <span class="ru">Агафонова Анна Борисовна</span><span class="en">Anna B. Agafonova</span> &nbsp;·&nbsp; <a href="https://orcid.org/0000-0003-3021-4002" target="_blank" rel="noopener">ORCID</a></div>
+    <div>© 2026 <span class="ru">Агафонова Анна Борисовна</span><span class="en">Anna B. Agafonova</span> &nbsp;·&nbsp; <a href="https://orcid.org/0000-0003-3021-4002" target="_blank" rel="noopener noreferrer">ORCID</a></div>
     <nav class="tx-footer-nav">
       <a href="index.html"><span class="ru">Главная</span><span class="en">Home</span></a>
       <a href="videos.html"><span class="ru">Видео</span><span class="en">Videos</span></a>
@@ -835,4 +837,3 @@ function setLang(l) {
 </script>
 </body>
 </html>
-                                                                                                                                                                                                                                                                                                                                                                                           

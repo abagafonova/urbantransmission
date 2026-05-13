@@ -373,8 +373,8 @@ tbody td:last-child { border-right: none; }
       </div>
     </div>
     <div class="lang-sw" role="group" aria-label="Language / Язык">
-      <button data-lang="ru" class="on" onclick="setLang('ru')">РУ</button>
-      <button data-lang="en" onclick="setLang('en')">EN</button>
+      <button type="button" data-lang="ru" class="on" onclick="setLang('ru')">РУ</button>
+      <button type="button" data-lang="en" onclick="setLang('en')">EN</button>
     </div>
     <a href="index.html" class="header-back">
       <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10 12L6 8l4-4"/></svg>
@@ -382,6 +382,7 @@ tbody td:last-child { border-right: none; }
     </a>
   </div>
 </header>
+<main id="content">
 
 <div class="page">
 
@@ -419,13 +420,13 @@ tbody td:last-child { border-right: none; }
 
   <div class="controls">
     <label><span class="ru">Сортировать:</span><span class="en">Sort:</span></label>
-    <button class="sort-btn active" data-sort="name"><span class="ru">По алфавиту</span><span class="en">Alphabetical</span></button>
-    <button class="sort-btn" data-sort="total"><span class="ru">Городов</span><span class="en">Cities</span></button>
-    <button class="sort-btn" data-sort="elec"><span class="ru">Электр. освещ.</span><span class="en">Electric light</span></button>
-    <button class="sort-btn" data-sort="water"><span class="ru">Водопровод</span><span class="en">Water supply</span></button>
-    <button class="sort-btn" data-sort="tram"><span class="ru">Трамвай</span><span class="en">Tram</span></button>
-    <button class="sort-btn" data-sort="sewer"><span class="ru">Канализация</span><span class="en">Sewerage</span></button>
-    <button class="sort-btn" data-sort="tele"><span class="ru">Телеграф</span><span class="en">Telegraph</span></button>
+    <button type="button" class="sort-btn active" data-sort="name"><span class="ru">По алфавиту</span><span class="en">Alphabetical</span></button>
+    <button type="button" class="sort-btn" data-sort="total"><span class="ru">Городов</span><span class="en">Cities</span></button>
+    <button type="button" class="sort-btn" data-sort="elec"><span class="ru">Электр. освещ.</span><span class="en">Electric light</span></button>
+    <button type="button" class="sort-btn" data-sort="water"><span class="ru">Водопровод</span><span class="en">Water supply</span></button>
+    <button type="button" class="sort-btn" data-sort="tram"><span class="ru">Трамвай</span><span class="en">Tram</span></button>
+    <button type="button" class="sort-btn" data-sort="sewer"><span class="ru">Канализация</span><span class="en">Sewerage</span></button>
+    <button type="button" class="sort-btn" data-sort="tele"><span class="ru">Телеграф</span><span class="en">Telegraph</span></button>
   </div>
 
   <div class="table-wrap">
@@ -545,6 +546,7 @@ tbody td:last-child { border-right: none; }
 
 </div>
 
+</main>
 <footer class="tx-footer">
   <div class="tx-footer-inner">
     <div>
@@ -556,7 +558,7 @@ tbody td:last-child { border-right: none; }
       © 2026
       <span class="ru">Анна Б. Агафонова</span><span class="en">Anna B. Agafonova</span>
       &nbsp;·&nbsp;
-      <a href="https://orcid.org/0000-0003-3021-4002" target="_blank" rel="noopener">ORCID 0000-0003-3021-4002</a>
+      <a href="https://orcid.org/0000-0003-3021-4002" target="_blank" rel="noopener noreferrer">ORCID 0000-0003-3021-4002</a>
     </div>
     <nav class="tx-footer-nav">
       <a href="index.html"><span class="ru">Главная</span><span class="en">Home</span></a>

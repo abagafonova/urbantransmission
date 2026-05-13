@@ -321,11 +321,12 @@ header {
       Transmission <span>· <span class="ru">Видео</span><span class="en">Videos</span></span>
     </div>
     <div class="lang-sw" role="group" aria-label="Language / Язык">
-      <button data-lang="ru" class="on" onclick="setLang('ru')">РУ</button>
-      <button data-lang="en" onclick="setLang('en')">EN</button>
+      <button type="button" data-lang="ru" class="on" onclick="setLang('ru')">РУ</button>
+      <button type="button" data-lang="en" onclick="setLang('en')">EN</button>
     </div>
   </div>
 </header>
+<main id="content">
 
 <!-- ── HERO ── -->
 <div class="page-hero">
@@ -342,7 +343,7 @@ header {
 
 <!-- ── CHANNEL LINKS ── -->
 <div class="channels-bar">
-  <a class="channel-card" href="https://www.youtube.com/@ab_agafonova" target="_blank" rel="noopener">
+  <a class="channel-card" href="https://www.youtube.com/@ab_agafonova" target="_blank" rel="noopener noreferrer">
     <div class="ch-yt-icon">
       <svg viewBox="0 0 24 24"><path fill="#cc0000" d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.54C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon fill="white" points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg>
     </div>
@@ -352,7 +353,7 @@ header {
     </div>
     <div class="ch-arrow">↗</div>
   </a>
-  <a class="channel-card" href="https://www.youtube.com/@UrbanEnvironmentalHistory" target="_blank" rel="noopener">
+  <a class="channel-card" href="https://www.youtube.com/@UrbanEnvironmentalHistory" target="_blank" rel="noopener noreferrer">
     <div class="ch-yt-icon">
       <svg viewBox="0 0 24 24"><path fill="#cc0000" d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.54C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon fill="white" points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg>
     </div>
@@ -366,23 +367,23 @@ header {
 
 <!-- ── FILTER ── -->
 <div class="filter-bar">
-  <button class="filter-chip active" data-filter="all" onclick="filterVideos('all')">
+  <button type="button" class="filter-chip active" data-filter="all" onclick="filterVideos('all')">
     <span class="ru">Все</span><span class="en">All</span>
   </button>
-  <button class="filter-chip lang-chip-ru" data-filter="ru" onclick="filterVideos('ru')">
+  <button type="button" class="filter-chip lang-chip-ru" data-filter="ru" onclick="filterVideos('ru')">
     <span class="ru">Русскоязычные</span><span class="en">Russian</span>
   </button>
-  <button class="filter-chip lang-chip-en" data-filter="en" onclick="filterVideos('en')">
+  <button type="button" class="filter-chip lang-chip-en" data-filter="en" onclick="filterVideos('en')">
     <span class="ru">Англоязычные</span><span class="en">English</span>
   </button>
   <span class="filter-sep" aria-hidden="true"></span>
-  <button class="filter-chip topic-chip" data-filter="energy" onclick="filterVideos('energy')">
+  <button type="button" class="filter-chip topic-chip" data-filter="energy" onclick="filterVideos('energy')">
     <span class="ru">Энергетика</span><span class="en">Energy history</span>
   </button>
-  <button class="filter-chip topic-chip" data-filter="urban" onclick="filterVideos('urban')">
+  <button type="button" class="filter-chip topic-chip" data-filter="urban" onclick="filterVideos('urban')">
     <span class="ru">Благоустройство</span><span class="en">Urban improvement</span>
   </button>
-  <button class="filter-chip topic-chip" data-filter="sanitary" onclick="filterVideos('sanitary')">
+  <button type="button" class="filter-chip topic-chip" data-filter="sanitary" onclick="filterVideos('sanitary')">
     <span class="ru">Санитарные институты</span><span class="en">Sanitary institutions</span>
   </button>
 </div>
@@ -418,7 +419,7 @@ header {
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.54C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="currentColor" stroke="none"/></svg>
             @ab_agafonova
           </span>
-          <a class="video-yt-link" href="https://www.youtube.com/watch?v=J5oVjXurSTI" target="_blank" rel="noopener">
+          <a class="video-yt-link" href="https://www.youtube.com/watch?v=J5oVjXurSTI" target="_blank" rel="noopener noreferrer">
             <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" width="12" height="12"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
             <span class="ru">Смотреть на YouTube</span><span class="en">Watch on YouTube</span>
           </a>
@@ -450,7 +451,7 @@ header {
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.54C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="currentColor" stroke="none"/></svg>
             @UrbanEnvironmentalHistory
           </span>
-          <a class="video-yt-link" href="https://www.youtube.com/watch?v=UTD09DXsNFM" target="_blank" rel="noopener">
+          <a class="video-yt-link" href="https://www.youtube.com/watch?v=UTD09DXsNFM" target="_blank" rel="noopener noreferrer">
             <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" width="12" height="12"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
             <span class="ru">Смотреть на YouTube</span><span class="en">Watch on YouTube</span>
           </a>
@@ -482,7 +483,7 @@ header {
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.54C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="currentColor" stroke="none"/></svg>
             @UrbanEnvironmentalHistory
           </span>
-          <a class="video-yt-link" href="https://www.youtube.com/watch?v=J9mc2YjBB9o" target="_blank" rel="noopener">
+          <a class="video-yt-link" href="https://www.youtube.com/watch?v=J9mc2YjBB9o" target="_blank" rel="noopener noreferrer">
             <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" width="12" height="12"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
             <span class="ru">Смотреть на YouTube</span><span class="en">Watch on YouTube</span>
           </a>
@@ -514,7 +515,7 @@ header {
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.54C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="currentColor" stroke="none"/></svg>
             @UrbanEnvironmentalHistory
           </span>
-          <a class="video-yt-link" href="https://www.youtube.com/watch?v=-hFsx2_GFm8" target="_blank" rel="noopener">
+          <a class="video-yt-link" href="https://www.youtube.com/watch?v=-hFsx2_GFm8" target="_blank" rel="noopener noreferrer">
             <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" width="12" height="12"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
             <span class="ru">Смотреть на YouTube</span><span class="en">Watch on YouTube</span>
           </a>
@@ -546,7 +547,7 @@ header {
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.54C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="currentColor" stroke="none"/></svg>
             @UrbanEnvironmentalHistory
           </span>
-          <a class="video-yt-link" href="https://www.youtube.com/watch?v=G93fY7iKStA" target="_blank" rel="noopener">
+          <a class="video-yt-link" href="https://www.youtube.com/watch?v=G93fY7iKStA" target="_blank" rel="noopener noreferrer">
             <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" width="12" height="12"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
             <span class="ru">Смотреть на YouTube</span><span class="en">Watch on YouTube</span>
           </a>
@@ -578,7 +579,7 @@ header {
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.54C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="currentColor" stroke="none"/></svg>
             @UrbanEnvironmentalHistory
           </span>
-          <a class="video-yt-link" href="https://www.youtube.com/watch?v=qEAZp1k3GZM" target="_blank" rel="noopener">
+          <a class="video-yt-link" href="https://www.youtube.com/watch?v=qEAZp1k3GZM" target="_blank" rel="noopener noreferrer">
             <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" width="12" height="12"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
             <span class="ru">Смотреть на YouTube</span><span class="en">Watch on YouTube</span>
           </a>
@@ -610,7 +611,7 @@ header {
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.54C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="currentColor" stroke="none"/></svg>
             @UrbanEnvironmentalHistory
           </span>
-          <a class="video-yt-link" href="https://www.youtube.com/watch?v=pYEdD7eQhfY" target="_blank" rel="noopener">
+          <a class="video-yt-link" href="https://www.youtube.com/watch?v=pYEdD7eQhfY" target="_blank" rel="noopener noreferrer">
             <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" width="12" height="12"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
             <span class="ru">Смотреть на YouTube</span><span class="en">Watch on YouTube</span>
           </a>
@@ -642,7 +643,7 @@ header {
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.54C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="currentColor" stroke="none"/></svg>
             @UrbanEnvironmentalHistory
           </span>
-          <a class="video-yt-link" href="https://www.youtube.com/watch?v=NQYqlwvgTcM" target="_blank" rel="noopener">
+          <a class="video-yt-link" href="https://www.youtube.com/watch?v=NQYqlwvgTcM" target="_blank" rel="noopener noreferrer">
             <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" width="12" height="12"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
             <span class="ru">Смотреть на YouTube</span><span class="en">Watch on YouTube</span>
           </a>
@@ -674,7 +675,7 @@ header {
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.54C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="currentColor" stroke="none"/></svg>
             @UrbanEnvironmentalHistory
           </span>
-          <a class="video-yt-link" href="https://www.youtube.com/watch?v=xsP--Di99MI" target="_blank" rel="noopener">
+          <a class="video-yt-link" href="https://www.youtube.com/watch?v=xsP--Di99MI" target="_blank" rel="noopener noreferrer">
             <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" width="12" height="12"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
             <span class="ru">Смотреть на YouTube</span><span class="en">Watch on YouTube</span>
           </a>
@@ -709,7 +710,7 @@ header {
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.54C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="currentColor" stroke="none"/></svg>
             @ab_agafonova
           </span>
-          <a class="video-yt-link" href="https://www.youtube.com/watch?v=7nOUP8Ztu2s" target="_blank" rel="noopener">
+          <a class="video-yt-link" href="https://www.youtube.com/watch?v=7nOUP8Ztu2s" target="_blank" rel="noopener noreferrer">
             <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" width="12" height="12"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
             <span class="ru">Смотреть на YouTube</span><span class="en">Watch on YouTube</span>
           </a>
@@ -744,7 +745,7 @@ header {
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.54C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="currentColor" stroke="none"/></svg>
             @ab_agafonova
           </span>
-          <a class="video-yt-link" href="https://www.youtube.com/watch?v=9rDwKKvaQUs" target="_blank" rel="noopener">
+          <a class="video-yt-link" href="https://www.youtube.com/watch?v=9rDwKKvaQUs" target="_blank" rel="noopener noreferrer">
             <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" width="12" height="12"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
             <span class="ru">Смотреть на YouTube</span><span class="en">Watch on YouTube</span>
           </a>
@@ -755,13 +756,14 @@ header {
   </div><!-- /video-grid -->
 </div><!-- /section-inner -->
 
+</main>
 <footer class="tx-footer">
   <div class="tx-footer-inner">
     <div>
       <strong>Transmission</strong> &nbsp;·&nbsp;
       <span class="ru">Цифровая исследовательская платформа</span><span class="en">Digital Research Platform</span>
     </div>
-    <div>© 2026 <span class="ru">Агафонова Анна Борисовна</span><span class="en">Anna B. Agafonova</span> &nbsp;·&nbsp; <a href="https://orcid.org/0000-0003-3021-4002" target="_blank" rel="noopener">ORCID</a></div>
+    <div>© 2026 <span class="ru">Агафонова Анна Борисовна</span><span class="en">Anna B. Agafonova</span> &nbsp;·&nbsp; <a href="https://orcid.org/0000-0003-3021-4002" target="_blank" rel="noopener noreferrer">ORCID</a></div>
     <nav class="tx-footer-nav">
       <a href="index.html"><span class="ru">Главная</span><span class="en">Home</span></a>
       <a href="about.html"><span class="ru">Об авторе</span><span class="en">About</span></a>
