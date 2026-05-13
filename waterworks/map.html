@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Городские водопроводы Российской империи — черновой вариант</title>
 <template id="__bundler_thumbnail" data-bg-color="#E8EEF0">
   <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
@@ -1158,23 +1158,24 @@
       <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" width="11" height="11"><path d="M10 3 L5 8 L10 13"/></svg>
       <span class="ru">На главную</span><span class="en" style="display:none">Home</span>
     </a>
-    <button id="menu-btn" class="tool-btn" onclick="toggleSidebar()" aria-label="Открыть панель управления" aria-expanded="false"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+    <button type="button" id="menu-btn" class="tool-btn" onclick="toggleSidebar()" aria-label="Открыть панель управления" aria-expanded="false"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
   <line x1="2" y1="4.5" x2="14" y2="4.5"/><line x1="2" y1="8" x2="14" y2="8"/><line x1="2" y1="11.5" x2="14" y2="11.5"/>
 </svg></button>
     <div class="lang-toggle" role="group" aria-label="Language">
-      <button data-lang="ru" class="on" aria-pressed="true">RU</button>
-      <button data-lang="en" aria-pressed="false">EN</button>
+      <button type="button" data-lang="ru" class="on" aria-pressed="true">RU</button>
+      <button type="button" data-lang="en" aria-pressed="false">EN</button>
     </div>
-    <button class="tool-btn" id="theme-toggle" aria-label="Theme"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round">
+    <button type="button" class="tool-btn" id="theme-toggle" aria-label="Theme"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round">
   <path d="M13 10 a 6 6 0 1 1 -7 -7 a 5 5 0 0 0 7 7 z"/>
 </svg></button>
-    <button class="tool-btn" id="tweaks-toggle" aria-label="Tweaks"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round">
+    <button type="button" class="tool-btn" id="tweaks-toggle" aria-label="Tweaks"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round">
   <circle cx="8" cy="8" r="2.5"/>
   <path d="M8 1.5 L8.6 3.2 L10.3 2.7 L10.5 4.5 L12.2 5 L11.4 6.5 L12.8 7.5 L11.4 8.7 L12 10.4 L10.3 10.6 L10 12.3 L8.4 11.6 L8 13.3 L7.6 11.6 L6 12.3 L5.7 10.6 L4 10.4 L4.6 8.7 L3.2 7.5 L4.6 6.5 L3.8 5 L5.5 4.5 L5.7 2.7 L7.4 3.2 Z"/>
 </svg></button>
   </div>
   </div>
 </header>
+<main id="content" style="display:contents">
 
 <!-- ── WORK-IN-PROGRESS NOTICE ── -->
 <div id="wip-notice" style="
@@ -1195,7 +1196,7 @@
     <span class="ru"> Все 187 городов с водопроводами показаны единым маркером без инфраструктурных профилей. Полная карта с профилями, годами постройки и детальными карточками городов будет опубликована позднее.</span>
     <span class="en" style="display:none"> All 187 cities with waterworks are shown with a uniform marker, without infrastructure profiles. The complete map with profiles, construction dates, and detailed city cards will be published at a later date.</span>
   </span>
-  <button onclick="document.getElementById('wip-notice').style.display='none'" aria-label="Закрыть" style="
+  <button type="button" onclick="document.getElementById('wip-notice').style.display='none'" aria-label="Закрыть" style="
     position: absolute; right: 10px; top: 50%; transform: translateY(-50%);
     background: none; border: none; cursor: pointer;
     font-size: 1.1rem; color: #92400e; line-height: 1; padding: 4px 6px;
@@ -1300,7 +1301,7 @@
       <!-- Legend items -->
       <div id="profile-list"></div>
       <div style="margin-top:8px;">
-        <button id="btn-city-labels" class="btn-all" style="width:100%;" onclick="toggleCityLabels()" data-i18n="side.labels_on">Подписи городов</button>
+        <button type="button" id="btn-city-labels" class="btn-all" style="width:100%;" onclick="toggleCityLabels()" data-i18n="side.labels_on">Подписи городов</button>
       </div>
     </div>
 
@@ -1406,9 +1407,9 @@
         Источник: «История эпидемий в России»
       </div>
       <div style="display:flex;flex-direction:column;gap:5px;margin-bottom:12px;">
-        <button id="chol-btn-cholera_1823" class="chol-btn" onclick="renderCholeraLayer('cholera_1823')" data-i18n="side.cholera_1823">1823—1872 гг.</button>
-        <button id="chol-btn-cholera_1892" class="chol-btn" onclick="renderCholeraLayer('cholera_1892')" data-i18n="side.cholera_1892">1892 г.</button>
-        <button id="chol-btn-cholera_1910" class="chol-btn" onclick="renderCholeraLayer('cholera_1910')" data-i18n="side.cholera_1910">1910 г.</button>
+        <button type="button" id="chol-btn-cholera_1823" class="chol-btn" onclick="renderCholeraLayer('cholera_1823')" data-i18n="side.cholera_1823">1823—1872 гг.</button>
+        <button type="button" id="chol-btn-cholera_1892" class="chol-btn" onclick="renderCholeraLayer('cholera_1892')" data-i18n="side.cholera_1892">1892 г.</button>
+        <button type="button" id="chol-btn-cholera_1910" class="chol-btn" onclick="renderCholeraLayer('cholera_1910')" data-i18n="side.cholera_1910">1910 г.</button>
       </div>
       <div style="font-family:ui-monospace,monospace;font-size:0.58rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;" data-i18n="side.opacity">Прозрачность слоя</div>
       <input type="range" min="10" max="90" value="65" oninput="setCholeraOpacity(this.value)">
@@ -1452,7 +1453,7 @@
     <div id="map"></div>
 
     <!-- Methodology button (bottom-right of map) -->
-    <button id="method-btn" onclick="openMethodPanel()" title="Методология / Methodology">
+    <button type="button" id="method-btn" onclick="openMethodPanel()" title="Методология / Methodology">
       <svg width="13" height="13" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
         <circle cx="10" cy="10" r="8"/>
         <line x1="10" y1="9" x2="10" y2="14"/>
@@ -1473,7 +1474,7 @@
       <span class="ru">Методологические пояснения</span>
       <span class="en" style="display:none">Methodological Notes</span>
     </h2>
-    <button class="mp-close" onclick="closeMethodPanel()" aria-label="Закрыть">✕</button>
+    <button type="button" class="mp-close" onclick="closeMethodPanel()" aria-label="Закрыть">✕</button>
   </div>
   <div class="mp-body">
 
@@ -1531,11 +1532,11 @@
       <p class="en" style="display:none;margin-bottom:6px">Data compiled as part of the author's original database:</p>
       <p class="ru" style="margin-bottom:12px;font-size:0.77rem;line-height:1.65;padding:8px 12px;background:rgba(139,94,60,0.07);border-left:2px solid var(--copper);border-radius:0 4px 4px 0">
         Агафонова А.Б. Муниципальные финансы и инфраструктура водоснабжения городов Российской империи, 1894–1910: база данных. Версия 1.0. Zenodo, 2026.
-        DOI: <a href="https://doi.org/10.5281/zenodo.20005304" target="_blank" rel="noopener" style="color:var(--copper);text-decoration:underline">10.5281/zenodo.20005304</a>
+        DOI: <a href="https://doi.org/10.5281/zenodo.20005304" target="_blank" rel="noopener noreferrer" style="color:var(--copper);text-decoration:underline">10.5281/zenodo.20005304</a>
       </p>
       <p class="en" style="display:none;margin-bottom:12px;font-size:0.77rem;line-height:1.65;padding:8px 12px;background:rgba(139,94,60,0.07);border-left:2px solid var(--copper);border-radius:0 4px 4px 0">
         Agafonova, A.B. <em>Municipal Finance and Water Supply Infrastructure in Cities of the Russian Empire, 1894–1910</em> [Dataset]. Version 1.0. Zenodo, 2026.
-        DOI: <a href="https://doi.org/10.5281/zenodo.20005304" target="_blank" rel="noopener" style="color:var(--copper);text-decoration:underline">10.5281/zenodo.20005304</a>
+        DOI: <a href="https://doi.org/10.5281/zenodo.20005304" target="_blank" rel="noopener noreferrer" style="color:var(--copper);text-decoration:underline">10.5281/zenodo.20005304</a>
       </p>
       <p class="ru" style="margin-bottom:10px">База данных составлена на основе следующих источников:</p>
       <p class="en" style="display:none;margin-bottom:10px">The database was compiled from the following primary sources:</p>
@@ -1556,6 +1557,7 @@
   </div><!-- /mp-body -->
 </div><!-- /method-panel -->
 
+</main>
 <footer class="app-footer">
   <div class="ftr-corner-tl"></div>
   <div class="ftr-corner-tr"></div>
@@ -1573,7 +1575,7 @@
     <span class="ru">Цит.:</span><span class="en" style="display:none">Cite:</span>
     Agafonova A.B. <span class="ru">[Интерактивная карта]</span><span class="en" style="display:none">[Interactive map]</span>.
     Transmission. Zenodo, 2026.
-    <a href="https://doi.org/10.5281/zenodo.20005304" target="_blank" rel="noopener"
+    <a href="https://doi.org/10.5281/zenodo.20005304" target="_blank" rel="noopener noreferrer"
        style="color:var(--copper,#8B5E3C);text-decoration:none;font-style:normal;font-weight:600">DOI&nbsp;10.5281/zenodo.20005304</a>
   </span>
   <span style="color:var(--line-copper,rgba(139,94,60,0.4));padding:0 6px">│</span>
@@ -1597,25 +1599,25 @@
   <div class="tweak-row">
     <span class="tweak-label" data-i18n="tw.theme">Тема</span>
     <div class="tweak-seg" id="seg-theme">
-      <button data-val="light" class="on" data-i18n="tw.day">День</button>
-      <button data-val="dark" data-i18n="tw.night">Ночь</button>
+      <button type="button" data-val="light" class="on" data-i18n="tw.day">День</button>
+      <button type="button" data-val="dark" data-i18n="tw.night">Ночь</button>
     </div>
   </div>
   <div class="tweak-row">
     <span class="tweak-label" data-i18n="tw.density">Плотность</span>
     <div class="tweak-seg" id="seg-density">
-      <button data-val="comfortable" class="on" data-i18n="tw.comfortable">Просторно</button>
-      <button data-val="compact" data-i18n="tw.compact">Компакт</button>
+      <button type="button" data-val="comfortable" class="on" data-i18n="tw.comfortable">Просторно</button>
+      <button type="button" data-val="compact" data-i18n="tw.compact">Компакт</button>
     </div>
   </div>
   <div class="tweak-row">
     <span class="tweak-label" data-i18n="tw.mapbg">Фон карты</span>
     <div class="tweak-swatches" id="seg-mapbg">
-      <button data-val="#E8EEF0" class="on" style="background:#E8EEF0"></button>
-      <button data-val="#EEF4F8" style="background:#EEF4F8"></button>
-      <button data-val="#F2F1EC" style="background:#F2F1EC"></button>
-      <button data-val="#F5F0E6" style="background:#F5F0E6"></button>
-      <button data-val="#E4ECE4" style="background:#E4ECE4"></button>
+      <button type="button" data-val="#E8EEF0" class="on" style="background:#E8EEF0"></button>
+      <button type="button" data-val="#EEF4F8" style="background:#EEF4F8"></button>
+      <button type="button" data-val="#F2F1EC" style="background:#F2F1EC"></button>
+      <button type="button" data-val="#F5F0E6" style="background:#F5F0E6"></button>
+      <button type="button" data-val="#E4ECE4" style="background:#E4ECE4"></button>
     </div>
   </div>
 </div>
@@ -3417,7 +3419,7 @@ document.addEventListener('keydown', e => {
       © 2026
       <span class="ru">Анна Б. Агафонова</span><span class="en" style="display:none">Anna B. Agafonova</span>
       &nbsp;·&nbsp;
-      <a href="https://orcid.org/0000-0003-3021-4002" target="_blank" rel="noopener">ORCID 0000-0003-3021-4002</a>
+      <a href="https://orcid.org/0000-0003-3021-4002" target="_blank" rel="noopener noreferrer">ORCID 0000-0003-3021-4002</a>
     </div>
     <nav class="tx-footer-nav">
       <a href="../index.html"><span class="ru">Главная</span><span class="en" style="display:none">Home</span></a>
