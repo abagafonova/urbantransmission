@@ -1,87 +1,69 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml">
-
-  <!-- Главная -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://urbantransmission.org/</loc>
-    <lastmod>2026-05-09</lastmod>
+    <lastmod>2026-05-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://urbantransmission.org/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://urbantransmission.org/"/>
   </url>
-
-  <!-- О проекте -->
   <url>
     <loc>https://urbantransmission.org/about.html</loc>
-    <lastmod>2026-05-09</lastmod>
+    <lastmod>2026-05-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://urbantransmission.org/about.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://urbantransmission.org/about.html"/>
   </url>
-
-  <!-- Интерактивная карта водопроводов -->
   <url>
-    <loc>https://urbantransmission.org/waterworks/map.html</loc>
-    <lastmod>2026-05-09</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://urbantransmission.org/waterworks/map.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://urbantransmission.org/waterworks/map.html"/>
-  </url>
-
-  <!-- Благоустройство городов 1910 -->
-  <url>
-    <loc>https://urbantransmission.org/urban_beautification1910.html</loc>
-    <lastmod>2026-05-09</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://urbantransmission.org/urban_beautification1910.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://urbantransmission.org/urban_beautification1910.html"/>
-  </url>
-
-  <!-- Рейтинг холерных эпидемий -->
-  <url>
-    <loc>https://urbantransmission.org/cholera_ranking.html</loc>
-    <lastmod>2026-05-09</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://urbantransmission.org/cholera_ranking.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://urbantransmission.org/cholera_ranking.html"/>
-  </url>
-
-  <!-- MVP: Российская империя -->
-  <url>
-    <loc>https://urbantransmission.org/empire/RussianEmpire.html</loc>
-    <lastmod>2026-05-09</lastmod>
+    <loc>https://urbantransmission.org/collaborate.html</loc>
+    <lastmod>2026-05-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://urbantransmission.org/empire/RussianEmpire.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://urbantransmission.org/empire/RussianEmpire.html"/>
   </url>
-
-  <!-- Юридические страницы -->
+  <url>
+    <loc>https://urbantransmission.org/videos.html</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://urbantransmission.org/waterworks/map.html</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://urbantransmission.org/urban_beautification1910.html</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://urbantransmission.org/cholera_ranking.html</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://urbantransmission.org/empire/RussianEmpire.html</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
   <url>
     <loc>https://urbantransmission.org/terms.html</loc>
-    <lastmod>2026-05-09</lastmod>
+    <lastmod>2026-05-13</lastmod>
     <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
+    <priority>0.4</priority>
   </url>
-
   <url>
     <loc>https://urbantransmission.org/privacy.html</loc>
-    <lastmod>2026-05-09</lastmod>
+    <lastmod>2026-05-13</lastmod>
     <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
+    <priority>0.4</priority>
   </url>
-
   <url>
     <loc>https://urbantransmission.org/personal-data.html</loc>
-    <lastmod>2026-05-09</lastmod>
+    <lastmod>2026-05-13</lastmod>
     <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
+    <priority>0.4</priority>
   </url>
-
 </urlset>
