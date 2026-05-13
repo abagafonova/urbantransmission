@@ -9,19 +9,7 @@
 <meta name="keywords" content="urban history, water supply, Russian Empire, digital humanities, cholera epidemics, municipal infrastructure, 1870-1914, история городов, водоснабжение, Российская империя">
 <meta name="author" content="Anna B. Agafonova">
 <meta name="robots" content="index, follow">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"ResearchProject","name":"Transmission: Urban Infrastructures of the Russian Empire, 1870–1914","description":"Interactive digital research platform on centralised water supply, sanitary conditions, and municipal infrastructure in 950 cities of the Russian Empire, 1870–1914.","temporalCoverage":"1870/1914","spatialCoverage":{"@type":"Place","name":"Russian Empire"},"author":{"@type":"Person","name":"Anna B. Agafonova","honorificSuffix":"PhD","sameAs":["https://orcid.org/0000-0003-3021-4002","https://scholar.google.com/citations?user=J7uQXacAAAAJ"]}}
-/* ─── BACK TO TOP ─── */
-(function(){
-  var btn=document.getElementById('back-to-top');
-  if(!btn) return;
-  window.addEventListener('scroll',function(){
-    btn.classList.toggle('visible',window.scrollY>400);
-  },{passive:true});
-  btn.addEventListener('click',function(){
-    window.scrollTo({top:0,behavior:'smooth'});
-  });
-})();
-</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ResearchProject","name":"Transmission: Urban Infrastructures of the Russian Empire, 1870–1914","description":"Interactive digital research platform on centralised water supply, sanitary conditions, and municipal infrastructure in 950 cities of the Russian Empire, 1870–1914.","temporalCoverage":"1870/1914","spatialCoverage":{"@type":"Place","name":"Russian Empire"},"author":{"@type":"Person","name":"Anna B. Agafonova","honorificSuffix":"PhD","sameAs":["https://orcid.org/0000-0003-3021-4002","https://scholar.google.com/citations?user=J7uQXacAAAAJ"]}}</script>
 <link rel="icon" type="image/x-icon" href="favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
@@ -675,7 +663,6 @@ body::before{
 
 <a href="#hero" class="skip-link">Перейти к содержимому / Skip to content</a>
 
-<header>
 <!-- BANNER -->
 <div class="banner">
   <img src="HEAD4.png" alt="Transmission — Urban Infrastructures of the Russian Empire, 1870–1914" loading="eager" fetchpriority="high" width="1921" height="211">
@@ -683,7 +670,7 @@ body::before{
 
 <!-- NAV -->
 <nav class="site-nav" aria-label="Main navigation" id="top">
-  <button type="button" class="nav-burger" id="nav-burger" aria-expanded="false" aria-controls="nav-dropdown" aria-label="Открыть меню / Open menu">
+  <button class="nav-burger" id="nav-burger" aria-expanded="false" aria-controls="nav-dropdown" aria-label="Открыть меню / Open menu">
     <span class="nav-burger-icon">
       <span></span><span></span><span></span>
     </span>
@@ -698,11 +685,10 @@ body::before{
   <a href="about.html"><span class="ru">Об авторе</span><span class="en">About</span></a>
   <a href="collaborate.html"><span class="ru">Сотрудничество</span><span class="en">Collaborate</span></a>
   <div class="lang-sw" role="group" aria-label="Language / Язык">
-    <button type="button" data-lang="ru" class="on" onclick="setLang('ru')" aria-label="Переключить на русский язык">РУ</button>
-    <button type="button" data-lang="en" onclick="setLang('en')" aria-label="Switch to English">EN</button>
+    <button data-lang="ru" class="on" onclick="setLang('ru')" aria-label="Переключить на русский язык">РУ</button>
+    <button data-lang="en" onclick="setLang('en')" aria-label="Switch to English">EN</button>
   </div>
 </nav>
-</header>
 <!-- MOBILE DROPDOWN NAV -->
 <div class="nav-dropdown" id="nav-dropdown" role="dialog" aria-label="Мобильное меню / Mobile menu">
   <a href="#map"><span class="ru">Карта водопроводов</span><span class="en">Waterworks map</span></a>
@@ -716,7 +702,6 @@ body::before{
   <a href="collaborate.html"><span class="ru">Сотрудничество</span><span class="en">Collaborate</span></a>
 </div>
 
-<main id="content">
 <!-- HERO -->
 <section class="hero" id="hero" aria-labelledby="h1">
   <canvas id="hero-cvs"></canvas>
@@ -1063,7 +1048,7 @@ body::before{
 
         <!-- CITE + CONTACT BUTTONS -->
         <div style="margin-top:18px;display:flex;flex-direction:column;gap:10px">
-          <button type="button" class="cite-btn" id="cite-btn" onclick="toggleCite()">
+          <button class="cite-btn" id="cite-btn" onclick="toggleCite()">
             <span class="ru">📋 Как сослаться</span><span class="en">📋 How to cite</span>
           </button>
           <a class="contact-btn" href="mailto:a.b.agafonova@gmail.com?subject=Transmission%20—%20enquiry">
@@ -1082,7 +1067,7 @@ body::before{
           <p id="cite-text-en" class="cite-text en" style="font:300 .82rem/1.7 var(--serif);color:rgba(255,255,255,.8)">
             Agafonova, A. B. <em>Transmission: Urban Infrastructures of the Russian Empire, 1870–1914</em> [Digital research platform]. URL: https://urbantransmission.org (accessed <span class="cite-date"></span>).
           </p>
-          <button type="button" onclick="copyCite()" style="margin-top:12px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);color:rgba(255,255,255,.7);font:700 .62rem/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;padding:8px 14px;border-radius:6px;cursor:pointer;transition:background .2s" onmouseover="this.style.background='rgba(255,255,255,.14)'" onmouseout="this.style.background='rgba(255,255,255,.08)'">
+          <button onclick="copyCite()" style="margin-top:12px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);color:rgba(255,255,255,.7);font:700 .62rem/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;padding:8px 14px;border-radius:6px;cursor:pointer;transition:background .2s" onmouseover="this.style.background='rgba(255,255,255,.14)'" onmouseout="this.style.background='rgba(255,255,255,.08)'">
             <span class="ru">Скопировать</span><span class="en">Copy</span>
           </button>
           <span id="copy-ok" style="display:none;margin-left:10px;font:400 .68rem/1 var(--mono);color:#c4a76b">✓ <span class="ru">Скопировано</span><span class="en">Copied</span></span>
@@ -1114,10 +1099,10 @@ body::before{
           <span class="en">Specialist in the urban environmental history of Russian and Soviet cities (1870s–1930s). Research interests: water supply and sanitary reform, hydropower development, municipal self-government. PI on grants from the Russian Science Foundation (2022–23) and RFBR (2019). Author of 50+ scholarly publications (including articles indexed in Scopus and Web of Science). Conferences: EAUH (Antwerp, 2022), ESEH (Bristol, 2022; Tallinn, 2019; Zagreb, 2017), ICOHTEC (Ostrava, 2022; Katowice, 2019; Porto, 2016), IIET RAS (2023, 2025), ВДНХ-XIX (EU SPb, 2026).</span>
         </p>
         <div class="rc-links">
-          <a class="rc-link" href="https://orcid.org/0000-0003-3021-4002" target="_blank" rel="noopener noreferrer">ORCID</a>
-          <a class="rc-link" href="https://scholar.google.com/citations?user=J7uQXacAAAAJ" target="_blank" rel="noopener noreferrer">Google Scholar</a>
-          <a class="rc-link" href="https://www.scopus.com/authid/detail.uri?authorId=57218302546" target="_blank" rel="noopener noreferrer">Scopus</a>
-          <a class="rc-link" href="https://independentresearcher.academia.edu/AnnaAgafonova" target="_blank" rel="noopener noreferrer">Academia.edu</a>
+          <a class="rc-link" href="https://orcid.org/0000-0003-3021-4002" target="_blank" rel="noopener">ORCID</a>
+          <a class="rc-link" href="https://scholar.google.com/citations?user=J7uQXacAAAAJ" target="_blank" rel="noopener">Google Scholar</a>
+          <a class="rc-link" href="https://www.scopus.com/authid/detail.uri?authorId=57218302546" target="_blank" rel="noopener">Scopus</a>
+          <a class="rc-link" href="https://independentresearcher.academia.edu/AnnaAgafonova" target="_blank" rel="noopener">Academia.edu</a>
           <a class="rc-link" href="about.html"><span class="ru">Полный профиль →</span><span class="en">Full profile →</span></a>
           <a class="rc-link" href="mailto:a.b.agafonova@gmail.com"><span class="ru">Написать</span><span class="en">Contact</span></a>
         </div>
@@ -1126,14 +1111,13 @@ body::before{
   </div>
 </div>
 
-</main>
 <!-- FOOTER -->
 <footer>
   <div class="footer-inner">
     <div class="footer-left">
       <p><strong>Transmission</strong> · Urban Infrastructures of the Russian Empire, 1870–1914</p>
       <p>© 2026 <span class="ru">Анна Б. Агафонова</span><span class="en">Anna B. Agafonova</span>
-        &nbsp;·&nbsp; <a href="https://orcid.org/0000-0003-3021-4002" target="_blank" rel="noopener noreferrer">ORCID 0000-0003-3021-4002</a>
+        &nbsp;·&nbsp; <a href="https://orcid.org/0000-0003-3021-4002" target="_blank" rel="noopener">ORCID 0000-0003-3021-4002</a>
         &nbsp;·&nbsp; <span class="ru">Картографическая основа:</span><span class="en">Map base:</span> RISTAT GIS 1897 · Kessler &amp; Markevich
       </p>
     </div>
@@ -1233,12 +1217,11 @@ function setLang(l){
           const ease=1-Math.pow(1-p,3);
           el.textContent=Math.round(ease*target);
           if(p<1) requestAnimationFrame(tick);
-          else el.textContent=target;
         })(t0);
       });
       obs.unobserve(e.target);
     });
-  },{threshold:.1});
+  },{threshold:.5});
   const fig=document.querySelector('.figures');
   if(fig) obs.observe(fig);
 })();
@@ -1476,4 +1459,133 @@ function drawNovg(){
        fill="rgba(190,213,207,.5)">${en?'Waterworks':'Водопровод'}</text>`;
   h+=`<circle cx="104" cy="248" r="2.5"
        fill="rgba(180,200,215,.15)" stroke="rgba(180,200,215,.25)" stroke-width=".8"/>`;
-  h+=`<text x
+  h+=`<text x="112" y="252" font-family="Cambria,serif" font-size="8"
+       fill="rgba(255,255,255,.28)">${en?'No waterworks':'Без водопровода'}</text>`;
+
+  svg.innerHTML=h;
+}
+</script>
+
+<!-- CITATION WIDGET -->
+<script>
+(function(){
+  // Fill today's date into citation spans
+  const d = new Date();
+  const months_ru = ['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'];
+  const months_en = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  const ru_date = d.getDate() + ' ' + months_ru[d.getMonth()] + ' ' + d.getFullYear() + ' г.';
+  const en_date = months_en[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear();
+  document.querySelectorAll('#cite-text-ru .cite-date').forEach(el => el.textContent = ru_date);
+  document.querySelectorAll('#cite-text-en .cite-date').forEach(el => el.textContent = en_date);
+})();
+
+function toggleCite(){
+  const box = document.getElementById('cite-box');
+  box.style.display = box.style.display === 'none' ? 'block' : 'none';
+}
+
+function copyCite(){
+  const en = document.documentElement.hasAttribute('data-en');
+  const el = document.getElementById(en ? 'cite-text-en' : 'cite-text-ru');
+  const text = el ? el.innerText : '';
+  navigator.clipboard.writeText(text).then(function(){
+    const ok = document.getElementById('copy-ok');
+    ok.style.display = 'inline';
+    setTimeout(() => ok.style.display = 'none', 2000);
+  }).catch(function(){
+    // Fallback for older browsers
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+    const ok = document.getElementById('copy-ok');
+    ok.style.display = 'inline';
+    setTimeout(() => ok.style.display = 'none', 2000);
+  });
+}
+</script>
+
+<!-- COMING SOON TOAST -->
+<div id="soon-toast">
+  <span class="ru">Скоро будет доступно</span><span class="en" style="display:none">Coming soon</span>
+</div>
+<script>
+(function(){
+  const toast=document.getElementById('soon-toast');
+  let timer;
+  function showToast(){
+    const en=document.documentElement.hasAttribute('data-en');
+    toast.querySelector('.ru').style.display=en?'none':'inline';
+    toast.querySelector('.en').style.display=en?'inline':'none';
+    toast.classList.add('show');
+    clearTimeout(timer);
+    timer=setTimeout(()=>toast.classList.remove('show'),2200);
+  }
+  document.addEventListener('click',function(e){
+    const a=e.target.closest('[data-soon]');
+    if(!a) return;
+    e.preventDefault();
+    showToast();
+  });
+})();
+</script>
+
+<!-- ── BACK TO TOP ── -->
+<button id="back-to-top" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<script>
+
+/* ─── HAMBURGER MENU ─── */
+(function(){
+  var burger   = document.getElementById('nav-burger');
+  var dropdown = document.getElementById('nav-dropdown');
+  if(!burger || !dropdown) return;
+
+  function openMenu(){
+    dropdown.classList.add('open');
+    burger.setAttribute('aria-expanded','true');
+    document.body.style.overflow = '';   // не блокируем скролл страницы
+  }
+  function closeMenu(){
+    dropdown.classList.remove('open');
+    burger.setAttribute('aria-expanded','false');
+  }
+  function toggleMenu(){ dropdown.classList.contains('open') ? closeMenu() : openMenu(); }
+
+  burger.addEventListener('click', function(e){ e.stopPropagation(); toggleMenu(); });
+
+  // Закрыть по клику на ссылку (включая data-soon — там уже preventDefault)
+  dropdown.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){ closeMenu(); });
+  });
+
+  // Закрыть по клику вне меню
+  document.addEventListener('click', function(e){
+    if(dropdown.classList.contains('open') &&
+       !dropdown.contains(e.target) &&
+       !burger.contains(e.target)){
+      closeMenu();
+    }
+  });
+
+  // Закрыть при ресайзе до десктопа
+  window.addEventListener('resize', function(){
+    if(window.innerWidth > 768) closeMenu();
+  });
+
+  // Закрыть по Escape
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape') closeMenu();
+  });
+})();
+
+(function(){
+  var btn = document.getElementById('back-to-top');
+  window.addEventListener('scroll', function(){
+    btn.classList.toggle('visible', window.scrollY > 320);
+  }, {passive:true});
+})();
+</script>
+</body>
+</html>
