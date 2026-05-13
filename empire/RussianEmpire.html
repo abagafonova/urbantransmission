@@ -834,12 +834,14 @@ const MVP_PAGES = {
 // ══════════════════════════════════════════════════════════════
 // SIDEBAR TABS
 // ══════════════════════════════════════════════════════════════
-function switchStab(tab) {
-  if (window.innerWidth <= 768 && typeof closeSidebar === 'function') closeSidebar();
+function switchStab(tab, keepOpen=false) {
+  if (!keepOpen && window.innerWidth <= 768 && typeof closeSidebar === 'function') closeSidebar();
   document.querySelectorAll('.stab').forEach(b => b.classList.toggle('active', b.id === 'stab-' + tab));
   document.querySelectorAll('.stab-content').forEach(c => c.classList.toggle('active', c.id === 'stab-content-' + tab));
-  if (tab === 'province') { const el = document.getElementById('search-province'); if (el) setTimeout(()=>el.focus(),50); }
-  if (tab === 'city')     { const el = document.getElementById('search-city');     if (el) setTimeout(()=>el.focus(),50); }
+  if (window.innerWidth > 768) {
+    if (tab === 'province') { const el = document.getElementById('search-province'); if (el) setTimeout(()=>el.focus(),50); }
+    if (tab === 'city')     { const el = document.getElementById('search-city');     if (el) setTimeout(()=>el.focus(),50); }
+  }
 }
 
 // ══════════════════════════════════════════════════════════════
@@ -893,7 +895,7 @@ function renderProvinceLayer() {
         highlightedProvinceId = null;
         renderProvinceLayer();
         showProvinceCard(feature.properties);
-        switchStab('province');
+        switchStab('province', true);
       });
       layer.on('mouseover', function() {
         if (feature.properties.id !== selectedProvinceId && feature.properties.id !== highlightedProvinceId)

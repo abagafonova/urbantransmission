@@ -725,6 +725,22 @@ body { min-height: 100vh; min-height: -webkit-fill-available; min-height: 100dvh
   .sidebar { width: 260px; min-width: 220px; }
   .header-title-block h1 { font-size: 1.2rem; }
 }
+
+.city-label {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--blue-deep, #1A2B47);
+  padding: 0 !important;
+  white-space: nowrap;
+  pointer-events: none;
+  text-shadow: 0 1px 3px rgba(255,255,255,0.85), 0 -1px 3px rgba(255,255,255,0.85);
+}
+.city-label::before { display: none !important; }
+
 </style>
 </head>
 <body>
@@ -788,7 +804,7 @@ body { min-height: 100vh; min-height: -webkit-fill-available; min-height: 100dvh
         <span class="sep">·</span>
         <span class="mono">1870–1917</span>
         <span class="sep">✦</span>
-        <span>MVP · Прототип</span>
+        <span id="header-mvp">MVP · Прототип</span>
       </div>
     </div>
 
@@ -848,25 +864,25 @@ body { min-height: 100vh; min-height: -webkit-fill-available; min-height: 100dvh
     <!-- TAB: Province -->
     <div id="tab-province" class="tab-content active">
       <div class="info-card">
-        <h3>Общие сведения</h3>
-        <div class="info-row"><span class="info-label">Площадь</span><span class="info-value">104 163 кв. вёрст</span></div>
-        <div class="info-row"><span class="info-label">Население (нач. 1911)</span><span class="info-value">1 642 200 чел.</span></div>
-        <div class="info-row"><span class="info-label">Жит. на 1 кв. вёрсту</span><span class="info-value">15,8</span></div>
-        <div class="info-row"><span class="info-label">Уездных городов</span><span class="info-value">11</span></div>
-        <div class="info-row"><span class="info-label">Водопроводов</span><span class="info-value">2 (Новгород 1899, Ст. Русса 1909)</span></div>
-        <div class="info-row"><span class="info-label">Постановлений в базе</span><span class="info-value">140</span></div>
+        <h3 data-i18n="prov_general_h">Общие сведения</h3>
+        <div class="info-row"><span class="info-label" data-i18n="prov_area_lbl">Площадь</span><span class="info-value" data-i18n="prov_area_val">104 163 кв. вёрст</span></div>
+        <div class="info-row"><span class="info-label" data-i18n="prov_pop_lbl">Население (нач. 1911)</span><span class="info-value" data-i18n="prov_pop_val">1 642 200 чел.</span></div>
+        <div class="info-row"><span class="info-label" data-i18n="prov_density_lbl">Жит. на 1 кв. вёрсту</span><span class="info-value">15,8</span></div>
+        <div class="info-row"><span class="info-label" data-i18n="prov_uzd_lbl">Уездных городов</span><span class="info-value">11</span></div>
+        <div class="info-row"><span class="info-label" data-i18n="prov_ww_lbl">Водопроводов</span><span class="info-value" data-i18n="prov_ww_val">2 (Новгород 1899, Ст. Русса 1909)</span></div>
+        <div class="info-row"><span class="info-label" data-i18n="prov_decrees_lbl">Постановлений в базе</span><span class="info-value">140</span></div>
       </div>
       <div class="info-card">
-        <h3>Холера · смертность по губернии</h3>
+        <h3 data-i18n="prov_cholera_h">Холера · смертность по губернии</h3>
         <div class="info-row"><span class="info-label">1823–1872 гг.</span><span class="info-value"><span class="badge badge-green">0–15‰</span></span></div>
-        <div class="info-row"><span class="info-label">1892 г.</span><span class="info-value"><span class="badge badge-yellow">0,01–1 на 1000</span></span></div>
-        <div class="info-row"><span class="info-label">1910 г.</span><span class="info-value"><span class="badge badge-green">&lt;1 на 1000</span></span></div>
-        <p class="source-note">Источник: карта из книги «История эпидемий в России». Губерния входила в нижнюю половину интенсивности заболеваемости во все три периода.</p>
+        <div class="info-row"><span class="info-label">1892 г.</span><span class="info-value"><span class="badge badge-yellow" data-i18n="prov_cholera_1892">0,01–1 на 1000</span></span></div>
+        <div class="info-row"><span class="info-label">1910 г.</span><span class="info-value"><span class="badge badge-green" data-i18n="prov_cholera_1910">&lt;1 на 1000</span></span></div>
+        <p class="source-note" data-i18n="prov_cholera_note">Источник: карта из книги «История эпидемий в России». Губерния входила в нижнюю половину интенсивности заболеваемости во все три периода.</p>
       </div>
       <div class="info-card epi-cta">
-        <h3>Эпидемиологическая обстановка</h3>
-        <p style="font-size:0.78rem;color:var(--ink-soft);line-height:1.55;margin-bottom:10px;">Заболеваемость кишечными инфекциями и расходы на санитарные мероприятия в уездных городах губернии, 1902–1914 гг.</p>
-        <button class="btn-primary" onclick="openEpiPanel()">Открыть раздел эпидемий</button>
+        <h3 data-i18n="prov_epi_h">Эпидемиологическая обстановка</h3>
+        <p style="font-size:0.78rem;color:var(--ink-soft);line-height:1.55;margin-bottom:10px;" data-i18n="prov_epi_desc">Заболеваемость кишечными инфекциями и расходы на санитарные мероприятия в уездных городах губернии, 1902–1914 гг.</p>
+        <button class="btn-primary" onclick="openEpiPanel()" data-i18n="btn_open_epi">Открыть раздел эпидемий</button>
       </div>
 
     </div>
@@ -897,44 +913,36 @@ body { min-height: 100vh; min-height: -webkit-fill-available; min-height: 100dvh
 <!-- ══ EPIDEMIC VIEW ══════════════════════════════════════════════════════════ -->
 <div id="epi-panel">
   <div class="epi-panel-header">
-    <h2>Эпидемиологическая обстановка · Новгородская губерния · 1902–1914</h2>
-    <button class="epi-panel-close" onclick="closeEpiPanel()">✕ Закрыть</button>
+    <h2 id="epi-panel-title" data-i18n="epi_panel_title">Эпидемиологическая обстановка · Новгородская губерния · 1902–1914</h2>
+    <button class="epi-panel-close" onclick="closeEpiPanel()" id="btn-close-epi" data-i18n="btn_close_epi">✕ Закрыть</button>
   </div>
   <div class="epi-panel-body">
     <div class="epi-panel-inner">
-      <div class="epi-insight">
-        <strong>Ключевой вывод исследования:</strong> финансирование санитарных мероприятий носило
-        реактивный характер — расходы резко возрастали в годы холерных эпидемий (1909–1910)
-        и сокращались вместе с ними. Средства направлялись преимущественно на борьбу с холерой,
-        а не на профилактику и улучшение санитарного состояния населённых мест.
-        Это подтверждается высокой положительной корреляцией между заболеваемостью холерой
-        и противоэпидемическими расходами.
-      </div>
+      <div class="epi-insight" id="epi-insight" data-i18n="epi_insight"><strong>Ключевой вывод исследования:</strong> финансирование санитарных мероприятий носило реактивный характер — расходы резко возрастали в годы холерных эпидемий (1909–1910) и сокращались вместе с ними. Средства направлялись преимущественно на борьбу с холерой, а не на профилактику и улучшение санитарного состояния населённых мест. Это подтверждается высокой положительной корреляцией между заболеваемостью холерой и противоэпидемическими расходами.</div>
       <div class="epi-chart-wrap">
-        <div class="epi-chart-title">Заболеваемость на 10 000 жителей городов Новгородской губернии</div>
+        <div class="epi-chart-title" id="epi-chart1-title" data-i18n="epi_chart1_title">Заболеваемость на 10 000 жителей городов Новгородской губернии</div>
         <svg id="epi-svg" width="100%" height="220" viewBox="0 0 900 220" preserveAspectRatio="xMidYMid meet"></svg>
         <div class="epi-chart-legend">
-          <span class="epi-legend-item"><span class="epi-legend-dot" style="background:#c0392b;height:3px"></span>Холера</span>
-          <span class="epi-legend-item"><span class="epi-legend-dot" style="background:#2471a3;height:3px"></span>Брюшной тиф</span>
-          <span class="epi-legend-item"><span class="epi-legend-dot" style="background:#1e8449;height:3px"></span>Дизентерия</span>
-          <span class="epi-legend-item"><span class="epi-legend-dot" style="background:#d4a847;height:10px;border-radius:2px"></span>Расходы противоэпид. (руб., /100)</span>
+          <span class="epi-legend-item"><span class="epi-legend-dot" style="background:#c0392b;height:3px"></span><span data-i18n="epi_legend_cholera">Холера</span></span>
+          <span class="epi-legend-item"><span class="epi-legend-dot" style="background:#2471a3;height:3px"></span><span data-i18n="epi_legend_typhoid">Брюшной тиф</span></span>
+          <span class="epi-legend-item"><span class="epi-legend-dot" style="background:#1e8449;height:3px"></span><span data-i18n="epi_legend_dysentery">Дизентерия</span></span>
+          <span class="epi-legend-item"><span class="epi-legend-dot" style="background:#d4a847;height:10px;border-radius:2px"></span><span data-i18n="epi_legend_anti_exp">Расходы противоэпид. (руб., /100)</span></span>
         </div>
       </div>
       <div class="epi-chart-wrap">
-        <div class="epi-chart-title">Расходы на санитарные мероприятия в Новгородской губернии, 1902–1914 гг.</div>
+        <div class="epi-chart-title" id="epi-chart2-title" data-i18n="epi_chart2_title">Расходы на санитарные мероприятия в Новгородской губернии, 1902–1914 гг.</div>
         <svg id="epi-expense-svg" width="100%" height="200" viewBox="0 0 900 200" preserveAspectRatio="xMidYMid meet"></svg>
         <div class="epi-chart-legend" style="flex-wrap:wrap;gap:6px 16px;">
-          <span class="epi-legend-item"><span class="epi-legend-dot" style="background:#d4813d;height:10px;border-radius:2px"></span>Расходы на борьбу с эпидемиями, руб.</span>
-          <span class="epi-legend-item"><span class="epi-legend-dot" style="background:#3d7db4;height:10px;border-radius:2px"></span>Расходы на санитарное бюро, руб.</span>
-          <span class="epi-legend-item"><span class="epi-legend-dot" style="background:#7055a0;height:10px;border-radius:2px"></span>Расходы на санитарное благоустройство населённых мест, руб.</span>
+          <span class="epi-legend-item"><span class="epi-legend-dot" style="background:#d4813d;height:10px;border-radius:2px"></span><span data-i18n="epi_legend_epidemic">Расходы на борьбу с эпидемиями, руб.</span></span>
+          <span class="epi-legend-item"><span class="epi-legend-dot" style="background:#3d7db4;height:10px;border-radius:2px"></span><span data-i18n="epi_legend_bureau">Расходы на санитарное бюро, руб.</span></span>
+          <span class="epi-legend-item"><span class="epi-legend-dot" style="background:#7055a0;height:10px;border-radius:2px"></span><span data-i18n="epi_legend_infra">Расходы на санитарное благоустройство населённых мест, руб.</span></span>
         </div>
       </div>
       <div class="epi-chart-wrap" style="overflow-x:auto;">
-        <div class="epi-chart-title">Полная таблица данных</div>
+        <div class="epi-chart-title" id="epi-chart3-title" data-i18n="epi_chart3_title">Полная таблица данных</div>
         <div id="full-epi-table-container"></div>
         <p class="source-note" style="margin-top:8px">
-          13. Отчёты о состоянии народного здравия и организации врачебной помощи в России за 1902–1914 гг. (Медицинский департамент МВД). Расчёт заболеваемости на 10 000 чел. населения городов Новгородской губернии.<br>
-          Агафонова, А. Б. Санитарное состояние и благоустройство городов Вологодской и Новгородской губернии в 1870–1914 гг. Дис. ... канд. ист. наук. 2019. — 364 с. (Графики в данном разделе впервые опубликованы в приложениях к диссертации.)
+          <span id="epi-source-note" data-i18n="epi_source_note">13. Отчёты о состоянии народного здравия и организации врачебной помощи в России за 1902–1914 гг. (Медицинский департамент МВД). Расчёт заболеваемости на 10 000 чел. населения городов Новгородской губернии.<br>Агафонова, А. Б. Санитарное состояние и благоустройство городов Вологодской и Новгородской губернии в 1870–1914 гг. Дис. ... канд. ист. наук. 2019. — 364 с. (Графики в данном разделе впервые опубликованы в приложениях к диссертации.)</span>
         </p>
       </div>
     </div>
@@ -948,8 +956,8 @@ body { min-height: 100vh; min-height: -webkit-fill-available; min-height: 100dvh
     <div class="city-sidebar">
       <div class="city-sidebar-header">
         <h2 id="city-sidebar-name">—</h2>
-        <p>Новгородская губерния</p>
-        <button onclick="showProvinceView()" class="btn-back">← К карте губернии</button>
+        <p id="city-subheading" data-i18n="city_subheading">Новгородская губерния</p>
+        <button onclick="showProvinceView()" class="btn-back" id="btn-back-city" data-i18n="back_to_map">← К карте губернии</button>
       </div>
       <div class="city-nav-list" id="city-nav-list"></div>
     </div>
@@ -957,14 +965,14 @@ body { min-height: 100vh; min-height: -webkit-fill-available; min-height: 100dvh
     <!-- City main content -->
     <div class="city-main">
       <div class="city-tab-bar">
-        <button class="city-tab active" onclick="switchCityTab('overview')">Обзор</button>
-        <button class="city-tab" onclick="switchCityTab('water1912')">Водоснабжение</button>
-        <button class="city-tab" onclick="switchCityTab('waste1912')">Отходы</button>
-        <button class="city-tab" onclick="switchCityTab('waterworks')">Водопровод</button>
-        <button class="city-tab" onclick="switchCityTab('decrees')">Постановления</button>
+        <button class="city-tab active" id="ctab-overview" onclick="switchCityTab('overview')">Обзор</button>
+        <button class="city-tab" id="ctab-water" onclick="switchCityTab('water1912')">Водоснабжение</button>
+        <button class="city-tab" id="ctab-waste" onclick="switchCityTab('waste1912')">Отходы</button>
+        <button class="city-tab" id="ctab-ww" onclick="switchCityTab('waterworks')">Водопровод</button>
+        <button class="city-tab" id="ctab-decrees" onclick="switchCityTab('decrees')">Постановления</button>
       </div>
       <div class="city-content" id="city-content">
-        <div class="empty-state">Выберите город</div>
+        <div class="empty-state" id="city-empty-state">Выберите город</div>
       </div>
     </div>
   </div>
@@ -982,21 +990,24 @@ const CITIES = [
     infrastructure:{
       paving:[{year:1904,val:null},{year:1910,val:54}],
       water:[
-        {year:1895,desc:'Свалка производится по берегам Волхова, загрязняя единственный источник питьевой воды. Приступлено к сооружению водопровода, пока водоснабжение осуществляется водовозами; вода без фильтрования почти негодна.'},
-        {year:1904,desc:'Водопровод, речное, колодезное'},
-        {year:1910,desc:'Водопровод, река'},
-        {year:1912,desc:'Источником водоснабжения служит р. Волхов. Вода, по данным химического анализа, посредственная и содержит большее количество гумусовых веществ. Водопровод из р. Волхова функционирует с 1899 г. Вода берется у истока р. Волхова, при выходе её из озера Ильменя. Водозаборный ковш находится в 35 саж. от берега. Длина уличных магистралей 23 вер. Для очистки воды имеются английские (песочные) фильтры, перегрузка коих производится 1 раз в год, очистка 1–6 раз в месяц; площадь фильтров 3 кв. саж., скорость фильтрации от 4" до 6" в час. При водопроводе имеется запасный бассейн, на 14.000 ведер. Водомеры поставлены. К водопроводной сети присоединено 450 усадеб (16,8%). Количество ежегодно потребляемой воды в среднем около 110.430.000 ведер. Водопровод принадлежит городу и им же эксплуатируется. Стоимость сооружения водопровода 250.000 руб.; расход по эксплуатации его за 1910 г. был 20.480 руб.; доход 30.580 руб. Водовозный промысел регламентирован.'}
+        {year:1895,desc:'Свалка производится по берегам Волхова, загрязняя единственный источник питьевой воды. Приступлено к сооружению водопровода, пока водоснабжение осуществляется водовозами; вода без фильтрования почти негодна.',desc_en:'Dumping occurs along the Volkhov banks, contaminating the sole drinking-water source. Construction of a waterworks has begun; in the meantime water supply relies on water-carriers; unfiltered water is nearly unfit for use.'},
+        {year:1904,desc:'Водопровод, речное, колодезное',desc_en:'Waterworks, river, wells'},
+        {year:1910,desc:'Водопровод, река',desc_en:'Waterworks, river'},
+        {year:1912,desc:'Источником водоснабжения служит р. Волхов. Вода, по данным химического анализа, посредственная и содержит большее количество гумусовых веществ. Водопровод из р. Волхова функционирует с 1899 г. Вода берется у истока р. Волхова, при выходе её из озера Ильменя. Водозаборный ковш находится в 35 саж. от берега. Длина уличных магистралей 23 вер. Для очистки воды имеются английские (песочные) фильтры, перегрузка коих производится 1 раз в год, очистка 1–6 раз в месяц; площадь фильтров 3 кв. саж., скорость фильтрации от 4" до 6" в час. При водопроводе имеется запасный бассейн, на 14.000 ведер. Водомеры поставлены. К водопроводной сети присоединено 450 усадеб (16,8%). Количество ежегодно потребляемой воды в среднем около 110.430.000 ведер. Водопровод принадлежит городу и им же эксплуатируется. Стоимость сооружения водопровода 250.000 руб.; расход по эксплуатации его за 1910 г. был 20.480 руб.; доход 30.580 руб. Водовозный промысел регламентирован.',desc_en:'Most properties use wooden cesspit pits; some concrete pits also exist. Removal is carried out by the municipal sanitation brigade (3 hermetic barrels + several winter boxes), based within the city; approximately 2,500 barrels/year. Operating cost and income are each ~2,000 rub./year. Private contractors also operate. A dump site has been designated 3 versts from the city (area not specified); the road is paved. Pit contents are collected from the dump by peasants for fertiliser. Solid refuse and household waste are also taken to the dump. Sewage removal is regulated.',desc_en:'The Volkhov River serves as the water source. Chemical analysis shows the water is of moderate quality with an excess of humic substances. The waterworks from the Volkhov has been operational since 1899; water is drawn at the river\'s exit from Lake Ilmen, with an intake cofferdam 35 sazh. from the bank. Main pipe length: 23 versts. English (sand) filters are used; filter area 3 sq. sazh., filtration rate 4–6 in./h, cleaned 1–6 times per month. A reserve tank (14,000 vedra) is installed. Water meters fitted. 450 properties connected (16.8%). Average annual consumption ~110,430,000 vedra. Waterworks is municipally owned and operated. Construction cost 250,000 rub.; operating expenses for 1910: 20,480 rub.; income: 30,580 rub. Water-carrier trade is regulated.'}
       ],
       sanitation:[
-        {year:1904,desc:'Вывозка'},
-        {year:1910,desc:'Вывозка (ассенизационный обоз)'},
+        {year:1904,desc:'Вывозка',desc_en:'Removal'},
+        {year:1910,desc:'Вывозка (ассенизационный обоз)',desc_en:'Removal (sanitation brigade)'},
         {year:1912,desc:'В большинстве усадеб для приёма нечистот имеются деревянные выгребные ямы, хотя есть и бетонные. Очистка выгребов производится городским ассенизационным обозом, помещающимся в черте города и состоящим из 3 герметических бочек и нескольких ящиков (для зимнего времени); в год вывозится около 2.500 бочек или ящиков. Расход и доход по эксплуатации обоза около 2.000 руб. в год. Кроме того, удалением нечистот занимаются и частные ассенизаторы. Для свалки нечистот отведено особое место в 3 вер. от города (площадь свалки не обозначена); дорога к свалке вымощена. На свалках для слива нечистот вырыты ямы, из которых нечистоты берутся крестьянами для удобрения своих полей. Плотные отбросы и мусор также вывозятся на свалку. Вывоз нечистот регламентирован.'}
       ]
     },
     general:{
       geography:'Новгород расположен на ровной местности (24,5 саж. над ур. моря) по обоим берегам р. Волхова, близ оз. Ильмень, на суглинистой почве; окружён с северо-востока заливными лугами, не просыхающими всё лето.',
+      geography_en:'Novgorod stands on level ground (24.5 sazh. above sea level) on both banks of the Volkhov River, near Lake Ilmen, on loamy soil; surrounded to the north-east by flood meadows that stay waterlogged throughout summer.',
       slaughterhouses:'Бойни каменные с асфальтовым полом, 3 отделения (крупный скот, мелкий, кишки). Отбросы закапываются; грязные воды и кровь пропускают через фильтр и стекают на луга.',
-      cemeteries:'4 кладбища на суглинистой почве, содержатся удовлетворительно.'
+      slaughterhouses_en:'Stone slaughterhouses with asphalt floors, 3 sections (large livestock, small livestock, intestines). Waste buried; wastewater and blood filtered then drained to meadows.',
+      cemeteries:'4 кладбища на суглинистой почве, содержатся удовлетворительно.',
+      cemeteries_en:'4 cemeteries on loamy soil, maintained satisfactorily.'
     }
   },
   { id:'staya_russa',       name:'Старая Русса',       lat:57.993, lon:31.350, waterwork:{name:'Городской водопровод',color:'#1a5f9a'},
@@ -1005,21 +1016,24 @@ const CITIES = [
     infrastructure:{
       paving:[{year:1904,val:58},{year:1910,val:75}],
       water:[
-        {year:1895,desc:'Питьевая вода чистая из р. Перерытицы и городского колодца; самотёком по деревянным трубам из источников в д. Дубовицах.'},
-        {year:1904,desc:'Водопровод, речное, колодезное'},
-        {year:1910,desc:'Водопровод, колодцы, река'},
-        {year:1912,desc:'Население пользуется питьевой водой из рр. Полисти, Перерытицы и Порусьи и 2 артезианских колодцев, расположенных в 2 вер. от города (в дер. Дубовицы). По химико-бактериологическим исследованиям, вода артезианских колодцев вполне хорошего качества, ручная же неудовлетворительная, причем вода в р. Порусьи содержит кишечную палочку. Р. Полисть загрязняется сплавом леса, который держится в ней все лето, а р. Перерытица спуском нечистот из расположенных по берегам её, выше города, деревень. Вода из р. Полисти имеет, в районе города, горько-соленый вкус, вследствие спуска в нее, выше города, вод из минеральных источников. С конца 1909 г. в городе функционирует водопровод из артезианских колодцев. Длина уличных магистралей около 10 вер. Фильтров при водопроводе нет. Водомеры поставлены. Вода проведена в 75 домов (4,1%); кроме того, из 8 водоразборных павильонов пользуется водопроводной водой свыше 100 домовладений (5,4%). Стоимость сооружения водопровода 170.000 руб. Водопровод принадлежит городу и им же эксплуатируется (За кратковременностью функционирования водопровода, сведений о количестве потребляемой из него воды, а равно данных о доходе и расходе по эксплуатации водопровода не имеется).'}
+        {year:1895,desc:'Питьевая вода чистая из р. Перерытицы и городского колодца; самотёком по деревянным трубам из источников в д. Дубовицах.',desc_en:'Drinking water is clean — from the Pererytitsa River and the municipal well; gravity-fed through wooden pipes from springs in Dubovitsy village.'},
+        {year:1904,desc:'Водопровод, речное, колодезное',desc_en:'Waterworks, river, wells'},
+        {year:1910,desc:'Водопровод, колодцы, река',desc_en:'Waterworks, wells, river'},
+        {year:1912,desc:'Население пользуется питьевой водой из рр. Полисти, Перерытицы и Порусьи и 2 артезианских колодцев, расположенных в 2 вер. от города (в дер. Дубовицы). По химико-бактериологическим исследованиям, вода артезианских колодцев вполне хорошего качества, ручная же неудовлетворительная, причем вода в р. Порусьи содержит кишечную палочку. Р. Полисть загрязняется сплавом леса, который держится в ней все лето, а р. Перерытица спуском нечистот из расположенных по берегам её, выше города, деревень. Вода из р. Полисти имеет, в районе города, горько-соленый вкус, вследствие спуска в нее, выше города, вод из минеральных источников. С конца 1909 г. в городе функционирует водопровод из артезианских колодцев. Длина уличных магистралей около 10 вер. Фильтров при водопроводе нет. Водомеры поставлены. Вода проведена в 75 домов (4,1%); кроме того, из 8 водоразборных павильонов пользуется водопроводной водой свыше 100 домовладений (5,4%). Стоимость сооружения водопровода 170.000 руб. Водопровод принадлежит городу и им же эксплуатируется (За кратковременностью функционирования водопровода, сведений о количестве потребляемой из него воды, а равно данных о доходе и расходе по эксплуатации водопровода не имеется).',desc_en:'Simple wooden log-built cesspits predominate, with some fitted dividers. Removal is by the municipal sanitation brigade (3 hermetic barrels with pumps + 3 boxes for solid waste); price 1 rub./barrel. Approximately 1,600 barrels/year removed. Operating cost ~1,500 rub.; income from private work does not exceed 400 rub. Waste is transported partly to fields for fertiliser, mainly to a dump 2 versts from the city (area ~600 sq. sazh.). Road to dump is mostly paved. Hospital wastewater is treated with chemical disinfectants. Sewage removal is regulated.',desc_en:'Residents use water from the Polist\', Pererytitsa and Porusya rivers and 2 artesian wells 2 versts from the city (in Dubovitsy village). Chemical and bacteriological analysis shows the artesian well water is of good quality, while river water is unsatisfactory; the Porusya contains E. coli. The Polist\' is polluted by timber floating all summer; the Pererytitsa receives sewage from upstream villages. The Polist\' has a bitter-salty taste within the city due to mineral spring discharge upstream. A new waterworks from the artesian wells has operated since late 1909. Main pipe length ~10 versts. No filters. Water meters fitted. Water supplied to 75 houses (4.1%); over 100 properties (5.4%) use the 8 standpipe pavilions. Construction cost 170,000 rub. Municipally owned and operated. (Usage and revenue data unavailable due to brief operation period.)'}
       ],
       sanitation:[
-        {year:1904,desc:'Вывозка'},
-        {year:1910,desc:'Вывозка (ассенизационный обоз)'},
+        {year:1904,desc:'Вывозка',desc_en:'Removal'},
+        {year:1910,desc:'Вывозка (ассенизационный обоз)',desc_en:'Removal (sanitation brigade)'},
         {year:1912,desc:'Для приема нечистот в усадьбах преобладают простые выгребные ямы, с деревянными срубами, и отчасти приемники с дивизором. Очистка выгребных ям производится городским ассенизационным обозом, помещающимся в черте города и состоящим из 3 герметических бочек, с насосами при них, и 3 ящиков (для плотных отбросов и мусора); цена вывоза по 1 руб. за бочку. В среднем в год нечистот и мусора вывозится до 1.600 ящиков и бочек. Содержание обоза обходится городу до 1.500 руб.; доход от частных работ не превышает 400 руб., так что очистка ям в городских зданиях обходится городу в 1.100 руб. Нечистоты удаляются отчасти на поля, для удобрения почвы, а главным образом на свалочное место, расположенное в 2 вер. от города. Площадь свалки около 600 кв. саж. На эту же свалку вывозятся в ящиках плотные отбросы и мусор. Большая часть дороги к свалке вымощена. Сточные воды из заразных отделений больницы обезвреживаются химическими веществами.'}
       ]
     },
     general:{
       geography:'Расположен на низменной плоскости, слегка покатой к северо-западу; почва — наносы на пластах известняков, глин и мергелей с пластами каменной соли; верхний слой — жирный чернозём до 3 саж.; почвенные воды местами на полуаршинной глубине.',
+      geography_en:'Located on a low-lying plain sloping gently to the north-west; soil — alluvial deposits over limestone, clay and marl strata with rock-salt layers; upper layer — rich black earth up to 3 sazh. deep; groundwater locally at half-arshin depth.',
       slaughterhouses:'Городская бойня; отбросы вывозятся и закапываются, кишки и кровь обрабатываются на кишечном и альбуминовом заводе.',
-      cemeteries:'Одно из двух кладбищ — за чертой города.'
+      slaughterhouses_en:'Municipal slaughterhouse; waste removed and buried; intestines and blood processed at the intestine-and-albumin factory.',
+      cemeteries:'Одно из двух кладбищ — за чертой города.',
+      cemeteries_en:'One of the two cemeteries is outside the city limits.'
     }
   },
   { id:'borovichi',         name:'Боровичи',           lat:58.383, lon:33.917, waterwork:null,
@@ -1028,21 +1042,24 @@ const CITIES = [
     infrastructure:{
       paving:[{year:1904,val:15},{year:1910,val:null}],
       water:[
-        {year:1895,desc:'Питьевая вода из р. Мсты чистая, по вёснам загрязняется.'},
-        {year:1904,desc:'Речное'},
-        {year:1910,desc:'Колодцы, река'},
-        {year:1912,desc:'Источниками водоснабжения служат р. Мста, родники и обыкновенные колодцы. По данным химического исследования, речная и родниковая (при часовне св. Нила) вода представляется, вследствие содержания продуктов разложения органических веществ, неудовлетворительной. Кроме того, р. Мста загрязняется сплавом леса.'}
+        {year:1895,desc:'Питьевая вода из р. Мсты чистая, по вёснам загрязняется.',desc_en:'Drinking water from the Msta is clean, but becomes turbid in spring.'},
+        {year:1904,desc:'Речное',desc_en:'River'},
+        {year:1910,desc:'Колодцы, река',desc_en:'Wells, river'},
+        {year:1912,desc:'Источниками водоснабжения служат р. Мста, родники и обыкновенные колодцы. По данным химического исследования, речная и родниковая (при часовне св. Нила) вода представляется, вследствие содержания продуктов разложения органических веществ, неудовлетворительной. Кроме того, р. Мста загрязняется сплавом леса.',desc_en:'Waste from ordinary cesspits is transported partly to fields, partly to 2 dump sites (location and area not specified), the road to which is paved. Removal is carried out by the municipal sanitation brigade (2 simple barrels + 2 winter boxes, based outside the city). Approximately 600 barrels/year. Annual operating cost over 800 rub.; income ~250 rub. Solid refuse and household waste also taken to the dumps.',desc_en:'Water sources are the Msta River, springs, and ordinary wells. Chemical analysis shows river and spring water (near St. Nil\'s chapel) to be unsatisfactory due to organic decomposition products. The Msta is also polluted by timber floating.'}
       ],
       sanitation:[
-        {year:1904,desc:'Вывозка'},
-        {year:1910,desc:'Вывозка (ассенизационный обоз)'},
+        {year:1904,desc:'Вывозка',desc_en:'Removal'},
+        {year:1910,desc:'Вывозка (ассенизационный обоз)',desc_en:'Removal (sanitation brigade)'},
         {year:1912,desc:'Нечистоты из выгребных ям обыкновенного типа вывозятся частью на поля, частью на 2 свалки (местоположение и площадь свалок не обозначены), дорога к которым вымощена. Очистка выгребов производится городским ассенизационным обозом, который состоит из 2 простых бочек и 2 ящиков (для зимнего времени) и помещается за городом. Нечистот ежегодно вывозится около 600 бочек. Содержание обоза обходится в год более 800 руб.; дохода получается около 250 р. Плотные отбросы и мусор также вывозятся на свалочные места.'}
       ]
     },
     general:{
       geography:'Боровичи расположен на гористой местности с покатостью к р. Мсте, протекающей среди города; окрестности гористы; почва песчаная, около 1/10 площади — перегной.',
+      geography_en:'Borovichi is set on hilly terrain sloping towards the Msta River, which flows through the city; surroundings are hilly; sandy soil, roughly 1/10 humus.',
       slaughterhouses:'Общественная бойня на окраине, бревенчатый сарай с тремя отделениями; кровь стекает в р. Мсту; отбросы накапливаются в яме и вывозятся.',
-      cemeteries:'Одно кладбище в 150 саж. от города, другое в 200 саж., на разных берегах реки.'
+      slaughterhouses_en:'Public slaughterhouse on the outskirts — a log shed with three sections; blood drains into the Msta; waste accumulates in a pit and is removed.',
+      cemeteries:'Одно кладбище в 150 саж. от города, другое в 200 саж., на разных берегах реки.',
+      cemeteries_en:'One cemetery 150 sazh. from the city, another 200 sazh. away, on opposite banks of the river.'
     }
   },
   { id:'malaya_vishera',    name:'Малая Вишера',        lat:58.857, lon:32.228, population_1897:null,
@@ -1051,13 +1068,13 @@ const CITIES = [
     infrastructure:{
       paving:[{year:1904,val:35},{year:1910,val:12}],
       water:[
-        {year:1904,desc:'Водопровод, речное, колодезное'},
-        {year:1910,desc:'Водопровод, колодцы, река'},
+        {year:1904,desc:'Водопровод, речное, колодезное',desc_en:'Waterworks, river, wells'},
+        {year:1910,desc:'Водопровод, колодцы, река',desc_en:'Waterworks, wells, river'},
         {year:1912,desc:'н/д'}
       ],
       sanitation:[
-        {year:1904,desc:'Вывозка'},
-        {year:1910,desc:'Вывозка'},
+        {year:1904,desc:'Вывозка',desc_en:'Removal'},
+        {year:1910,desc:'Вывозка',desc_en:'Removal'},
         {year:1912,desc:'н/д'}
       ]
     },
@@ -1069,21 +1086,24 @@ const CITIES = [
     infrastructure:{
       paving:[{year:1904,val:23},{year:1910,val:38}],
       water:[
-        {year:1895,desc:'Вода для питья, главным образом, колодезная — чиста, но жестка; водой из Шексны по отдалённости пользуются немногие.'},
-        {year:1904,desc:'Речное, колодезное'},
-        {year:1910,desc:'Колодцы, река и ключи'},
-        {year:1912,desc:'Питьевой водой жители пользуются из рр. Шексны и Ягорбы и простых колодцев, имеющихся почти при каждой усадьбе. Вода в р. Шексне и колодцах посредственная, а в р. Ягорбы неудовлетворительная. Для забора воды из р. Шексны, на берегу её, в пределах города, устроен бак, куда вода накачивается ручным насосом. Из р. Ягорбы вода забирается за городом.'}
+        {year:1895,desc:'Вода для питья, главным образом, колодезная — чиста, но жестка; водой из Шексны по отдалённости пользуются немногие.',desc_en:'Drinking water is chiefly from wells — clean but hard; few residents use Sheksna water due to its distance.'},
+        {year:1904,desc:'Речное, колодезное',desc_en:'River, wells'},
+        {year:1910,desc:'Колодцы, река и ключи',desc_en:'Wells, river and springs'},
+        {year:1912,desc:'Питьевой водой жители пользуются из рр. Шексны и Ягорбы и простых колодцев, имеющихся почти при каждой усадьбе. Вода в р. Шексне и колодцах посредственная, а в р. Ягорбы неудовлетворительная. Для забора воды из р. Шексны, на берегу её, в пределах города, устроен бак, куда вода накачивается ручным насосом. Из р. Ягорбы вода забирается за городом.',desc_en:'Ordinary cesspits are used throughout the city. Removal is by private contractors in ordinary barrels to a dump ~2 versts from the city, on farmland, area 1,055 sq. sazh. A large deep pit has been dug at the dump; waste is poured in from bridges built across it, then treated with quicklime. Household refuse is also taken there. The road to the dump is paved. Sewage removal is regulated.',desc_en:'Residents use the Sheksna and Yagorba rivers and ordinary wells found at nearly every property. Sheksna and well water is moderate; Yagorba water is unsatisfactory. A tank on the Sheksna bank is pumped by hand; Yagorba water is drawn outside the city.'}
       ],
       sanitation:[
         {year:1904,desc:'—'},
-        {year:1910,desc:'Вывозка'},
+        {year:1910,desc:'Вывозка',desc_en:'Removal'},
         {year:1912,desc:'Для приема нечистот в усадьбах имеются простые выгребные ямы, откуда нечистоты удаляются частными предпринимателями, в обыкновенных бочках, на свалочное место, находящееся в расстоянии около 2 в. вер. от города, на полевой земле, и имеющее площадь в 1.055 кв. саж. На свалки вырыта большая глубокая яма, в которую нечистоты сливаются с перекинутых чрез эту яму мостов (для въезда на лошадях), а затем заливаются негашёной известью. В эту же яму свозится и мусор. Дорога к свалки вымощена. Вывоз нечистот регламентирован.'}
       ]
     },
     general:{
       geography:'Расположен на небольшой возвышенности со склоном к рр. Ягорбе и Шексне; почва суглинистая, песчаная, местами торфяная; весной слой жидкой грязи до 0,5 аршина.',
+      geography_en:'Located on a low rise sloping towards the Yagorba and Sheksna rivers; loamy and sandy soil, locally peaty; in spring a layer of liquid mud up to 0.5 arshin deep.',
       slaughterhouses:'Две бойни (одна частная) за городом, содержатся удовлетворительно, отбросы вывозятся на соседние поля.',
-      cemeteries:'Два кладбища на окраине города.'
+      slaughterhouses_en:'Two slaughterhouses (one private) outside the city, maintained satisfactorily; waste transported to nearby fields.',
+      cemeteries:'Два кладбища на окраине города.',
+      cemeteries_en:'Two cemeteries on the outskirts of the city.'
     }
   },
   { id:'tikhvin',           name:'Тихвин',              lat:59.643, lon:33.527, waterwork:null,
@@ -1092,21 +1112,24 @@ const CITIES = [
     infrastructure:{
       paving:[{year:1904,val:23},{year:1910,val:29}],
       water:[
-        {year:1895,desc:'Питьевая вода берётся из р. Тихвинки, Вязицкого ручья и колодцев; летом вода чиста.'},
-        {year:1904,desc:'Речное, колодезное'},
-        {year:1910,desc:'Водопровод, колодцы, река'},
-        {year:1912,desc:'Источниками питьевой воды служат р. Тихвинка, 2 ручья – Введенский и Вяжицкий и около 200 простых колодцев. Вода во всех источниках чистая, хотя весной в реке загрязняется илом. Забор ручной воды производится в черте города (выше и ниже), с особых подъездов; доставка её производится водовозами. В городе имеется водопровод, обслуживающий одноименную станцию Северной железной дороги.'}
+        {year:1895,desc:'Питьевая вода берётся из р. Тихвинки, Вязицкого ручья и колодцев; летом вода чиста.',desc_en:'Drinking water from the Tikhvinka River, the Vyazhitsky stream and wells; clean in summer.'},
+        {year:1904,desc:'Речное, колодезное',desc_en:'River, wells'},
+        {year:1910,desc:'Водопровод, колодцы, река',desc_en:'Waterworks, wells, river'},
+        {year:1912,desc:'Источниками питьевой воды служат р. Тихвинка, 2 ручья – Введенский и Вяжицкий и около 200 простых колодцев. Вода во всех источниках чистая, хотя весной в реке загрязняется илом. Забор ручной воды производится в черте города (выше и ниже), с особых подъездов; доставка её производится водовозами. В городе имеется водопровод, обслуживающий одноименную станцию Северной железной дороги.',desc_en:'Waste from ordinary cesspits is removed by private contractors — partly to their own fields, partly to 2 dump sites 2 versts from the city (area over 2 desyatinas). Solid refuse and household waste are also taken to these dumps. Sewage removal is regulated.',desc_en:'Drinking water comes from the Tikhvinka River, 2 streams (Vvedensky and Vyazhitsky), and ~200 ordinary wells. Water in all sources is clean, though the river becomes turbid from silt in spring. River water is collected within the city from special access points and delivered by water-carriers. The city has a waterworks serving the Tikhvin station of the Northern Railway.'}
       ],
       sanitation:[
-        {year:1904,desc:'Вывозка'},
-        {year:1910,desc:'Вывозка'},
-        {year:1912,desc:'Нечистоты из обыкновенных выгребных ям вывозятся частными предпринимателями отчасти на свои поля, отчасти на 2 свалки, находящаяся от города в 2 вер.; площадь свалок более 2 дес. На эту же свалку вывозятся плотные отбросы и мусор. Вывоз нечистот регламентирован.'}
+        {year:1904,desc:'Вывозка',desc_en:'Removal'},
+        {year:1910,desc:'Вывозка',desc_en:'Removal'},
+        {year:1912,desc:'Нечистоты из обыкновенных выгребных ям вывозятся частными предпринимателями отчасти на свои поля, отчасти на 2 свалки, находящаяся от города в 2 вер.; площадь свалок более 2 дес. На эту же свалку вывозятся плотные отбросы и мусор. Вывоз нечистот регламентирован.',desc_en:'Waste from ordinary cesspits is removed by private contractors — partly to their own fields, partly to 2 dump sites 2 versts from the city (area over 2 desyatinas). Solid refuse and household waste are also taken to these dumps. Sewage removal is regulated.'}
       ]
     },
     general:{
       geography:'Тихвин лежит на ровной местности, покатой к р. Тихвинке; центральная часть весной покрывается водой из подземного ручья; часть Заречье — отчасти болотистая.',
+      geography_en:'Tikhvin lies on level terrain sloping towards the Tikhvinka River; the central part floods in spring from an underground stream; the Zarechye district is partly marshy.',
       slaughterhouses:'Бойня на высоком берегу р. Тихвинки, за городом; твёрдые отбросы ежедневно вывозятся на поля.',
-      cemeteries:'2 кладбища в чертах монастырей, 3 кладбища — за чертой города.'
+      slaughterhouses_en:'Slaughterhouse on the high bank of the Tikhvinka River, outside the city; solid waste transported to fields daily.',
+      cemeteries:'2 кладбища в чертах монастырей, 3 кладбища — за чертой города.',
+      cemeteries_en:'2 cemeteries within monastery precincts, 3 cemeteries outside the city limits.'
     }
   },
   { id:'ustyuzhna',         name:'Устюжна',             lat:58.839, lon:36.440, waterwork:null,
@@ -1115,21 +1138,24 @@ const CITIES = [
     infrastructure:{
       paving:[{year:1904,val:60},{year:1910,val:12}],
       water:[
-        {year:1895,desc:'Вода из рр. Мологи и Ворожги и из колодцев — нечистая; вода из родника хороша. Выше города — мыловаренный завод.'},
-        {year:1904,desc:'Речное, колодезное'},
-        {year:1910,desc:'Колодцы, река'},
-        {year:1912,desc:'Источниками водоснабжения служат р. Молога и ключ, в которых вода чистая, а также речка Ворожа, которая летом пересыхает, и обыкновенные колодцы, имеющиеся во многих усадьбах. Из р. Мологи вода доставляется водовозами. В р. Мологу через подземные канавы производится спуск уличных вод и вод ректификационного завода. Кроме того, в нее впадает речка Ижина, запруженная плотинами. В колодцах вода содержит примесь извести и железа и поэтому для питья мало употребляется.'}
+        {year:1895,desc:'Вода из рр. Мологи и Ворожги и из колодцев — нечистая; вода из родника хороша. Выше города — мыловаренный завод.',desc_en:'Water from the Mologa and Vorozha rivers and from wells — unclean; spring water is good. A soap factory is located upstream of the city.'},
+        {year:1904,desc:'Речное, колодезное',desc_en:'River, wells'},
+        {year:1910,desc:'Колодцы, река',desc_en:'Wells, river'},
+        {year:1912,desc:'Источниками водоснабжения служат р. Молога и ключ, в которых вода чистая, а также речка Ворожа, которая летом пересыхает, и обыкновенные колодцы, имеющиеся во многих усадьбах. Из р. Мологи вода доставляется водовозами. В р. Мологу через подземные канавы производится спуск уличных вод и вод ректификационного завода. Кроме того, в нее впадает речка Ижина, запруженная плотинами. В колодцах вода содержит примесь извести и железа и поэтому для питья мало употребляется.',desc_en:'Wooden pits with lids and mobile receptacles are used for collecting waste. Removal is mainly by peasants from nearby villages — partly to fields for fertiliser, partly to 3 dump sites (2 of which are subject to groundwater flooding), located 0.25–0.33 versts from the city, total area ~3 desyatinas. Solid refuse and household waste also taken to the dumps. Sewage removal is regulated.',desc_en:'Water sources are the Mologa River and a spring (both clean), the Vorozha stream (dries up in summer), and ordinary wells present at many properties. Mologa water is delivered by water-carriers. The Mologa receives street run-off and wastewater from a rectification plant through underground channels, as well as the dammed Izhina stream. Well water contains lime and iron and is little used for drinking.'}
       ],
       sanitation:[
-        {year:1904,desc:'Вывозка'},
-        {year:1910,desc:'Вывозка'},
+        {year:1904,desc:'Вывозка',desc_en:'Removal'},
+        {year:1910,desc:'Вывозка',desc_en:'Removal'},
         {year:1912,desc:'Для собирания нечистот служат деревянные выгребные ямы, с деревянными крышками, и отчасти подвижные приемники. Очисткой выгребных ям занимаются преимущественно крестьяне из ближайших к городу деревень, удаляя нечистоты отчасти для удобрения своих полей, отчасти на 3 свалочных места, из которых 2 заливаются грунтовыми водами. Свалки расположены в 0,25–0,33 вер. от города; площадь их около 3 дес. Плотные отбросы и мусор также вывозятся на свалки. Вывоз нечистот регламентирован.'}
       ]
     },
     general:{
       geography:'Расположен по берегам р. Мологи и впадающей р. Ворожги; большей частью на низменности; к западу и востоку — возвышенная холмистая местность; к северо-востоку — обширное болото.',
+      geography_en:'Located along the banks of the Mologa River and its tributary the Vorozha; mostly on low ground; elevated hilly terrain to the west and east; a vast bog to the north-east.',
       slaughterhouses:'Общественных боен нет.',
-      cemeteries:'Два кладбища в двух концах города, вредного влияния не оказывают.'
+      slaughterhouses_en:'No public slaughterhouse.',
+      cemeteries:'Два кладбища в двух концах города, вредного влияния не оказывают.',
+      cemeteries_en:'Two cemeteries at opposite ends of the city, with no harmful effects observed.'
     }
   },
   { id:'belozersk',         name:'Белозерск',           lat:60.027, lon:37.782, waterwork:null,
@@ -1138,21 +1164,24 @@ const CITIES = [
     infrastructure:{
       paving:[{year:1904,val:2},{year:1910,val:null}],
       water:[
-        {year:1895,desc:'Вода из Талицкого источника очень хороша, но в недостаточном количестве; вода из колодцев и Белозерского канала нечиста.'},
-        {year:1904,desc:'Речное'},
-        {year:1910,desc:'Озеро и ключи'},
-        {year:1912,desc:'Жители пользуются питьевой водой главным образом из (Талицкого) колодца, и отчасти из озера Белого и судоходного канала. В колодце вода чистая, в озере посредственная, а в канале загрязняется судами. Колодезь находится в 2 вер. от центра города; вода доставляется из него водовозами.'}
+        {year:1895,desc:'Вода из Талицкого источника очень хороша, но в недостаточном количестве; вода из колодцев и Белозерского канала нечиста.',desc_en:'Talitsky spring water is very good but insufficient in quantity; well and canal water is unclean.'},
+        {year:1904,desc:'Речное',desc_en:'River'},
+        {year:1910,desc:'Озеро и ключи',desc_en:'Lake and springs'},
+        {year:1912,desc:'Жители пользуются питьевой водой главным образом из (Талицкого) колодца, и отчасти из озера Белого и судоходного канала. В колодце вода чистая, в озере посредственная, а в канале загрязняется судами. Колодезь находится в 2 вер. от центра города; вода доставляется из него водовозами.',desc_en:'Waste from cesspits is transported to fields for fertiliser. Solid refuse and household waste are removed to 2 dump sites 2 versts from the city (area ~3 desyatinas), where they are burned. Sewage removal is regulated.',desc_en:'Residents use mainly the Talitsky well and partly Lake Beloye and the navigation canal. Well water is clean; lake water is moderate; canal water is polluted by vessels. The well is 2 versts from the city centre; water is delivered by water-carriers.'}
       ],
       sanitation:[
-        {year:1904,desc:'Вывозка'},
-        {year:1910,desc:'Вывозка'},
+        {year:1904,desc:'Вывозка',desc_en:'Removal'},
+        {year:1910,desc:'Вывозка',desc_en:'Removal'},
         {year:1912,desc:'Преемниками для нечистот служат выгребные ямы, откуда нечистоты вывозятся на поля, для удобрения почвы; плотные отбросы и мусор удаляются на 2 свалки, где и сжигаются. Свалки находятся в 2 вер. от города; площадь их около 3 дес. Вывоз нечистот регламентирован.'}
       ]
     },
     general:{
       geography:'Белозерск лежит на возвышенном берегу Белого озера, террасообразно; почва глинистая с нетолстым слоем чернозёма; с двух сторон окружён болотами.',
+      geography_en:'Belozersk lies in terraced form on the elevated bank of Lake Beloye; clay soil with a thin layer of black earth; surrounded by bogs on two sides.',
       slaughterhouses:'Общественная бойня специально выстроена, с асфальтовым полом, отбросы ежедневно увозятся на поля.',
-      cemeteries:'Кладбище в черте города на сухом возвышенном месте; оказывает влияние на воду двух ближайших колодцев.'
+      slaughterhouses_en:'Purposely built public slaughterhouse with asphalt floor; waste transported to fields daily.',
+      cemeteries:'Кладбище в черте города на сухом возвышенном месте; оказывает влияние на воду двух ближайших колодцев.',
+      cemeteries_en:'Cemetery within city limits on dry elevated ground; affects water quality in two nearby wells.'
     }
   },
   { id:'kirillov',          name:'Кириллов',            lat:59.862, lon:38.368, waterwork:null,
@@ -1161,21 +1190,24 @@ const CITIES = [
     infrastructure:{
       paving:[{year:1904,val:0},{year:1910,val:0}],
       water:[
-        {year:1895,desc:'Питьевая вода из Сиверского озера хорошая; вода из оз. Долгого буроватого цвета и болотистого вкуса.'},
-        {year:1904,desc:'Речное, колодезное'},
-        {year:1910,desc:'Озеро'},
-        {year:1912,desc:'Источниками водоснабжения служат 2 озера – Сиверское и Долгое. Первое находится в 1/2 вер. от центра города, а второе в центре города. В первом вода очень чистая, во втором посредственная.'}
+        {year:1895,desc:'Питьевая вода из Сиверского озера хорошая; вода из оз. Долгого буроватого цвета и болотистого вкуса.',desc_en:'Drinking water from Siverkoye Lake is good; water from Dolgoe Lake is brownish with a boggy taste.'},
+        {year:1904,desc:'Речное, колодезное',desc_en:'River, wells'},
+        {year:1910,desc:'Озеро',desc_en:'Lake'},
+        {year:1912,desc:'Источниками водоснабжения служат 2 озера – Сиверское и Долгое. Первое находится в 1/2 вер. от центра города, а второе в центре города. В первом вода очень чистая, во втором посредственная.',desc_en:'Simple cesspits are used at all properties. Removal is by private contractors using simple barrels at up to 50 kop./barrel. Waste is partly transported to fields for fertiliser, partly taken to a dump 2 versts from the city (area up to 1,000 sq. sazh.), where it is buried. The road to the dump is paved. Household refuse also taken to the dump.',desc_en:'Water sources are 2 lakes — Siverkoye and Dolgoe. Siverkoye is ½ verst from the city centre; Dolgoe is in the city centre. Water in Siverkoye is very clean; in Dolgoe it is moderate.'}
       ],
       sanitation:[
-        {year:1904,desc:'Вывозка'},
-        {year:1910,desc:'Вывозка'},
+        {year:1904,desc:'Вывозка',desc_en:'Removal'},
+        {year:1910,desc:'Вывозка',desc_en:'Removal'},
         {year:1912,desc:'Для приёма нечистот в усадьбах устроены простые выгребные ямы, очистка которых производится частными предпринимателями в простых бочках, ценою до 50 коп. за бочку. Нечистоты частью удаляются на поля, для удобрения почвы, а отчасти свозятся на свалочное место, находящееся в 2 вер. от города и имеющее площадь до 1.000 кв. саж., где и закапываются в землю. Дорога к свалке вымощена. Мусор и домашние отбросы удаляются на свалку.'}
       ]
     },
     general:{
       geography:'Кириллов лежит на открытой местности; с запада и юга прилегает к берегам оз. Долгого, Сиверского и Луйского; берега Луйского болотисты.',
+      geography_en:'Kirillov lies on open terrain; bordered to the west and south by lakes Dolgoe, Siverkoye and Luiskoye; shores of Luiskoye are marshy.',
       slaughterhouses:'Бойня в виде сарая за городом, содержится неудовлетворительно; зимой скот убивается в деревнях.',
-      cemeteries:'Из 4 кладбищ — одно закрыто, два за чертой города.'
+      slaughterhouses_en:'Slaughterhouse in the form of a shed outside the city, maintained unsatisfactorily; in winter livestock is slaughtered in villages.',
+      cemeteries:'Из 4 кладбищ — одно закрыто, два за чертой города.',
+      cemeteries_en:'Of 4 cemeteries — one is closed, two are outside the city limits.'
     }
   },
   { id:'valdai',            name:'Валдай',              lat:57.988, lon:33.247, waterwork:null,
@@ -1184,21 +1216,24 @@ const CITIES = [
     infrastructure:{
       paving:[{year:1904,val:16},{year:1910,val:43}],
       water:[
-        {year:1895,desc:'Питьевая вода чистая из Валдайского озера и колодцев; летом при мелководье вода у берегов портится от водорослей.'},
-        {year:1904,desc:'Речное, колодезное'},
-        {year:1910,desc:'Колодцы, озеро и ключи'},
-        {year:1912,desc:'Жители пользуются чистой питьевой водой из Валдайского озера. Вода доставляется отчасти водовозами.'}
+        {year:1895,desc:'Питьевая вода чистая из Валдайского озера и колодцев; летом при мелководье вода у берегов портится от водорослей.',desc_en:'Drinking water is clean — from Lake Valdai and wells; in summer at low water the water near the banks spoils from algae.'},
+        {year:1904,desc:'Речное, колодезное',desc_en:'River, wells'},
+        {year:1910,desc:'Колодцы, озеро и ключи',desc_en:'Wells, lake and springs'},
+        {year:1912,desc:'Жители пользуются чистой питьевой водой из Валдайского озера. Вода доставляется отчасти водовозами.',desc_en:'Residents use clean drinking water from Lake Valdai. Water is delivered partly by water-carriers.'}
       ],
       sanitation:[
-        {year:1904,desc:'Вывозка'},
-        {year:1910,desc:'Вывозка'},
-        {year:1912,desc:'Приемниками для нечистот служат обыкновенные выгребные ямы, очистка которых производится частными предпринимателями, имеющими 3–4 простых бочки, по 50 коп. за бочку. Нечистоты вывозятся на поля, для удобрения почвы, удаленные от города на 2 вер. Вывоз нечистот регламентирован.'}
+        {year:1904,desc:'Вывозка',desc_en:'Removal'},
+        {year:1910,desc:'Вывозка',desc_en:'Removal'},
+        {year:1912,desc:'Приемниками для нечистот служат обыкновенные выгребные ямы, очистка которых производится частными предпринимателями, имеющими 3–4 простых бочки, по 50 коп. за бочку. Нечистоты вывозятся на поля, для удобрения почвы, удаленные от города на 2 вер. Вывоз нечистот регламентирован.',desc_en:'Ordinary cesspits are used. Removal is by private contractors with 3–4 simple barrels at 50 kop./barrel. Waste is transported to fields for fertiliser, 2 versts from the city. Sewage removal is regulated.'}
       ]
     },
     general:{
       geography:'Расположен амфитеатром на юго-западном берегу Валдайского озера; средней частью лежит в низине; в окрестностях есть болотистые места (торфяники).',
+      geography_en:'Located in amphitheatre form on the south-western shore of Lake Valdai; the central part lies in a depression; marshy (peat-bog) areas in the surroundings.',
       slaughterhouses:'Бойня в виде сарая с полом, отбросы зарываются в землю.',
-      cemeteries:'Три кладбища расположены вблизи города.'
+      slaughterhouses_en:'Slaughterhouse in the form of a floored shed; waste buried in the ground.',
+      cemeteries:'Три кладбища расположены вблизи города.',
+      cemeteries_en:'Three cemeteries located near the city.'
     }
   },
   { id:'kresttsy',          name:'Крестцы',             lat:58.421, lon:32.528, waterwork:null,
@@ -1207,21 +1242,24 @@ const CITIES = [
     infrastructure:{
       paving:[{year:1904,val:null},{year:1910,val:14}],
       water:[
-        {year:1895,desc:'Питьевая вода хорошая — из р. Холовы; только весной и при дождях вода становится мутной.'},
-        {year:1904,desc:'Речное, колодезное'},
-        {year:1910,desc:'Колодцы, река'},
-        {year:1912,desc:'Источниками питьевой воды служат р. Холова, протекающая в 0,25 вер. от города, и 19 простых колодцев. Речная и колодезная вода чистая. Доставка речной воды производится отчасти водовозами.'}
+        {year:1895,desc:'Питьевая вода хорошая — из р. Холовы; только весной и при дождях вода становится мутной.',desc_en:'Drinking water is good — from the Kholova River; becomes turbid only in spring and during rain.'},
+        {year:1904,desc:'Речное, колодезное',desc_en:'River, wells'},
+        {year:1910,desc:'Колодцы, река',desc_en:'Wells, river'},
+        {year:1912,desc:'Источниками питьевой воды служат р. Холова, протекающая в 0,25 вер. от города, и 19 простых колодцев. Речная и колодезная вода чистая. Доставка речной воды производится отчасти водовозами.',desc_en:'Waste is transported to arable fields.',desc_en:'Drinking water comes from the Kholova River, 0.25 versts from the city, and 19 ordinary wells. Both river and well water are clean. River water is delivered partly by water-carriers.'}
       ],
       sanitation:[
-        {year:1904,desc:'Вывозка'},
-        {year:1910,desc:'Вывозка (ассенизационный обоз)'},
+        {year:1904,desc:'Вывозка',desc_en:'Removal'},
+        {year:1910,desc:'Вывозка (ассенизационный обоз)',desc_en:'Removal (sanitation brigade)'},
         {year:1912,desc:'Нечистоты удаляются на пахотные поля.'}
       ]
     },
     general:{
       geography:'Крестцы расположены на возвышенном левом берегу р. Холовы; к западу — сплошная низменность, к югу — горы и кряжи; через город идёт Московское шоссе (~1,5 версты).',
+      geography_en:'Kresttsy is situated on the elevated left bank of the Kholova River; continuous lowland to the west; hills and ridges to the south; the Moscow highway runs through the city (~1.5 versts).',
       slaughterhouses:'Бойня в версте от города при ручье; отбросы зарываются на отведённом месте.',
-      cemeteries:'Кладбище в 0,5 версты от города на возвышенности и песчаном грунте.'
+      slaughterhouses_en:'Slaughterhouse 1 verst from the city, by a stream; waste buried at a designated site.',
+      cemeteries:'Кладбище в 0,5 версты от города на возвышенности и песчаном грунте.',
+      cemeteries_en:'Cemetery 0.5 versts from the city on elevated sandy ground.'
     }
   },
   { id:'demyansk',          name:'Демянск',             lat:57.644, lon:32.472, waterwork:null,
@@ -1230,21 +1268,24 @@ const CITIES = [
     infrastructure:{
       paving:[{year:1904,val:0},{year:1910,val:2}],
       water:[
-        {year:1895,desc:'Питьевая вода доброкачественная из реки и колодцев.'},
-        {year:1904,desc:'Речное, колодезное'},
-        {year:1910,desc:'Колодцы, река'},
-        {year:1912,desc:'Жители пользуются питьевой водой из р. Явони, речки Демянки и 50 обыкновенных колодцев. Вода во всех источниках чистая.'}
+        {year:1895,desc:'Питьевая вода доброкачественная из реки и колодцев.',desc_en:'Drinking water is of good quality — from the river and wells.'},
+        {year:1904,desc:'Речное, колодезное',desc_en:'River, wells'},
+        {year:1910,desc:'Колодцы, река',desc_en:'Wells, river'},
+        {year:1912,desc:'Жители пользуются питьевой водой из р. Явони, речки Демянки и 50 обыкновенных колодцев. Вода во всех источниках чистая.',desc_en:'Residents use drinking water from the Yavon\' River, the Demyanka stream, and 50 ordinary wells. Water in all sources is clean.'}
       ],
       sanitation:[
-        {year:1904,desc:'Вывозка'},
-        {year:1910,desc:'Вывозка'},
-        {year:1912,desc:'В усадьбах для приема нечистот имеются деревянные выгребные ямы, с крышками. Нечистоты, плотные отбросы и мусор вывозятся на поля, для удобрения почвы.'}
+        {year:1904,desc:'Вывозка',desc_en:'Removal'},
+        {year:1910,desc:'Вывозка',desc_en:'Removal'},
+        {year:1912,desc:'В усадьбах для приема нечистот имеются деревянные выгребные ямы, с крышками. Нечистоты, плотные отбросы и мусор вывозятся на поля, для удобрения почвы.',desc_en:'Properties have wooden cesspits with lids. Waste, solid refuse and household rubbish are transported to fields for fertiliser.'}
       ]
     },
     general:{
       geography:'Демянск лежит на р. Явони; правый берег низменный, левый возвышенный; к северо-востоку небольшое озеро.',
+      geography_en:'Demyansk lies on the Yavon\' River; right bank is low-lying, left bank elevated; small lake to the north-east.',
       slaughterhouses:'Бойня примитивного устройства — деревянный пол с желобом; отбросы частью вывозятся на поля, частью закапываются.',
-      cemeteries:'Кладбище в ½ версты от города, на возвышенной местности.'
+      slaughterhouses_en:'Primitive slaughterhouse — wooden floor with a gutter; waste partly transported to fields, partly buried.',
+      cemeteries:'Кладбище в ½ версты от города, на возвышенной местности.',
+      cemeteries_en:'Cemetery ½ verst from the city on elevated ground.'
     }
   },
   { id:'opechensky_posad',  name:'Опеченский посад',    lat:58.380, lon:33.635, population_1897:null,
@@ -1253,12 +1294,12 @@ const CITIES = [
     infrastructure:{
       paving:[{year:1904,val:0},{year:1910,val:0}],
       water:[
-        {year:1904,desc:'Речное'},
+        {year:1904,desc:'Речное',desc_en:'River'},
         {year:1912,desc:'н/д'}
       ],
       sanitation:[
-        {year:1904,desc:'Вывозка'},
-        {year:1910,desc:'Вывозка'},
+        {year:1904,desc:'Вывозка',desc_en:'Removal'},
+        {year:1910,desc:'Вывозка',desc_en:'Removal'},
         {year:1912,desc:'н/д'}
       ]
     },
@@ -1270,13 +1311,13 @@ const CITIES = [
     infrastructure:{
       paving:[{year:1904,val:0},{year:1910,val:0}],
       water:[
-        {year:1904,desc:'Речное'},
+        {year:1904,desc:'Речное',desc_en:'River'},
         {year:1910,desc:'Река'},
         {year:1912,desc:'н/д'}
       ],
       sanitation:[
-        {year:1904,desc:'Вывозка'},
-        {year:1910,desc:'Вывозка'},
+        {year:1904,desc:'Вывозка',desc_en:'Removal'},
+        {year:1910,desc:'Вывозка',desc_en:'Removal'},
         {year:1912,desc:'н/д'}
       ]
     },
@@ -1285,162 +1326,214 @@ const CITIES = [
 ];
 
 const DATA_1912 = {
-  novgorod:{ pop_1912:26420, homesteads:2674, area:'7 кв. вёрст',
+  novgorod:{ pop_1912:26420, homesteads:2674, area:'7 кв. вёрст', area_en:'7 sq. versts',
     water_source:'р. Волхов (водозабор у истока из оз. Ильмень, ковш в 35 саж. от берега)',
+    water_source_en:'Volkhov River (intake at Lake Ilmen source, cofferdam 35 sazh. from bank)',
     water_quality:'посредственная (избыток гумусовых веществ)',
+    water_quality_en:'moderate (excess humic substances)',
     waterworks:true, waterworks_year:1899,
     waterworks_detail:'Длина магистралей 23 вер.',
+    waterworks_detail_en:'Main pipe length: 23 versts',
     filtration:'Английские (песочные) фильтры, 3 кв. саж.; скорость 4–6″/ч',
-    basin:'Запасный бассейн на 14 000 вёдер', meters:true, connections:450,
-    consumption:'110 430 000 вёдер/год', ownership:'Городское',
-    cost:'250 000 руб.', expense:'20 480 руб. (1910 г.)', income:'30 580 руб.',
+    filtration_en:'English (sand) filters, 3 sq. sazh.; rate 4–6″/h',
+    basin:'Запасный бассейн на 14 000 вёдер', basin_en:'Reserve tank, 14,000 vedra',
+    meters:true, connections:450,
+    consumption:'110 430 000 вёдер/год', consumption_en:'110,430,000 vedra/year',
+    ownership:'Городское', ownership_en:'Municipal',
+    cost:'250 000 руб.', expense:'20 480 руб. (1910 г.)', expense_en:'20,480 rub. (1910)', income:'30 580 руб.',
     water_carrier:true, water_carrier_decrees:[0,1],
-    cesspits:'Деревянные (есть и бетонные)',
+    cesspits:'Деревянные (есть и бетонные)', cesspits_en:'Wooden (some concrete)',
     removal_org:'Городской ассенизационный обоз (3 герм. бочки + ящики для зимы) + частные ассенизаторы',
-    private_removal:true, volume:'~2 500 бочек/год',
-    removal_cost:'~2 000 руб./год',
-    dump_dist:'3 версты от города', dump_area:'не обозначена',
+    removal_org_en:'Municipal sanitation brigade (3 German-type barrels + winter boxes) + private contractors',
+    private_removal:true, volume:'~2 500 бочек/год', volume_en:'~2,500 barrels/year',
+    removal_cost:'~2 000 руб./год', removal_cost_en:'~2,000 rub./year',
+    dump_dist:'3 версты от города', dump_dist_en:'3 versts from city',
+    dump_area:'не обозначена', dump_area_en:'not specified',
     dump_road:true, dump_note:'Дорога мощёная; ямы на свалке — крестьяне берут нечистоты для удобрений',
+    dump_note_en:'Road paved; pit contents collected by peasants for fertiliser',
     waste_regulated:true, waste_decrees:[2,3] },
 
-  staya_russa:{ pop_1912:18888, homesteads:1850, area:'4 кв. вёрсты',
+  staya_russa:{ pop_1912:18888, homesteads:1850, area:'4 кв. вёрсты', area_en:'4 sq. versts',
     water_source:'Артезианские колодцы в д. Дубовицы (2 вер.) + рр. Полисть, Перерытица, Порусья',
+    water_source_en:'Artesian wells in Dubovitsy village (2 versts) + Polist\', Pererytitsa, Porusya rivers',
     water_quality:'Хорошая (арт. колодцы); речная — неудовлетворительная (кишечная палочка в р. Порусье; горько-солёный вкус р. Полисти)',
+    water_quality_en:'Good (artesian wells); river — unsatisfactory (E. coli in Porusya; bitter-salty taste of Polist\')',
     waterworks:true, waterworks_year:1848,
     waterworks_detail:'Первый водопровод с 1848 г. (самотёком из источников в д. Дубовицах). В 1909 г. — новый водопровод из того же источника: новая труба для подачи воды в водоразборные будки; длина магистралей ~10 вер.; 75 домов + 8 водоразборных павильонов (>100 домовладений)',
+    waterworks_detail_en:'First waterworks from 1848 (gravity-fed from Dubovitsy springs). 1909: new pipe to standpipes; main length ~10 versts; 75 houses + 8 standpipe pavilions (>100 properties)',
     filtration:'Нет', basin:'Нет', meters:true, connections:75,
-    consumption:'—', ownership:'Городское',
+    consumption:'—', ownership:'Городское', ownership_en:'Municipal',
     cost:'170 000 руб.', expense:'—', income:'—',
     water_carrier:false,
-    cesspits:'Деревянные срубы (отчасти с дивизором)',
+    cesspits:'Деревянные срубы (отчасти с дивизором)', cesspits_en:'Wooden log-built pits (partly with divider)',
     removal_org:'Городской ассенизационный обоз (3 герм. бочки с насосами + 3 ящика), 1 руб./бочка',
-    private_removal:false, volume:'~1 600 бочек/год',
+    removal_org_en:'Municipal sanitation brigade (3 German barrels with pumps + 3 boxes), 1 rub./barrel',
+    private_removal:false, volume:'~1 600 бочек/год', volume_en:'~1,600 barrels/year',
     removal_cost:'~1 500 руб./год (содержание), доход ~400 руб.',
-    dump_dist:'2 версты', dump_area:'600 кв. саж.',
+    removal_cost_en:'~1,500 rub./year (maintenance), income ~400 rub.',
+    dump_dist:'2 версты', dump_dist_en:'2 versts',
+    dump_area:'600 кв. саж.', dump_area_en:'600 sq. sazh.',
     dump_road:true, dump_note:'Дорога в основном мощёная; сточные воды больницы обезвреживаются хим. веществами',
+    dump_note_en:'Road mostly paved; hospital wastewater treated with chemical disinfectants',
     waste_regulated:true },
 
-  borovichi:{ pop_1912:11690, homesteads:2110, area:'258 дес.',
+  borovichi:{ pop_1912:11690, homesteads:2110, area:'258 дес.', area_en:'258 desyatinas',
     water_source:'р. Мста, родники и обыкновенные колодцы',
+    water_source_en:'Msta River, springs, and ordinary wells',
     water_quality:'неудовлетворительная (продукты разложения орг. веществ; р. Мста загрязнена сплавом леса)',
+    water_quality_en:'unsatisfactory (organic decomposition products; Msta polluted by timber floating)',
     waterworks:false,
     filtration:'Нет', basin:'Нет', meters:false,
     water_carrier:false,
-    cesspits:'Выгребные ямы обыкновенного типа',
+    cesspits:'Выгребные ямы обыкновенного типа', cesspits_en:'Ordinary cesspit type',
     removal_org:'Городской ассенизационный обоз (2 простые бочки + 2 ящика, помещается за городом)',
-    private_removal:false, volume:'~600 бочек/год',
+    removal_org_en:'Municipal sanitation brigade (2 simple barrels + 2 boxes, based outside city)',
+    private_removal:false, volume:'~600 бочек/год', volume_en:'~600 barrels/year',
     removal_cost:'>800 руб./год (содержание), доход ~250 руб.',
-    dump_dist:'не обозначено (2 свалки)', dump_area:'не обозначена',
-    dump_road:true, dump_note:'Дорога мощёная',
+    removal_cost_en:'>800 rub./year (maintenance), income ~250 rub.',
+    dump_dist:'не обозначено (2 свалки)', dump_dist_en:'not specified (2 dump sites)',
+    dump_area:'не обозначена', dump_area_en:'not specified',
+    dump_road:true, dump_note:'Дорога мощёная', dump_note_en:'Road paved',
     waste_regulated:true },
 
-  valdai:{ pop_1912:3000, homesteads:644, area:'~138 дес.',
-    water_source:'Валдайское озеро',
+  valdai:{ pop_1912:3000, homesteads:644, area:'~138 дес.', area_en:'~138 desyatinas',
+    water_source:'Валдайское озеро', water_source_en:'Lake Valdai',
     water_quality:'чистая',
     waterworks:false,
     filtration:'Нет', basin:'Нет', meters:false,
     water_carrier:true,
-    cesspits:'Обыкновенные выгребные ямы',
+    cesspits:'Обыкновенные выгребные ямы', cesspits_en:'Ordinary cesspits',
     removal_org:'Частные предприниматели (3–4 простые бочки, 50 коп./бочка)',
+    removal_org_en:'Private contractors (3–4 simple barrels, 50 kop./barrel)',
     private_removal:true, volume:'нет данных',
     removal_cost:'нет данных',
-    dump_dist:'2 версты (поля для удобрения)', dump_area:'нет данных',
+    dump_dist:'2 версты (поля для удобрения)', dump_dist_en:'2 versts (fields for fertilising)',
+    dump_area:'нет данных',
     dump_road:false, dump_note:'',
     waste_regulated:true },
 
-  tikhvin:{ pop_1912:8344, homesteads:1013, area:'226 дес.',
+  tikhvin:{ pop_1912:8344, homesteads:1013, area:'226 дес.', area_en:'226 desyatinas',
     water_source:'р. Тихвинка, 2 ручья (Введенский и Вяжицкий) и ~200 колодцев',
+    water_source_en:'Tikhvinka River, 2 streams (Vvedensky and Vyazhitsky), and ~200 wells',
     water_quality:'чистая (весной река мутнеет от ила)',
+    water_quality_en:'clean (river becomes turbid from silt in spring)',
     waterworks:false,
     waterworks_detail:'Есть водопровод для ж/д ст. Тихвин Сев. ж/д (не городской)',
+    waterworks_detail_en:'Waterworks exists for Tikhvin station (Northern Rly.) — not municipal',
     filtration:'Нет', basin:'Нет', meters:false,
     water_carrier:true,
-    cesspits:'Обыкновенные выгребные ямы',
-    removal_org:'Частные предприниматели',
+    cesspits:'Обыкновенные выгребные ямы', cesspits_en:'Ordinary cesspits',
+    removal_org:'Частные предприниматели', removal_org_en:'Private contractors',
     private_removal:true, volume:'нет данных',
     removal_cost:'нет данных',
-    dump_dist:'2 версты (2 свалки)', dump_area:'>2 дес.',
+    dump_dist:'2 версты (2 свалки)', dump_dist_en:'2 versts (2 dump sites)',
+    dump_area:'>2 дес.', dump_area_en:'>2 desyatinas',
     dump_road:false, dump_note:'',
     waste_regulated:true },
 
-  cherepovets:{ pop_1912:9398, homesteads:1187, area:'~2 кв. вёрсты',
+  cherepovets:{ pop_1912:9398, homesteads:1187, area:'~2 кв. вёрсты', area_en:'~2 sq. versts',
     water_source:'рр. Шексна и Ягорба; колодцы почти при каждой усадьбе',
+    water_source_en:'Sheksna and Yagorba rivers; wells at nearly every property',
     water_quality:'посредственная (Шексна и колодцы); неудовлетворительная (Ягорба)',
+    water_quality_en:'moderate (Sheksna and wells); unsatisfactory (Yagorba)',
     waterworks:false,
     waterworks_detail:'В 1916 г. построен городской водопровод (см. Agafonova, 2020). До этого: бак с ручным насосом на берегу р. Шексны; воды р. Ягорбы забирались за городом',
+    waterworks_detail_en:'Municipal waterworks built 1916 (see Agafonova, 2020). Before: tank with hand pump on Sheksna bank; Yagorba water drawn outside city',
     filtration:'Нет', basin:'Нет', meters:false,
     water_carrier:false,
-    cesspits:'Простые выгребные ямы',
+    cesspits:'Простые выгребные ямы', cesspits_en:'Simple cesspits',
     removal_org:'Частные предприниматели (обыкновенные бочки)',
+    removal_org_en:'Private contractors (ordinary barrels)',
     private_removal:true, volume:'нет данных',
     removal_cost:'нет данных',
-    dump_dist:'~2 версты', dump_area:'1 055 кв. саж.',
+    dump_dist:'~2 версты', dump_dist_en:'~2 versts',
+    dump_area:'1 055 кв. саж.', dump_area_en:'1,055 sq. sazh.',
     dump_road:true, dump_note:'Глубокая яма (въезд по мосту); нечистоты заливаются негашёной известью',
+    dump_note_en:'Deep pit (vehicular access by bridge); waste treated with quicklime',
     waste_regulated:true },
 
-  ustyuzhna:{ pop_1912:5111, homesteads:1010, area:'0,75 кв. вёрсты',
+  ustyuzhna:{ pop_1912:5111, homesteads:1010, area:'0,75 кв. вёрсты', area_en:'0.75 sq. versts',
     water_source:'р. Молога + ключ (чистые); р. Ворожа (летом пересыхает); колодцы (известь и железо)',
+    water_source_en:'Mologa River + spring (clean); Vorozha River (dries in summer); wells (lime and iron content)',
     water_quality:'чистая (Молога и ключ); колодцы для питья мало пригодны',
+    water_quality_en:'clean (Mologa and spring); wells poorly suited for drinking',
     waterworks:false,
     filtration:'Нет', basin:'Нет', meters:false,
     water_carrier:true,
     cesspits:'Деревянные ямы с крышками и подвижные приёмники',
-    removal_org:'Крестьяне из ближайших деревень',
+    cesspits_en:'Wooden pits with lids and mobile receptacles',
+    removal_org:'Крестьяне из ближайших деревень', removal_org_en:'Peasants from nearby villages',
     private_removal:true, volume:'нет данных',
     removal_cost:'нет данных',
-    dump_dist:'0,25–0,33 версты (3 свалки, 2 заливаются грунт. водами)', dump_area:'~3 дес.',
+    dump_dist:'0,25–0,33 версты (3 свалки, 2 заливаются грунт. водами)',
+    dump_dist_en:'0.25–0.33 versts (3 dump sites, 2 subject to groundwater flooding)',
+    dump_area:'~3 дес.', dump_area_en:'~3 desyatinas',
     dump_road:false, dump_note:'',
     waste_regulated:true },
 
-  belozersk:{ pop_1912:5259, homesteads:739, area:'2,4 кв. вёрсты',
+  belozersk:{ pop_1912:5259, homesteads:739, area:'2,4 кв. вёрсты', area_en:'2.4 sq. versts',
     water_source:'Талицкий колодец (2 вер. от центра); оз. Белое; судоходный канал',
+    water_source_en:'Talitsky well (2 versts from centre); Lake Beloye; navigation canal',
     water_quality:'чистая (колодец); посредственная (озеро); загрязнена судами (канал)',
+    water_quality_en:'clean (well); moderate (lake); polluted by vessels (canal)',
     waterworks:false,
     filtration:'Нет', basin:'Нет', meters:false,
     water_carrier:true,
-    cesspits:'Выгребные ямы',
+    cesspits:'Выгребные ямы', cesspits_en:'Cesspits',
     removal_org:'Нечистоты вывозятся на поля для удобрения',
+    removal_org_en:'Waste transported to fields for fertiliser',
     private_removal:false, volume:'нет данных',
     removal_cost:'нет данных',
-    dump_dist:'2 версты (2 свалки)', dump_area:'~3 дес.',
+    dump_dist:'2 версты (2 свалки)', dump_dist_en:'2 versts (2 dump sites)',
+    dump_area:'~3 дес.', dump_area_en:'~3 desyatinas',
     dump_road:false, dump_note:'Плотные отбросы и мусор сжигаются на свалках',
+    dump_note_en:'Solid refuse and waste burned at dump sites',
     waste_regulated:true },
 
-  kirillov:{ pop_1912:5000, homesteads:788, area:'70 дес.',
+  kirillov:{ pop_1912:5000, homesteads:788, area:'70 дес.', area_en:'70 desyatinas',
     water_source:'Оз. Сиверское (0,5 вер. от центра) и оз. Долгое (в центре города)',
+    water_source_en:'Lake Siverkoye (0.5 versts from centre) and Lake Dolgoe (in city centre)',
     water_quality:'очень чистая (Сиверское); посредственная (Долгое)',
+    water_quality_en:'very clean (Siverkoye); moderate (Dolgoe)',
     waterworks:false,
     filtration:'Нет', basin:'Нет', meters:false,
     water_carrier:false,
-    cesspits:'Простые выгребные ямы',
+    cesspits:'Простые выгребные ямы', cesspits_en:'Simple cesspits',
     removal_org:'Частные предприниматели (простые бочки, до 50 коп./бочка)',
+    removal_org_en:'Private contractors (simple barrels, up to 50 kop./barrel)',
     private_removal:true, volume:'нет данных',
     removal_cost:'нет данных',
-    dump_dist:'2 версты', dump_area:'до 1 000 кв. саж.',
+    dump_dist:'2 версты', dump_dist_en:'2 versts',
+    dump_area:'до 1 000 кв. саж.', dump_area_en:'up to 1,000 sq. sazh.',
     dump_road:true, dump_note:'Нечистоты закапываются в землю; дорога мощёная',
+    dump_note_en:'Waste buried in ground; road paved',
     waste_regulated:false },
 
-  kresttsy:{ pop_1912:2596, homesteads:393, area:'1 кв. верста',
+  kresttsy:{ pop_1912:2596, homesteads:393, area:'1 кв. верста', area_en:'1 sq. verst',
     water_source:'р. Холова (0,25 вер. от города) и 19 колодцев',
-    water_quality:'чистая (речная и колодезная)',
+    water_source_en:'Kholova River (0.25 versts from city) and 19 wells',
+    water_quality:'чистая (речная и колодезная)', water_quality_en:'clean (river and well)',
     waterworks:false,
     filtration:'Нет', basin:'Нет', meters:false,
     water_carrier:true,
     cesspits:'нет данных',
     removal_org:'Нечистоты вывозятся на пахотные поля',
+    removal_org_en:'Waste transported to arable fields',
     private_removal:false, volume:'нет данных',
     removal_cost:'нет данных',
     dump_dist:'нет данных', dump_area:'нет данных',
     dump_road:false, dump_note:'',
     waste_regulated:false },
-  demyansk:{ pop_1912:2000, homesteads:400, area:'6,75 кв. вёрст',
+  demyansk:{ pop_1912:2000, homesteads:400, area:'6,75 кв. вёрст', area_en:'6.75 sq. versts',
     water_source:'р. Явонь, речка Демянка и 50 обыкновенных колодцев',
-    water_quality:'чистая (все источники)',
+    water_source_en:'Yavon\' River, Demyanka stream, and 50 ordinary wells',
+    water_quality:'чистая (все источники)', water_quality_en:'clean (all sources)',
     waterworks:false,
     filtration:'Нет', basin:'Нет', meters:false,
     water_carrier:false,
-    cesspits:'Деревянные ямы с крышками',
+    cesspits:'Деревянные ямы с крышками', cesspits_en:'Wooden pits with lids',
     removal_org:'Нечистоты и мусор вывозятся на поля для удобрения',
+    removal_org_en:'Waste and refuse transported to fields for fertiliser',
     private_removal:false, volume:'нет данных',
     removal_cost:'нет данных',
     dump_dist:'нет данных', dump_area:'нет данных',
@@ -3136,11 +3229,11 @@ function initMap() {
   // Override Leaflet attribution prefix (no flag)
   window._map = map;
   map.attributionControl.setPrefix(
-    '<a href="https://leafletjs.com" title="Библиотека Leaflet" target="_blank">Leaflet</a>'
+    '<a href="https://leafletjs.com" title="Leaflet" target="_blank">Leaflet</a> · <a href="https://doi.org/10.34894/NQOASN" target="_blank">RISTAT GIS 1897</a> (Kessler &amp; Markevich) · &copy; <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions" target="_blank">CARTO</a>'
   );
 
   tileLayer = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
+    attribution: '',
     maxZoom:15
   }).addTo(map);
 
@@ -3187,6 +3280,15 @@ function setLayer(type) {
   }
 }
 
+function updateMapLabels() {
+  Object.entries(_markers).forEach(([id, m]) => {
+    const city = CITIES.find(c=>c.id===id);
+    if(city) {
+      m.unbindTooltip();
+      m.bindTooltip(cityDisplayName(city), {permanent:true, direction:'top', className:'city-label', offset:[0,-7]});
+    }
+  });
+}
 function createMarker(city) {
   const ww = city.waterwork;
   const color = ww ? ww.color : '#8a7a68';
@@ -3201,18 +3303,22 @@ function createMarker(city) {
   });
   const dcnt = (CITY_DECREES[city.id]||[]).length;
   const m = L.marker([city.lat,city.lon],{icon})
-    .bindTooltip(`<b>${city.name}</b>${ww?`<br><span style='color:#c9b99a;font-size:.7em'>${ww.name}</span>`:''}${dcnt?`<br><span style='font-size:.7em'>📜 ${dcnt} пост.</span>`:''}`,{className:'city-tooltip',offset:[12,0]})
+    .bindTooltip(cityDisplayName(city), {permanent:true, direction:'top', className:'city-label', offset:[0,-7]})
     .on('click',()=>openCityPage(city.id));
   m.addTo(map);
   cityMarkers[city.id]=m;
+  _markers[city.id]=m;
 }
 
 // ═══════════════════════ PROVINCE SIDEBAR ════════════════════════════════════
 function renderCityList(filter='') {
+  const isEn = currentLang==='en';
   const list = document.getElementById('city-list');
   list.innerHTML='';
   const f=filter.toLowerCase();
-  CITIES.filter(c=>c.name.toLowerCase().includes(f)).sort((a,b)=>a.name.localeCompare(b.name,'ru')).forEach(city=>{
+  const fEn=f?CITIES.filter(c=>(CITY_NAMES_EN[c.id]||'').toLowerCase().includes(f)):[];
+  const matched=CITIES.filter(c=>c.name.toLowerCase().includes(f)||(fEn.includes(c)));
+  matched.sort((a,b)=>cityDisplayName(a).localeCompare(cityDisplayName(b),'ru')).forEach(city=>{
     const ww=city.waterwork;
     const color=ww?ww.color:'#8a7a68';
     const dcnt=(CITY_DECREES[city.id]||[]).length;
@@ -3222,9 +3328,9 @@ function renderCityList(filter='') {
     item.innerHTML=`
       <div class="city-dot" style="background:${color}"></div>
       <div style="flex:1">
-        <div class="city-name">${city.name}</div>
+        <div class="city-name">${cityDisplayName(city)}</div>
         <div class="city-meta">
-          ${d12?`${d12.pop_1912.toLocaleString('ru')} жит. (1912)`:city.population_1897?`${city.population_1897.toLocaleString('ru')} жит. (1897)`:''}
+          ${d12?`${d12.pop_1912.toLocaleString('ru')} ${isEn?'res.':'жит.'} (1912)`:city.population_1897?`${city.population_1897.toLocaleString('ru')} ${isEn?'res.':'жит.'} (1897)`:''}
           ${dcnt?` · 📜 ${dcnt}`:''} ${ww?` · 🏗`:''}</div>
       </div>
       <div style="color:var(--muted);font-size:.8rem">›</div>
@@ -3253,9 +3359,10 @@ function renderEpiTable() {
   const maxT = Math.max(...EPIDEMIC_DATA.map(d=>d.typhoid_rate));
   const maxD = Math.max(...EPIDEMIC_DATA.map(d=>d.dysentery_rate));
   const maxC = Math.max(...EPIDEMIC_DATA.map(d=>d.cholera_rate));
+  const T=I18N[currentLang];
   let html=`<table class="epi-table">
     <thead><tr>
-      <th>Год</th><th>Брюшной тиф</th><th>Дизентерия</th><th>Холера</th><th>Расходы на эпидемии, руб.</th>
+      <th>${currentLang==='ru'?'Год':'Year'}</th><th>${T.epi_legend_typhoid}</th><th>${T.epi_legend_dysentery}</th><th>${T.epi_legend_cholera}</th><th>${T.epi_legend_epidemic}</th>
     </tr></thead><tbody>`;
   EPIDEMIC_DATA.forEach(d=>{
     const tw=d.typhoid_rate?Math.round(d.typhoid_rate/maxT*50):0;
@@ -3299,14 +3406,15 @@ function searchDecrees(v) {
 
 // ═══════════════════════ CITY PAGE ═══════════════════════════════════════════
 let activeCityId=null, activeCityTab='overview', activeDecreeFilter='all';
+const _markers = {};
 
 function showProvinceView() {
   activeCityId=null;
   document.getElementById('province-view').style.display='flex';
   document.getElementById('city-view').style.display='none';
   document.getElementById('breadcrumb-city').textContent='';
-  document.getElementById('header-h1').innerHTML='Новгородская <span class="amp">губерния</span>';
-  document.getElementById('header-sub').textContent='Санитарное состояние городов';
+  document.getElementById('header-h1').innerHTML=I18N[currentLang].title_h1;
+  document.getElementById('header-sub').textContent=I18N[currentLang].title_sub;
   renderCityList();
 }
 
@@ -3315,14 +3423,14 @@ function openCityPage(cityId) {
   activeCityTab='overview';
   const city=CITIES.find(c=>c.id===cityId);
   // Update breadcrumb
-  document.getElementById('breadcrumb-city').innerHTML=' <span class="sep">✦</span> '+city.name;
-  document.getElementById('header-h1').innerHTML=city.name;
-  document.getElementById('header-sub').textContent='Карточка города';
+  document.getElementById('breadcrumb-city').innerHTML=' <span class="sep">✦</span> '+cityDisplayName(city);
+  document.getElementById('header-h1').innerHTML=cityDisplayName(city);
+  document.getElementById('header-sub').textContent=I18N[currentLang].city_card;
   // Switch views
   document.getElementById('province-view').style.display='none';
   document.getElementById('city-view').style.display='flex';
   // Sidebar title
-  document.getElementById('city-sidebar-name').textContent=city.name;
+  document.getElementById('city-sidebar-name').textContent=cityDisplayName(city);
   renderCityNav(cityId);
   renderCityContent(cityId,'overview');
   // Reset tab bar
@@ -3353,80 +3461,95 @@ function switchCityTab(tab) {
 function switchCityTabDirect(tab) {switchCityTab(tab);}
 
 function renderCityContent(cityId, tab) {
+  const T=I18N[currentLang];
+  const isEn=currentLang==='en';
+  const yr=s=>currentLang==='ru'?`${s} г.`:`${s}`;
   const city=CITIES.find(c=>c.id===cityId);
   const d12=DATA_1912[cityId]||{};
+  // d12v: return EN field if available, else auto-translate common values, else RU
+  const _simpleMap={'Нет':'None','нет данных':'no data','Городское':'Municipal',
+    'очень чистая':'very clean','чистая':'clean','посредственная':'moderate',
+    'неудовлетворительная':'unsatisfactory'};
+  const d12v=f=>{
+    const v=d12[f];
+    if(!v) return '';
+    if(!isEn) return v;
+    if(d12[f+'_en']) return d12[f+'_en'];
+    if(_simpleMap[v]) return _simpleMap[v];
+    return v;
+  };
   const decrees=CITY_DECREES[cityId]||[];
   const content=document.getElementById('city-content');
 
   if(tab==='overview') {
     content.innerHTML=`
-      <h2 class="section-title">${city.name}</h2>
+      <h2 class="section-title">${cityDisplayName(city)}</h2>
       <div class="data-grid">
         ${city.population && city.population.length ? city.population.map(p=>`
         <div class="data-cell">
-          <div class="dc-label">Население (${p.year} г.)</div>
+          <div class="dc-label">${currentLang==='ru'?`Население (${p.year} г.)`:`Population (${p.year})`}</div>
           <div class="dc-value">${p.val ? p.val.toLocaleString('ru') : '—'}</div>
-          <div class="dc-sub">жителей</div>
+          <div class="dc-sub">${T.pop_unit}</div>
         </div>`).join('') : `
         <div class="data-cell">
-          <div class="dc-label">Население</div>
+          <div class="dc-label">${T.pop_unit}</div>
           <div class="dc-value">—</div>
-          <div class="dc-sub">нет данных</div>
+          <div class="dc-sub">${T.no_data}</div>
         </div>`}
         <div class="data-cell">
-          <div class="dc-label">Площадь города</div>
-          <div class="dc-value">${d12.area||'—'}</div>
-          <div class="dc-sub">1912 г.</div>
+          <div class="dc-label">${T.area_lbl}</div>
+          <div class="dc-value">${d12v('area')||'—'}</div>
+          <div class="dc-sub">${T.area_year}</div>
         </div>
         <div class="data-cell">
-          <div class="dc-label">Постановлений</div>
+          <div class="dc-label">${T.decrees_count_lbl}</div>
           <div class="dc-value">${decrees.length}</div>
-          <div class="dc-sub">в базе данных</div>
+          <div class="dc-sub">${T.decrees_count_sub}</div>
         </div>
       </div>
       <div class="two-col">
         <div>
-          <h3 class="section-title" style="font-size:.85rem">Водоснабжение (кратко)</h3>
+          <h3 class="section-title" style="font-size:.85rem">${T.ov_water_h}</h3>
           <table class="detail-table">
-            <tr><td>Источник воды</td><td>${d12.water_source||'нет данных'}</td></tr>
-            <tr><td>Качество</td><td>${d12.water_quality||'нет данных'}</td></tr>
-            <tr class="highlight-row"><td>Городской водопровод</td><td>
-              ${d12.waterworks===true?`<span class="ww-status ww-yes">✓ Есть (с ${d12.waterworks_year} г.)</span>`:
-                d12.waterworks===false?`<span class="ww-status ww-no">✗ Нет</span>`:'нет данных'}
+            <tr><td>${T.tbl_water_src}</td><td>${d12v('water_source')||T.no_data}</td></tr>
+            <tr><td>${T.tbl_quality}</td><td>${d12v('water_quality')||T.no_data}</td></tr>
+            <tr class="highlight-row"><td>${T.tbl_waterworks}</td><td>
+              ${d12.waterworks===true?`<span class="ww-status ww-yes">✓ ${currentLang==='ru'?`Есть (с ${d12.waterworks_year} г.)`:`Yes (since ${d12.waterworks_year})`}</span>`:
+                d12.waterworks===false?`<span class="ww-status ww-no">✗ ${T.ww_no||'Нет'}</span>`:T.no_data}
             </td></tr>
           </table>
         </div>
         <div>
-          <h3 class="section-title" style="font-size:.85rem">Удаление отходов (кратко)</h3>
+          <h3 class="section-title" style="font-size:.85rem">${T.ov_waste_h}</h3>
           <table class="detail-table">
-            <tr><td>Тип приёмников</td><td>${d12.cesspits||'нет данных'}</td></tr>
-            <tr><td>Организация вывоза</td><td>${d12.removal_org||'нет данных'}</td></tr>
-            <tr class="highlight-row"><td>Вывоз регламентирован</td><td>
-              ${d12.waste_regulated?`✓ <a class="regulated-link" onclick="switchCityTab('waste1912')">см. подробнее</a>`:'нет данных'}
+            <tr><td>${T.tbl_cesspits}</td><td>${d12v('cesspits')||T.no_data}</td></tr>
+            <tr><td>${T.tbl_removal_org}</td><td>${d12v('removal_org')||T.no_data}</td></tr>
+            <tr class="highlight-row"><td>${T.tbl_waste_reg}</td><td>
+              ${d12.waste_regulated?`✓ <a class="regulated-link" onclick="switchCityTab('waste1912')">${T.see_more}</a>`:T.no_data}
             </td></tr>
           </table>
         </div>
       </div>
       ${decrees.length>0?`
         <hr class="divider">
-        <h3 class="section-title" style="font-size:.85rem">Темы постановлений</h3>
+        <h3 class="section-title" style="font-size:.85rem">${T.ov_decrees_h}</h3>
         ${getCatBreakdown(decrees)}`:''}
       ${city.general && (city.general.geography || city.general.slaughterhouses || city.general.cemeteries) ? `
       <hr class="divider">
-      <h3 class="section-title" style="font-size:.85rem">Общее описание города (1895 г.)</h3>
+      <h3 class="section-title" style="font-size:.85rem">${T.ov_general_h}</h3>
       <table class="detail-table">
-        ${city.general.geography ? `<tr><td style="width:130px;vertical-align:top">🗺 География</td><td>${city.general.geography}</td></tr>` : ''}
-        ${city.general.slaughterhouses ? `<tr><td style="vertical-align:top">🥩 Бойни</td><td>${city.general.slaughterhouses}</td></tr>` : ''}
-        ${city.general.cemeteries ? `<tr><td style="vertical-align:top">✝ Кладбища</td><td>${city.general.cemeteries}</td></tr>` : ''}
+        ${city.general.geography ? `<tr><td style="width:130px;vertical-align:top">${T.lbl_geography}</td><td>${isEn && city.general.geography_en ? city.general.geography_en : city.general.geography}</td></tr>` : ''}
+        ${city.general.slaughterhouses ? `<tr><td style="vertical-align:top">${T.lbl_slaughter}</td><td>${isEn && city.general.slaughterhouses_en ? city.general.slaughterhouses_en : city.general.slaughterhouses}</td></tr>` : ''}
+        ${city.general.cemeteries ? `<tr><td style="vertical-align:top">${T.lbl_cemeteries}</td><td>${isEn && city.general.cemeteries_en ? city.general.cemeteries_en : city.general.cemeteries}</td></tr>` : ''}
       </table>` : ''}
       ${city.id==='cherepovets' ? `
       <hr class="divider">
-      <h3 class="section-title" style="font-size:.85rem">🎬 Видеоматериалы о Череповце</h3>
-      <p style="margin-bottom:10px;font-size:.82rem;color:var(--muted)">Исследовательские видео по истории города (канал @ab_agafonova)</p>
+      <h3 class="section-title" style="font-size:.85rem">${T.videos_h}</h3>
+      <p style="margin-bottom:10px;font-size:.82rem;color:var(--muted)">${T.videos_desc}</p>
       <table class="detail-table">
         <tr>
           <td style="width:28px;font-size:1rem;text-align:center">💧</td>
-          <td><a href="../videos.html#wrap-1" target="_blank" style="color:var(--accent)">История водоснабжения Череповца</a></td>
+          <td><a href="../videos.html#wrap-1" target="_blank" style="color:var(--accent)">${T.vid1}</a></td>
         </tr>
         <tr>
           <td style="font-size:1rem;text-align:center">🌿</td>
@@ -3434,18 +3557,18 @@ function renderCityContent(cityId, tab) {
         </tr>
         <tr>
           <td style="font-size:1rem;text-align:center">🏭</td>
-          <td><a href="../videos.html#wrap-10" target="_blank" style="color:var(--accent)">Промышленность доиндустриального Череповца</a></td>
+          <td><a href="../videos.html#wrap-10" target="_blank" style="color:var(--accent)">${T.vid3}</a></td>
         </tr>
         <tr>
           <td style="font-size:1rem;text-align:center">🌳</td>
-          <td><a href="../videos.html#wrap-11" target="_blank" style="color:var(--accent)">Парки, люди, конфликты: история озеленения Череповца, 1870-е — 1930-е гг.</a></td>
+          <td><a href="../videos.html#wrap-11" target="_blank" style="color:var(--accent)">${T.vid4}</a></td>
         </tr>
       </table>
-      <p style="margin-top:6px;font-size:.8rem"><a href="../videos.html" target="_blank" style="color:var(--muted)">→ Все видео проекта</a></p>
+      <p style="margin-top:6px;font-size:.8rem"><a href="../videos.html" target="_blank" style="color:var(--muted)">${T.videos_all}</a></p>
       ` : ''}
       ${['novgorod','staya_russa','cherepovets'].includes(city.id) ? `
       <hr class="divider">
-      <h3 class="section-title" style="font-size:.85rem">📄 Исследования по данному городу</h3>
+      <h3 class="section-title" style="font-size:.85rem">${T.research_h}</h3>
       <table class="detail-table">
         ${city.id==='novgorod' ? `
         <tr><td style="vertical-align:top;width:24px">📖</td><td style="font-size:.82rem">
@@ -3460,73 +3583,69 @@ function renderCityContent(cityId, tab) {
         </td></tr>` : ''}
       </table>` : ''}
       <hr class="divider">
-      <p class="source-note"><strong>Источники:</strong><br>
-      1. Водоснабжение и способы удаления нечистот в городах России. — СПб.: Тип. МВД, 1912. — 506 с.<br>
-      2. Санитарное состояние городов Российской империи в 1895 г. — СПб.: Тип. МВД, 1899.<br>
-      3. Города России. Т. 1: Города России в 1904 году. — СПб., 1906. — 907 с.<br>
-      4. Города России. Т. 2: Города России в 1910 году. — СПб., 1914. — 1159 с.<br>
-      5. Собрание обязательных постановлений Новгородской городской думы и губернского земского собрания. — Новгород: Тип. Новгородского губернского земства, 1885.</p>
+      <p class="source-note"><strong>${T.sources_h}</strong><br>
+      ${T.sources_bib}</p>
     `;
 
   } else if(tab==='water1912') {
     // Show historical data even when detailed 1912 data is absent
     if(!d12.water_source && !(city.infrastructure && city.infrastructure.water && city.infrastructure.water.length)){
-      content.innerHTML='<div class="empty-state">Данные по этому городу не найдены</div>';return;
+      content.innerHTML=`<div class="empty-state">${T.empty_city}</div>`;return;
     }
     if(!d12.water_source) {
       // Only history available – render it without the 1912 detail tables
       content.innerHTML=`
-        <h2 class="section-title">Водоснабжение · история</h2>
-        <p class="source-note" style="margin-bottom:12px">Детальные данные за 1912 г. по этому городу в базе отсутствуют.</p>
+        <h2 class="section-title">${T.water_hist_h}</h2>
+        <p class="source-note" style="margin-bottom:12px">${T.no_detail_1912}</p>
         ${city.infrastructure && city.infrastructure.water && city.infrastructure.water.length ? `
         <table class="detail-table">
           <thead><tr><th colspan="2">История водоснабжения</th></tr></thead>
           ${city.infrastructure.water.filter(w=>w.desc && w.desc!=='н/д').map(w=>`
-          <tr><td style="width:58px;font-weight:600;color:var(--muted)">${w.year} г.</td><td>${w.desc}</td></tr>`).join('')}
-        </table>` : '<div class="empty-state">Данных нет</div>'}
+          <tr><td style="width:58px;font-weight:600;color:var(--muted)">${yr(w.year)}</td><td>${w.desc}</td></tr>`).join('')}
+        </table>` : `<div class="empty-state">${T.empty_no_data}</div>`}
       `;
       return;
     }
     const wcarrier=d12.water_carrier;
     const dcLinks=d12.water_carrier_decrees||[];
     content.innerHTML=`
-      <h2 class="section-title">Водоснабжение · 1912 г.</h2>
-      <p class="source-note" style="margin-bottom:12px">Источник: «Водоснабжение и способы удаления нечистот в городах России» (СПб.: МВД, 1912).</p>
+      <h2 class="section-title">${T.water_1912_h}</h2>
+      <p class="source-note" style="margin-bottom:12px">${T.src_1912_water}</p>
       ${city.infrastructure && city.infrastructure.water && city.infrastructure.water.length > 1 ? `
       <table class="detail-table" style="margin-bottom:14px">
-        <thead><tr><th colspan="2">История водоснабжения</th></tr></thead>
+        <thead><tr><th colspan="2">${T.tbl_water_hist}</th></tr></thead>
         ${city.infrastructure.water.filter(w=>w.desc && w.desc!=='н/д').map(w=>`
-        <tr><td style="width:58px;font-weight:600;color:var(--muted)">${w.year} г.</td><td>${w.desc}</td></tr>`).join('')}
+        <tr><td style="width:58px;font-weight:600;color:var(--muted)">${yr(w.year)}</td><td>${isEn && w.desc_en ? w.desc_en : w.desc}</td></tr>`).join('')}
       </table>` : ''}
       <table class="detail-table">
-        <thead><tr><th colspan="2">Источники водоснабжения (по данным 1912 г.)</th></tr></thead>
-        <tr class="highlight-row"><td>Источник воды</td><td>${d12.water_source||'—'}</td></tr>
-        <tr><td>Качество воды</td><td>${d12.water_quality||'—'}</td></tr>
+        <thead><tr><th colspan="2">${T.tbl_water_sources}</th></tr></thead>
+        <tr class="highlight-row"><td>${T.tbl_water_src}</td><td>${d12v('water_source')||'—'}</td></tr>
+        <tr><td>${T.tbl_water_qual}</td><td>${d12v('water_quality')||'—'}</td></tr>
       </table>
       <table class="detail-table">
-        <thead><tr><th colspan="2">Городской водопровод</th></tr></thead>
-        <tr class="highlight-row"><td>Наличие</td><td>
-          ${d12.waterworks?`<span class="ww-status ww-yes">✓ Функционирует с ${d12.waterworks_year} г.</span>`
-            :`<span class="ww-status ww-no">✗ Городского водопровода нет</span>`}
+        <thead><tr><th colspan="2">${T.tbl_ww_h}</th></tr></thead>
+        <tr class="highlight-row"><td>${T.tbl_ww_status}</td><td>
+          ${d12.waterworks?`<span class="ww-status ww-yes">✓ ${currentLang==='ru'?`Функционирует с ${d12.waterworks_year} г.`:`Operational since ${d12.waterworks_year}`}</span>`
+            :`<span class="ww-status ww-no">✗ ${currentLang==='ru'?'Городского водопровода нет':'No municipal waterworks'}</span>`}
         </td></tr>
         ${d12.waterworks?`
-        <tr><td>Подробности устройства</td><td>${d12.waterworks_detail||'—'}</td></tr>
-        <tr><td>Фильтрация</td><td>${d12.filtration||'—'}</td></tr>
-        <tr><td>Запасный бассейн</td><td>${d12.basin||'—'}</td></tr>
-        <tr><td>Водомеры</td><td>${d12.meters?'Установлены':'Не установлены'}</td></tr>
-        <tr class="highlight-row"><td>Подключено усадеб</td><td>${d12.connections||'—'}</td></tr>
-        <tr><td>Потребление воды/год</td><td>${d12.consumption||'—'}</td></tr>
-        <tr><td>Собственник</td><td>${d12.ownership||'—'}</td></tr>
-        <tr><td>Стоимость сооружения</td><td>${d12.cost||'—'}</td></tr>
-        <tr><td>Расход по эксплуатации</td><td>${d12.expense||'—'}</td></tr>
-        <tr><td>Доход по эксплуатации</td><td>${d12.income||'—'}</td></tr>
+        <tr><td>${T.tbl_ww_detail}</td><td>${d12v('waterworks_detail')||'—'}</td></tr>
+        <tr><td>${T.tbl_filtration}</td><td>${d12v('filtration')||'—'}</td></tr>
+        <tr><td>${T.tbl_basin}</td><td>${d12v('basin')||'—'}</td></tr>
+        <tr><td>${T.tbl_meters}</td><td>${d12.meters?T.meters_yes:T.meters_no}</td></tr>
+        <tr class="highlight-row"><td>${T.tbl_connections}</td><td>${d12.connections||'—'}</td></tr>
+        <tr><td>${T.tbl_consumption}</td><td>${d12v('consumption')||'—'}</td></tr>
+        <tr><td>${T.tbl_ownership}</td><td>${d12v('ownership')||'—'}</td></tr>
+        <tr><td>${T.tbl_cost}</td><td>${d12v('cost')||'—'}</td></tr>
+        <tr><td>${T.tbl_expense}</td><td>${d12v('expense')||'—'}</td></tr>
+        <tr><td>${T.tbl_income}</td><td>${d12v('income')||'—'}</td></tr>
         `:''}
       </table>
       ${wcarrier!==undefined?`
       <table class="detail-table">
-        <thead><tr><th colspan="2">Водовозный промысел</th></tr></thead>
-        <tr class="highlight-row"><td>Регламентирован</td><td>
-          ${wcarrier?`✓ Регламентирован ${dcLinks.length>0?`· <a class="regulated-link" onclick="jumpToDecrees(${JSON.stringify(dcLinks)})">см. постановления (${dcLinks.length})</a>`:''}`:
+        <thead><tr><th colspan="2">${T.tbl_carrier_h}</th></tr></thead>
+        <tr class="highlight-row"><td>${T.tbl_regulated}</td><td>
+          ${wcarrier?`✓ ${T.tbl_regulated} ${dcLinks.length>0?`· <a class="regulated-link" onclick="jumpToDecrees(${JSON.stringify(dcLinks)})">${currentLang==='ru'?'см. постановления':'see decrees'} (${dcLinks.length})</a>`:''}`:
             '—'}
         </td></tr>
       </table>`:''}
@@ -3534,55 +3653,55 @@ function renderCityContent(cityId, tab) {
 
   } else if(tab==='waste1912') {
     if(!d12.cesspits && !(city.infrastructure && city.infrastructure.sanitation && city.infrastructure.sanitation.length)){
-      content.innerHTML='<div class="empty-state">Данные по этому городу не найдены</div>';return;
+      content.innerHTML=`<div class="empty-state">${T.empty_city}</div>`;return;
     }
     if(!d12.cesspits) {
       content.innerHTML=`
-        <h2 class="section-title">Удаление нечистот · история</h2>
-        <p class="source-note" style="margin-bottom:12px">Детальные данные за 1912 г. по этому городу в базе отсутствуют.</p>
+        <h2 class="section-title">${T.waste_hist_h}</h2>
+        <p class="source-note" style="margin-bottom:12px">${T.no_detail_1912}</p>
         ${city.infrastructure && city.infrastructure.sanitation && city.infrastructure.sanitation.length ? `
         <table class="detail-table">
-          <thead><tr><th colspan="2">История удаления нечистот</th></tr></thead>
+          <thead><tr><th colspan="2">${T.tbl_waste_hist}</th></tr></thead>
           ${city.infrastructure.sanitation.filter(s=>s.desc && s.desc!=='н/д' && s.desc!=='—').map(s=>`
-          <tr><td style="width:58px;font-weight:600;color:var(--muted)">${s.year} г.</td><td>${s.desc}</td></tr>`).join('')}
-        </table>` : '<div class="empty-state">Данных нет</div>'}
+          <tr><td style="width:58px;font-weight:600;color:var(--muted)">${yr(s.year)}</td><td>${s.desc}</td></tr>`).join('')}
+        </table>` : `<div class="empty-state">${T.empty_no_data}</div>`}
       `;
       return;
     }
     const wdec=d12.waste_decrees||[];
     content.innerHTML=`
-      <h2 class="section-title">Удаление отходов и нечистот · 1912 г.</h2>
-      <p class="source-note" style="margin-bottom:12px">Источник: «Водоснабжение и способы удаления нечистот в городах России» (СПб.: МВД, 1912).</p>
+      <h2 class="section-title">${T.waste_1912_h}</h2>
+      <p class="source-note" style="margin-bottom:12px">${T.src_1912_waste}</p>
       ${city.infrastructure && city.infrastructure.sanitation && city.infrastructure.sanitation.length > 1 ? `
       <table class="detail-table" style="margin-bottom:14px">
-        <thead><tr><th colspan="2">История удаления нечистот</th></tr></thead>
+        <thead><tr><th colspan="2">${T.tbl_waste_hist}</th></tr></thead>
         ${city.infrastructure.sanitation.filter(s=>s.desc && s.desc!=='н/д' && s.desc!=='—').map(s=>`
-        <tr><td style="width:58px;font-weight:600;color:var(--muted)">${s.year} г.</td><td>${s.desc}</td></tr>`).join('')}
+        <tr><td style="width:58px;font-weight:600;color:var(--muted)">${yr(s.year)}</td><td>${isEn && s.desc_en ? s.desc_en : s.desc}</td></tr>`).join('')}
       </table>` : ''}
       <table class="detail-table">
-        <thead><tr><th colspan="2">Приёмники нечистот (по данным 1912 г.)</th></tr></thead>
-        <tr class="highlight-row"><td>Тип выгребных ям</td><td>${d12.cesspits||'—'}</td></tr>
+        <thead><tr><th colspan="2">${T.tbl_cesspits_h}</th></tr></thead>
+        <tr class="highlight-row"><td>${T.tbl_cesspit_type}</td><td>${d12v('cesspits')||'—'}</td></tr>
       </table>
       <table class="detail-table">
-        <thead><tr><th colspan="2">Организация вывоза</th></tr></thead>
-        <tr><td>Структура вывоза</td><td>${d12.removal_org||'—'}</td></tr>
-        <tr><td>Частный вывоз</td><td>${d12.private_removal?'Да':'Нет/нет данных'}</td></tr>
-        <tr><td>Объём вывоза/год</td><td>${d12.volume||'—'}</td></tr>
-        <tr><td>Расходы / доходы</td><td>${d12.removal_cost||'—'}</td></tr>
+        <thead><tr><th colspan="2">${T.tbl_removal_org_h}</th></tr></thead>
+        <tr><td>${T.tbl_removal_struct}</td><td>${d12v('removal_org')||'—'}</td></tr>
+        <tr><td>${T.tbl_private_removal}</td><td>${d12.private_removal?T.yes_val:T.no_nodata}</td></tr>
+        <tr><td>${T.tbl_volume}</td><td>${d12v('volume')||'—'}</td></tr>
+        <tr><td>${T.tbl_removal_cost}</td><td>${d12v('removal_cost')||'—'}</td></tr>
       </table>
       <table class="detail-table">
-        <thead><tr><th colspan="2">Места свалки</th></tr></thead>
-        <tr class="highlight-row"><td>Расстояние от города</td><td>${d12.dump_dist||'—'}</td></tr>
-        <tr><td>Площадь свалки</td><td>${d12.dump_area||'—'}</td></tr>
-        <tr><td>Дорога вымощена</td><td>${d12.dump_road?'Да':'Нет/нет данных'}</td></tr>
-        <tr><td>Примечания</td><td>${d12.dump_note||'—'}</td></tr>
+        <thead><tr><th colspan="2">${T.tbl_dumps_h}</th></tr></thead>
+        <tr class="highlight-row"><td>${T.tbl_dump_dist}</td><td>${d12v('dump_dist')||'—'}</td></tr>
+        <tr><td>${T.tbl_dump_area}</td><td>${d12v('dump_area')||'—'}</td></tr>
+        <tr><td>${T.tbl_dump_road}</td><td>${d12.dump_road?T.yes_val:T.no_nodata}</td></tr>
+        <tr><td>${T.tbl_dump_note}</td><td>${d12v('dump_note')||'—'}</td></tr>
       </table>
       <table class="detail-table">
-        <thead><tr><th colspan="2">Регламентация</th></tr></thead>
-        <tr class="highlight-row"><td>Вывоз нечистот регламентирован</td><td>
-          ${d12.waste_regulated?`✓ Регламентирован ${wdec.length>0?`· <a class="regulated-link" onclick="jumpToDecrees(${JSON.stringify(wdec)})">см. постановления (${wdec.length})</a>`:''}`:
+        <thead><tr><th colspan="2">${T.tbl_regulation_h}</th></tr></thead>
+        <tr class="highlight-row"><td>${T.tbl_waste_reg2}</td><td>
+          ${d12.waste_regulated?`✓ ${T.tbl_waste_reg2} ${wdec.length>0?`· <a class="regulated-link" onclick="jumpToDecrees(${JSON.stringify(wdec)})">${currentLang==='ru'?'см. постановления':'see decrees'} (${wdec.length})</a>`:''}`:
             d12.waste_regulated===false?'—':
-            'нет данных'}
+            T.no_data}
         </td></tr>
       </table>
     `;
@@ -3593,7 +3712,7 @@ function renderCityContent(cityId, tab) {
     const cityRefs = (window.CITY_REFS && window.CITY_REFS[city.name]) || [];
     const refsBlock = cityRefs.length ? `
       <div style="margin-top:18px;border-top:1px solid var(--border);padding-top:14px">
-        <div style="font-size:.68rem;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:8px;font-weight:600">Научные источники</div>
+        <div style="font-size:.68rem;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:8px;font-weight:600">${T.refs_academic}</div>
         ${cityRefs.map(r=>{
           const link = r.doi ? 'https://doi.org/'+r.doi : (r.url||'');
           const meta2 = [r.author, r.year, r.source_ru, r.pages].filter(Boolean).join(' · ');
@@ -3607,36 +3726,36 @@ function renderCityContent(cityId, tab) {
         }).join('')}
       </div>` : '';
     content.innerHTML=`
-      <h2 class="section-title">Городской водопровод</h2>
+      <h2 class="section-title">${T.ww_tab_h}</h2>
       ${ww?`
         <div class="data-grid">
           <div class="data-cell">
-            <div class="dc-label">Тип</div>
+            <div class="dc-label">${T.tbl_type}</div>
             <div class="dc-value" style="font-size:.8rem">${ww.name}</div>
           </div>
           <div class="data-cell">
-            <div class="dc-label">Год ввода</div>
+            <div class="dc-label">${T.tbl_year_built}</div>
             <div class="dc-value">${d12.waterworks_year||'—'}</div>
           </div>
         </div>
         <table class="detail-table">
-          <tr><td>Категория</td><td><span style="display:inline-block;padding:3px 10px;background:${ww.color};color:white;border-radius:10px;font-size:.72rem">${ww.name}</span></td></tr>
-          ${d12.waterworks_detail?`<tr><td>Устройство</td><td>${d12.waterworks_detail}</td></tr>`:''}
+          <tr><td>${T.tbl_category}</td><td><span style="display:inline-block;padding:3px 10px;background:${ww.color};color:white;border-radius:10px;font-size:.72rem">${ww.name}</span></td></tr>
+          ${d12.waterworks_detail?`<tr><td>${T.tbl_construction}</td><td>${d12.waterworks_detail}</td></tr>`:''}
         </table>
         ${refsBlock}
       `:`
         <div class="empty-state" style="padding:20px 30px">
-          <p style="font-size:.9rem;margin-bottom:6px">По данным обследования 1912 г. — городского водопровода нет.</p>
-          <p style="font-size:.8rem;color:var(--muted)">Если в городе действовал водопровод позже — сведения приведены ниже.</p>
+          <p style="font-size:.9rem;margin-bottom:6px">${T.ww_empty1}</p>
+          <p style="font-size:.8rem;color:var(--muted)">${T.ww_empty2}</p>
         </div>
         ${d12.waterworks_post_year?`
         <div style="margin-top:10px;background:#f0f7f0;border:1px solid #b7d9b7;border-radius:6px;padding:12px 14px">
-          <div style="font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:#2d6a4f;font-weight:600;margin-bottom:4px">Построен позже</div>
-          <div style="font-size:.92rem;font-weight:700;color:#1a3d2b">Водопровод — ${d12.waterworks_post_year} г.</div>
+          <div style="font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:#2d6a4f;font-weight:600;margin-bottom:4px">${T.ww_built_later}</div>
+          <div style="font-size:.92rem;font-weight:700;color:#1a3d2b">${currentLang==='ru'?`Водопровод — ${d12.waterworks_post_year} г.`:`Waterworks — ${d12.waterworks_post_year}`}</div>
           ${d12.waterworks_post_note_ru?`<div style="font-size:.8rem;color:#2d6a4f;margin-top:4px">${d12.waterworks_post_note_ru}</div>`:''}
         </div>`:''}
         ${d12.waterworks_detail?`<table class="detail-table" style="margin-top:12px">
-          <tr><td>Сведения 1912 г.</td><td>${d12.waterworks_detail}</td></tr>
+          <tr><td>${T.tbl_1912_info}</td><td>${d12.waterworks_detail}</td></tr>
         </table>`:''}
         ${refsBlock}
       `}
@@ -3646,12 +3765,13 @@ function renderCityContent(cityId, tab) {
     const cats=['all',...new Set(decrees.map(d=>d.macro_cat).filter(Boolean))];
     const filtered=activeDecreeFilter==='all'?decrees:decrees.filter(d=>d.macro_cat===activeDecreeFilter);
     content.innerHTML=`
-      <h2 class="section-title">Постановления городской думы</h2>
+      <h2 class="section-title">${T.decrees_h}</h2>
+      ${currentLang==='en'?'<p style="font-size:.75rem;color:var(--muted);font-style:italic;margin-bottom:8px">Decree texts are in the original Russian (primary historical sources).</p>':''}
       <div class="filter-chips" id="decree-chips">
-        ${cats.map(c=>`<button class="chip${c===activeDecreeFilter?' active':''}" onclick="setDecreeFilter('${c.replace(/'/g,"\'")}')">${c==='all'?`Все (${decrees.length})`:c}</button>`).join('')}
+        ${cats.map(c=>`<button class="chip${c===activeDecreeFilter?' active':''}" onclick="setDecreeFilter('${c.replace(/'/g,"\'")}')">${c==='all'?`${T.all_filter} (${decrees.length})`:c}</button>`).join('')}
       </div>
       <div id="decree-list">
-        ${filtered.length===0?'<div class="empty-state">Нет постановлений</div>':
+        ${filtered.length===0?`<div class="empty-state">${T.no_decrees}</div>`:
           filtered.map(d=>`<div class="decree-item">
             <div class="decree-cat" style="color:${CAT_COLORS[d.macro_cat]||'#8b3a1e'}">${d.macro_cat||''}</div>
             <div class="decree-text">${d.text.length>350?d.text.slice(0,350)+'…':d.text}</div>
@@ -3701,32 +3821,285 @@ function getCatBreakdown(decrees) {
 // ═══════════════════════ I18N ════════════════════════════════════════════════
 const I18N = {
   ru: {
+    // ── Header & nav ──
     title_h1: 'Новгородская <span class="amp">губерния</span>',
     title_sub: 'Санитарное состояние городов',
     breadcrumb_province: 'Новгородская губерния',
     tab_province: 'Губерния', tab_cities: 'Города', tab_search: 'Поиск',
     search_city: 'Найти город…', search_decrees: 'Поиск по постановлениям…',
     back_to_map: '← К карте губернии',
+    city_subheading: 'Новгородская губерния',
+    // ── City tabs ──
     city_tab_overview: 'Обзор', city_tab_water: 'Водоснабжение',
     city_tab_waste: 'Отходы', city_tab_ww: 'Водопровод',
     city_tab_decrees: 'Постановления',
+    // ── Map controls ──
+    layer_tiles: 'С подложкой', layer_blank: 'Без подложки',
+    // ── Province sidebar ──
+    prov_general_h: 'Общие сведения',
+    prov_area_lbl: 'Площадь',
+    prov_pop_lbl: 'Население (нач. 1911)',
+    prov_density_lbl: 'Жит. на 1 кв. вёрсту',
+    prov_uzd_lbl: 'Уездных городов',
+    prov_ww_lbl: 'Водопроводов',
+    prov_decrees_lbl: 'Постановлений в базе',
+    prov_cholera_h: 'Холера · смертность по губернии',
+    prov_cholera_note: 'Источник: карта из книги «История эпидемий в России». Губерния входила в нижнюю половину интенсивности заболеваемости во все три периода.',
+    prov_epi_h: 'Эпидемиологическая обстановка',
+    prov_epi_desc: 'Заболеваемость кишечными инфекциями и расходы на санитарные мероприятия в уездных городах губернии, 1902–1914 гг.',
+    btn_open_epi: 'Открыть раздел эпидемий',
+    // ── Epidemic panel ──
+    epi_panel_title: 'Эпидемиологическая обстановка · Новгородская губерния · 1902–1914',
+    btn_close_epi: '✕ Закрыть',
+    epi_insight: '<strong>Ключевой вывод исследования:</strong> финансирование санитарных мероприятий носило реактивный характер — расходы резко возрастали в годы холерных эпидемий (1909–1910) и сокращались вместе с ними. Средства направлялись преимущественно на борьбу с холерой, а не на профилактику и улучшение санитарного состояния населённых мест. Это подтверждается высокой положительной корреляцией между заболеваемостью холерой и противоэпидемическими расходами.',
+    epi_chart1_title: 'Заболеваемость на 10 000 жителей городов Новгородской губернии',
+    epi_legend_cholera: 'Холера',
+    epi_legend_typhoid: 'Брюшной тиф',
+    epi_legend_dysentery: 'Дизентерия',
+    epi_legend_anti_exp: 'Расходы противоэпид. (руб., /100)',
+    epi_chart2_title: 'Расходы на санитарные мероприятия в Новгородской губернии, 1902–1914 гг.',
+    epi_legend_epidemic: 'Расходы на борьбу с эпидемиями, руб.',
+    epi_legend_bureau: 'Расходы на санитарное бюро, руб.',
+    epi_legend_infra: 'Расходы на санитарное благоустройство населённых мест, руб.',
+    epi_chart3_title: 'Полная таблица данных',
+    epi_source_note: '13. Отчёты о состоянии народного здравия и организации врачебной помощи в России за 1902–1914 гг. (Медицинский департамент МВД). Расчёт заболеваемости на 10 000 чел. населения городов Новгородской губернии.<br>Агафонова, А. Б. Санитарное состояние и благоустройство городов Вологодской и Новгородской губернии в 1870–1914 гг. Дис. ... канд. ист. наук. 2019. — 364 с. (Графики в данном разделе впервые опубликованы в приложениях к диссертации.)',
+    // ── City overview tab ──
+    pop_unit: 'жителей',
+    no_data: 'нет данных',
+    area_lbl: 'Площадь города', area_year: '1912 г.',
+    decrees_count_lbl: 'Постановлений', decrees_count_sub: 'в базе данных',
+    ov_water_h: 'Водоснабжение (кратко)', ov_waste_h: 'Удаление отходов (кратко)',
+    tbl_water_src: 'Источник воды', tbl_quality: 'Качество',
+    tbl_waterworks: 'Городской водопровод',
+    tbl_cesspits: 'Тип приёмников', tbl_removal_org: 'Организация вывоза',
+    tbl_waste_reg: 'Вывоз регламентирован',
+    see_more: 'см. подробнее',
+    ov_decrees_h: 'Темы постановлений',
+    ov_general_h: 'Общее описание города (1895 г.)',
+    lbl_geography: '🗺 География', lbl_slaughter: '🥩 Бойни', lbl_cemeteries: '✝ Кладбища',
+    videos_h: '🎬 Видеоматериалы о Череповце',
+    videos_desc: 'Исследовательские видео по истории города (канал @ab_agafonova)',
+    vid1: 'История водоснабжения Череповца',
+    vid3: 'Промышленность доиндустриального Череповца',
+    vid4: 'Парки, люди, конфликты: история озеленения Череповца, 1870-е — 1930-е гг.',
+    videos_all: '→ Все видео проекта',
+    research_h: '📄 Исследования по данному городу',
+    sources_h: 'Источники:',
+    // ── Water tab ──
+    water_hist_h: 'Водоснабжение · история',
+    water_1912_h: 'Водоснабжение · 1912 г.',
+    no_detail_1912: 'Детальные данные за 1912 г. по этому городу в базе отсутствуют.',
+    src_1912_water: 'Источник: «Водоснабжение и способы удаления нечистот в городах России» (СПб.: МВД, 1912).',
+    tbl_water_hist: 'История водоснабжения',
+    tbl_water_sources: 'Источники водоснабжения (по данным 1912 г.)',
+    tbl_water_qual: 'Качество воды',
+    tbl_ww_h: 'Городской водопровод',
+    tbl_ww_status: 'Наличие',
+    tbl_ww_detail: 'Подробности устройства', tbl_filtration: 'Фильтрация',
+    tbl_basin: 'Запасный бассейн', tbl_meters: 'Водомеры',
+    meters_yes: 'Установлены', meters_no: 'Не установлены',
+    tbl_connections: 'Подключено усадеб', tbl_consumption: 'Потребление воды/год',
+    tbl_ownership: 'Собственник', tbl_cost: 'Стоимость сооружения',
+    tbl_expense: 'Расход по эксплуатации', tbl_income: 'Доход по эксплуатации',
+    tbl_carrier_h: 'Водовозный промысел', tbl_regulated: 'Регламентирован', ww_no: 'Нет',
+    // ── Waste tab ──
+    waste_hist_h: 'Удаление нечистот · история',
+    waste_1912_h: 'Удаление отходов и нечистот · 1912 г.',
+    src_1912_waste: 'Источник: «Водоснабжение и способы удаления нечистот в городах России» (СПб.: МВД, 1912).',
+    tbl_waste_hist: 'История удаления нечистот',
+    tbl_cesspits_h: 'Приёмники нечистот (по данным 1912 г.)',
+    tbl_cesspit_type: 'Тип выгребных ям',
+    tbl_removal_org_h: 'Организация вывоза', tbl_removal_struct: 'Структура вывоза',
+    tbl_private_removal: 'Частный вывоз',
+    yes_val: 'Да', no_nodata: 'Нет/нет данных',
+    tbl_volume: 'Объём вывоза/год', tbl_removal_cost: 'Расходы / доходы',
+    tbl_dumps_h: 'Места свалки',
+    tbl_dump_dist: 'Расстояние от города', tbl_dump_area: 'Площадь свалки',
+    tbl_dump_road: 'Дорога вымощена', tbl_dump_note: 'Примечания',
+    tbl_regulation_h: 'Регламентация', tbl_waste_reg2: 'Вывоз нечистот регламентирован',
+    // ── Waterworks tab ──
+    ww_tab_h: 'Городской водопровод',
+    tbl_type: 'Тип', tbl_year_built: 'Год ввода',
+    tbl_category: 'Категория', tbl_construction: 'Устройство',
+    ww_empty1: 'По данным обследования 1912 г. — городского водопровода нет.',
+    ww_empty2: 'Если в городе действовал водопровод позже — сведения приведены ниже.',
+    ww_built_later: 'Построен позже',
+    tbl_1912_info: 'Сведения 1912 г.', refs_academic: 'Научные источники',
+    // ── Decrees tab ──
+    decrees_h: 'Постановления городской думы',
+    all_filter: 'Все',
+    no_decrees: 'Нет постановлений',
+    // ── Empty states ──
+    empty_city: 'Данные по этому городу не найдены',
+    empty_no_data: 'Данных нет',
+    select_city_msg: 'Выберите город',
+    // ── Province values ──
+    prov_area_val: '104 163 кв. вёрст',
+    prov_pop_val: '1 642 200 чел.',
+    prov_ww_val: '2 (Новгород 1899, Ст. Русса 1909)',
+    prov_cholera_1892: '0,01–1 на 1000',
+    prov_cholera_1910: '<1 на 1000',
+    // ── Sources bibliography ──
+    sources_bib: '1. Водоснабжение и способы удаления нечистот в городах России. — СПб.: Тип. МВД, 1912. — 506 с.<br>2. Санитарное состояние городов Российской империи в 1895 г. — СПб.: Тип. МВД, 1899.<br>3. Города России. Т. 1: Города России в 1904 году. — СПб., 1906. — 907 с.<br>4. Города России. Т. 2: Города России в 1910 году. — СПб., 1914. — 1159 с.<br>5. Собрание обязательных постановлений Новгородской городской думы и губернского земского собрания. — Новгород: Тип. Новгородского губернского земства, 1885.',
+    // ── Footer ──
+    city_card: 'Карточка города', city_card_sub: 'MVP · Прототип',
+    footer_author: '© 2026 Анна Б. Агафонова',
+    footer_main2: 'Санитарное состояние городов · MVP · Прототип',
+    footer_source: 'Границы губерний: <a href="https://doi.org/10.34894/NQOASN" target="_blank" style="color:inherit">RISTAT GIS 1897</a> (Kessler &amp; Markevich) · <a href="https://www.openstreetmap.org/copyright" target="_blank" style="color:inherit">© OpenStreetMap</a> · <a href="https://carto.com/attributions" target="_blank" style="color:inherit">© CARTO</a>',
     footer_main: 'Санитарное состояние городов · MVP · Прототип',
     footer_db: 'База данных постановлений городских дум',
   },
   en: {
+    // ── Header & nav ──
     title_h1: 'Novgorod <span class="amp">Province</span>',
     title_sub: 'Sanitary conditions of cities',
     breadcrumb_province: 'Novgorod Province',
     tab_province: 'Province', tab_cities: 'Cities', tab_search: 'Search',
     search_city: 'Find city…', search_decrees: 'Search decrees…',
     back_to_map: '← Back to province map',
-    city_tab_overview: 'Overview', city_tab_water: 'Water supply 1912',
-    city_tab_waste: 'Waste 1912', city_tab_ww: 'Waterworks',
+    city_subheading: 'Novgorod Province',
+    // ── City tabs ──
+    city_tab_overview: 'Overview', city_tab_water: 'Water Supply',
+    city_tab_waste: 'Waste', city_tab_ww: 'Waterworks',
     city_tab_decrees: 'Decrees',
+    // ── Map controls ──
+    layer_tiles: 'With basemap', layer_blank: 'Without basemap',
+    // ── Province sidebar ──
+    prov_general_h: 'General Information',
+    prov_area_lbl: 'Area',
+    prov_pop_lbl: 'Population (early 1911)',
+    prov_density_lbl: 'Pop. per sq. verst',
+    prov_uzd_lbl: 'District towns',
+    prov_ww_lbl: 'Waterworks',
+    prov_decrees_lbl: 'Decrees in database',
+    prov_cholera_h: 'Cholera · mortality in province',
+    prov_cholera_note: 'Source: map from "History of Epidemics in Russia". The province was in the lower half of disease intensity in all three periods.',
+    prov_epi_h: 'Epidemiological situation',
+    prov_epi_desc: 'Intestinal infection rates and sanitary expenditure in district towns of the province, 1902–1914.',
+    btn_open_epi: 'Open epidemic section',
+    // ── Epidemic panel ──
+    epi_panel_title: 'Epidemiological situation · Novgorod Province · 1902–1914',
+    btn_close_epi: '✕ Close',
+    epi_insight: '<strong>Key research finding:</strong> sanitary expenditure was reactive in nature — spending rose sharply during cholera epidemics (1909–1910) and fell back with them. Funds were directed primarily at combating cholera rather than at prevention and improvement of sanitary conditions. This is confirmed by the strong positive correlation between cholera morbidity and anti-epidemic expenditure.',
+    epi_chart1_title: 'Morbidity per 10,000 residents of Novgorod Province towns',
+    epi_legend_cholera: 'Cholera',
+    epi_legend_typhoid: 'Typhoid fever',
+    epi_legend_dysentery: 'Dysentery',
+    epi_legend_anti_exp: 'Anti-epidemic expenditure (rub., /100)',
+    epi_chart2_title: 'Sanitary expenditure in Novgorod Province, 1902–1914',
+    epi_legend_epidemic: 'Epidemic control expenses, rub.',
+    epi_legend_bureau: 'Sanitary bureau expenses, rub.',
+    epi_legend_infra: 'Sanitary infrastructure expenses, rub.',
+    epi_chart3_title: 'Full data table',
+    epi_source_note: '13. Reports on public health and medical assistance in Russia, 1902–1914 (Medical Department of the Ministry of Internal Affairs). Morbidity calculated per 10,000 residents of Novgorod Province towns.<br>Agafonova, A. B. Sanitary conditions and urban improvement in Vologda and Novgorod provinces, 1870–1914. PhD dissertation. 2019. — 364 p. (Charts in this section first published in the dissertation appendices.)',
+    // ── City overview tab ──
+    pop_unit: 'residents',
+    no_data: 'no data',
+    area_lbl: 'City area', area_year: '1912',
+    decrees_count_lbl: 'Decrees', decrees_count_sub: 'in database',
+    ov_water_h: 'Water supply (brief)', ov_waste_h: 'Waste removal (brief)',
+    tbl_water_src: 'Water source', tbl_quality: 'Quality',
+    tbl_waterworks: 'Municipal waterworks',
+    tbl_cesspits: 'Cesspit type', tbl_removal_org: 'Removal organisation',
+    tbl_waste_reg: 'Removal regulated',
+    see_more: 'see details',
+    ov_decrees_h: 'Decree topics',
+    ov_general_h: 'General city description (1895)',
+    lbl_geography: '🗺 Geography', lbl_slaughter: '🥩 Slaughterhouses', lbl_cemeteries: '✝ Cemeteries',
+    videos_h: '🎬 Videos about Cherepovets',
+    videos_desc: 'Research videos on city history (channel @ab_agafonova)',
+    vid1: 'History of Water Supply in Cherepovets',
+    vid3: 'Industry of Pre-industrial Cherepovets',
+    vid4: 'Parks, People, Conflicts: History of Greening Cherepovets, 1870s–1930s',
+    videos_all: '→ All project videos',
+    research_h: '📄 Research on this city',
+    sources_h: 'Sources:',
+    // ── Water tab ──
+    water_hist_h: 'Water Supply · history',
+    water_1912_h: 'Water Supply · 1912',
+    no_detail_1912: 'Detailed 1912 data for this city not found in the database.',
+    src_1912_water: 'Source: "Water supply and waste removal in Russian towns" (St. Petersburg: Ministry of Internal Affairs, 1912).',
+    tbl_water_hist: 'Water supply history',
+    tbl_water_sources: 'Water sources (1912 data)',
+    tbl_water_qual: 'Water quality',
+    tbl_ww_h: 'Municipal waterworks',
+    tbl_ww_status: 'Status',
+    tbl_ww_detail: 'Construction details', tbl_filtration: 'Filtration',
+    tbl_basin: 'Reserve tank', tbl_meters: 'Water meters',
+    meters_yes: 'Installed', meters_no: 'Not installed',
+    tbl_connections: 'Connected properties', tbl_consumption: 'Water consumption/year',
+    tbl_ownership: 'Owner', tbl_cost: 'Construction cost',
+    tbl_expense: 'Operating expenses', tbl_income: 'Operating income',
+    tbl_carrier_h: 'Water-carrier trade', tbl_regulated: 'Regulated', ww_no: 'No',
+    // ── Waste tab ──
+    waste_hist_h: 'Waste Removal · history',
+    waste_1912_h: 'Waste and Sewage Removal · 1912',
+    src_1912_waste: 'Source: "Water supply and waste removal in Russian towns" (St. Petersburg: Ministry of Internal Affairs, 1912).',
+    tbl_waste_hist: 'Waste removal history',
+    tbl_cesspits_h: 'Cesspit types (1912 data)',
+    tbl_cesspit_type: 'Cesspit type',
+    tbl_removal_org_h: 'Removal organisation', tbl_removal_struct: 'Removal structure',
+    tbl_private_removal: 'Private removal',
+    yes_val: 'Yes', no_nodata: 'No / no data',
+    tbl_volume: 'Removal volume/year', tbl_removal_cost: 'Expenses / income',
+    tbl_dumps_h: 'Dump sites',
+    tbl_dump_dist: 'Distance from city', tbl_dump_area: 'Dump area',
+    tbl_dump_road: 'Road paved', tbl_dump_note: 'Notes',
+    tbl_regulation_h: 'Regulation', tbl_waste_reg2: 'Sewage removal regulated',
+    // ── Waterworks tab ──
+    ww_tab_h: 'Municipal Waterworks',
+    tbl_type: 'Type', tbl_year_built: 'Year built',
+    tbl_category: 'Category', tbl_construction: 'Construction',
+    ww_empty1: 'According to the 1912 survey — no municipal waterworks.',
+    ww_empty2: 'If a waterworks was built later, details are shown below.',
+    ww_built_later: 'Built later',
+    tbl_1912_info: '1912 data', refs_academic: 'Academic references',
+    // ── Decrees tab ──
+    decrees_h: 'Municipal Council Decrees',
+    all_filter: 'All',
+    no_decrees: 'No decrees',
+    // ── Empty states ──
+    empty_city: 'Data for this city not found',
+    empty_no_data: 'No data available',
+    select_city_msg: 'Select a city',
+    // ── Province values ──
+    prov_area_val: '104,163 sq. versts',
+    prov_pop_val: '1,642,200 residents',
+    prov_ww_val: '2 (Novgorod 1899, Staraya Russa 1909)',
+    prov_cholera_1892: '0.01–1 per 1,000',
+    prov_cholera_1910: '<1 per 1,000',
+    // ── Sources bibliography ──
+    sources_bib: '1. <em>Water supply and waste removal in Russian towns.</em> St. Petersburg: Ministry of Internal Affairs, 1912. — 506 p.<br>2. <em>Sanitary conditions of Russian Empire towns in 1895.</em> St. Petersburg: Ministry of Internal Affairs, 1899.<br>3. <em>Towns of Russia.</em> Vol. 1: Towns of Russia in 1904. St. Petersburg, 1906. — 907 p.<br>4. <em>Towns of Russia.</em> Vol. 2: Towns of Russia in 1910. St. Petersburg, 1914. — 1,159 p.<br>5. <em>Collection of mandatory decrees of the Novgorod city council and provincial zemstvo assembly.</em> Novgorod: Novgorod Provincial Zemstvo Press, 1885.',
+    // ── Footer ──
+    city_card: 'City card', city_card_sub: 'MVP · Prototype',
+    footer_author: '© 2026 Anna B. Agafonova',
+    footer_main2: 'Sanitary conditions of cities · MVP · Prototype',
+    footer_source: 'Province boundaries: <a href="https://doi.org/10.34894/NQOASN" target="_blank" style="color:inherit">RISTAT GIS 1897</a> (Kessler &amp; Markevich) · <a href="https://www.openstreetmap.org/copyright" target="_blank" style="color:inherit">© OpenStreetMap</a> · <a href="https://carto.com/attributions" target="_blank" style="color:inherit">© CARTO</a>',
     footer_main: 'Sanitary conditions · MVP · Prototype',
     footer_db: 'Municipal decree database',
   }
 };
+
+// English transliterations of city names (for city list + search + map labels)
+const CITY_NAMES_EN = {
+  'novgorod':          'Novgorod',
+  'staya_russa':       'Staraya Russa',
+  'borovichi':         'Borovichi',
+  'malaya_vishera':    'Malaya Vishera',
+  'cherepovets':       'Cherepovets',
+  'tikhvin':           'Tikhvin',
+  'ustyuzhna':         'Ustyuzhna',
+  'belozersk':         'Belozersk',
+  'kirillov':          'Kirillov',
+  'valdai':            'Valdai',
+  'kresttsy':          'Kresttsy',
+  'demyansk':          'Demyansk',
+  'opechensky_posad':  'Opechensky Posad',
+  'krokhino':          'Krokhino',
+};
+function cityDisplayName(city) {
+  return currentLang === 'en' ? (CITY_NAMES_EN[city.id] || city.name) : city.name;
+}
 let currentLang = 'ru';
 
 function setLang(lang) {
@@ -3735,6 +4108,11 @@ function setLang(lang) {
   // Toggle buttons
   document.querySelectorAll('.lang-toggle button').forEach(b => {
     b.classList.toggle('on', b.dataset.lang === lang);
+  });
+  // All data-i18n elements
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const k = el.dataset.i18n;
+    if(t[k] !== undefined) el.innerHTML = t[k];
   });
   // Header
   const h1 = document.getElementById('header-h1');
@@ -3756,15 +4134,39 @@ function setLang(lang) {
   if(si) si.placeholder = t.search_city;
   const gs = document.getElementById('global-search');
   if(gs) gs.placeholder = t.search_decrees;
-  // City tabs
-  const cityTabs = document.querySelectorAll('.city-tab');
-  const cityTabKeys = ['city_tab_overview','city_tab_water','city_tab_waste','city_tab_ww','city_tab_decrees'];
-  cityTabs.forEach((tab, i) => { if(cityTabKeys[i]) tab.textContent = t[cityTabKeys[i]]; });
-  // Back button in city sidebar
-  const backBtn = document.querySelector('.btn-back');
-  if(backBtn) backBtn.textContent = t.back_to_map;
-  // Re-render city list with lang
+  // Map layer buttons
+  const bt = document.getElementById('btn-tiles');
+  const bb = document.getElementById('btn-blank');
+  if(bt) bt.textContent = t.layer_tiles;
+  if(bb) bb.textContent = t.layer_blank;
+  // City tabs (by ID)
+  const tabIds = {overview:'city_tab_overview', water1912:'city_tab_water', waste1912:'city_tab_waste', waterworks:'city_tab_ww', decrees:'city_tab_decrees'};
+  Object.entries(tabIds).forEach(([id, key]) => {
+    const el = document.getElementById('ctab-' + (id==='water1912'?'water':id==='waste1912'?'waste':id==='waterworks'?'ww':id));
+    if(el) el.textContent = t[key];
+  });
+  // Header MVP text
+  const mvp = document.getElementById('header-mvp');
+  if(mvp) mvp.textContent = t.city_card_sub;
+  // Empty state in city content
+  const ces = document.getElementById('city-empty-state');
+  if(ces) ces.textContent = t.select_city_msg;
+  // Footer
+  const fa=document.getElementById('footer-author'); if(fa) fa.innerHTML=t.footer_author;
+  const fm=document.getElementById('footer-main'); if(fm) fm.textContent=t.footer_main2;
+  const fs=document.getElementById('footer-source'); if(fs) fs.innerHTML=t.footer_source;
+  // Re-render active content
+  updateMapLabels();
   if(!activeCityId) renderCityList();
+  if(activeCityId) {
+    const city=CITIES.find(c=>c.id===activeCityId);
+    if(city) {
+      document.getElementById('header-h1').innerHTML=cityDisplayName(city);
+      document.getElementById('city-sidebar-name').textContent=cityDisplayName(city);
+      document.getElementById('header-sub').textContent=t.city_card;
+    }
+  }
+  if(activeCityId && activeCityTab) renderCityContent(activeCityId, activeCityTab);
 }
 
 
@@ -3823,19 +4225,22 @@ function renderEpiPanel(){
 function renderFullEpiTable(){
   const cont = document.getElementById('full-epi-table-container');
   if(!cont || !EPIDEMIC_DATA) return;
+  const T=I18N[currentLang];
+  const isEn=currentLang==='en';
+  const cases_lbl=isEn?'Cases':'Случаев';
   let h = `<table class="full-epi-table">
     <thead><tr>
-      <th class="left">Год</th>
-      <th>Брюшной тиф<br><small>(на 10 000)</small></th>
-      <th>Случаев</th>
-      <th>Дизентерия<br><small>(на 10 000)</small></th>
-      <th>Случаев</th>
-      <th>Холера<br><small>(на 10 000)</small></th>
-      <th>Случаев</th>
-      <th>Население</th>
-      <th>Борьба с эпидемиями<br><small>(руб.)</small></th>
-      <th>Санит. бюро<br><small>(руб.)</small></th>
-      <th>Санит. благоустройство<br><small>(руб.)</small></th>
+      <th class="left">${isEn?'Year':'Год'}</th>
+      <th>${T.epi_legend_typhoid}<br><small>${isEn?'(per 10,000)':'(на 10 000)'}</small></th>
+      <th>${cases_lbl}</th>
+      <th>${T.epi_legend_dysentery}<br><small>${isEn?'(per 10,000)':'(на 10 000)'}</small></th>
+      <th>${cases_lbl}</th>
+      <th>${T.epi_legend_cholera}<br><small>${isEn?'(per 10,000)':'(на 10 000)'}</small></th>
+      <th>${cases_lbl}</th>
+      <th>${isEn?'Population':'Население'}</th>
+      <th>${T.epi_legend_epidemic}</th>
+      <th>${T.epi_legend_bureau}</th>
+      <th>${T.epi_legend_infra}</th>
     </tr></thead><tbody>`;
   for(const r of EPIDEMIC_DATA){
     const choleraCls = r.cholera_rate > 0 ? ' cholera-high' : '';
@@ -3973,18 +4378,21 @@ window.openCityPage = function(cityId) {
 <!-- ══ FOOTER ══════════════════════════════════════════════════════════════ -->
 <footer class="app-footer">
   <div class="ftr-corner-tl"></div><div class="ftr-corner-tr"></div>
-  <span class="footer-orn"><svg viewBox="0 0 92 14" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round">
-    <line x1="0" y1="7" x2="30" y2="7"/><circle cx="36" cy="7" r="3"/><line x1="42" y1="7" x2="50" y2="7"/>
-    <circle cx="46" cy="7" r="1" fill="currentColor"/><line x1="50" y1="7" x2="58" y2="7"/>
-    <circle cx="56" cy="7" r="3"/><line x1="62" y1="7" x2="92" y2="7"/>
+  <span class="footer-orn"><svg viewBox="0 0 90 14" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round">
+    <line x1="2" y1="7" x2="36" y2="7"/><line x1="54" y1="7" x2="88" y2="7"/>
+    <circle cx="45" cy="7" r="4"/><circle cx="45" cy="7" r="1.5" fill="currentColor"/>
+    <line x1="40" y1="2" x2="40" y2="12"/><line x1="50" y1="2" x2="50" y2="12"/>
   </svg></span>
-  <span>Новгородская губерния</span>
-  <span>·</span>
-  <span class="mono">1870–1917</span>
+  <em id="footer-author">© 2026 Анна Б. Агафонова</em>
   <span class="spacer"></span>
-  <em>Санитарное состояние городов · MVP · Прототип</em>
+  <span id="footer-main" class="mono" style="font-size:0.6rem;letter-spacing:0.08em;text-transform:uppercase">Санитарное состояние городов · MVP · Прототип</span>
   <span class="spacer"></span>
-  <span>База данных постановлений городских дум</span>
+  <span id="footer-source" style="font-size:0.58rem;color:var(--muted,#6F7D95)">Границы губерний: <a href="https://doi.org/10.34894/NQOASN" target="_blank" style="color:inherit">RISTAT GIS 1897</a> (Kessler &amp; Markevich) · <a href="https://www.openstreetmap.org/copyright" target="_blank" style="color:inherit">© OpenStreetMap</a> · <a href="https://carto.com/attributions" target="_blank" style="color:inherit">© CARTO</a></span>
+  <span class="footer-orn"><svg viewBox="0 0 90 14" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round">
+    <line x1="2" y1="7" x2="36" y2="7"/><line x1="54" y1="7" x2="88" y2="7"/>
+    <circle cx="45" cy="7" r="4"/><circle cx="45" cy="7" r="1.5" fill="currentColor"/>
+    <line x1="40" y1="2" x2="40" y2="12"/><line x1="50" y1="2" x2="50" y2="12"/>
+  </svg></span>
 </footer>
 
 </body>
