@@ -28,9 +28,6 @@
     </g>
   </svg>
 </template>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <style>
@@ -136,7 +133,7 @@
       radial-gradient(1200px 900px at 50% 110%, var(--page-ochre) 0%, rgba(232, 213, 168, 0) 55%),
       linear-gradient(180deg, var(--page-cream) 0%, var(--page-cream) 30%, rgba(232, 213, 168, 0.45) 70%, rgba(190, 213, 207, 0.35) 100%);
     color: var(--ink);
-    font-family: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-size: 15px;
     font-feature-settings: 'ss01', 'cv11';
     display: flex;
@@ -185,7 +182,7 @@
     .decor-left, .decor-right { display: none; }
   }
 
-  .mono { font-family: 'Inter', ui-monospace, 'SF Mono', 'Menlo', monospace; font-feature-settings: 'tnum'; letter-spacing: 0.02em; }
+  .mono { font-family: ui-monospace, 'SF Mono', 'Menlo', monospace; font-feature-settings: 'tnum'; letter-spacing: 0.02em; }
   .serif { font-family: Cambria, 'Palatino Linotype', Georgia, serif; }
 
   /* HEADER — DRAWING TITLE PLATE */
@@ -278,7 +275,7 @@
 
   .header-title .sub {
     margin-top: 6px;
-    font-family: 'Inter', sans-serif;
+    font-family: sans-serif;
     font-size: 0.64rem;
     font-weight: 500;
     letter-spacing: 0.22em;
@@ -320,7 +317,7 @@
     border: 1px solid var(--line-copper);
     border-radius: 999px;
     overflow: hidden;
-    font-family: 'Inter', sans-serif;
+    font-family: sans-serif;
     font-size: 0.66rem;
     font-weight: 600;
     letter-spacing: 0.14em;
@@ -359,7 +356,7 @@
 
   .header-back {
     display: inline-flex; align-items: center; gap: 6px;
-    font: 600 0.60rem/1 'Inter',sans-serif; letter-spacing: 0.10em; text-transform: uppercase;
+    font: 600 0.60rem/1 sans-serif; letter-spacing: 0.10em; text-transform: uppercase;
     color: var(--muted); text-decoration: none;
     border: 1px solid var(--line); border-radius: 3px; padding: 5px 10px;
     background: rgba(255,255,255,0.35); transition: all .18s; flex-shrink: 0;
@@ -443,7 +440,7 @@
     flex: 1;
     padding: 7px 10px;
     font-size: 0.68rem;
-    font-family: 'Inter', ui-monospace, monospace;
+    font-family: ui-monospace, monospace;
     letter-spacing: 0.12em;
     text-transform: uppercase;
     cursor: pointer;
@@ -489,7 +486,7 @@
     color: var(--ink);
   }
   .profile-count {
-    font-family: 'Inter', ui-monospace, monospace;
+    font-family: ui-monospace, monospace;
     font-size: 0.62rem; letter-spacing: 0.05em;
     color: var(--muted); margin-top: 2px;
   }
@@ -522,7 +519,7 @@
   }
   .city-info-content .city-gubern { font-style: italic; color: var(--muted); margin-bottom: 6px; font-size: 0.88rem; font-family: Cambria, 'Palatino Linotype', Georgia, serif; }
   .city-info-content .city-coords {
-    font-family: 'Inter', sans-serif;
+    font-family: sans-serif;
     font-size: 0.62rem; font-weight: 500; letter-spacing: 0.1em;
     color: var(--faint); margin-bottom: 10px;
     text-transform: uppercase;
@@ -588,7 +585,7 @@
     font-variant-numeric: oldstyle-nums;
   }
   .stat-label {
-    font-family: 'Inter', sans-serif;
+    font-family: sans-serif;
     font-size: 0.58rem; font-weight: 500;
     letter-spacing: 0.16em;
     text-transform: uppercase; color: var(--muted);
@@ -667,7 +664,7 @@
   #ranking-table {
     width: 100%; border-collapse: collapse;
     font-size: 0.7rem;
-    font-family: 'Inter', ui-monospace, monospace;
+    font-family: ui-monospace, monospace;
   }
   #ranking-table thead tr { background: rgba(46,79,107,0.08); color: var(--blue-deep); }
   .rank-th {
@@ -765,7 +762,7 @@
   #map { width: 100%; height: 100%; background: var(--map-bg); }
   .leaflet-container { background: var(--map-bg) !important; font-family: Cambria, 'Palatino Linotype', Georgia, serif !important; }
   .leaflet-control-attribution {
-    font-family: 'Inter', ui-monospace, monospace !important;
+    font-family: ui-monospace, monospace !important;
     font-size: 9px !important;
     background: rgba(247,251,253,0.78) !important;
     color: var(--muted) !important;
@@ -786,7 +783,7 @@
     background: rgba(247,251,253,0.78) !important;
     color: var(--ink-soft) !important;
     border-bottom: 1px solid var(--line) !important;
-    font-family: 'Inter', ui-monospace, monospace !important;
+    font-family: ui-monospace, monospace !important;
   }
   .leaflet-control-zoom a:hover { background: var(--copper) !important; color: #fff !important; }
   body.theme-dark .leaflet-control-zoom a { background: rgba(18,34,48,0.82) !important; color: var(--ink) !important; }
@@ -796,7 +793,7 @@
     flex-shrink: 0;
     padding: 8px 26px;
     display: flex; align-items: center; gap: 14px;
-    font-family: 'Inter', sans-serif;
+    font-family: sans-serif;
     font-size: 0.6rem; font-weight: 500;
     letter-spacing: 0.14em;
     color: var(--muted);
@@ -873,7 +870,7 @@
     border: 1px solid var(--line-strong);
     border-radius: 999px;
     overflow: hidden;
-    font-family: 'Inter', ui-monospace, monospace;
+    font-family: ui-monospace, monospace;
     font-size: 0.58rem; text-transform: uppercase; letter-spacing: 0.1em;
   }
   .tweak-seg button {
@@ -1413,7 +1410,7 @@
         <button id="chol-btn-cholera_1892" class="chol-btn" onclick="renderCholeraLayer('cholera_1892')" data-i18n="side.cholera_1892">1892 г.</button>
         <button id="chol-btn-cholera_1910" class="chol-btn" onclick="renderCholeraLayer('cholera_1910')" data-i18n="side.cholera_1910">1910 г.</button>
       </div>
-      <div style="font-family:'Inter',ui-monospace,monospace;font-size:0.58rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;" data-i18n="side.opacity">Прозрачность слоя</div>
+      <div style="font-family:ui-monospace,monospace;font-size:0.58rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;" data-i18n="side.opacity">Прозрачность слоя</div>
       <input type="range" min="10" max="90" value="65" oninput="setCholeraOpacity(this.value)">
       <div id="cholera-legend" style="margin-top:10px;"></div>
     </div>
@@ -3434,7 +3431,7 @@ document.addEventListener('keydown', e => {
 <!-- ── ATTRIBUTION WATERMARK (visible in screenshots) ── -->
 <div id="map-watermark" style="
   position:fixed; bottom:44px; left:50%; transform:translateX(-50%);
-  font:400 0.60rem/1 'Inter',sans-serif; letter-spacing:.04em;
+  font:400 0.60rem/1 sans-serif; letter-spacing:.04em;
   color:rgba(26,43,71,0.32); pointer-events:none; z-index:50;
   white-space:nowrap; user-select:none;">
   © A.B. Agafonova · urbantransmission.org · <span class="ru">Черновой вариант</span><span class="en" style="display:none">Draft version</span>
