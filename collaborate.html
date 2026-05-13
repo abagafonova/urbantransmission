@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Сотрудничество · Transmission</title>
+<meta name="description" content="Transmission — открытый исследовательский проект. Форматы сотрудничества, направления развития, контакт.">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="canonical" href="https://urbantransmission.org/collaborate.html">
+<meta property="og:url" content="https://urbantransmission.org/collaborate.html">
+<meta property="og:site_name" content="Transmission">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Сотрудничество · Transmission">
+<meta property="og:description" content="Transmission — открытый исследовательский проект об урбанизации и водоснабжении в Российской империи. Форматы сотрудничества и направления развития.">
+<meta property="og:image" content="https://urbantransmission.org/HEAD4.png">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:locale:alternate" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Сотрудничество · Transmission">
+<meta name="twitter:description" content="Transmission — открытый исследовательский проект об урбанизации и водоснабжении в Российской империи. Форматы сотрудничества и направления развития.">
+<meta name="twitter:image" content="https://urbantransmission.org/HEAD4.png">
+<link rel="alternate" hreflang="ru" href="https://urbantransmission.org/collaborate.html">
+<link rel="alternate" hreflang="en" href="https://urbantransmission.org/collaborate.html">
+<link rel="alternate" hreflang="x-default" href="https://urbantransmission.org/collaborate.html">
+
+<style>
+/* ── ROOT PALETTE (идентична about.html / videos.html) ── */
+:root {
+  --page-cream:  #F6EFDC;
+  --page-ochre:  #E8D5A8;
+  --page-turq:   #BED5CF;
+  --page-sky:    #D8E3E1;
+  --glass-tint:  rgba(250,244,228,0.72);
+  --glass-edge:  rgba(20,36,60,0.18);
+  --ink:         #1A2B47;
+  --ink-soft:    #2B4773;
+  --muted:       #6F7D95;
+  --faint:       #A6AEBC;
+  --copper:      #8B5E3C;
+  --turq:        #4F8781;
+  --blue-deep:   #1A2B47;
+  --line:        rgba(20,36,60,0.12);
+  --line-copper: rgba(139,94,60,0.30);
+  --ochre:       #C79243;
+  --serif:       Cambria, 'Palatino Linotype', Georgia, serif;
+  --sans:        system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --white-card:  rgba(250,246,238,0.92);
+  --border:      rgba(20,36,60,0.12);
+  --shadow:      rgba(26,43,71,0.08);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--page-cream);
+  background-image:
+    radial-gradient(1100px 700px at 8% 4%,  var(--page-sky)  0%, rgba(216,227,225,0) 55%),
+    radial-gradient(900px  600px at 95% 3%,  var(--page-turq) 0%, rgba(190,213,207,0) 60%),
+    radial-gradient(1200px 900px at 50% 110%,var(--page-ochre)0%, rgba(232,213,168,0) 55%),
+    linear-gradient(180deg, var(--page-cream) 0%, var(--page-cream) 30%,
+      rgba(232,213,168,0.45) 70%, rgba(190,213,207,0.35) 100%);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 16px;
+  min-height: 100vh;
+  display: flex; flex-direction: column;
+}
+
+/* ── HEADER ── */
+header {
+  position: sticky; top: 0; z-index: 10;
+  padding: 14px 28px;
+  background: var(--glass-tint);
+  backdrop-filter: blur(18px) saturate(1.2);
+  border-bottom: 1px solid var(--glass-edge);
+  box-shadow: 0 1px 0 rgba(255,255,255,0.55) inset, 0 4px 16px rgba(30,40,70,0.07);
+}
+.header-inner {
+  max-width: 1060px; margin: 0 auto;
+  display: flex; align-items: center; gap: 16px;
+}
+.header-title {
+  flex: 1; text-align: center;
+  font-family: var(--serif); font-weight: 500;
+  font-size: 1.05rem; letter-spacing: 0.05em; color: var(--ink);
+}
+.header-title span { font-weight: 400; color: var(--muted); font-size: 0.82rem; }
+.header-back {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 6px 13px; border-radius: 999px;
+  background: rgba(246,239,220,0.6); border: 1px solid var(--line-copper);
+  color: var(--ink-soft); font-size: 0.70rem; font-weight: 500; font-family: var(--sans);
+  letter-spacing: 0.04em; text-decoration: none; transition: all .18s; flex-shrink: 0;
+}
+.header-back:hover { background: var(--ink); color: var(--page-cream); border-color: var(--ink); }
+.header-back svg { width: 13px; height: 13px; }
+.lang-sw { display: flex; gap: 2px; flex-shrink: 0; }
+.lang-sw button {
+  background: rgba(246,239,220,0.6); border: 1px solid var(--line-copper);
+  color: var(--muted); font-family: var(--sans); font-size: 0.68rem; font-weight: 600;
+  padding: 5px 10px; border-radius: 20px; cursor: pointer; transition: all .15s;
+  letter-spacing: 0.04em; min-width: 44px; min-height: 32px;
+}
+.lang-sw button.on  { background: var(--ink); color: var(--page-cream); border-color: var(--ink); }
+.lang-sw button:not(.on):hover { border-color: var(--ink); color: var(--ink); }
+
+/* ── I18N ── */
+[data-en] .ru       { display: none; }
+[data-en] .en       { display: inline; }
+.en                 { display: none; }
+.ru                 { display: inline; }
+[data-en] .ru-block { display: none; }
+[data-en] .en-block { display: block; }
+.en-block           { display: none; }
+.ru-block           { display: block; }
+
+/* ── PAGE HERO ── */
+.page-hero {
+  padding: 52px 28px 44px;
+  border-bottom: 1px solid var(--line-copper);
+}
+.page-hero-inner {
+  max-width: 1060px; margin: 0 auto;
+}
+.page-label {
+  font: 400 0.62rem/1 var(--sans); letter-spacing: .18em; text-transform: uppercase;
+  color: var(--copper); margin-bottom: 10px;
+}
+.hero-title {
+  font-family: var(--serif); font-size: clamp(1.6rem, 4vw, 2.4rem);
+  font-weight: 600; color: var(--ink); line-height: 1.15; margin-bottom: 14px;
+}
+.hero-intro {
+  font-family: var(--serif); font-size: 1.02rem; color: var(--muted);
+  font-weight: 400; line-height: 1.80; max-width: 720px; margin-bottom: 36px;
+}
+
+/* ── STATS BAR ── */
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+@media (max-width: 680px) { .stats-row { grid-template-columns: repeat(2, 1fr); } }
+.stat-card {
+  background: var(--white-card);
+  border: 1px solid var(--line-copper);
+  border-radius: 10px;
+  padding: 16px 18px;
+}
+.stat-num {
+  font-family: var(--serif); font-size: 1.75rem; font-weight: 700;
+  color: var(--ink); line-height: 1; margin-bottom: 5px;
+}
+.stat-label {
+  font: 400 0.72rem/1.4 var(--sans);
+  color: var(--muted); letter-spacing: .01em;
+}
+
+/* ── SECTIONS ── */
+.section { padding: 52px 28px; }
+.section + .section { border-top: 1px solid var(--line); }
+.section-alt { background: rgba(232,213,168,0.15); }
+.section-inner { max-width: 1060px; margin: 0 auto; }
+.section-label {
+  font: 400 0.60rem/1 var(--sans); letter-spacing: .18em; text-transform: uppercase;
+  color: var(--copper); margin-bottom: 10px;
+}
+.section-title {
+  font-family: var(--serif); font-size: clamp(1.2rem, 2.5vw, 1.65rem);
+  font-weight: 600; color: var(--ink); margin-bottom: 28px;
+}
+
+/* ── OFFER GRID ── */
+.offer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+}
+.offer-card {
+  background: var(--white-card);
+  border: 1px solid var(--line-copper);
+  border-radius: 10px;
+  padding: 20px 22px;
+  display: flex; flex-direction: column; gap: 10px;
+  transition: box-shadow .2s;
+}
+.offer-card:hover { box-shadow: 0 4px 18px var(--shadow); }
+.offer-card-header { display: flex; align-items: flex-start; gap: 12px; }
+.offer-icon {
+  width: 36px; height: 36px; flex-shrink: 0;
+  border-radius: 7px; background: rgba(43,71,115,0.09);
+  display: flex; align-items: center; justify-content: center;
+}
+.offer-icon svg { width: 18px; height: 18px; stroke: var(--ink-soft); fill: none; stroke-width: 1.5; stroke-linecap: round; }
+.offer-type {
+  font: 400 0.60rem/1 var(--sans); letter-spacing: .12em; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 3px;
+}
+.offer-name {
+  font-family: var(--serif); font-size: 0.95rem; font-weight: 600;
+  color: var(--ink); line-height: 1.25;
+}
+.offer-desc {
+  font-family: var(--serif); font-size: 0.90rem; color: var(--ink); line-height: 1.70;
+}
+.offer-stats {
+  display: flex; gap: 14px; flex-wrap: wrap;
+  padding-top: 8px; border-top: 1px solid var(--line);
+}
+.offer-stat { font-size: 0.84rem; color: var(--muted); }
+.offer-stat strong { color: var(--ink); font-weight: 600; }
+.offer-stat a { color: var(--turq); font-weight: 600; text-decoration: none; }
+.offer-stat a:hover { color: var(--ink); }
+
+/* ── FORMAT LIST ── */
+.format-list { display: flex; flex-direction: column; gap: 16px; }
+.format-item {
+  background: var(--white-card);
+  border: 1px solid var(--line-copper);
+  border-radius: 10px;
+  padding: 22px 24px;
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  gap: 0 18px;
+  align-items: start;
+  transition: box-shadow .2s, border-color .2s;
+}
+.format-item:hover { box-shadow: 0 4px 18px var(--shadow); border-color: rgba(139,94,60,0.45); }
+.format-num {
+  font-family: var(--serif); font-size: 1.4rem; font-weight: 700;
+  color: var(--copper); padding-top: 2px;
+}
+.format-title {
+  font-family: var(--serif); font-size: 1.0rem; font-weight: 600;
+  color: var(--ink); margin-bottom: 8px; line-height: 1.3;
+}
+.format-body {
+  font-family: var(--serif); font-size: 0.90rem; color: var(--ink);
+  line-height: 1.72;
+}
+.format-body p + p { margin-top: 8px; }
+.tag-row { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 12px; }
+.tag {
+  font: 500 0.66rem/1 var(--sans); letter-spacing: .04em;
+  color: var(--ink-soft); background: rgba(43,71,115,0.08);
+  border: 1px solid rgba(43,71,115,0.15); border-radius: 20px; padding: 3px 10px;
+}
+
+/* ── DIRECTIONS GRID (бывший Funding) ── */
+.dir-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+}
+.dir-card {
+  background: var(--white-card);
+  border: 1px solid var(--line-copper);
+  border-radius: 10px;
+  padding: 20px 22px;
+  transition: box-shadow .2s, border-color .2s;
+}
+.dir-card:hover { box-shadow: 0 4px 18px var(--shadow); border-color: rgba(139,94,60,0.45); }
+.dir-card-label {
+  font: 400 0.60rem/1 var(--sans); letter-spacing: .14em; text-transform: uppercase;
+  color: var(--copper); margin-bottom: 10px;
+}
+.dir-card-title {
+  font-family: var(--serif); font-size: 0.96rem; font-weight: 600;
+  color: var(--ink); margin-bottom: 8px; line-height: 1.3;
+}
+.dir-card-body {
+  font-family: var(--serif); font-size: 0.88rem; color: var(--ink); line-height: 1.68;
+}
+
+/* ── CONTACT SECTION ── */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 44px; align-items: start;
+}
+@media (max-width: 760px) { .contact-grid { grid-template-columns: 1fr; } }
+
+.bio-text {
+  font-family: var(--serif); font-size: 1.0rem; color: var(--ink);
+  line-height: 1.88; font-weight: 400;
+}
+.bio-text p + p { margin-top: 15px; }
+
+.contact-card {
+  background: var(--ink); border-radius: 10px;
+  padding: 20px 22px; color: rgba(246,239,220,0.9);
+}
+.contact-card-title {
+  font: 600 0.62rem/1 var(--sans); letter-spacing: .14em; text-transform: uppercase;
+  color: rgba(246,239,220,0.5); margin-bottom: 10px;
+}
+.contact-email {
+  font-family: var(--serif); font-size: 0.88rem;
+  color: rgba(246,239,220,0.85); text-decoration: none; display: block; margin-bottom: 10px;
+}
+.contact-email:hover { color: var(--page-cream); }
+.contact-note {
+  font-family: var(--serif); font-size: 0.78rem;
+  color: rgba(246,239,220,0.50); line-height: 1.65; margin-bottom: 12px;
+}
+.contact-subject {
+  padding: 10px 13px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 6px;
+  font-family: var(--serif); font-size: 0.78rem;
+  color: rgba(246,239,220,0.55); font-style: italic; line-height: 1.55;
+}
+
+.bio-links { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 20px; }
+.bio-link {
+  display: inline-flex; align-items: center; gap: 7px;
+  font: 400 0.82rem/1 var(--sans); color: var(--ink);
+  text-decoration: none; padding: 9px 16px; border-radius: 7px;
+  border: 1px solid var(--line-copper);
+  background: rgba(246,239,220,0.5);
+  transition: background .18s, color .18s;
+}
+.bio-link:hover { background: var(--ink); color: var(--page-cream); border-color: var(--ink); }
+.bio-link svg { width: 13px; height: 13px; stroke: currentColor; fill: none; stroke-width: 1.8; stroke-linecap: round; }
+
+/* ── CITATION BLOCK ── */
+.cite-block {
+  background: var(--white-card);
+  border: 1px solid var(--line-copper);
+  border-left: 3px solid var(--copper);
+  border-radius: 0 8px 8px 0;
+  padding: 16px 20px;
+  margin-top: 24px;
+}
+.cite-label {
+  font: 600 0.60rem/1 var(--sans); letter-spacing: .14em; text-transform: uppercase;
+  color: var(--copper); margin-bottom: 8px;
+}
+.cite-text {
+  font-family: var(--serif); font-size: 0.86rem; color: var(--ink);
+  line-height: 1.65; font-style: italic;
+}
+.cite-text a { color: var(--turq); text-decoration: none; }
+.cite-text a:hover { color: var(--ink); text-decoration: underline; }
+
+/* ── FOOTER ── */
+.tx-footer {
+  background: var(--blue-deep); color: rgba(255,255,255,.38);
+  padding: 28px 32px; border-top: 2px solid var(--turq);
+  font: 300 0.78rem/1.7 var(--serif);
+  margin-top: auto;
+}
+.tx-footer-inner {
+  max-width: 1060px; margin: 0 auto;
+  display: flex; flex-wrap: wrap; gap: 10px 24px;
+  justify-content: space-between; align-items: center;
+}
+.tx-footer strong { color: rgba(255,255,255,.72); }
+.tx-footer a { color: rgba(255,255,255,.45); text-decoration: none; }
+.tx-footer a:hover { color: #fff; }
+.tx-footer-nav { display: flex; gap: 16px; flex-wrap: wrap; }
+
+/* ── MEDIA ── */
+@media (max-width: 600px) {
+  .section        { padding: 40px 18px; }
+  .page-hero      { padding: 36px 18px; }
+  .format-item    { grid-template-columns: 1fr; gap: 4px; }
+  .format-num     { font-size: 1rem; }
+  .header-inner   { gap: 10px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ── HEADER ── -->
+<header>
+  <div class="header-inner">
+    <a href="/" class="header-back" aria-label="На главную / Home">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10 12L6 8l4-4"/></svg>
+      <span class="ru">Главная</span><span class="en">Home</span>
+    </a>
+    <div class="header-title">
+      Transmission <span>· <span class="ru">Сотрудничество</span><span class="en">Collaborate</span></span>
+    </div>
+    <div class="lang-sw" role="group" aria-label="Language / Язык">
+      <button data-lang="ru" class="on" onclick="setLang('ru')" aria-label="Переключить на русский язык">РУ</button>
+      <button data-lang="en" onclick="setLang('en')" aria-label="Switch to English">EN</button>
+    </div>
+  </div>
+</header>
+
+<!-- ── PAGE HERO ── -->
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <p class="page-label">Transmission · <span class="ru">Открытый исследовательский проект</span><span class="en">Open research project</span></p>
+    <h1 class="hero-title">
+      <span class="ru">Сотрудничество и развитие</span>
+      <span class="en">Collaboration &amp; development</span>
+    </h1>
+    <p class="hero-intro">
+      <span class="ru"><em>Transmission</em> — независимый цифровой исследовательский проект об урбанизации, санитарной реформе и водоснабжении в Российской империи (1870–1914), построенный на оригинальных базах данных и исторических ГИС. Открыта к сотрудничеству, заказным проектам и совместным грантовым заявкам.</span>
+      <span class="en"><em>Transmission</em> is an independent digital research project on urban infrastructure, sanitation, and public health in the Russian Empire (1870–1914), built on original datasets and historical GIS. Open to collaboration, commissioned work, and joint grant applications.</span>
+    </p>
+
+    <!-- Stats -->
+    <div class="stats-row">
+      <div class="stat-card">
+        <div class="stat-num">950</div>
+        <div class="stat-label"><span class="ru">городов в базе данных</span><span class="en">cities in the database</span></div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">187</div>
+        <div class="stat-label"><span class="ru">городов с водопроводом</span><span class="en">cities with waterworks</span></div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">7</div>
+        <div class="stat-label"><span class="ru">инфраструктурных профилей</span><span class="en">infrastructure profiles</span></div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">75</div>
+        <div class="stat-label"><span class="ru">переменных на город</span><span class="en">variables per city</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════ WHAT THE PROJECT OFFERS ═══ -->
+<div class="section" id="offers">
+  <div class="section-inner">
+    <p class="section-label"><span class="ru">Ресурсы проекта</span><span class="en">Project resources</span></p>
+    <h2 class="section-title"><span class="ru">Что предлагает Transmission</span><span class="en">What this project offers</span></h2>
+
+    <div class="offer-grid">
+
+      <div class="offer-card">
+        <div class="offer-card-header">
+          <div class="offer-icon">
+            <svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v5c0 1.7 4 3 9 3s9-1.3 9-3V5"/><path d="M3 10v5c0 1.7 4 3 9 3s9-1.3 9-3v-5"/><path d="M3 15v4c0 1.7 4 3 9 3s9-1.3 9-3v-4"/></svg>
+          </div>
+          <div>
+            <div class="offer-type"><span class="ru">База данных</span><span class="en">Dataset</span></div>
+            <div class="offer-name">CitiesRussianEmpire</div>
+          </div>
+        </div>
+        <p class="offer-desc">
+          <span class="ru">950 городов Российской империи, 75 переменных на трёх временны́х срезах (1894, 1904, 1910 гг.): финансы, инфраструктура, демография. Производные базы — данные о холерных эпидемиях, городском санитарном состоянии и благоустройстве по 50 губерниям.</span>
+          <span class="en">950 cities of the Russian Empire, 75 variables across three benchmark years (1894, 1904, 1910): finance, infrastructure, demography. Derived datasets on cholera epidemics and urban sanitation across 50 provinces.</span>
+        </p>
+        <div class="offer-stats">
+          <span class="offer-stat"><strong>v 1.0</strong> · 2026</span>
+          <span class="offer-stat"><a href="https://doi.org/10.5281/zenodo.20005304" target="_blank" rel="noopener">Zenodo ↗</a></span>
+          <span class="offer-stat">CC BY 4.0</span>
+        </div>
+      </div>
+
+      <div class="offer-card">
+        <div class="offer-card-header">
+          <div class="offer-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a13 13 0 0 1 0 18M12 3a13 13 0 0 0 0 18"/></svg>
+          </div>
+          <div>
+            <div class="offer-type"><span class="ru">Исторические ГИС</span><span class="en">Historical GIS</span></div>
+            <div class="offer-name"><span class="ru">Карта водопроводов империи</span><span class="en">Empire waterworks map</span></div>
+          </div>
+        </div>
+        <p class="offer-desc">
+          <span class="ru">Интерактивная карта централизованного водоснабжения в Российской империи: 187 городов, 7 инфраструктурных профилей (муниципальный, частный, смешанный и др.), слой холерной смертности.</span>
+          <span class="en">Interactive map of centralised water supply across the Russian Empire: 187 cities, 7 infrastructure profiles (municipal, private, mixed, etc.), cholera mortality overlay.</span>
+        </p>
+        <div class="offer-stats">
+          <span class="offer-stat"><strong>187</strong> <span class="ru">городов</span><span class="en">cities</span></span>
+          <span class="offer-stat"><strong>7</strong> <span class="ru">профилей</span><span class="en">profiles</span></span>
+        </div>
+      </div>
+
+      <div class="offer-card">
+        <div class="offer-card-header">
+          <div class="offer-icon">
+            <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <div>
+            <div class="offer-type"><span class="ru">Региональный кейс · MVP</span><span class="en">Regional case study · MVP</span></div>
+            <div class="offer-name"><span class="ru">Новгородская губерния</span><span class="en">Novgorod Province</span></div>
+          </div>
+        </div>
+        <p class="offer-desc">
+          <span class="ru">Прототип регионального дашборда: санитарное состояние городов Новгородской губернии в контексте всей Российской империи. Данные городских дум, холерные эпидемии, санитарные расходы, уровень смертности — интерактивные вкладки «Обзор», «Губерния», «Город».</span>
+          <span class="en">Prototype regional dashboard: sanitary conditions in Novgorod Province cities in the context of the Russian Empire as a whole. City council data, cholera epidemics, sanitary expenditures, mortality rates — interactive tabs "Overview", "Province", "City".</span>
+        </p>
+        <div class="offer-stats">
+          <a class="offer-stat" href="empire/RussianEmpire.html" target="_blank" rel="noopener">
+            <span class="ru">Открыть MVP ↗</span><span class="en">Open MVP ↗</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="offer-card">
+        <div class="offer-card-header">
+          <div class="offer-icon">
+            <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          </div>
+          <div>
+            <div class="offer-type"><span class="ru">Документация</span><span class="en">Documentation</span></div>
+            <div class="offer-name"><span class="ru">Методология и источники</span><span class="en">Methodology &amp; sources</span></div>
+          </div>
+        </div>
+        <p class="offer-desc">
+          <span class="ru">Прозрачные методологические примечания, обсуждение источников и ограничений для каждого набора данных. Рецензируемые публикации и материалы конференций на основе этих материалов.</span>
+          <span class="en">Transparent methodological notes, source discussion, and limitations for each dataset and map. Peer-reviewed publications and conference presentations grounded in these materials.</span>
+        </p>
+      </div>
+
+      <div class="offer-card">
+        <div class="offer-card-header">
+          <div class="offer-icon">
+            <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <div>
+            <div class="offer-type"><span class="ru">Анализ</span><span class="en">Analysis</span></div>
+            <div class="offer-name"><span class="ru">Количественные методы</span><span class="en">Quantitative methods</span></div>
+          </div>
+        </div>
+        <p class="offer-desc">
+          <span class="ru">Бинарная логистическая регрессия на трёх срезах (1894, 1904, 1910): городской доход — единственный значимый предиктор наличия водопровода (Exp(B) = 2,9–3,4; p &lt; 0,001; AUC = 0,85–0,88).</span>
+          <span class="en">Binary logistic regression across three time slices (1894, 1904, 1910): municipal income is the sole significant predictor of waterworks presence (Exp(B) = 2.9–3.4; p &lt; 0.001; AUC = 0.85–0.88).</span>
+        </p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════ COLLABORATION FORMATS ═══ -->
+<div class="section section-alt" id="formats">
+  <div class="section-inner">
+    <p class="section-label"><span class="ru">Форматы работы</span><span class="en">How we can work together</span></p>
+    <h2 class="section-title"><span class="ru">Форматы сотрудничества</span><span class="en">Collaboration formats</span></h2>
+
+    <div class="format-list">
+
+      <!-- 1 -->
+      <div class="format-item">
+        <div class="format-num">1</div>
+        <div>
+          <div class="format-title"><span class="ru">Научное сотрудничество</span><span class="en">Research collaboration</span></div>
+          <div class="format-body">
+            <p>
+              <span class="ru">Совместные статьи и главы в коллективных монографиях по темам: экологическая история городов, водоснабжение и санитарная реформа, энергетические переходы и гидроэнергетика, городская эпидемиология (холера, общественное здравоохранение).</span>
+              <span class="en">Co-authored articles and book chapters on: environmental history of cities, water supply and sanitary reform, energy transitions and hydropower, urban epidemiology (cholera, public health).</span>
+            </p>
+            <p>
+              <span class="ru">Совместные проекты в области Digital Humanities — исторические ГИС, интерактивные карты, базы данных — с использованием Transmission как основы или модели.</span>
+              <span class="en">Joint Digital Humanities projects — historical GIS, interactive maps, databases — using Transmission as a foundation or model.</span>
+            </p>
+          </div>
+          <div class="tag-row">
+            <span class="tag">Urban history</span>
+            <span class="tag">Environmental history</span>
+            <span class="tag">Digital Humanities</span>
+            <span class="tag">Russian Empire</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2 -->
+      <div class="format-item">
+        <div class="format-num">2</div>
+        <div>
+          <div class="format-title"><span class="ru">Заказные ГИС и цифровые проекты</span><span class="en">Custom historical GIS &amp; digital projects</span></div>
+          <div class="format-body">
+            <p>
+              <span class="ru">Проектирование и реализация цифровых проектов малого и среднего масштаба, сочетающих историческое исследование, анализ данных и веб-презентацию: интерактивные карты конкретного региона или типа инфраструктуры; тематические дашборды; очистка и структурирование исторической статистики и архивных материалов.</span>
+              <span class="en">Design and implementation of small to medium digital projects combining historical research, data analysis, and web presentation: interactive maps of a specific region or infrastructure type; thematic dashboards; data cleaning and structuring for historical statistics and archival materials.</span>
+            </p>
+            <p>
+              <span class="ru">Стек: SPSS, базовый Python, Leaflet.js, HTML/CSS/JS.</span>
+              <span class="en">Stack: SPSS, basic Python, Leaflet.js, HTML/CSS/JS.</span>
+            </p>
+          </div>
+          <div class="tag-row">
+            <span class="tag"><span class="ru">Университеты</span><span class="en">Universities</span></span>
+            <span class="tag"><span class="ru">Музеи и архивы</span><span class="en">Museums &amp; archives</span></span>
+            <span class="tag"><span class="ru">НКО</span><span class="en">NGOs</span></span>
+            <span class="tag">SPSS · Python · Leaflet.js</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3 -->
+      <div class="format-item">
+        <div class="format-num">3</div>
+        <div>
+          <div class="format-title"><span class="ru">Преподавание и обучение</span><span class="en">Teaching &amp; training</span></div>
+          <div class="format-body">
+            <p>
+              <span class="ru">Гостевые лекции, семинары и короткие курсы по темам: экологическая история русских и советских городов; история городской инфраструктуры и общественного здравоохранения; методы количественной истории и исторических ГИС; проектирование цифровых исследовательских ресурсов для историков.</span>
+              <span class="en">Guest lectures, workshops, and short courses on: environmental history of Russian and Soviet cities; history of urban infrastructures and public health; methods of quantitative history and historical GIS; designing digital research resources for historians.</span>
+            </p>
+            <p>
+              <span class="ru">Форматы: онлайн или очно, на русском или английском языке.</span>
+              <span class="en">Formats: online or in person (where feasible), in Russian or English.</span>
+            </p>
+          </div>
+          <div class="tag-row">
+            <span class="tag"><span class="ru">Онлайн / очно</span><span class="en">Online / in person</span></span>
+            <span class="tag">RU / EN</span>
+            </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════ DIRECTIONS ═══ -->
+<div class="section" id="directions">
+  <div class="section-inner">
+    <p class="section-label"><span class="ru">Перспективы</span><span class="en">Looking ahead</span></p>
+    <h2 class="section-title"><span class="ru">Направления развития проекта</span><span class="en">Directions for project development</span></h2>
+
+    <div class="dir-grid">
+
+      <div class="dir-card">
+        <p class="dir-card-label"><span class="ru">Расширение данных</span><span class="en">Data expansion</span></p>
+        <div class="dir-card-title"><span class="ru">Городское благоустройство — вся Империя</span><span class="en">Urban beautification — empire-wide</span></div>
+        <p class="dir-card-body">
+          <span class="ru">Расширение базы данных о городском благоустройстве 1910 г. (сейчас — 50 губерний) до охвата всей территории Российской империи.</span>
+          <span class="en">Expanding the 1910 urban beautification database (currently 50 provinces) to cover the entire Russian Empire.</span>
+        </p>
+      </div>
+
+      <div class="dir-card">
+        <p class="dir-card-label"><span class="ru">Оцифровка источников</span><span class="en">Source digitisation</span></p>
+        <div class="dir-card-title"><span class="ru">Санитарные отчёты — систематическая оцифровка</span><span class="en">Systematic digitisation of sanitary reports</span></div>
+        <p class="dir-card-body">
+          <span class="ru">Систематическая оцифровка губернских санитарных отчётов конца XIX — начала XX в. и интеграция данных в платформу Transmission.</span>
+          <span class="en">Systematic digitisation of provincial sanitary reports (late 19th — early 20th c.) and integration into the Transmission platform.</span>
+        </p>
+      </div>
+
+      <div class="dir-card">
+        <p class="dir-card-label"><span class="ru">Открытая база данных</span><span class="en">Open database</span></p>
+        <div class="dir-card-title"><span class="ru">Полная задокументированная база городских инфраструктур</span><span class="en">Full documented urban infrastructure database</span></div>
+        <p class="dir-card-body">
+          <span class="ru">Создание полностью задокументированной, открыто доступной базы данных городских инфраструктур (водопровод, канализация, электричество, транспорт) с API и документацией.</span>
+          <span class="en">Building a fully documented, openly accessible database of urban infrastructures (water, sewerage, electricity, transport) with APIs and documentation.</span>
+        </p>
+      </div>
+
+      <div class="dir-card">
+        <p class="dir-card-label"><span class="ru">Адресная поддержка</span><span class="en">Targeted support</span></p>
+        <div class="dir-card-title"><span class="ru">Финансирование отдельных модулей</span><span class="en">Funding specific modules</span></div>
+        <p class="dir-card-body">
+          <span class="ru">Поддержка конкретных задач: региональный дашборд, новая карта, ввод данных по отдельным губерниям, перевод, техническое обслуживание и хостинг.</span>
+          <span class="en">Supporting specific deliverables: a regional dashboard, a new map, data entry for selected provinces, translation, long-term hosting, and technical maintenance.</span>
+        </p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════ ABOUT + CONTACT ═══ -->
+<div class="section section-alt" id="contact">
+  <div class="section-inner">
+    <p class="section-label"><span class="ru">Об исследователе и контакт</span><span class="en">About the researcher &amp; contact</span></p>
+    <h2 class="section-title"><span class="ru">Связаться</span><span class="en">Get in touch</span></h2>
+
+    <div class="contact-grid">
+      <div>
+        <div class="bio-text">
+          <div class="ru-block">
+            <p>Анна Борисовна Агафонова — кандидат исторических наук (эквивалент PhD, по первому образованию инженер-эколог). Специализация: история городской инфраструктуры, водоснабжение и санитарные реформы, история гидроэнергетики, энергетические переходы в Российской империи и раннем СССР.</p>
+            <p>Руководитель грантов РНФ (2022–2023) и РФФИ (2020). Публикации в журналах, индексируемых Scopus и Web of Science. Доклады на международных конференциях, в том числе ESEH, ICOHTEC, EAUH. Индекс Хирша по РИНЦ — 5, 116 цитирований.</p>
+            <p>В проекте <em>Transmission</em> исторический анализ, количественные методы (SPSS, базовый Python) и самостоятельная веб-реализация соединяются в воспроизводимый, прозрачный и открытый исследовательский ресурс.</p>
+          </div>
+          <div class="en-block">
+            <p>Anna B. Agafonova holds a Candidate of Sciences degree in History (PhD equivalent; her first degree is in environmental engineering). Her work focuses on urban infrastructure, water supply and sanitary reform, hydropower, and energy transitions in the Russian Empire and early USSR.</p>
+            <p>She has led nationally funded projects as Principal Investigator (RSF 2022–2023, RFBR 2020), published in Scopus- and WoS-indexed journals, and presented at international conferences, including ESEH, ICOHTEC, EAUH. РИНЦ h-index: 5, 116 citations.</p>
+            <p>In <em>Transmission</em>, domain expertise, data analysis skills (SPSS, basic Python), and hands-on web implementation come together to create a reproducible, transparent, and accessible research resource.</p>
+          </div>
+        </div>
+
+        <div class="bio-links">
+          <a href="about.html" class="bio-link">
+            <svg viewBox="0 0 16 16"><circle cx="8" cy="6" r="3"/><path d="M2.5 14c0-3 2.5-5 5.5-5s5.5 2 5.5 5"/></svg>
+            <span class="ru">Полная биография →</span><span class="en">Full biography →</span>
+          </a>
+          <a href="https://orcid.org/0000-0003-3021-4002" target="_blank" rel="noopener" class="bio-link">
+            ORCID ↗
+          </a>
+        </div>
+
+        <!-- Citation -->
+        <div class="cite-block">
+          <div class="cite-label"><span class="ru">Как сослаться на базу данных</span><span class="en">How to cite the dataset</span></div>
+          <p class="cite-text">
+            Agafonova, A. B. (2026). Municipal Finance and Water Supply Infrastructure in Cities of the Russian Empire, 1894–1910 [Dataset]. Version 1.0. Zenodo.
+            <a href="https://doi.org/10.5281/zenodo.20005304" target="_blank" rel="noopener">https://doi.org/10.5281/zenodo.20005304</a>
+          </p>
+        </div>
+      </div>
+
+      <div class="contact-card">
+        <p class="contact-card-title"><span class="ru">Написать</span><span class="en">Write to me</span></p>
+        <a class="contact-email" href="mailto:a.b.agafonova@gmail.com">a.b.agafonova@gmail.com</a>
+        <p class="contact-note">
+          <span class="ru">По вопросам научного сотрудничества, совместных заявок на гранты или поддержки отдельных модулей проекта укажите в теме письма:</span>
+          <span class="en">For research collaboration, joint grant applications, or support of specific project modules, please include in the subject line:</span>
+        </p>
+        <div class="contact-subject">
+          <span class="ru">«Transmission – сотрудничество» или «Transmission – финансирование»</span>
+          <span class="en">"Transmission – collaboration" or "Transmission – funding"</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════ FOOTER ═══ -->
+<footer class="tx-footer">
+  <div class="tx-footer-inner">
+    <div>
+      <strong>Transmission</strong> ·
+      <span class="ru">Urban Infrastructures of the Russian Empire, 1870–1914</span>
+      <span class="en">Urban Infrastructures of the Russian Empire, 1870–1914</span>
+      <br>
+      <span class="ru">© 2026 Анна Б. Агафонова</span>
+      <span class="en">© 2026 Anna B. Agafonova</span>
+    </div>
+    <nav class="tx-footer-nav" aria-label="Footer navigation">
+      <a href="/"><span class="ru">Главная</span><span class="en">Home</span></a>
+      <a href="about.html"><span class="ru">Об авторе</span><span class="en">About</span></a>
+      <a href="waterworks/map.html"><span class="ru">Карта</span><span class="en">Map</span></a>
+      <a href="videos.html"><span class="ru">Видео</span><span class="en">Videos</span></a>
+      <a href="personal-data.html"><span class="ru">Политика ПД</span><span class="en">Privacy</span></a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+(function () {
+  function setLang(l) {
+    const html = document.documentElement;
+    if (l === 'en') {
+      html.setAttribute('data-en', '');
+      html.lang = 'en';
+    } else {
+      html.removeAttribute('data-en');
+      html.lang = 'ru';
+    }
+    localStorage.setItem('wire-lang', l);
+    document.querySelectorAll('.lang-sw button').forEach(b => {
+      b.classList.toggle('on', b.dataset.lang === l);
+    });
+  }
+  window.setLang = setLang;
+  const saved = localStorage.getItem('wire-lang');
+  if (saved) setLang(saved);
+})();
+</script>
+</body>
+</html>

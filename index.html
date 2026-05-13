@@ -2,6 +2,7 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
+<script>if(location.protocol!=='file:'&&location.pathname.endsWith('/index.html'))location.replace(location.pathname.slice(0,-10)+location.search+location.hash);</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Transmission — Urban Infrastructures of the Russian Empire, 1870–1914</title>
 <meta name="description" content="Interactive research platform on centralised water supply, sanitary conditions, and urban services in 950 cities of the Russian Empire, 1870–1914. By Anna B. Agafonova, PhD.">
@@ -90,7 +91,7 @@ body{background:var(--cream);color:var(--ink);font-family:var(--serif);font-weig
 .lang-sw button{
   background:transparent;border:none;cursor:pointer;
   font:700 10px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;
-  color:rgba(255,255,255,.35);padding:0 11px;height:46px;transition:color .15s;
+  color:rgba(255,255,255,.35);padding:0 11px;height:46px;min-width:44px;transition:color .15s;
 }
 .lang-sw button.on{color:var(--ochre)}
 .lang-sw button:hover{color:rgba(255,255,255,.8)}
@@ -610,6 +611,23 @@ body::before{
 }
 #back-to-top.visible { opacity: 1; pointer-events: auto; }
 #back-to-top:hover { background: rgba(26,43,71,0.96); transform: translateY(-2px); }
+
+/* ─── SKIP LINK (a11y) ─── */
+.skip-link{
+  position:absolute;top:-100px;left:16px;z-index:9999;
+  padding:10px 18px;border-radius:6px;
+  background:var(--ochre);color:var(--ink-dk);
+  font:700 .78rem/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;
+  text-decoration:none;transition:top .15s;
+}
+.skip-link:focus{top:8px}
+
+/* ─── FOCUS VISIBLE (a11y) ─── */
+:focus-visible{
+  outline:2px solid var(--ochre);
+  outline-offset:3px;
+  border-radius:3px;
+}
 </style>
 <!-- ── SEO: canonical / OG / Twitter / hreflang ── -->
 <link rel="canonical" href="https://urbantransmission.org/">
@@ -632,6 +650,8 @@ body::before{
 
 <body>
 
+<a href="#hero" class="skip-link">Перейти к содержимому / Skip to content</a>
+
 <!-- BANNER -->
 <div class="banner">
   <img src="HEAD4.png" alt="Transmission — Urban Infrastructures of the Russian Empire, 1870–1914">
@@ -652,10 +672,10 @@ body::before{
   <a href="videos.html"><span class="ru">Видео</span><span class="en">Videos</span></a>
   <div class="nav-gap"></div>
   <a href="about.html"><span class="ru">Об авторе</span><span class="en">About</span></a>
-  <a href="#" data-soon><span class="ru">Сотрудничество</span><span class="en">Collaborate</span></a>
+  <a href="collaborate.html"><span class="ru">Сотрудничество</span><span class="en">Collaborate</span></a>
   <div class="lang-sw" role="group" aria-label="Language / Язык">
-    <button data-lang="ru" class="on" onclick="setLang('ru')">РУ</button>
-    <button data-lang="en" onclick="setLang('en')">EN</button>
+    <button data-lang="ru" class="on" onclick="setLang('ru')" aria-label="Переключить на русский язык">РУ</button>
+    <button data-lang="en" onclick="setLang('en')" aria-label="Switch to English">EN</button>
   </div>
 </nav>
 <!-- MOBILE DROPDOWN NAV -->
@@ -668,7 +688,7 @@ body::before{
   <a href="videos.html"><span class="ru">Видео</span><span class="en">Videos</span></a>
   <div class="nav-dropdown-divider"></div>
   <a href="about.html"><span class="ru">Об авторе</span><span class="en">About</span></a>
-  <a href="#" data-soon><span class="ru">Сотрудничество</span><span class="en">Collaborate</span></a>
+  <a href="collaborate.html"><span class="ru">Сотрудничество</span><span class="en">Collaborate</span></a>
 </div>
 
 <!-- HERO -->
@@ -862,7 +882,7 @@ body::before{
         </div>
       </div>
       <div class="s-vis">
-        <div class="vis-light" style="padding:20px 18px 12px">
+        <div class="vis-dark">
           <svg id="novg-svg" viewBox="0 0 360 260"></svg>
         </div>
       </div>
@@ -1094,7 +1114,7 @@ body::before{
       <span class="footer-cite"><span class="ru">Для цитирования</span><span class="en">Cite this project</span></span>
       <div class="footer-links">
         <a href="about.html#data"><span class="ru">Данные и методы</span><span class="en">Data &amp; methods</span></a>
-        <a href="#" data-soon><span class="ru">Сотрудничество</span><span class="en">Collaborate</span></a>
+        <a href="collaborate.html"><span class="ru">Сотрудничество</span><span class="en">Collaborate</span></a>
         <a href="terms.html" class="ru">Условия использования</a>
         <a href="terms.html" class="en">Terms of Use</a>
         <a href="personal-data.html" class="ru">Политика ПД</a>
@@ -1207,7 +1227,7 @@ const sceneObs=new IntersectionObserver(entries=>{
     if(id==='novgorod') setTimeout(drawNovg,380);
     sceneObs.unobserve(e.target);
   });
-},{threshold:.18});
+},{threshold:0,rootMargin:'0px 0px 180px 0px'});
 ['map','infra','cholera','novgorod'].forEach(id=>{
   const el=document.getElementById(id);if(el) sceneObs.observe(el);
 });
