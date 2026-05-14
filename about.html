@@ -731,7 +731,7 @@ header {
           <span class="data-stat"><strong>187</strong> <span class="ru">городов</span><span class="en">cities</span></span>
           <span class="data-stat"><strong>RU/EN</strong></span>
           <span class="data-stat">
-            <a href="waterworks/map_draft.html">
+            <a href="waterworks/map.html">
               <span class="ru">→ Открыть</span><span class="en">→ Open</span>
             </a>
           </span>
@@ -827,6 +827,8 @@ function setLang(l) {
   else document.documentElement.removeAttribute('data-en');
   document.documentElement.lang = l;
   document.querySelectorAll('.lang-sw button').forEach(b => b.classList.toggle('on', b.dataset.lang === l));
+  document.querySelectorAll('.ru,.ru-bl,.ru-block').forEach(function(el){l==='en'?el.setAttribute('aria-hidden','true'):el.removeAttribute('aria-hidden');});
+  document.querySelectorAll('.en,.en-bl,.en-block').forEach(function(el){l==='ru'?el.setAttribute('aria-hidden','true'):el.removeAttribute('aria-hidden');});
   try { localStorage.setItem('tx_lang', l); } catch(e) {}
 }
 (function() {
@@ -834,6 +836,15 @@ function setLang(l) {
   try { s = localStorage.getItem('tx_lang') || 'ru'; } catch(e) {}
   setLang(s);
 })();
+
+  // aria-current: mark current page in footer nav
+  (function(){
+    var fn = location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.tx-footer-nav a').forEach(function(a){
+      var h = a.getAttribute('href');
+      if(h && h.split('/').pop() === fn) a.setAttribute('aria-current','page');
+    });
+  })();
 </script>
 </body>
 </html>

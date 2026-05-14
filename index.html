@@ -94,6 +94,7 @@ body{background:var(--cream);color:var(--ink);font-family:var(--serif);font-weig
   transition:color .15s;flex-shrink:0;
 }
 .site-nav a:hover{color:rgba(255,255,255,.96)}
+.site-nav a[aria-current]{color:#fff;border-bottom-color:var(--ochre)}
 .nav-gap{flex:1 1 auto;min-width:8px}
 .lang-sw{
   display:flex;gap:0;flex-shrink:0;
@@ -1146,6 +1147,8 @@ function setLang(l){
   if(l==='en') document.documentElement.setAttribute('data-en','');
   else document.documentElement.removeAttribute('data-en');
   document.querySelectorAll('.lang-sw button').forEach(b=>b.classList.toggle('on',b.dataset.lang===l));
+  document.querySelectorAll('.ru,.ru-bl,.ru-block').forEach(function(el){l==='en'?el.setAttribute('aria-hidden','true'):el.removeAttribute('aria-hidden');});
+  document.querySelectorAll('.en,.en-bl,.en-block').forEach(function(el){l==='ru'?el.setAttribute('aria-hidden','true'):el.removeAttribute('aria-hidden');});
   // Redraw charts on lang change
   document.querySelectorAll('[id$="-svg"],[id$="-cvs"]').forEach(el=>{el._ok=false});
   // Re-trigger visible scenes
@@ -1160,6 +1163,23 @@ function setLang(l){
 (function(){
   let s='ru';try{s=localStorage.getItem('tx_lang')||'ru'}catch(e){}
   setLang(s);
+})();
+
+/* ─── ARIA-CURRENT for nav sections ─── */
+(function(){
+  var navLinks = document.querySelectorAll('.site-nav a[href^="#"]');
+  if(!navLinks.length) return;
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(!e.isIntersecting) return;
+      navLinks.forEach(function(a){
+        var matches = a.getAttribute('href') === '#'+e.target.id;
+        if(matches) a.setAttribute('aria-current','location');
+        else a.removeAttribute('aria-current');
+      });
+    });
+  }, {threshold: 0.4});
+  document.querySelectorAll('main section[id], main [id].scene').forEach(function(el){ obs.observe(el); });
 })();
 
 /* ─── HERO SIGNAL WAVE ─── */
@@ -1235,12 +1255,12 @@ function setLang(l){
 const sceneObs=new IntersectionObserver(entries=>{
   entries.forEach(e=>{
     if(!e.isIntersecting) return;
-    e.target.classList.add('iv');
     const id=e.target.id;
-    if(id==='map') setTimeout(drawMap,380);
-    if(id==='infra') setTimeout(drawInfra,380);
-    if(id==='cholera') setTimeout(drawChol,380);
-    if(id==='novgorod') setTimeout(drawNovg,380);
+    if(id==='map') drawMap();
+    if(id==='infra') drawInfra();
+    if(id==='cholera') drawChol();
+    if(id==='novgorod') drawNovg();
+    requestAnimationFrame(()=>e.target.classList.add('iv'));
     sceneObs.unobserve(e.target);
   });
 },{threshold:0,rootMargin:'0px 0px 180px 0px'});
