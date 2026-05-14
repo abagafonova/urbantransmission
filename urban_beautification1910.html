@@ -316,6 +316,7 @@ tbody td:last-child { border-right: none; }
 <link rel="alternate" hreflang="ru" href="https://urbantransmission.org/urban_beautification1910.html">
 <link rel="alternate" hreflang="en" href="https://urbantransmission.org/urban_beautification1910.html">
 <link rel="alternate" hreflang="x-default" href="https://urbantransmission.org/urban_beautification1910.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Dataset","name":"Urban Services and Infrastructure in the Russian Empire, 1910","alternateName":"Городские услуги и благоустройство в Российской империи, 1910","description":"10 types of urban infrastructure (waterworks, gas, electricity, trams, fire protection, and more) across 1,231 cities and 89 provinces and oblasts of the Russian Empire, based on data from 1910.","url":"https://urbantransmission.org/urban_beautification1910.html","temporalCoverage":"1910","spatialCoverage":{"@type":"Place","name":"Russian Empire"},"author":{"@type":"Person","name":"Anna B. Agafonova","honorificSuffix":"PhD","sameAs":["https://orcid.org/0000-0003-3021-4002","https://scholar.google.com/citations?user=J7uQXacAAAAJ"]},"license":"https://github.com/abagafonova/urbantransmission/blob/main/LICENSE","size":"1231 cities, 89 provinces and oblasts"}</script>
 </head>
 <body>
 
@@ -427,6 +428,8 @@ tbody td:last-child { border-right: none; }
     <button type="button" class="sort-btn" data-sort="tram"><span class="ru">Трамвай</span><span class="en">Tram</span></button>
     <button type="button" class="sort-btn" data-sort="sewer"><span class="ru">Канализация</span><span class="en">Sewerage</span></button>
     <button type="button" class="sort-btn" data-sort="tele"><span class="ru">Телеграф</span><span class="en">Telegraph</span></button>
+
+    <button type="button" class="sort-btn" style="margin-left:auto" onclick="exportCSV()" aria-label="Download CSV(in Rus)"><svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" style="vertical-align:-2px;margin-right:4px"><path d="M8 2v8M4 7l4 4 4-4"/><rect x="2" y="11" width="12" height="3" rx="1"/></svg><span class="ru">Скачать CSV</span><span class="en">Download CSV (in Rus)</span></button>
   </div>
 
   <div class="table-wrap">
@@ -538,7 +541,7 @@ tbody td:last-child { border-right: none; }
   <div style="max-width:1100px;margin:48px auto 0;padding:28px 24px;background:rgba(232,213,168,0.28);border:1px solid rgba(183,145,88,0.25);border-radius:10px;">
     <p style="font-family:Cambria,'Palatino Linotype',Georgia,serif;font-size:0.72rem;letter-spacing:.16em;text-transform:uppercase;color:#B79158;margin-bottom:14px;"><span class="ru">См. также</span><span class="en">See also</span></p>
     <div style="display:flex;flex-wrap:wrap;gap:12px;">
-      <a href="waterworks/map_draft.html" style="display:inline-flex;align-items:center;gap:8px;font-family:Cambria,'Palatino Linotype',Georgia,serif;font-size:0.92rem;color:#1A2B47;text-decoration:none;border-bottom:1px solid rgba(26,43,71,0.3);padding-bottom:2px;"><span class="ru">Интерактивная карта городов с водопроводами →</span><span class="en">Interactive map of waterworks →</span></a>
+      <a href="waterworks/map.html" style="display:inline-flex;align-items:center;gap:8px;font-family:Cambria,'Palatino Linotype',Georgia,serif;font-size:0.92rem;color:#1A2B47;text-decoration:none;border-bottom:1px solid rgba(26,43,71,0.3);padding-bottom:2px;"><span class="ru">Интерактивная карта городов с водопроводами →</span><span class="en">Interactive map of waterworks →</span></a>
       <a href="cholera_ranking.html" style="display:inline-flex;align-items:center;gap:8px;font-family:Cambria,'Palatino Linotype',Georgia,serif;font-size:0.92rem;color:#1A2B47;text-decoration:none;border-bottom:1px solid rgba(26,43,71,0.3);padding-bottom:2px;"><span class="ru">Холера в Российской империи →</span><span class="en">Province ranking by cholera →</span></a>
       <a href="index.html" style="display:inline-flex;align-items:center;gap:8px;font-family:Cambria,'Palatino Linotype',Georgia,serif;font-size:0.92rem;color:#1A2B47;text-decoration:none;border-bottom:1px solid rgba(26,43,71,0.3);padding-bottom:2px;"><span class="ru">Главная страница проекта →</span><span class="en">Project home page →</span></a>
     </div>
@@ -1010,6 +1013,21 @@ function setLang(l) {
       if(h && h.split('/').pop() === fn) a.setAttribute('aria-current','page');
     });
   })();
+
+function exportCSV(){
+  var en=document.documentElement.hasAttribute('data-en');
+  var h=en
+    ?['Province/Oblast','Region','Cities total','Lighting (any)','Electric light','Gas','Kerosene','Water supply','Sewerage','Slaughterhouse','Fire protection','Tram','Telegraph','Telephone']
+    :['Губерния / Область','Регион','Городов всего','Освещение (любое)','Электр. освещение','Газ','Керосин','Водопровод','Канализация','Скотобойня','Пож. охрана','Трамвай','Телеграф','Телефон'];
+  var rows=PROVINCES.map(function(d){
+    return ['"'+d.name+'"','"'+(d.region||'')+'"',
+      d.total,d.light,d.elec,d.gas,d.kero,d.water,d.sewer,d.slaught,d.fire,d.tram,d.tele,d.phone].join(',');
+  });
+  var csv=[h.join(',')].concat(rows).join('\n');
+  var a=document.createElement('a');
+  a.href=URL.createObjectURL(new Blob(['\uFEFF'+csv],{type:'text/csv;charset=utf-8;'}));
+  a.download='urban_infrastructure_1910_transmission.csv';a.click();
+}
 </script>
 </body>
 </html>

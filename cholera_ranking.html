@@ -375,6 +375,7 @@ tbody tr.top3 .rank { color: var(--copper); }
   thead th { padding: 8px 5px; font-size: 0.62rem; }
   tbody td { padding: 6px 5px; }
 }
+.csv-btn{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;background:rgba(26,43,71,0.06);border:1px solid rgba(20,36,60,0.18);border-radius:4px;font:600 .68rem/1 var(--sans);letter-spacing:.05em;color:var(--ink-soft);cursor:pointer;transition:all .15s;text-transform:uppercase;}.csv-btn:hover{background:var(--ink);color:var(--page-cream);border-color:var(--ink)}.table-toolbar{display:flex;justify-content:flex-end;margin-bottom:10px;}
 </style>
 <!-- ── SEO: canonical / OG / Twitter / hreflang ── -->
 <link rel="canonical" href="https://urbantransmission.org/cholera_ranking.html">
@@ -393,6 +394,7 @@ tbody tr.top3 .rank { color: var(--copper); }
 <link rel="alternate" hreflang="ru" href="https://urbantransmission.org/cholera_ranking.html">
 <link rel="alternate" hreflang="en" href="https://urbantransmission.org/cholera_ranking.html">
 <link rel="alternate" hreflang="x-default" href="https://urbantransmission.org/cholera_ranking.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Dataset","name":"Cholera Mortality in Russian Empire Cities","alternateName":"Холерная смертность в городах Российской империи","description":"Ranking and analysis of cholera mortality rates across cities of the Russian Empire, with data on epidemic waves and sanitary conditions.","url":"https://urbantransmission.org/cholera_ranking.html","temporalCoverage":"1870/1914","spatialCoverage":{"@type":"Place","name":"Russian Empire"},"author":{"@type":"Person","name":"Anna B. Agafonova","honorificSuffix":"PhD","sameAs":["https://orcid.org/0000-0003-3021-4002","https://scholar.google.com/citations?user=J7uQXacAAAAJ"]},"license":"https://github.com/abagafonova/urbantransmission/blob/main/LICENSE"}</script>
 </head>
 <body>
 
@@ -496,7 +498,13 @@ tbody tr.top3 .rank { color: var(--copper); }
     <span class="en">20 provinces ranked by highest cumulative cholera intensity</span>
   </h2>
 
-  <div class="table-scroll-wrap">
+  <div class="table-toolbar">
+  <button type="button" class="csv-btn" onclick="exportCSV()" aria-label="Download CSV">
+    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 2v8M4 7l4 4 4-4"/><rect x="2" y="11" width="12" height="3" rx="1"/></svg>
+    <span class="ru">Скачать CSV</span><span class="en">Download CSV (in Rus)</span>
+  </button>
+</div>
+<div class="table-scroll-wrap">
   <table>
   <thead>
     <tr>
@@ -854,6 +862,20 @@ renderTable();
       if(h && h.split('/').pop() === fn) a.setAttribute('aria-current','page');
     });
   })();
+
+function exportCSV(){
+  var en=document.documentElement.hasAttribute('data-en');
+  var h=en
+    ?['Rank','Province','Cholera 1823\u20131872','Cholera 1892','Cholera 1910','Score','Stability','Cities with water supply']
+    :['Ранг','Губерния','Холера 1823–1872','Холера 1892','Холера 1910','Балл','Уст.','Города с водопроводами'];
+  var rows=data.map(function(d,i){
+    return [i+1,'"'+d.name+'"',d.l23||'',d.l92||'',d.l10||'',d.score,d.high,'"'+((d.all||[]).join('; '))+'"'].join(',');
+  });
+  var csv=[h.join(',')].concat(rows).join('\n');
+  var a=document.createElement('a');
+  a.href=URL.createObjectURL(new Blob(['\uFEFF'+csv],{type:'text/csv;charset=utf-8;'}));
+  a.download='cholera_ranking_transmission.csv';a.click();
+}
 </script>
 </body>
 </html>
