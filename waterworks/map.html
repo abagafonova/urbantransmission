@@ -1205,6 +1205,43 @@
   ">✕</button>
 </div>
 
+<!-- ── UPDATE NOTICE July 2026 ── -->
+<div id="update-notice-2026-07" style="
+  background: #e8f0f7;
+  border-bottom: 1px solid #6b93b8;
+  color: #1e3a52;
+  font: 400 0.78rem/1.5 'Source Serif 4', Georgia, serif;
+  padding: 6px 44px 6px 16px;
+  position: relative;
+  z-index: 900;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+">
+  <span style="font-size:0.95rem;flex-shrink:0;opacity:0.75">↻</span>
+  <span>
+    <b>Обновлено / Updated — июль 2026 / July 2026.</b>
+    Координаты всех 950 городов верифицированы, улучшен поиск городов с повторяющимися названиями. ·
+    Coordinates for all 950 cities have been verified; disambiguation of cities sharing the same name has been improved.
+  </span>
+  <button type="button" id="update-notice-close" aria-label="Закрыть / Close" style="
+    position: absolute; right: 10px; top: 50%; transform: translateY(-50%);
+    background: none; border: none; cursor: pointer;
+    font-size: 1.1rem; color: #4a7299; line-height: 1; padding: 4px 6px;
+  ">✕</button>
+</div>
+<script>
+(function(){
+  var KEY = 'wsri_notice_2026_07';
+  var el  = document.getElementById('update-notice-2026-07');
+  try { if (localStorage.getItem(KEY)) el.style.display = 'none'; } catch(e){}
+  document.getElementById('update-notice-close').addEventListener('click', function(){
+    el.style.display = 'none';
+    try { localStorage.setItem(KEY, '1'); } catch(e){}
+  });
+})();
+</script>
+
 <!-- Decorative tower silhouettes on left and right page edges -->
 <div class="page-decor decor-left" aria-hidden="true"><svg viewBox="0 0 80 620" preserveAspectRatio="xMidYMax meet" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
   <!-- Water tower silhouette (Mytishchi style) -->
