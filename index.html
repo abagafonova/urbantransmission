@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" data-accent="terracotta">
 <head>
 <meta charset="UTF-8">
 <link rel="preload" href="fonts/Space_Mono/SpaceMono-Regular.ttf" as="font" type="font/ttf" crossorigin>
@@ -59,7 +59,21 @@
   --serif:   Cambria, 'Palatino Linotype', Georgia, serif;
   --display: 'Playfair Display', serif;
   --cinzel:  'Cinzel', 'Trajan Pro', serif;
+  --th-glass: rgba(255,252,244,.44);
+  --th-glass-bd: rgba(255,255,255,.65);
+  --pc-opacity: .8;
+  --bg-photo-opacity: .3;
 }
+/* ─── ACCENT FAMILIES: text, links, buttons, badges ─── */
+html[data-accent="terracotta"]{--copper:#b5573a;--copper-l:#c97952;--ochre:#d98a5f;--gold:#c96b45;--turq:#8a4632;--turq-l:#b06a52}
+html[data-accent="green"]{--copper:#5f7a5c;--copper-l:#7f9a7a;--ochre:#8ca384;--gold:#6f8c5e;--turq:#3f5c46;--turq-l:#5c7a63}
+html[data-accent="navy"]{--copper:#3b5a86;--copper-l:#6e86a8;--ochre:#5b7ba8;--gold:#4a6e9e;--turq:#26405f;--turq-l:#3f5c7c}
+html[data-accent="sky"]{--copper:#5b8fae;--copper-l:#8fb8cf;--ochre:#79aac4;--gold:#4f7f9c;--turq:#3d6482;--turq-l:#5c839c}
+/* ─── BLOCK FAMILIES: glass-panel tint & page texture ─── */
+html[data-block="terracotta"]{--sky:#f0ead6;--ochre-bg:#f0dab4;--th-glass:rgba(255,247,241,.46);--th-glass-bd:rgba(255,255,255,.6)}
+html[data-block="green"]{--sky:#e3ead9;--ochre-bg:#d3e0c8;--th-glass:rgba(247,250,245,.48);--th-glass-bd:rgba(255,255,255,.62)}
+html[data-block="navy"]{--sky:#dbe4ee;--ochre-bg:#c9d7e8;--th-glass:rgba(242,246,251,.48);--th-glass-bd:rgba(255,255,255,.62)}
+html[data-block="sky"]{--sky:#e2eef4;--ochre-bg:#cfe3ec;--th-glass:rgba(240,248,251,.5);--th-glass-bd:rgba(255,255,255,.65)}
 
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
@@ -300,7 +314,7 @@ body{background:var(--cream);color:var(--ink);font-family:var(--serif);font-weig
 }
 
 /* ─── MODULE SCENES ─── */
-.scene{padding:0;border-top:1px solid var(--border)}
+.scene{padding:0}
 .scene-inner{
   max-width:1080px;margin:0 auto;
   padding:72px 24px;
@@ -391,22 +405,71 @@ body{background:var(--cream);color:var(--ink);font-family:var(--serif);font-weig
   padding:28px 22px 16px;
 }
 .vis-dark canvas,.vis-dark svg,.vis-light svg{display:block;width:100%}
+.scene .scene-split,.methods .section-inner,.quick-inner{background:var(--th-glass);backdrop-filter:blur(24px) saturate(160%);-webkit-backdrop-filter:blur(24px) saturate(160%);border:1px solid var(--th-glass-bd);border-radius:26px;box-shadow:0 14px 46px rgba(20,36,60,.10), inset 0 1px 0 rgba(255,255,255,.5)}
+.methods .section-inner{padding:52px 48px}
+@media(max-width:600px){.methods .section-inner{padding:34px 24px}}
+.quick-inner{padding:0;overflow:hidden}
 
-/* ─── ALT SCENE backgrounds ─── */
-.scene.alt{background:var(--paper)}
+/* ─── LIQUID GLASS PANELS (unify former alternating bands) ─── */
+.glass-panel{
+  background:var(--th-glass);
+  backdrop-filter:blur(24px) saturate(160%);-webkit-backdrop-filter:blur(24px) saturate(160%);
+  border:1px solid var(--th-glass-bd);border-radius:26px;
+  box-shadow:0 14px 46px rgba(20,36,60,.10), inset 0 1px 0 rgba(255,255,255,.5);
+}
+.scene .scene-split{padding:52px 48px}
+@media(max-width:600px){.scene .scene-split{padding:32px 22px}}
 
-/* ─── HOW TO USE ─── */
-.howto{background:var(--ink);padding:80px 24px}
-.howto-inner{max-width:1060px;margin:0 auto}
+/* ─── POSTCARD-STYLE PANELS ─── */
+#bg-photo{position:fixed;inset:0;z-index:-1;pointer-events:none;background:#F7F2E6 url('assets/bg-industrial-cream.png') center 30%/cover no-repeat;opacity:var(--bg-photo-opacity)}
+.scene-split.pc-card{
+  position:relative;
+  aspect-ratio:1467/881;
+  background-image:
+    linear-gradient(var(--th-glass),var(--th-glass)),
+    linear-gradient(rgba(233,219,190,calc(1 - var(--pc-opacity))),rgba(233,219,190,calc(1 - var(--pc-opacity)))),
+    url('assets/postcard.png');
+  background-size:100% 100%;background-position:center;background-repeat:no-repeat;
+  -webkit-mask-image:url('assets/postcard.png');mask-image:url('assets/postcard.png');
+  -webkit-mask-size:100% 100%;mask-size:100% 100%;
+  -webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;
+  -webkit-mask-position:center;mask-position:center;
+  filter:drop-shadow(0 1px 1px rgba(20,15,5,.2)) drop-shadow(0 16px 30px rgba(20,15,5,.24)) drop-shadow(0 32px 56px rgba(20,15,5,.14));
+}
+@media(max-width:780px){.scene-split.pc-card{aspect-ratio:auto}}
+.scene-split.pc-card{grid-template-columns:0.9fr 1.1fr}
+.scene-split.pc-card.flip{grid-template-columns:1.1fr 0.9fr}
+.pc-card .s-idx{display:none}
+.pc-card .s-vis{transform:translateY(15%)}
+.pc-card .s-text{
+  position:relative;margin-top:5%;
+  background:rgba(245,239,225,.56);
+  border:1px solid rgba(255,255,255,.4);
+  box-shadow:0 12px 34px rgba(31,41,45,.14);
+  backdrop-filter:blur(9px) saturate(85%);-webkit-backdrop-filter:blur(9px) saturate(85%);
+  border-radius:2px;padding:30px 32px;
+}
+.pc-card .s-text::before{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  opacity:.14;background-image:url('assets/noise.png');background-size:160px;mix-blend-mode:multiply;border-radius:inherit;
+}
+
+/* ─── HOW TO USE (incl. quick-access strip) ─── */
+.howto{padding:80px 24px}
+.howto-shell{max-width:1060px;margin:0 auto;overflow:hidden;border-radius:26px;background:var(--th-glass);backdrop-filter:blur(24px) saturate(160%);-webkit-backdrop-filter:blur(24px) saturate(160%);border:1px solid var(--th-glass-bd);box-shadow:0 14px 46px rgba(20,36,60,.10), inset 0 1px 0 rgba(255,255,255,.5)}
+.quick-strip{background:var(--ink);display:grid;grid-template-columns:repeat(4,1fr)}
+@media(max-width:560px){.quick-strip{grid-template-columns:repeat(2,1fr)}.quick-strip .qi:nth-child(2n){border-right:none}}
+.howto-body{padding:44px 48px 52px}
+@media(max-width:600px){.howto-body{padding:30px 22px 34px}}
 .howto-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:44px}
 @media(max-width:700px){.howto-grid{grid-template-columns:1fr}}
 .howto-card{
-  background:rgba(15,30,49,.7);
+  background:rgba(255,255,255,.5);
   padding:36px 28px;display:flex;flex-direction:column;gap:14px;
-  border-radius:16px;border:1px solid rgba(255,255,255,.07);
+  border-radius:16px;border:1px solid rgba(28,51,71,.1);
 }
 .howto-icon{
-  width:44px;height:44px;border:1px solid rgba(255,255,255,.16);
+  width:44px;height:44px;border:1px solid rgba(28,51,71,.16);
   border-radius:12px;display:flex;align-items:center;justify-content:center;
 }
 .howto-icon svg{width:20px;height:20px;stroke:var(--ochre);fill:none;stroke-width:1.5;stroke-linecap:round}
@@ -416,12 +479,13 @@ body{background:var(--cream);color:var(--ink);font-family:var(--serif);font-weig
 }
 .howto-h3{
   font-family:var(--display);font-size:1.1rem;font-weight:600;
-  color:#fff;line-height:1.3;
+  color:var(--ink);line-height:1.3;
 }
-.howto-body{font-size:.86rem;color:rgba(255,255,255,.42);line-height:1.75;font-weight:300}
+.howto-body{font-size:.86rem;color:var(--muted);line-height:1.75;font-weight:300}
 
 /* ─── DATA & METHODS ─── */
-.methods{padding:80px 24px;background:var(--sky)}
+.methods{padding:80px 24px}
+.methods .section-inner{margin-top:0;padding-top:52px}
 .methods-grid{
   display:grid;grid-template-columns:3fr 2fr;
   gap:64px;margin-top:40px;align-items:start;
@@ -454,7 +518,8 @@ body{background:var(--cream);color:var(--ink);font-family:var(--serif);font-weig
 .mn-divider{border:none;border-top:1px solid rgba(255,255,255,.08)}
 
 /* ─── RESEARCHER ─── */
-.researcher{padding:80px 24px;background:var(--cream);border-top:1px solid var(--border)}
+.researcher{padding:80px 24px}
+.researcher .section-inner{max-width:1080px;margin:0 auto}
 .researcher-card{
   max-width:860px;margin:0 auto;
   display:grid;grid-template-columns:auto 1fr;gap:48px;align-items:start;
@@ -515,25 +580,19 @@ footer{
 }
 .footer-links a:hover{color:rgba(255,255,255,.75)}
 
-/* ─── QUICK ACCESS ─── */
-.quick{background:var(--ink);border-top:1px solid rgba(255,255,255,.05)}
-.quick-inner{
-  max-width:1080px;margin:0 auto;
-  display:grid;grid-template-columns:repeat(4,1fr);
-}
-@media(max-width:560px){.quick-inner{grid-template-columns:repeat(2,1fr)}}
+/* ─── QUICK ACCESS STRIP (dark, sits atop howto panel) ─── */
 .qi{
   display:flex;flex-direction:column;gap:6px;
-  padding:26px 20px;text-decoration:none;color:inherit;
-  border-right:1px solid rgba(255,255,255,.05);
+  padding:24px 20px;text-decoration:none;color:inherit;
+  border-right:1px solid rgba(255,255,255,.08);
   transition:background .2s;
 }
 .qi:last-child{border-right:none}
-.qi:hover{background:rgba(255,255,255,.04)}
-.qi-tag{font:400 .58rem/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:rgba(199,146,67,.7)}
-.qi-title{font-family:var(--display);font-size:.88rem;font-weight:600;color:rgba(255,255,255,.62);line-height:1.3}
-.qi-arr{font:400 .78rem/1 var(--mono);color:rgba(255,255,255,.2);margin-top:2px}
-.qi:hover .qi-arr{color:rgba(255,255,255,.55)}
+.qi:hover{background:rgba(255,255,255,.05)}
+.qi-tag{font:400 .58rem/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ochre)}
+.qi-title{font-family:var(--display);font-size:.86rem;font-weight:600;color:rgba(255,255,255,.88);line-height:1.3}
+.qi-arr{font:400 .78rem/1 var(--mono);color:rgba(255,255,255,.3);margin-top:2px}
+.qi:hover .qi-arr{color:rgba(255,255,255,.75)}
 
 /* ─── INFRA BARCHART caption ─── */
 .chart-cap{font:300 .68rem/1.5 var(--mono);color:var(--muted);padding:8px 2px 4px;opacity:.75}
@@ -644,6 +703,7 @@ body::before{
   outline-offset:3px;
   border-radius:3px;
 }
+
 </style>
 <!-- ── SEO: canonical / OG / Twitter / hreflang ── -->
 <link rel="canonical" href="https://urbantransmission.org/">
@@ -663,7 +723,15 @@ body::before{
 <link rel="alternate" hreflang="x-default" href="https://urbantransmission.org/">
 </head>
 
+<template id="__bundler_thumbnail" data-bg-color="#f6efdc">
+<svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+<rect width="1200" height="800" fill="#1a2b47"/>
+<text x="600" y="420" font-family="Georgia,serif" font-size="140" fill="#f6efdc" text-anchor="middle" letter-spacing="8">T</text>
+</svg>
+</template>
 <body>
+
+<div id="bg-photo" aria-hidden="true"></div>
 
 <a href="#hero" class="skip-link">Перейти к содержимому / Skip to content</a>
 
@@ -761,22 +829,22 @@ body::before{
 <!-- MODULE 01: MAP -->
 <div class="scene" id="map">
   <div class="scene-inner">
-    <div class="scene-split">
+    <div class="scene-split pc-card" style="border-width: 1px; border-style: double; border-color: #4B290D">
       <div class="s-vis">
-        <div class="vis-dark" style="min-height:340px;">
-          <canvas id="map-cvs" height="340"></canvas>
+        <div class="vis-dark" style="min-height:340px; top: 60px">
+          <canvas id="map-cvs" height="340" style="width: 383px; height: 356px; position: relative; top: 0px"></canvas>
           <div id="map-cnt" style="position:absolute;bottom:14px;right:16px;font:700 1rem/1 var(--cinzel);color:rgba(196,167,107,.5);pointer-events:none;letter-spacing:.06em;"></div>
         </div>
       </div>
-      <div class="s-text">
+      <div class="s-text" style="left: 30px; top: 40px; min-height: 470px; width: 470px">
         <span class="s-idx">01 / 04</span>
         <span class="badge badge-orig"><span class="ru">Оригинальное исследование</span><span class="en">Original research</span></span>
         <h2 class="s-h2" id="map-h2">
-          <span class="ru">Карта городских водопроводов Российской империи</span>
+          <span class="ru" style="font-size: 28px">Карта городских водопроводов Российской империи</span>
           <span class="en">Map of Urban Waterworks in the Russian Empire</span>
         </h2>
         <p class="s-desc">
-          <span class="ru">Интерактивная карта всех городов с централизованным водоснабжением — от Варшавы до Владивостока.</span>
+          <span class="ru" style="color: #6F6761">Интерактивная карта всех городов с централизованным водоснабжением — от Варшавы до Владивостока.</span>
           <span class="en">Interactive map of all cities with centralised water supply — from Warsaw to Vladivostok.</span>
         </p>
         <ul class="s-feats">
@@ -799,16 +867,16 @@ body::before{
 <!-- MODULE 02: INFRASTRUCTURE -->
 <div class="scene alt" id="infra">
   <div class="scene-inner">
-    <div class="scene-split flip">
-      <div class="s-text">
+    <div class="scene-split flip pc-card" style="border-width: 1px; border-style: double; border-color: #4B290D">
+      <div class="s-text" style="min-height: 505px; left: -30px; width: 470px; top: 15px">
         <span class="s-idx">02 / 04</span>
-        <span class="badge badge-ctx"><span class="ru">Контекстные данные · 1 источник</span><span class="en">Contextual data · 1 source</span></span>
+        <span class="badge badge-ctx"><span class="ru">Контекстные данные</span><span class="en">Contextual data · 1 source</span></span>
         <h2 class="s-h2" id="infra-h2">
-          <span class="ru">Городские услуги и инфраструктура · 1910</span>
+          <span class="ru" style="font-size: 28px">Городские услуги и инфраструктура · 1910</span>
           <span class="en">Urban Services &amp; Infrastructure · 1910</span>
         </h2>
         <p class="s-desc">
-          <span class="ru">10 видов городской инфраструктуры по 89 губерниям и областям Российской империи: Европейская Россия, Привислинские губернии, Кавказ, Сибирь, Средняя Азия.</span>
+          <span class="ru" style="color: #6F6761">10 видов городской инфраструктуры по 89 губерниям и областям Российской империи: Европейская Россия, Привислинские губернии, Кавказ, Сибирь, Средняя Азия.</span>
           <span class="en">10 types of urban infrastructure across 89 provinces and oblasts of the Russian Empire: European Russia, Vistula provinces, the Caucasus, Siberia, and Central Asia.</span>
         </p>
         <ul class="s-feats">
@@ -824,9 +892,9 @@ body::before{
         </div>
       </div>
       <div class="s-vis">
-        <div class="vis-light">
+        <div class="vis-light" style="width: 437px; height: 435px; position: relative; top: 50px; left: -40px">
           <svg id="infra-svg" viewBox="0 0 360 300"></svg>
-          <p class="chart-cap">
+          <p class="chart-cap" style="color: #6F6761">
             <span class="ru">1&thinsp;231 город · 89 губерний и областей · Российская империя · 1910</span>
             <span class="en">1,231 cities · 89 provinces &amp; oblasts · Russian Empire · 1910</span>
           </p>
@@ -839,21 +907,21 @@ body::before{
 <!-- MODULE 03: CHOLERA -->
 <div class="scene" id="cholera">
   <div class="scene-inner">
-    <div class="scene-split">
+    <div class="scene-split pc-card" style="border-width: 1px; border-style: double; border-color: #4B290D">
       <div class="s-vis">
-        <div class="vis-dark" style="min-height:300px;">
-          <svg id="chol-svg" viewBox="0 0 380 290" style="overflow:visible"></svg>
+        <div class="vis-dark" style="min-height:300px; top: 60px">
+          <svg id="chol-svg" viewBox="0 0 380 290" style="overflow: visible; width: 380px; height: 405px; position: relative; top: 0px"></svg>
         </div>
       </div>
-      <div class="s-text">
+      <div class="s-text" style="width: 460px; left: 30px; top: 45px; min-height: 435px">
         <span class="s-idx">03 / 04</span>
-        <span class="badge badge-ctx"><span class="ru">Контекстные данные · источники карт</span><span class="en">Contextual data · map sources</span></span>
+        <span class="badge badge-ctx"><span class="ru">Контекстные данные</span><span class="en">Contextual data · map sources</span></span>
         <h2 class="s-h2" id="chol-h2">
-          <span class="ru">Холерные эпидемии и водоснабжение</span>
+          <span class="ru" style="font-size: 28px">Холерные эпидемии и водоснабжение</span>
           <span class="en">Cholera Epidemics and Water Supply</span>
         </h2>
         <p class="s-desc">
-          <span class="ru">Три волны холеры сопоставлены с обеспеченностью городов централизованным водоснабжением.</span>
+          <span class="ru" style="color: #6F6761">Три волны холеры сопоставлены с обеспеченностью городов централизованным водоснабжением.</span>
           <span class="en">Three cholera waves correlated with municipal waterworks coverage across the empire.</span>
         </p>
         <ul class="s-feats">
@@ -875,16 +943,16 @@ body::before{
 <!-- MODULE 04: NOVGOROD -->
 <div class="scene alt" id="novgorod">
   <div class="scene-inner">
-    <div class="scene-split flip">
-      <div class="s-text">
+    <div class="scene-split flip pc-card" style="border-width: 1px; border-style: double; border-color: #4B290D">
+      <div class="s-text" style="left: -20px; min-height: 520px; width: 460px">
         <span class="s-idx">04 / 04</span>
         <span class="badge badge-orig"><span class="ru">MVP · Прототип</span><span class="en">MVP · Prototype</span></span>
         <h2 class="s-h2" id="novg-h2">
-          <span class="ru">Санитарное состояние городов Российской империи (Новгородская губерния)</span>
+          <span class="ru" style="font-size: 28px">Санитарное состояние городов Российской империи (Новгородская губерния)</span>
           <span class="en">Sanitary Conditions of Cities of the Russian Empire (Novgorod Province)</span>
         </h2>
         <p class="s-desc">
-          <span class="ru">Детальная база данных по 11 городам губернии: постановления городских дум, данные об эпидемиях, городах и инфраструктуре, санитарные расходы, 1870–1917.</span>
+          <span class="ru" style="color: #6F6761">Детальная база данных по 11 городам губернии: постановления городских дум, данные об эпидемиях, городах и инфраструктуре, санитарные расходы.</span>
           <span class="en">Deep-dive database of 11 cities: decrees of municipal councils, epidemic and urban infrastrutures records, sanitary expenditures, 1870–1917.</span>
         </p>
         <ul class="s-feats">
@@ -900,45 +968,38 @@ body::before{
         </div>
       </div>
       <div class="s-vis">
-        <div class="vis-dark">
-          <svg id="novg-svg" viewBox="0 0 360 260"></svg>
+        <div class="vis-dark" style="left: -30px; top: 50px">
+          <svg id="novg-svg" viewBox="0 0 360 260" style="width: 414px; height: 311px; position: relative; left: 0px; top: 0px"></svg>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- QUICK ACCESS -->
-<div class="quick">
-  <div class="quick-inner">
-    <a class="qi" href="waterworks/map.html">
-      <span class="qi-tag"><span class="ru">Интерактивная карта</span><span class="en">Interactive map</span></span>
-      <span class="qi-title"><span class="ru">Городские водопроводы</span><span class="en">Urban waterworks</span></span>
-      <span class="qi-arr">→</span>
-    </a>
-    <a class="qi" href="urban_beautification1910.html">
-      <span class="qi-tag"><span class="ru">Таблица · губернии</span><span class="en">Table · provinces</span></span>
-      <span class="qi-title"><span class="ru">Благоустройство · 1910</span><span class="en">Urban services · 1910</span></span>
-      <span class="qi-arr">→</span>
-    </a>
-    <a class="qi" href="cholera_ranking.html">
-      <span class="qi-tag"><span class="ru">Рейтинг · статистика</span><span class="en">Rankings · statistics</span></span>
-      <span class="qi-title"><span class="ru">Холерные эпидемии</span><span class="en">Cholera epidemics</span></span>
-      <span class="qi-arr">→</span>
-    </a>
-    <a class="qi" href="empire/RussianEmpire.html">
-      <span class="qi-tag"><span class="ru">MVP · Региональный кейс</span><span class="en">MVP · Regional case study</span></span>
-      <span class="qi-title"><span class="ru">Новгородская губерния</span><span class="en">Novgorod Province</span></span>
-      <span class="qi-arr">→</span>
-    </a>
-  </div>
-</div>
-
-<!-- HOW TO USE -->
+<!-- HOW TO USE (quick-access strip + howto merged into one panel) -->
 <div class="howto" id="howto">
-  <div class="howto-inner">
-    <p class="sec-tag" style="color:var(--gold)"><span class="ru">Как использовать ресурс</span><span class="en">How to use this resource</span></p>
-    <h2 class="sec-h2" style="color:#fff;font-family:var(--display)">
+  <div class="howto-shell">
+    <div class="quick-strip">
+      <a class="qi" href="waterworks/map.html">
+        <span class="qi-tag"><span class="ru">Интерактивная карта</span><span class="en">Interactive map</span></span>
+        <span class="qi-title"><span class="ru">Городские водопроводы</span><span class="en">Urban waterworks</span></span>
+      </a>
+      <a class="qi" href="urban_beautification1910.html">
+        <span class="qi-tag"><span class="ru">Таблица · губернии</span><span class="en">Table · provinces</span></span>
+        <span class="qi-title"><span class="ru">Благоустройство · 1910</span><span class="en">Urban services · 1910</span></span>
+      </a>
+      <a class="qi" href="cholera_ranking.html">
+        <span class="qi-tag"><span class="ru">Рейтинг · статистика</span><span class="en">Rankings · statistics</span></span>
+        <span class="qi-title"><span class="ru">Холерные эпидемии</span><span class="en">Cholera epidemics</span></span>
+      </a>
+      <a class="qi" href="empire/RussianEmpire.html">
+        <span class="qi-tag"><span class="ru">MVP · Региональный кейс</span><span class="en">MVP · Regional case study</span></span>
+        <span class="qi-title"><span class="ru">Новгородская губерния</span><span class="en">Novgorod Province</span></span>
+      </a>
+    </div>
+    <div class="howto-body">
+    <p class="sec-tag" style="color:var(--copper)"><span class="ru">Как использовать ресурс</span><span class="en">How to use this resource</span></p>
+    <h2 class="sec-h2" style="color:var(--ink);font-family:var(--display)">
       <span class="ru">Ресурс для исследователей</span>
       <span class="en">Designed for researchers</span>
     </h2>
@@ -950,7 +1011,7 @@ body::before{
         <span class="howto-role"><span class="ru">Преподаватели</span><span class="en">Educators</span></span>
         <h3 class="howto-h3"><span class="ru">Карты и таблицы для аудитории</span><span class="en">Maps and tables for teaching</span></h3>
         <p class="howto-body">
-          <span class="ru">Используйте интерактивные карты и сортируемые таблицы в курсах по городской истории и истории окружающей среды. Визуальные данные сразу готовы к показу в аудитории.</span>
+          <span class="ru" style="color: #6F6761">Используйте интерактивные карты и сортируемые таблицы в курсах по городской истории и истории окружающей среды. Визуальные данные сразу готовы к показу в аудитории.</span>
           <span class="en">Use interactive maps and sortable tables in urban and environmental history courses. Visual data is ready for in-class display and discussion.</span>
         </p>
       </div>
@@ -961,7 +1022,7 @@ body::before{
         <span class="howto-role"><span class="ru">Исследователи</span><span class="en">Researchers</span></span>
         <h3 class="howto-h3"><span class="ru">Экспорт данных и анализ</span><span class="en">Data export and analysis</span></h3>
         <p class="howto-body">
-          <span class="ru">Прослеживайте диффузию инфраструктуры, коррелируйте с показателями смертности, экспортируйте данные. Все источники и методы задокументированы.</span>
+          <span class="ru" style="color: #6F6761">Прослеживайте диффузию инфраструктуры, коррелируйте с показателями смертности, экспортируйте данные. Все источники и методы задокументированы.</span>
           <span class="en">Trace infrastructure diffusion, correlate with mortality data, export datasets. All sources and methods are fully documented.</span>
         </p>
       </div>
@@ -972,10 +1033,11 @@ body::before{
         <span class="howto-role"><span class="ru">Краеведы</span><span class="en">Local historians</span></span>
         <h3 class="howto-h3"><span class="ru">История вашего города</span><span class="en">Your city's infrastructure history</span></h3>
         <p class="howto-body">
-          <span class="ru">Найдите свой город на карте водопроводов, изучите историю холерных эпидемий в губернии, сравните с региональным кейсом Новгородской губернии.</span>
+          <span class="ru" style="color: #6F6761">Найдите свой город на карте водопроводов, изучите историю холерных эпидемий в губернии, сравните с региональным кейсом Новгородской губернии.</span>
           <span class="en">Find your city on the waterworks map, explore your province's cholera history, compare with the Novgorod regional case study.</span>
         </p>
       </div>
+    </div>
     </div>
   </div>
 </div>
@@ -989,34 +1051,34 @@ body::before{
       <span class="en">About the database and sources</span>
     </h2>
     <p class="sec-lead">
-      <span class="ru">Ресурс основан на оригинальном архивном исследовании и опубликованных источниках XIX — начала XX века. Все данные верифицированы и задокументированы.</span>
+      <span class="ru" style="color: #6F6761">Ресурс основан на оригинальном архивном исследовании и опубликованных источниках XIX — начала XX века. Все данные верифицированы и задокументированы.</span>
       <span class="en">This resource is based on original archival research and published sources from the 19th–early 20th centuries. All data are verified and fully documented.</span>
     </p>
-    <div class="methods-grid">
+    <div class="methods-grid" style="height: 500px">
       <div class="method-sources">
         <div class="ms-item">
           <div class="ms-key"><span class="ru">Численность населения</span><span class="en">Urban Population</span></div>
-          <div class="ms-val"><span class="ru">Первая всеобщая перепись населения Российской империи 1897 г.; Сборники "Города России в 1904 г." и "Города России в 1910 г." — основа базы данных 950 городов</span><span class="en">First General Census of the Russian Empire, 1897; Goroda Rossii v 1904 godu [Cities of Russia in 1904]; Goroda Rossii v 1910 godu [Cities of Russia in 1910] — basis of the 950-city database</span></div>
+          <div class="ms-val"><span class="ru" style="color: #6F6761">Первая всеобщая перепись населения Российской империи 1897 г.; Сборники "Города России в 1904 г." и "Города России в 1910 г." — основа базы данных 950 городов</span><span class="en">First General Census of the Russian Empire, 1897; Goroda Rossii v 1904 godu [Cities of Russia in 1904]; Goroda Rossii v 1910 godu [Cities of Russia in 1910] — basis of the 950-city database</span></div>
         </div>
         <div class="ms-item">
           <div class="ms-key">GIS</div>
-          <div class="ms-val">RISTAT GIS 1897 · Kessler &amp; Markevich — <span class="ru">картографическая основа</span><span class="en">cartographic base</span></div>
+          <div class="ms-val">RISTAT GIS 1897 · Kessler &amp; Markevich — <span class="ru" style="color: #6F6761">картографическая основа</span><span class="en">cartographic base</span></div>
         </div>
         <div class="ms-item">
           <div class="ms-key"><span class="ru">Думы</span><span class="en">Councils</span></div>
-          <div class="ms-val"><span class="ru">Постановления городских дум (Новгородская губерния, 1870–1917)</span><span class="en">Municipal council decrees (Novgorod Province, 1870–1917)</span></div>
+          <div class="ms-val"><span class="ru" style="color: #6F6761">Постановления городских дум (Новгородская губерния, 1870–1917)</span><span class="en">Municipal council decrees (Novgorod Province, 1870–1917)</span></div>
         </div>
         <div class="ms-item">
           <div class="ms-key"><span class="ru">Холера</span><span class="en">Cholera</span></div>
-          <div class="ms-val"><span class="ru">Васильев К.Г., Сегал А.Е, История эпидемий в России (Материалы и очерки). М. 1960</span><span class="en">Vasil'yev K.G., Segal A.Ye, Istoriya epidemiy v Rossii (Materialy i ocherki) [A History of Epidemics in Russia: Materials and Essays]. M. 1960</span></div>
+          <div class="ms-val"><span class="ru" style="color: #6F6761">Васильев К.Г., Сегал А.Е, История эпидемий в России (Материалы и очерки). М. 1960</span><span class="en">Vasil'yev K.G., Segal A.Ye, Istoriya epidemiy v Rossii (Materialy i ocherki) [A History of Epidemics in Russia: Materials and Essays]. M. 1960</span></div>
         </div>
         <div class="ms-item">
           <div class="ms-key">1910</div>
-          <div class="ms-val"><span class="ru">Статистика городского благоустройства Российской империи · 1&thinsp;231 город · 89 губерний и областей</span><span class="en">Urban services statistics, Russian Empire · 1,231 cities · 89 provinces &amp; oblasts</span></div>
+          <div class="ms-val"><span class="ru" style="color: #6F6761">Статистика городского благоустройства Российской империи · 1&thinsp;231 город · 89 губерний и областей</span><span class="en">Urban services statistics, Russian Empire · 1,231 cities · 89 provinces &amp; oblasts</span></div>
         </div>
       </div>
-      <div>
-        <div class="methods-numbers">
+      <div style="position: relative; top: -130px">
+        <div class="methods-numbers" style="position: relative; top: 0px">
           <div class="mn-row">
             <span class="mn-label"><span class="ru">Городов в базе</span><span class="en">Cities in database</span></span>
             <span class="mn-val">950</span>
@@ -1043,11 +1105,11 @@ body::before{
           </div>
         </div>
         <!-- NOTE: 950 vs 1231 -->
-        <div style="margin-top:18px;padding:14px 16px;border-radius:10px;background:rgba(111,125,149,.10);border-left:3px solid rgba(111,125,149,.35)">
-          <p style="font:700 .58rem/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:8px">
+        <div style="margin-top:18px;padding:14px 16px;border-radius:10px;background:rgba(111,125,149,.10);border-left:3px solid rgba(111,125,149,.35); position: relative; top: 0px">
+          <p style="font:700 .58rem/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:#6B4A32;margin-bottom:8px">
             <span class="ru">Примечание об источниках</span><span class="en">Note on sources</span>
           </p>
-          <p style="font:300 .82rem/1.7 var(--serif);color:var(--muted)">
+          <p style="font:300 .82rem/1.7 var(--serif);color:#6B4A32">
             <span class="ru"><strong style="color:var(--ink);font-weight:600">950</strong> — населённые пункты, официально числящиеся городами в источнике «Города России в 1910&nbsp;г.» (в т.&thinsp;ч. негородские поселения с городским управлением). <strong style="color:var(--ink);font-weight:600">1&thinsp;231</strong> — города и поселения с населением свыше 10&thinsp;000&nbsp;чел. по данным той же статистики благоустройства.</span>
             <span class="en"><strong style="color:var(--ink);font-weight:600">950</strong> = settlements officially classified as cities in <em>Cities of Russia in 1910</em> (including non-urban settlements with a city administration). <strong style="color:var(--ink);font-weight:600">1,231</strong> = cities and settlements with a population over 10,000, as recorded in the same urban services census.</span>
           </p>
@@ -1086,9 +1148,9 @@ body::before{
 
 <!-- RESEARCHER -->
 <div class="researcher" id="about">
-  <div class="section-inner">
+  <div class="section-inner" style="width: 1080px">
     <span class="sec-tag"><span class="ru">Исследователь</span><span class="en">Researcher</span></span>
-    <div class="researcher-card">
+    <div class="researcher-card" style="width: 1080px">
       <div class="rc-photo">
         <img src="ab_agafonova1_thumb.jpg" alt="Anna B. Agafonova" loading="lazy" width="240" height="240">
       </div>
