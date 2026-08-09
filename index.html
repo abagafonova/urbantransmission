@@ -436,7 +436,32 @@ body{background:var(--cream);color:var(--ink);font-family:var(--serif);font-weig
   -webkit-mask-position:center;mask-position:center;
   filter:drop-shadow(0 1px 1px rgba(20,15,5,.2)) drop-shadow(0 16px 30px rgba(20,15,5,.24)) drop-shadow(0 32px 56px rgba(20,15,5,.14));
 }
-@media(max-width:780px){.scene-split.pc-card{aspect-ratio:auto}}
+@media(max-width:780px){
+  .scene-split.pc-card{aspect-ratio:auto;grid-template-columns:1fr!important}
+  .pc-card{
+    background-image:none!important;
+    -webkit-mask-image:none!important;mask-image:none!important;
+    filter:none!important;
+  }
+  .pc-card .s-text,.pc-card .s-vis{
+    position:static!important;left:auto!important;top:auto!important;
+    width:100%!important;min-height:auto!important;transform:none!important;
+  }
+  .pc-card .s-vis .vis-dark,.pc-card .s-vis .vis-light{
+    width:100%!important;height:auto!important;left:auto!important;top:auto!important;
+    min-height:auto!important;
+  }
+  .pc-card .s-vis canvas,.pc-card .s-vis svg{
+    width:100%!important;height:auto!important;left:auto!important;top:auto!important;
+  }
+  .pc-card .s-text{
+    background:var(--th-glass)!important;border:1px solid var(--th-glass-bd)!important;
+    box-shadow:0 8px 28px rgba(20,36,60,.10)!important;
+    backdrop-filter:blur(16px) saturate(140%)!important;-webkit-backdrop-filter:blur(16px) saturate(140%)!important;
+    border-radius:16px!important;margin-top:0!important;padding:26px 22px!important;
+  }
+  .pc-card .s-text::before{display:none!important}
+}
 .scene-split.pc-card{grid-template-columns:0.9fr 1.1fr}
 .scene-split.pc-card.flip{grid-template-columns:1.1fr 0.9fr}
 .pc-card .s-idx{display:none}
@@ -447,7 +472,7 @@ body{background:var(--cream);color:var(--ink);font-family:var(--serif);font-weig
   border:1px solid rgba(255,255,255,.4);
   box-shadow:0 12px 34px rgba(31,41,45,.14);
   backdrop-filter:blur(9px) saturate(85%);-webkit-backdrop-filter:blur(9px) saturate(85%);
-  border-radius:2px;padding:30px 32px;
+  border-radius:2px;padding:15px 32px;
 }
 .pc-card .s-text::before{
   content:'';position:absolute;inset:0;pointer-events:none;
@@ -840,7 +865,7 @@ body::before{
         <span class="s-idx">01 / 04</span>
         <span class="badge badge-orig"><span class="ru">Оригинальное исследование</span><span class="en">Original research</span></span>
         <h2 class="s-h2" id="map-h2">
-          <span class="ru" style="font-size: 28px">Карта городских водопроводов Российской империи</span>
+          <span class="ru" style="font-size: 24px">Карта городских водопроводов Российской империи</span>
           <span class="en">Map of Urban Waterworks in the Russian Empire</span>
         </h2>
         <p class="s-desc">
@@ -872,7 +897,7 @@ body::before{
         <span class="s-idx">02 / 04</span>
         <span class="badge badge-ctx"><span class="ru">Контекстные данные</span><span class="en">Contextual data · 1 source</span></span>
         <h2 class="s-h2" id="infra-h2">
-          <span class="ru" style="font-size: 28px">Городские услуги и инфраструктура · 1910</span>
+          <span class="ru" style="font-size: 24px">Городские услуги и инфраструктура · 1910</span>
           <span class="en">Urban Services &amp; Infrastructure · 1910</span>
         </h2>
         <p class="s-desc">
@@ -917,7 +942,7 @@ body::before{
         <span class="s-idx">03 / 04</span>
         <span class="badge badge-ctx"><span class="ru">Контекстные данные</span><span class="en">Contextual data · map sources</span></span>
         <h2 class="s-h2" id="chol-h2">
-          <span class="ru" style="font-size: 28px">Холерные эпидемии и водоснабжение</span>
+          <span class="ru" style="font-size: 24px">Холерные эпидемии и водоснабжение</span>
           <span class="en">Cholera Epidemics and Water Supply</span>
         </h2>
         <p class="s-desc">
@@ -948,7 +973,7 @@ body::before{
         <span class="s-idx">04 / 04</span>
         <span class="badge badge-orig"><span class="ru">MVP · Прототип</span><span class="en">MVP · Prototype</span></span>
         <h2 class="s-h2" id="novg-h2">
-          <span class="ru" style="font-size: 28px">Санитарное состояние городов Российской империи (Новгородская губерния)</span>
+          <span class="ru" style="font-size: 24px">Санитарное состояние городов Российской империи (Новгородская губерния)</span>
           <span class="en">Sanitary Conditions of Cities of the Russian Empire (Novgorod Province)</span>
         </h2>
         <p class="s-desc">
@@ -1054,7 +1079,7 @@ body::before{
       <span class="ru" style="color: #6F6761">Ресурс основан на оригинальном архивном исследовании и опубликованных источниках XIX — начала XX века. Все данные верифицированы и задокументированы.</span>
       <span class="en">This resource is based on original archival research and published sources from the 19th–early 20th centuries. All data are verified and fully documented.</span>
     </p>
-    <div class="methods-grid" style="height: 500px">
+    <div class="methods-grid">
       <div class="method-sources">
         <div class="ms-item">
           <div class="ms-key"><span class="ru">Численность населения</span><span class="en">Urban Population</span></div>
@@ -1077,8 +1102,8 @@ body::before{
           <div class="ms-val"><span class="ru" style="color: #6F6761">Статистика городского благоустройства Российской империи · 1&thinsp;231 город · 89 губерний и областей</span><span class="en">Urban services statistics, Russian Empire · 1,231 cities · 89 provinces &amp; oblasts</span></div>
         </div>
       </div>
-      <div style="position: relative; top: -130px">
-        <div class="methods-numbers" style="position: relative; top: 0px">
+      <div>
+        <div class="methods-numbers">
           <div class="mn-row">
             <span class="mn-label"><span class="ru">Городов в базе</span><span class="en">Cities in database</span></span>
             <span class="mn-val">950</span>
@@ -1148,9 +1173,9 @@ body::before{
 
 <!-- RESEARCHER -->
 <div class="researcher" id="about">
-  <div class="section-inner" style="width: 1080px">
+  <div class="section-inner">
     <span class="sec-tag"><span class="ru">Исследователь</span><span class="en">Researcher</span></span>
-    <div class="researcher-card" style="width: 1080px">
+    <div class="researcher-card">
       <div class="rc-photo">
         <img src="ab_agafonova1_thumb.jpg" alt="Anna B. Agafonova" loading="lazy" width="240" height="240">
       </div>
