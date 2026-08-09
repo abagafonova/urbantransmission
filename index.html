@@ -515,7 +515,8 @@ body{background:var(--cream);color:var(--ink);font-family:var(--serif);font-weig
   display:grid;grid-template-columns:3fr 2fr;
   gap:64px;margin-top:40px;align-items:start;
 }
-@media(max-width:720px){.methods-grid{grid-template-columns:1fr;gap:36px}}
+.methods-side{margin-top:-170px}
+@media(max-width:720px){.methods-grid{grid-template-columns:1fr;gap:36px}.methods-side{margin-top:0}}
 .method-sources{
   display:flex;flex-direction:column;gap:2px;
 }
@@ -1102,7 +1103,7 @@ body::before{
           <div class="ms-val"><span class="ru" style="color: #6F6761">Статистика городского благоустройства Российской империи · 1&thinsp;231 город · 89 губерний и областей</span><span class="en">Urban services statistics, Russian Empire · 1,231 cities · 89 provinces &amp; oblasts</span></div>
         </div>
       </div>
-      <div>
+      <div class="methods-side">
         <div class="methods-numbers">
           <div class="mn-row">
             <span class="mn-label"><span class="ru">Городов в базе</span><span class="en">Cities in database</span></span>
