@@ -76,7 +76,7 @@ html[data-block="navy"]{--sky:#dbe4ee;--ochre-bg:#c9d7e8;--th-glass:rgba(242,246
 html[data-block="sky"]{--sky:#e2eef4;--ochre-bg:#cfe3ec;--th-glass:rgba(240,248,251,.5);--th-glass-bd:rgba(255,255,255,.65)}
 
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;overflow-x:hidden}
 body{background:var(--cream);color:var(--ink);font-family:var(--serif);font-weight:400;min-height:100vh;overflow-x:hidden}
 
 /* ─── BANNER ─── */
@@ -178,7 +178,7 @@ body{background:var(--cream);color:var(--ink);font-family:var(--serif);font-weig
   height:1px;background:rgba(255,255,255,.07);margin:6px 24px;
 }
 
-@media(max-width:768px){
+@media(max-width:900px){
   /* скрыть десктопные ссылки и разделитель */
   .site-nav > a{display:none}
   /* показать бургер */
@@ -189,7 +189,7 @@ body{background:var(--cream);color:var(--ink);font-family:var(--serif);font-weig
 
 /* ─── HERO ─── */
 .hero{
-  min-height:46vh;position:relative;overflow:hidden;
+  width:100%;min-height:46vh;position:relative;overflow:hidden;
   display:flex;align-items:center;justify-content:center;
   background:linear-gradient(160deg, #0d1b2e 0%, #1a2b47 60%, #1f3858 100%);
   padding:44px 24px 54px;
@@ -862,7 +862,7 @@ body::before{
           <div id="map-cnt" style="position:absolute;bottom:14px;right:16px;font:700 1rem/1 var(--cinzel);color:rgba(196,167,107,.5);pointer-events:none;letter-spacing:.06em;"></div>
         </div>
       </div>
-      <div class="s-text" style="left: 30px; top: 40px; min-height: 470px; width: 470px">
+      <div class="s-text" style="left: 30px; top: 40px; min-height: 470px; max-width: 470px">
         <span class="s-idx">01 / 04</span>
         <span class="badge badge-orig"><span class="ru">Оригинальное исследование</span><span class="en">Original research</span></span>
         <h2 class="s-h2" id="map-h2">
@@ -894,7 +894,7 @@ body::before{
 <div class="scene alt" id="infra">
   <div class="scene-inner">
     <div class="scene-split flip pc-card" style="border-width: 1px; border-style: double; border-color: #4B290D">
-      <div class="s-text" style="min-height: 505px; left: -30px; width: 470px; top: 15px">
+      <div class="s-text" style="min-height: 505px; left: -30px; max-width: 470px; top: 15px">
         <span class="s-idx">02 / 04</span>
         <span class="badge badge-ctx"><span class="ru">Контекстные данные</span><span class="en">Contextual data · 1 source</span></span>
         <h2 class="s-h2" id="infra-h2">
@@ -939,7 +939,7 @@ body::before{
           <svg id="chol-svg" viewBox="0 0 380 290" style="overflow: visible; width: 380px; height: 405px; position: relative; top: 0px"></svg>
         </div>
       </div>
-      <div class="s-text" style="width: 460px; left: 30px; top: 45px; min-height: 435px">
+      <div class="s-text" style="max-width: 460px; left: 30px; top: 45px; min-height: 435px">
         <span class="s-idx">03 / 04</span>
         <span class="badge badge-ctx"><span class="ru">Контекстные данные</span><span class="en">Contextual data · map sources</span></span>
         <h2 class="s-h2" id="chol-h2">
@@ -970,7 +970,7 @@ body::before{
 <div class="scene alt" id="novgorod">
   <div class="scene-inner">
     <div class="scene-split flip pc-card" style="border-width: 1px; border-style: double; border-color: #4B290D">
-      <div class="s-text" style="left: -20px; min-height: 520px; width: 460px">
+      <div class="s-text" style="left: -20px; min-height: 520px; max-width: 460px">
         <span class="s-idx">04 / 04</span>
         <span class="badge badge-orig"><span class="ru">MVP · Прототип</span><span class="en">MVP · Prototype</span></span>
         <h2 class="s-h2" id="novg-h2">
@@ -1191,7 +1191,7 @@ body::before{
         </p>
         <p class="rc-bio">
           <span class="ru">Специалист в области городской экологической истории Российской империи и раннего СССР (1870–1930-е гг.). Сфера интересов: история водоснабжения и санитарных реформ, гидроэнергетика, городское самоуправление. Руководитель грантов РНФ (2022–2023) и РФФИ (2019), автор более 50 научных работ (в т.ч. публикации в Scopus и Web of Science). Доклады: EAUH (Антверп, 2022), ESEH (Бристоль, 2022; Таллин, 2019; Загреб, 2017), ICOHTEC (Острава, 2022; Катовице, 2019; Порту, 2016), ИИЕТ РАН (2023, 2025), ВДНХ-XIX (ЕУ СПб, 2026).</span>
-          <span class="en">Specialist in the urban environmental history of Russian and Soviet cities (1870s–1930s). Research interests: water supply and sanitary reform, hydropower development, municipal self-government. PI on grants from the Russian Science Foundation (2022–23) and RFBR (2019). Author of 50+ scholarly publications (including articles indexed in Scopus and Web of Science). Conferences: EAUH (Antwerp, 2022), ESEH (Bristol, 2022; Tallinn, 2019; Zagreb, 2017), ICOHTEC (Ostrava, 2022; Katowice, 2019; Porto, 2016), IIET RAS (2023, 2025), ВДНХ-XIX (EU SPb, 2026).</span>
+          <span class="en">Specialist in the urban environmental history of Russian and Soviet cities (1870s–1930s). Research interests: water supply and sanitary reform, hydropower development, municipal self-government. PI on grants from the Russian Science Foundation (2022–23) and RFBR (2019). Author of 50+ scholarly publications (including articles indexed in Scopus and Web of Science). Conferences: EAUH (Antwerp, 2022), ESEH (Bristol, 2022; Tallinn, 2019; Zagreb, 2017), ICOHTEC (Ostrava, 2022; Katowice, 2019; Porto, 2016), IIET RAS (2023, 2025), VDNKh-XIX (EU SPb, 2026).</span>
         </p>
         <div class="rc-links">
           <a class="rc-link" href="https://orcid.org/0000-0003-3021-4002" target="_blank" rel="noopener noreferrer">ORCID</a>
