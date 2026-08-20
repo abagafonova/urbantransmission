@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Как выбрать статистический метод для исторического исследования - без формул</title>
+<meta name="description" content="Практическое дерево выбора метода для историков и гуманитариев: описать данные, сравнить группы, найти связь или прочитать регрессию. Таблица 'задача - метод - когда не подходит' и примеры на исторических данных.">
+<link rel="canonical" href="https://urbantransmission.org/how-to-choose-method.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Transmission">
+<meta property="og:title" content="Как выбрать статистический метод для исторического исследования">
+<meta property="og:description" content="Пошаговое дерево выбора метода без формул: задача - метод - когда не подходит, с примерами из истории.">
+<meta property="og:url" content="https://urbantransmission.org/how-to-choose-method.html">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:locale:alternate" content="en_GB">
+<link rel="alternate" hreflang="ru" href="https://urbantransmission.org/how-to-choose-method.html">
+<link rel="alternate" hreflang="en" href="https://urbantransmission.org/how-to-choose-method.html">
+<link rel="alternate" hreflang="x-default" href="https://urbantransmission.org/how-to-choose-method.html">
+<style>
+:root{
+  --page-cream:#F6EFDC; --page-ochre:#E8D5A8; --page-turq:#BED5CF; --page-sky:#D8E3E1;
+  --glass-tint:rgba(250,244,228,0.72); --glass-edge:rgba(20,36,60,0.18);
+  --ink:#1A2B47; --ink-soft:#2B4773; --muted:#6F7D95; --copper:#8B5E3C; --turq:#4F8781;
+  --line:rgba(20,36,60,0.12); --line-copper:rgba(139,94,60,0.30);
+  --serif:Cambria,'Palatino Linotype',Georgia,serif;
+  --sans:system-ui,-apple-system,'Segoe UI',sans-serif;
+  --shadow:rgba(26,43,71,0.08);
+  --paper-url:url('assets/paper.jpg');   /* <-- путь к текстуре бумаги */
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  color:var(--ink); font-family:var(--serif); font-size:17px; line-height:1.8;
+  background:var(--page-cream);
+  background-image:
+    radial-gradient(1100px 700px at 8% 4%, var(--page-sky) 0%, rgba(216,227,225,0) 55%),
+    radial-gradient(900px 600px at 95% 3%, var(--page-turq) 0%, rgba(190,213,207,0) 60%),
+    radial-gradient(1200px 900px at 50% 110%, var(--page-ochre) 0%, rgba(232,213,168,0) 55%),
+    linear-gradient(180deg, var(--page-cream) 0%, var(--page-cream) 30%, rgba(232,213,168,0.45) 70%, rgba(190,213,207,0.35) 100%);
+  min-height:100vh; margin:0; display:flex; flex-direction:column;
+}
+main.page{ flex:1 0 auto; padding:26px 16px 44px; }
+.sans{font-family:var(--sans);}
+a{color:var(--turq);} a:hover{color:var(--ink);}
+
+/* i18n */
+[data-en] .ru{display:none;} [data-en] .en{display:inline;}
+.en{display:none;} .ru{display:inline;}
+[data-en] .ru-b{display:none;} [data-en] .en-b{display:block;}
+.en-b{display:none;} .ru-b{display:block;}
+
+/* ── HEADER (единый стиль сайта) ── */
+header{ position:relative; z-index:10; padding:20px 32px 22px;
+  background:var(--glass-tint); backdrop-filter:blur(18px) saturate(1.2);
+  border-bottom:1px solid var(--glass-edge);
+  box-shadow:0 1px 0 rgba(255,255,255,.55) inset, 0 4px 16px rgba(30,40,70,.07);}
+header::before, header::after, .hdr-bl, .hdr-br{
+  content:''; position:absolute; width:28px; height:28px;
+  border:1px solid var(--line-copper); pointer-events:none;}
+header::before{ top:7px; left:7px;  border-right:none; border-bottom:none; }
+header::after { top:7px; right:7px; border-left:none;  border-bottom:none; }
+.hdr-bl{ bottom:7px; left:7px;  border-right:none; border-top:none; }
+.hdr-br{ bottom:7px; right:7px; border-left:none;  border-top:none; }
+.header-inner{ max-width:860px; margin:0 auto; display:flex; align-items:center; gap:20px; }
+.header-icon{ width:52px; height:52px; flex-shrink:0; color:var(--copper); opacity:.88; }
+.header-icon svg{ width:100%; height:100%; display:block; }
+.header-text{ flex:1; text-align:center; position:relative; padding:4px 0; }
+.header-text::before, .header-text::after{ content:''; position:absolute; left:6%; right:6%; height:1px;
+  background:repeating-linear-gradient(90deg, var(--line-copper) 0 7px, transparent 7px 11px); }
+.header-text::before{ top:-2px; }
+.header-text::after { bottom:-4px; }
+.header-text h1{ font-family:Cambria,'Palatino Linotype',Georgia,serif; font-weight:500; font-variant:small-caps;
+  font-size:1.9rem; letter-spacing:.05em; color:var(--ink); line-height:1.1; margin:0; }
+.header-text h1 em{ color:var(--copper); font-style:italic; font-variant:normal; }
+.header-text .sub{ margin-top:5px; font-size:.60rem; font-weight:500; letter-spacing:.22em; text-transform:uppercase;
+  color:var(--muted); display:flex; gap:14px; justify-content:center; align-items:center; flex-wrap:wrap; }
+.header-text .sub .sep{ color:var(--copper); opacity:.6; }
+.header-back{ display:inline-flex; align-items:center; gap:6px; padding:7px 14px; border-radius:999px;
+  background:rgba(246,239,220,0.6); border:1px solid var(--line-copper); color:var(--ink-soft);
+  font-family:var(--sans); font-size:.72rem; font-weight:600; letter-spacing:.05em; text-decoration:none;
+  transition:all .18s; flex-shrink:0; }
+.header-back:hover{ background:var(--ink); color:var(--page-cream); border-color:var(--ink); }
+.header-back svg{ width:14px; height:14px; }
+.lang-sw{ display:flex; gap:4px; flex-shrink:0; }
+.lang-sw button{ background:rgba(26,43,71,0.06); border:1px solid var(--line); color:var(--muted);
+  font:700 .68rem/1 var(--sans); letter-spacing:.06em; padding:5px 9px; cursor:pointer; transition:all .15s; border-radius:3px; }
+.lang-sw button.on{ color:var(--page-cream); background:var(--ink); border-color:var(--ink); }
+.lang-sw button:hover:not(.on){ color:var(--ink); border-color:var(--ink-soft); }
+@media(max-width:768px){ header{ padding:14px 18px 16px; } .header-text h1{ font-size:1.35rem; } .header-icon{ width:44px; height:44px; } }
+@media(max-width:480px){ .header-text h1{ font-size:1.12rem; } .header-text .sub{ font-size:.54rem; gap:9px; } }
+
+/* PAPER SHEET */
+.sheet{
+  max-width:860px; margin:0 auto; border-radius:7px; overflow:hidden;
+  border:1px solid var(--line-copper);
+  box-shadow:0 18px 50px rgba(26,43,71,0.16), 0 2px 0 rgba(255,255,255,.6) inset;
+  background-color:#FBF7EC;
+  background-image:linear-gradient(rgba(251,247,236,0.82),rgba(251,247,236,0.82)), var(--paper-url);
+  background-repeat:no-repeat, repeat;
+  background-size:cover, 720px auto;
+}
+.pad{padding:44px clamp(22px,5vw,60px);}
+
+/* hero */
+.kicker{font-family:var(--sans); font-size:.62rem; letter-spacing:.18em; text-transform:uppercase; color:var(--copper); margin-bottom:12px;}
+h1{font-family:var(--serif); font-weight:600; font-size:clamp(1.7rem,4.4vw,2.5rem); line-height:1.16; letter-spacing:.005em; margin-bottom:16px; color:var(--ink);}
+.lead{font-size:1.12rem; color:var(--ink-soft); line-height:1.75; margin-bottom:26px;}
+.hr{height:1px; background:var(--line-copper); margin:8px 0 4px;}
+
+/* buttons */
+.btn{display:inline-block; font-family:var(--sans); font-weight:600; font-size:.95rem; letter-spacing:.02em;
+  background:var(--ink); color:var(--page-cream); padding:13px 26px; border-radius:999px; text-decoration:none;
+  transition:background .18s, transform .18s; box-shadow:0 6px 18px rgba(26,43,71,.18);}
+.btn:hover{background:var(--copper); color:#fff; transform:translateY(-2px);}
+
+/* section titles */
+.s-label{font-family:var(--sans); font-size:.60rem; letter-spacing:.18em; text-transform:uppercase; color:var(--copper); margin:34px 0 8px;}
+h2{font-family:var(--serif); font-weight:600; font-size:clamp(1.25rem,2.6vw,1.7rem); color:var(--ink); margin-bottom:14px;}
+p{margin:0 0 14px;}
+
+/* step cards */
+.step{display:grid; grid-template-columns:46px 1fr; gap:0 18px; align-items:start;
+  background:rgba(250,246,238,0.72); border:1px solid var(--line-copper); border-radius:7px;
+  padding:22px 24px; margin:16px 0; transition:box-shadow .2s,border-color .2s;}
+.step:hover{box-shadow:0 6px 20px var(--shadow); border-color:rgba(139,94,60,.45);}
+.step .num{font-family:var(--serif); font-weight:700; font-size:1.5rem; color:var(--copper); line-height:1.2;}
+.step h3{font-family:var(--serif); font-weight:600; font-size:1.14rem; margin:0 0 8px; color:var(--ink);}
+.step ul{margin:0; padding-left:18px;} .step li{margin:6px 0;} .step p{margin:0;}
+
+/* callouts */
+.callout{border-radius:7px; padding:20px 24px; margin:18px 0;}
+.callout.warn{background:rgba(139,94,60,0.08); border-left:0px solid var(--copper);}
+.callout.case{background:rgba(232,213,168,0.30); border-left:0px solid var(--ochre,#C79243);}
+.callout.check{background:rgba(79,135,129,0.10); border-left:0px solid var(--turq);}
+.callout p{margin:.35em 0;}
+
+/* table */
+.tablecard{overflow-x:auto; border:1px solid var(--line-copper); border-radius:7px; margin:16px 0; background:rgba(250,246,238,0.85);}
+table{border-collapse:collapse; width:100%; font-size:.98rem;}
+th,td{padding:12px 14px; text-align:left; vertical-align:top; border-bottom:1px solid var(--line);}
+th{font-family:var(--sans); font-weight:600; font-size:.82rem; letter-spacing:.02em; background:rgba(232,213,168,0.35); color:var(--ink);}
+tr:last-child td{border-bottom:none;}
+
+/* figures */
+figure{margin:20px 0; background:#fff; border:1px solid var(--line-copper); border-radius:7px; padding:14px; text-align:center;}
+figure iframe{width:100%; height:520px; border:0; border-radius:6px; background:#fff;}
+figure img{max-width:100%; height:auto; border-radius:6px;}
+figcaption{font-family:var(--sans); font-size:.8rem; color:var(--muted); margin-top:10px;}
+
+/* cta band */
+.ctaband{background:rgba(250,246,238,0.9); border:1px solid var(--line-copper); border-radius:7px; padding:34px 28px; text-align:center; margin:26px 0 6px; box-shadow:0 4px 18px var(--shadow);}
+.ctaband h2{margin-bottom:10px;}
+.ctaband p{color:var(--ink-soft); max-width:600px; margin:0 auto 20px;}
+.fine{font-family:var(--sans); font-size:.8rem; color:var(--muted);}
+
+/* footer (как в collaborate.html) */
+.tx-footer{ background:var(--ink); color:rgba(255,255,255,.40); padding:28px 32px; border-top:2px solid var(--turq); font:300 .82rem/1.7 var(--serif); margin-top:auto; }
+.tx-footer-inner{ max-width:860px; margin:0 auto; display:flex; flex-wrap:wrap; gap:10px 24px; justify-content:space-between; align-items:center; }
+.tx-footer strong{ color:rgba(255,255,255,.75); }
+.tx-footer a{ color:rgba(255,255,255,.5); text-decoration:none; }
+.tx-footer a:hover{ color:#fff; }
+.tx-footer-nav{ display:flex; gap:16px; flex-wrap:wrap; }
+
+/* reveal */
+.reveal{opacity:0; transform:translateY(22px); transition:opacity .7s ease, transform .7s ease;}
+.reveal.visible{opacity:1; transform:none;}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none;} html{scroll-behavior:auto;}}
+@media (max-width:560px){ .step{grid-template-columns:1fr; gap:8px;} }
+</style>
+</head>
+<body>
+
+<header class="reveal">
+  <div class="hdr-bl"></div>
+  <div class="hdr-br"></div>
+  <div class="header-inner">
+    <div class="header-icon">
+      <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="30" cy="30" r="28" stroke="currentColor" stroke-width="0.8" opacity="0.25"/>
+        <path d="M30 21 L19 38 M30 21 L41 38" stroke="currentColor" stroke-width="1.2"/>
+        <circle cx="30" cy="17" r="4" stroke="currentColor" stroke-width="1.3" fill="none"/>
+        <circle cx="18" cy="42" r="4" stroke="currentColor" stroke-width="1.3" fill="none"/>
+        <circle cx="42" cy="42" r="4" stroke="currentColor" stroke-width="1.3" fill="none"/>
+      </svg>
+    </div>
+    <div class="header-text">
+      <h1><span class="ru">Как выбрать <em>метод</em></span><span class="en">How to Choose <em>a Method</em></span></h1>
+      <div class="sub">
+        <span><span class="ru">Дерево решений</span><span class="en">Decision tree</span></span>
+        <span class="sep">·</span>
+        <span><span class="ru">Примеры из истории</span><span class="en">Historical examples</span></span>
+        <span class="sep">·</span>
+        <span><span class="ru">5 минут</span><span class="en">5 minutes</span></span>
+      </div>
+    </div>
+    <div class="lang-sw" role="group" aria-label="Language / Язык">
+      <button type="button" data-lang="ru" class="on" onclick="setLang('ru')">РУ</button>
+      <button type="button" data-lang="en" onclick="setLang('en')">EN</button>
+    </div>
+    <a href="https://urbantransmission.org/" class="header-back">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10 12L6 8l4-4"/></svg>
+      <span class="ru">На главную</span><span class="en">Home</span>
+    </a>
+  </div>
+</header>
+
+<main class="page">
+<article class="sheet reveal">
+  <div class="pad">
+
+    <p class="kicker"><span class="ru">Статистика для историков</span><span class="en">Statistics for Historians</span></p>
+    <h1><span class="ru">Как выбрать статистический метод для исторического исследования</span><span class="en">How to Choose a Statistical Method for Historical Research</span></h1>
+    <p class="lead"><span class="ru">Без формул, с деревом решений и примерами из истории. За 5 минут вы поймёте, какой метод нужен именно вашей задаче, а освоить их на практике поможет <a href="https://urbantransmission.org/course.html">курс «Основы статистики для историков»</a>.</span><span class="en">No formulas - just a decision tree and historical examples. In 5 minutes, you will understand which method your specific task requires, while the <a href="https://urbantransmission.org/course.html">"Statistics for Historians: The Basics" course</a> will help you master them in practice.</span></p>
+    <div class="hr"></div>
+
+    <div class="callout case reveal" style="margin-top:26px;">
+      <p><span class="ru"><strong>Для кого статья:</strong> историки, аспиранты и гуманитарии, которые собрали данные, но застряли на вопросе «а что здесь вообще считать?».</span><span class="en"><strong>Who this article is for:</strong> historians, graduate students, and humanities researchers who have gathered data but are stuck wondering, "What on earth do I actually calculate here?"</span></p>
+      <p><span class="ru"><strong>Что вы получите:</strong> простое правило выбора метода (описать / связь / сравнить / предсказать), таблицу-шпаргалку «задача - метод - когда не подходит» и способ проверить себя.</span><span class="en"><strong>What you will get:</strong> a simple rule for choosing a method (describe / relationship / compare / predict), a cheat sheet table ("task - method - when not to use"), and a way to cross-check your work.</span></p>
+    </div>
+
+    <p class="reveal" style="margin-top:20px;"><span class="ru">Всё начинается с одного вопроса: <strong>что вы хотите сделать с данными</strong> - описать, найти связь, сравнить группы или прочитать предсказание исхода? Ниже - разбор по шагам, а под ним таблица, которую можно сохранить.</span><span class="en">It all starts with a single question: <strong>what do you want to do with your data</strong> - describe it, find a relationship, compare groups, or predict an outcome? Below is a step-by-step breakdown followed by a saveable reference table.</span></p>
+
+    <div class="step reveal">
+      <div class="num">1</div>
+      <div>
+        <h3><span class="ru">Описать данные</span><span class="en">Describe the Data</span></h3>
+        <p><span class="ru">Для чисел (доходы, возраст, частота упоминания слов или словосочетаний) - среднее или медиана. Ключевая развилка: в истории данные почти всегда скошены, пара «гигантов» (Петербург, Москва) тянет среднее значение выборки вверх, поэтому честнее <strong>медиана</strong>. Для категорий - доли и проценты, и всегда указывайте N: «47%» из 32 городов и из 3200 значат разное.</span><span class="en">For numerical data (income, age, word or phrase frequency) - use the mean or median. The key fork in the road: historical data is almost always skewed, and a couple of "giants" (St. Petersburg, Moscow) pull the sample mean upward, making the <strong>median</strong> a more honest measure. For categorical data, use proportions and percentages, and always report N: "47%" out of 32 cities means something very different than 47% out of 3,200.</span></p>
+      </div>
+    </div>
+
+    <figure class="reveal">
+      <img src="assets/box-plot.png" alt="Box plot: incomes of cities with and without a water supply">
+      <figcaption><span class="ru">Ящик с усами: медиана, разброс и выбросы-«столицы» на одной картинке.</span><span class="en">Box plot: median, spread, and "capital city" outliers all in one visual.</span></figcaption>
+    </figure>
+
+    <div class="step reveal">
+      <div class="num">2</div>
+      <div>
+        <h3><span class="ru">Найти связь двух признаков</span><span class="en">Find the Relationship Between Two Variables</span></h3>
+        <p><span class="ru">Две числовые переменные - это корреляция: <strong>Пирсон</strong> (линейная связь, чувствителен к выбросам (аномальным значениям в выборке)) или <strong>Спирмен</strong> (ранги, устойчив к выбросам). Перед расчётом посмотрите на диаграмму рассеяния: один выброс или изогнутая связь исказят коэффициент.</span><span class="en">Two numerical variables call for correlation: <strong>Pearson</strong> (linear relationship, sensitive to outliers or anomalous values in the sample) or <strong>Spearman</strong> (ranks, resistant to outliers). Before calculating, look at a scatter plot: a single outlier or a nonlinear (curved) relationship will distort the coefficient.</span></p>
+      </div>
+    </div>
+
+
+    <figure class="reveal">
+      <img src="assets/scatter.png" alt="Scatter plot: city population and income">
+      <figcaption><span class="ru">Диаграмма рассеяния: направление, силу и выбросы видно визуально до расчёта коэффициентов. Иллюстрация © А. Агафонова; точные значения уточняются в готовящейся публикации.</span><span class="en">Scatter plot: direction, strength, and outliers are visually apparent before calculating coefficients. (Illustration © A. Agafonova; exact values are subject to revision in an upcoming publication.)</span></figcaption>
+    </figure>
+
+    <div class="callout warn reveal">
+      <p style="margin:0;"><span class="ru"><strong>Одна ловушка на все методы связи:</strong> корреляция - это не причинность. Сильная связь доходов и инфраструктуры не доказывает, что одно породило другое: возможен третий фактор (например, административный статус населённого пункта). Метод показывает, что признаки движутся вместе; <em>почему</em> - вы устанавливаете по источникам.</span><span class="en"><strong>One trap common to all association methods:</strong> correlation is not causation. A strong link between income and infrastructure does not prove that one caused the other - a third factor could be at play (e.g., the administrative status of a settlement). The method shows that the variables move together; <em>why</em> they do is something you determine from your sources.</span></p>
+    </div>
+
+    <div class="step reveal">
+      <div class="num">3</div>
+      <div>
+        <h3><span class="ru">Сравнить группы</span><span class="en">Compare Groups</span></h3>
+        <p style="margin-bottom:8px;"><span class="ru">Для малых и асимметричных исторических данных подходят непараметрические критерии (работают с рангами):</span><span class="en">For small and asymmetric historical data, nonparametric tests (which work with ranks) are appropriate:</span></p>
+        <ul class="ru-b">
+          <li><strong>Две независимые группы</strong> (города с водопроводом и без) &rsaquo; <strong>критерий Манна-Уитни</strong>.</li>
+          <li><strong>Две связанные точки</strong> (один город в 1894 и 1910) &rsaquo; <strong>критерий Уилкоксона</strong>.</li>
+          <li><strong>Три группы и больше</strong> (города по регионам) &rsaquo; <strong>критерий Краскела-Уоллиса</strong>.</li>
+          <li><strong>Две категории</strong> (регион и наличие инфраструктуры) &rsaquo; <strong>критерий хи-квадрат</strong> (при малых ячейках - точный тест Фишера).</li>
+        </ul>
+        <ul class="en-b">
+          <li><strong>Two independent groups</strong> (cities with and without a water supply) &rsaquo; <strong>Mann-Whitney test</strong>.</li>
+          <li><strong>Two paired points</strong> (the same city in 1894 and 1910) &rsaquo; <strong>Wilcoxon test</strong>.</li>
+          <li><strong>Three or more groups</strong> (cities broken down by region) &rsaquo; <strong>Kruskal-Wallis test</strong>.</li>
+          <li><strong>Two categories</strong> (region and presence of infrastructure) &rsaquo; <strong>Chi-square test</strong> (or Fisher's exact test if cell counts are small).</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="step reveal">
+      <div class="num">4</div>
+      <div>
+        <h3><span class="ru">Прочитать предсказание бинарного исхода</span><span class="en">Predict a Binary Outcome</span></h3>
+        <p><span class="ru">Если исход «да/нет» (построен водопровод или нет) и вы хотите понять, какие факторы с ним системно связаны, - это <strong>логистическая регрессия</strong>. Её показатель Exp(B) - множитель <em>шансов</em>, а не вероятности (путать эти два - типичная ошибка, за которую отклоняют статьи).</span><span class="en">If the outcome is "yes/no" (whether a water supply was built or not) and you want to understand which factors are systematically associated with it, you need <strong>logistic regression</strong>. Its coefficient, Exp(B), represents the <em>odds ratio</em>, not probability (confusing the two is a classic mistake that leads to manuscript rejection).</span></p>
+      </div>
+    </div>
+
+    <p class="s-label reveal"><span class="ru">Шпаргалка</span><span class="en">Cheat Sheet</span></p>
+    <h2 class="reveal"><span class="ru">Задача &rsaquo; метод &rsaquo; когда не подходит</span><span class="en">Task &rsaquo; Method &rsaquo; When NOT to Use</span></h2>
+    <div class="tablecard ru-b">
+      <table>
+        <thead><tr><th>Ваша задача</th><th>Метод</th><th>Когда НЕ подходит</th></tr></thead>
+        <tbody>
+          <tr><td>Описать одно число</td><td>Медиана / среднее + распределение</td><td>-</td></tr>
+          <tr><td>Описать категорию</td><td>Доли и проценты (с N)</td><td>Круговая диаграмма при множественном признаке</td></tr>
+          <tr><td>Связь: число x число</td><td>Корреляция Пирсона или Спирмена</td><td>Связь нелинейна - r обманет</td></tr>
+          <tr><td>Связь: категория x категория</td><td>Критерий хи-квадрат (+ Крамер)</td><td>Ожидаемые частоты меньше 5 - тест Фишера</td></tr>
+          <tr><td>Сравнить 2 независимые группы</td><td>Критерий Манна-Уитни</td><td>-</td></tr>
+          <tr><td>Сравнить «до / после»</td><td>Критерий Уилкоксона</td><td>Совсем малые выборки (меньше ~6 пар)</td></tr>
+          <tr><td>Сравнить 3 группы и больше</td><td>Критерий Краскела-Уоллиса</td><td>-</td></tr>
+          <tr><td>Предсказать исход «да/нет»</td><td>Логистическая регрессия</td><td>Очень мало данных или редкие события</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="tablecard en-b">
+      <table>
+        <thead><tr><th>Your Task</th><th>Method</th><th>When NOT to Use</th></tr></thead>
+        <tbody>
+          <tr><td>Describe a single number</td><td>Median / mean + distribution</td><td>-</td></tr>
+          <tr><td>Describe a category</td><td>Proportions and percentages (with N)</td><td>Pie chart for multiple attributes</td></tr>
+          <tr><td>Relationship: number x number</td><td>Pearson or Spearman correlation</td><td>Relationship is nonlinear - r will be misleading</td></tr>
+          <tr><td>Relationship: category x category</td><td>Chi-square test (+ Cramer's V)</td><td>Expected frequencies less than 5 - use Fisher's exact test</td></tr>
+          <tr><td>Compare 2 independent groups</td><td>Mann-Whitney test</td><td>-</td></tr>
+          <tr><td>Compare "before / after"</td><td>Wilcoxon test</td><td>Very small samples (fewer than ~6 pairs)</td></tr>
+          <tr><td>Compare 3 or more groups</td><td>Kruskal-Wallis test</td><td>-</td></tr>
+          <tr><td>Predict a "yes/no" outcome</td><td>Logistic regression</td><td>Very little data or rare events</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="s-label reveal"><span class="ru">Мини-кейс</span><span class="en">Mini-Case Study</span></p>
+    <h2 class="reveal"><span class="ru">От наблюдения к аргументу</span><span class="en">From Observation to Argument</span></h2>
+    <div class="callout case reveal">
+      <p><span class="ru"><strong>Задача:</strong> различались ли города с водопроводом и без него по уровню доходов городского бюджета?</span><span class="en"><strong>Task:</strong> did cities with and without a water supply differ in their municipal budget revenues?</span></p>
+      <p><span class="ru"><strong>Метод:</strong> критерий Манна-Уитни (две группы, малые асимметричные данные).</span><span class="en"><strong>Method:</strong> Mann-Whitney test (two groups, small asymmetric data).</span></p>
+      <p><span class="ru"><strong>На выходе:</strong> медианы двух групп, p-value и готовый результат - «города с водопроводом имели значимо более высокий медианный доход (U = …, p меньше 0,001)».</span><span class="en"><strong>Output:</strong> medians of both groups, a p-value, and a ready-to-use result - "cities with a water supply had a significantly higher median income (U = …, p &lt; 0.001)".</span></p>
+      <p><span class="ru">Так за один тест наблюдение превращается в проверяемый научный аргумент.</span><span class="en">Just like that, a simple observation turns into a verifiable scientific argument.</span></p>
+    </div>
+
+    <p class="s-label reveal"><span class="ru">Самопроверка</span><span class="en">Self-Check</span></p>
+    <h2 class="reveal"><span class="ru">Как понять, что метод выбран верно</span><span class="en">How to Know If You've Chosen the Right Method</span></h2>
+    <div class="callout check reveal">
+      <ul class="ru-b" style="margin:.2em 0; padding-left:20px;">
+        <li>Тип переменных совпал с методом: число / категория / да-нет.</li>
+        <li>Для малых выборок - осторожные формулировки, без «громких» выводов.</li>
+        <li>Рядом с p-value есть <strong>размер эффекта</strong> (одного p недостаточно).</li>
+        <li>Вывод описывает то, что метод реально измерил: медианы, доли или шансы, - а не «среднее», если вы считали медиану.</li>
+      </ul>
+      <ul class="en-b" style="margin:.2em 0; padding-left:20px;">
+        <li>The variable type matches the method: numerical / categorical / yes-no.</li>
+        <li>For small samples, use cautious phrasing without sweeping conclusions.</li>
+        <li>Include the <strong>effect size</strong> alongside the p-value (p alone is not enough).</li>
+        <li>Your conclusion describes what the method actually measured (medians, proportions, or odds) rather than the "mean" if you calculated the median.</li>
+      </ul>
+    </div>
+
+    <div class="ctaband reveal">
+      <h2><span class="ru">Выбор метода - это половина дела</span><span class="en">Choosing a Method is Half the Battle</span></h2>
+      <p><span class="ru">Дальше идёт практика: подготовить данные, посчитать в бесплатной jamovi и корректно описать результат. <strong>После курса вы сможете</strong> выбрать метод под свою задачу, посчитать его, честно описать и вставить готовый фрагмент в методологический раздел статьи или заявки - на своих или учебных данных.</span><span class="en">Next comes the practical part: preparing the data, running the calculations in the free software jamovi, and correctly describing the results. <strong>After the course, you will be able to</strong> choose the right method for your task, run it, describe it honestly, and insert the finished snippet into the methodology section of an article or grant proposal - using either your own data or practice datasets.</span></p>
+      <a class="btn" href="https://urbantransmission.org/course.html"><span class="ru">Открыть курс «Основы статистики для историков» &rsaquo;</span><span class="en">Open the "Statistics for Historians: The Basics" course &rsaquo;</span></a>
+      <p class="fine" style="margin-top:16px;"><span class="ru">Пошаговая работа со всеми методами и учебным датасетом - в курсе (сейчас со скидкой к началу учебного года).</span><span class="en">Step-by-step guidance on all methods using a training dataset is included in the course (currently on sale for the start of the academic year).</span></p>
+    </div>
+
+  </div>
+</article>
+</main>
+
+<footer class="tx-footer">
+  <div class="tx-footer-inner">
+    <div><strong>Transmission</strong> · Urban Infrastructures of the Russian Empire, 1870-1914<br>© 2026 <span class="ru">Анна Б. Агафонова</span><span class="en">Anna B. Agafonova</span></div>
+    <nav class="tx-footer-nav" aria-label="Footer navigation">
+      <a href="/"><span class="ru">Главная</span><span class="en">Home</span></a>
+      <a href="/about.html"><span class="ru">Об авторе</span><span class="en">About</span></a>
+      <a href="https://urbantransmission.org/course.html"><span class="ru">Курс</span><span class="en">Course</span></a>
+      <a href="https://codebook.urbantransmission.org/">Codebook</a>
+      <a href="/personal-data.html"><span class="ru">Политика ПД</span><span class="en">Privacy</span></a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+function setLang(l){
+  var h=document.documentElement;
+  if(l==='en'){ h.setAttribute('data-en',''); h.lang='en'; } else { h.removeAttribute('data-en'); h.lang='ru'; }
+  try{ localStorage.setItem('tx_lang', l); }catch(e){}
+  document.querySelectorAll('.lang-sw button').forEach(function(b){ b.classList.toggle('on', b.dataset.lang===l); });
+}
+window.setLang=setLang;
+try{ var s=localStorage.getItem('tx_lang'); if(s==='en') setLang('en'); }catch(e){}
+(function(){
+  var els=document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('visible');});return;}
+  var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('visible');io.unobserve(x.target);}});},{threshold:0.12});
+  els.forEach(function(e){io.observe(e);});
+})();
+</script>
+</body>
+</html>

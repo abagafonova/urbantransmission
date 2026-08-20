@@ -7,7 +7,7 @@
 <link rel="preload" href="HEAD4.png" as="image">
 <script>if(location.protocol!=='file:'&&location.pathname.endsWith('/index.html'))location.replace(location.pathname.slice(0,-10)+location.search+location.hash);</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Transmission — Urban Infrastructures of the Russian Empire, 1870–1914</title>
+<title>Transmission - Urban Infrastructures of the Russian Empire, 1870–1914</title>
 <meta name="description" lang="ru" content="Интерактивная исследовательская платформа: карты водопроводов, данные о холере и городском благоустройстве 950 городов Российской империи, 1870–1914. Автор: Анна Б. Агафонова.">
 <meta name="description" content="Interactive research platform on centralised water supply, sanitary conditions, and urban services in 950 cities of the Russian Empire, 1870–1914. By Anna B. Agafonova, PhD.">
 <meta name="keywords" content="urban history, water supply, Russian Empire, digital humanities, cholera epidemics, municipal infrastructure, 1870-1914, история городов, водоснабжение, Российская империя">
@@ -87,7 +87,7 @@ body{background:var(--cream);color:var(--ink);font-family:var(--serif);font-weig
   height:auto;
   margin:0 auto;
 }
-/* On mobile the 9:1 banner collapses to ~41px — hide it, hero covers the intro */
+/* On mobile the 9:1 banner collapses to ~41px - hide it, hero covers the intro */
 @media(max-width:600px){.banner{display:none}}
 
 /* ─── NAV ─── */
@@ -112,6 +112,7 @@ body{background:var(--cream);color:var(--ink);font-family:var(--serif);font-weig
 }
 .site-nav a:hover{color:rgba(255,255,255,.96)}
 .site-nav a[aria-current]{color:#fff;border-bottom-color:var(--ochre)}
+.nav-new{display:inline-block;font-size:.72em;font-weight:700;letter-spacing:.08em;line-height:1;color:var(--ink-dk);background:var(--ochre);border-radius:4px;padding:2px 5px;margin-left:7px;vertical-align:middle}
 .nav-gap{flex:1 1 auto;min-width:8px}
 .lang-sw{
   display:flex;gap:0;flex-shrink:0;
@@ -183,7 +184,7 @@ body{background:var(--cream);color:var(--ink);font-family:var(--serif);font-weig
   .site-nav > a{display:none}
   /* показать бургер */
   .nav-burger{display:flex}
-  /* nav-gap остаётся — он раздвигает бургер и lang-sw */
+  /* nav-gap остаётся - он раздвигает бургер и lang-sw */
 }
 
 
@@ -309,8 +310,8 @@ body{background:var(--cream);color:var(--ink);font-family:var(--serif);font-weig
   font-weight:700;line-height:1.18;color:var(--ink);margin-bottom:12px;
 }
 .sec-lead{
-  font-size:.95rem;color:var(--muted);font-weight:400;
-  line-height:1.85;max-width:560px;margin-bottom:36px;
+  font-size:1.09rem;color:var(--muted);font-weight:400;
+  line-height:1.3;max-width:560px;margin-bottom:24px;
 }
 
 /* ─── MODULE SCENES ─── */
@@ -359,14 +360,14 @@ body{background:var(--cream);color:var(--ink);font-family:var(--serif);font-weig
   font-family:var(--display);font-size:clamp(1.35rem,2.8vw,2rem);
   font-weight:700;line-height:1.2;color:var(--ink);margin-bottom:14px;
 }
-.s-desc{font-size:.93rem;color:var(--muted);line-height:1.85;font-weight:400;margin-bottom:20px}
+.s-desc{font-size:1.07rem;color:var(--muted);line-height:1.3;font-weight:400;margin-bottom:12px}
 .s-feats{
-  list-style:none;padding:0;margin:0 0 28px;
-  display:flex;flex-direction:column;gap:8px;
+  list-style:none;padding:0;margin:0 0 18px;
+  display:flex;flex-direction:column;gap:5px;
 }
 .s-feats li{
   display:flex;align-items:baseline;gap:10px;
-  font-size:.86rem;color:var(--ink);line-height:1.6;font-weight:400;
+  font-size:.99rem;color:var(--ink);line-height:1.2;font-weight:400;
 }
 .s-feats li::before{
   content:'–';color:var(--copper);font-weight:700;flex-shrink:0;
@@ -384,7 +385,7 @@ body{background:var(--cream);color:var(--ink);font-family:var(--serif);font-weig
 .cta-primary:hover{background:var(--turq)}
 .cta-link{
   display:inline-flex;align-items:center;gap:6px;
-  font:600 .78rem/1 var(--serif);letter-spacing:.04em;
+  font:600 .9rem/1.1 var(--serif);letter-spacing:.04em;
   color:var(--navy);text-decoration:none;
   border-bottom:1px solid rgba(46,79,107,.3);padding-bottom:2px;
   transition:border-color .2s,color .2s;
@@ -484,17 +485,19 @@ body{background:var(--cream);color:var(--ink);font-family:var(--serif);font-weig
 .howto-shell{max-width:1060px;margin:0 auto;overflow:hidden;border-radius:26px;background:var(--th-glass);backdrop-filter:blur(24px) saturate(160%);-webkit-backdrop-filter:blur(24px) saturate(160%);border:1px solid var(--th-glass-bd);box-shadow:0 14px 46px rgba(20,36,60,.10), inset 0 1px 0 rgba(255,255,255,.5)}
 .quick-strip{background:var(--ink);display:grid;grid-template-columns:repeat(4,1fr)}
 @media(max-width:560px){.quick-strip{grid-template-columns:repeat(2,1fr)}.quick-strip .qi:nth-child(2n){border-right:none}}
-.howto-body{padding:44px 48px 52px}
-@media(max-width:600px){.howto-body{padding:30px 22px 34px}}
+.howto-inner{padding:44px 48px 52px}
+@media(max-width:600px){.howto-inner{padding:30px 22px 34px}}
 .howto-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:44px}
 @media(max-width:700px){.howto-grid{grid-template-columns:1fr}}
 .howto-card{
   background:rgba(255,255,255,.5);
-  padding:36px 28px;display:flex;flex-direction:column;gap:14px;
+  padding:22px 20px;display:flex;flex-direction:column;gap:10px;
   border-radius:16px;border:1px solid rgba(28,51,71,.1);
 }
+.howto-head{display:flex;align-items:center;gap:12px}
+.howto-head .howto-h3{margin:0}
 .howto-icon{
-  width:44px;height:44px;border:1px solid rgba(28,51,71,.16);
+  width:44px;height:44px;border:1px solid rgba(28,51,71,.16);flex-shrink:0;
   border-radius:12px;display:flex;align-items:center;justify-content:center;
 }
 .howto-icon svg{width:20px;height:20px;stroke:var(--ochre);fill:none;stroke-width:1.5;stroke-linecap:round}
@@ -506,7 +509,7 @@ body{background:var(--cream);color:var(--ink);font-family:var(--serif);font-weig
   font-family:var(--display);font-size:1.1rem;font-weight:600;
   color:var(--ink);line-height:1.3;
 }
-.howto-body{font-size:.86rem;color:var(--muted);line-height:1.75;font-weight:300}
+.howto-body{font-size:.99rem;color:var(--muted);line-height:1.25;font-weight:300}
 
 /* ─── DATA & METHODS ─── */
 .methods{padding:80px 24px}
@@ -529,7 +532,7 @@ body{background:var(--cream);color:var(--ink);font-family:var(--serif);font-weig
   font:700 .64rem/1.4 var(--mono);letter-spacing:.1em;text-transform:uppercase;
   color:var(--turq);padding-right:12px;
 }
-.ms-val{font:300 .88rem/1.6 var(--serif);color:var(--muted)}
+.ms-val{font:300 1rem/1.2 var(--serif);color:var(--muted)}
 .methods-numbers{
   background:var(--ink);border-radius:16px;padding:32px 28px;
   display:flex;flex-direction:column;gap:18px;
@@ -691,7 +694,7 @@ body::before{
     radial-gradient(1100px 800px at 50% 110%, var(--ochre-bg) 0%, transparent 55%);
   opacity:.22;
 }
-/* On small screens the fixed radial blobs fill the entire viewport and look like glare — dial them down further */
+/* On small screens the fixed radial blobs fill the entire viewport and look like glare - dial them down further */
 @media(max-width:900px){
   body::before{ opacity:.10; }
 }
@@ -736,13 +739,13 @@ body::before{
 <meta property="og:url" content="https://urbantransmission.org/">
 <meta property="og:site_name" content="Transmission">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Transmission — Urban Infrastructures of the Russian Empire, 1870–1914">
+<meta property="og:title" content="Transmission - Urban Infrastructures of the Russian Empire, 1870–1914">
 <meta property="og:description" content="Interactive digital research platform: waterworks maps, cholera data, original database of 950 cities. By Anna B. Agafonova, PhD.">
 <meta property="og:image" content="https://urbantransmission.org/HEAD4.png">
 <meta property="og:locale" content="ru_RU">
 <meta property="og:locale:alternate" content="en_GB">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Transmission — Urban Infrastructures of the Russian Empire, 1870–1914">
+<meta name="twitter:title" content="Transmission - Urban Infrastructures of the Russian Empire, 1870–1914">
 <meta name="twitter:description" content="Interactive digital research platform: waterworks maps, cholera data, original database of 950 cities. By Anna B. Agafonova, PhD.">
 <meta name="twitter:image" content="https://urbantransmission.org/HEAD4.png">
 <link rel="alternate" hreflang="ru" href="https://urbantransmission.org/">
@@ -764,7 +767,7 @@ body::before{
 <header>
 <!-- BANNER -->
 <div class="banner">
-  <img src="HEAD4.png" alt="Transmission — Urban Infrastructures of the Russian Empire, 1870–1914" loading="eager" fetchpriority="high" width="1921" height="211">
+  <img src="HEAD4.png" alt="Transmission - Urban Infrastructures of the Russian Empire, 1870–1914" loading="eager" fetchpriority="high" width="1921" height="211">
 </div>
 
 <!-- NAV -->
@@ -779,6 +782,7 @@ body::before{
   <a href="#cholera"><span class="ru">Холера</span><span class="en">Cholera</span></a>
   <a href="#novgorod"><span class="ru">Санитарное состояние городов Российской империи · MVP Новгород. губ.</span><span class="en">Sanitary condition of cities in the Russian Empire · MVP Novgorod. gov.</span></a>
   <a href="#methods"><span class="ru">Данные</span><span class="en">Data</span></a>
+  <a href="tools.html"><span class="ru">Инструменты и курс</span><span class="en">Tools &amp; course</span><span class="nav-new"><span class="ru">Новинка</span><span class="en">New</span></span></a>
   <a href="videos.html"><span class="ru">Видео</span><span class="en">Videos</span></a>
   <div class="nav-gap"></div>
   <a href="about.html"><span class="ru">Об авторе</span><span class="en">About</span></a>
@@ -796,6 +800,7 @@ body::before{
   <a href="#cholera"><span class="ru">Холера</span><span class="en">Cholera</span></a>
   <a href="#novgorod"><span class="ru">Санитарное состояние городов Российской империи · MVP Новгород. губ.</span><span class="en">Sanitary condition of cities in the Russian Empire · MVP Novgorod. gov.</span></a>
   <a href="#methods"><span class="ru">Данные</span><span class="en">Data</span></a>
+  <a href="tools.html"><span class="ru">Инструменты и курс</span><span class="en">Tools &amp; course</span><span class="nav-new"><span class="ru">Новинка</span><span class="en">New</span></span></a>
   <a href="videos.html"><span class="ru">Видео</span><span class="en">Videos</span></a>
   <div class="nav-dropdown-divider"></div>
   <a href="about.html"><span class="ru">Об авторе</span><span class="en">About</span></a>
@@ -835,14 +840,14 @@ body::before{
 <div class="figures" id="figures">
   <div class="figures-inner">
     <div class="fig-item">
-      <div class="fig-unit"><span class="ru">городов в базе</span><span class="en">cities in database</span></div>
+      <div class="fig-unit"><span class="ru">городов в базе</span><span class="en">cities in the database</span></div>
       <div class="fig-num" data-count="950">0</div>
       <div class="fig-label"><span class="ru">Все города Российской империи по переписи 1897&nbsp;г.</span><span class="en">Central Statistical Committee (Ministry of the Interior), 1910</span></div>
     </div>
     <div class="fig-item">
       <div class="fig-unit"><span class="ru">с централизованным водоснабжением</span><span class="en">with centralised waterworks</span></div>
       <div class="fig-num" data-count="187">0</div>
-      <div class="fig-label"><span class="ru">Города с задокументированным водоснабжением (до 1914&nbsp;г.)</span><span class="en">Cities with documented water supply systems (up to 1914)</span></div>
+      <div class="fig-label"><span class="ru">Города с задокументированным водоснабжением (до 1914&nbsp;г.)</span><span class="en">Cities with documented centralised water-supply systems (up to 1914)</span></div>
     </div>
     <div class="fig-item">
       <div class="fig-unit"><span class="ru">временной охват</span><span class="en">temporal coverage</span></div>
@@ -870,15 +875,15 @@ body::before{
           <span class="en">Map of Urban Waterworks in the Russian Empire</span>
         </h2>
         <p class="s-desc">
-          <span class="ru" style="color: #6F6761">Интерактивная карта всех городов с централизованным водоснабжением — от Варшавы до Владивостока.</span>
-          <span class="en">Interactive map of all cities with centralised water supply — from Warsaw to Vladivostok.</span>
+          <span class="ru" style="color: #6F6761">Интерактивная карта всех городов с централизованным водоснабжением - от Варшавы до Владивостока.</span>
+          <span class="en">Interactive map of all cities with centralised water-supply systems, from Warsaw to Vladivostok.</span>
         </p>
         <ul class="s-feats">
-          <li><span class="ru">187 городов с водопроводом, точные даты строительства</span><span class="en">187 cities with waterworks, precise construction dates</span></li>
-          <li><span class="ru">7 инфраструктурных профилей (тип, владение, материалы)</span><span class="en">7 infrastructure profiles (type, ownership, materials)</span></li>
+          <li><span class="ru">187 городов с водопроводом, точные даты строительства</span><span class="en">187 cities with waterworks and documented construction dates</span></li>
+          <li><span class="ru">7 инфраструктурных профилей (тип, владение, материалы)</span><span class="en">7 infrastructure characteristics, including type, ownership, and materials</span></li>
           <li><span class="ru">Хронология строительства водопроводов</span><span class="en">Waterworks construction timeline</span></li>
-          <li><span class="ru">Хороплет смертности от холеры по губерниям</span><span class="en">Cholera mortality choropleth by province</span></li>
-          <li><span class="ru">Фильтры, поиск, всплывающие карточки городов</span><span class="en">Filters, search, city popup cards</span></li>
+          <li><span class="ru">Хороплет смертности от холеры по губерниям</span><span class="en">Choropleth map of cholera mortality by province</span></li>
+          <li><span class="ru">Фильтры, поиск, всплывающие карточки городов</span><span class="en">Filters, search, and city pop-up cards</span></li>
         </ul>
         <div class="s-cta">
           <a class="cta-primary" href="waterworks/map.html">
@@ -907,7 +912,7 @@ body::before{
         </p>
         <ul class="s-feats">
           <li><span class="ru">1&thinsp;231 город · 89 губерний и областей · данные за 1910&nbsp;г.</span><span class="en">1,231 cities · 89 provinces &amp; oblasts · 1910 data</span></li>
-          <li><span class="ru">Пожарная охрана 92% → Трамвай 4%: весь диапазон охвата</span><span class="en">Fire protection 92% → Tramway 4%: full coverage range</span></li>
+          <li><span class="ru">Пожарная охрана 92% → Трамвай 4%: весь диапазон охвата</span><span class="en">Fire protection: 92%; tramways: 4% - the full range of coverage</span></li>
           <li><span class="ru">Сортируемая таблица с фильтрацией по виду инфраструктуры</span><span class="en">Sortable table with filtering by infrastructure type</span></li>
           <li><span class="ru">Одновременное сравнение губерний и типов инфраструктуры</span><span class="en">Compare provinces and infrastructure types side by side</span></li>
         </ul>
@@ -948,13 +953,13 @@ body::before{
         </h2>
         <p class="s-desc">
           <span class="ru" style="color: #6F6761">Три волны холеры сопоставлены с обеспеченностью городов централизованным водоснабжением.</span>
-          <span class="en">Three cholera waves correlated with municipal waterworks coverage across the empire.</span>
+          <span class="en">Three cholera waves and their relationship to municipal waterworks coverage across the Russian Empire.</span>
         </p>
         <ul class="s-feats">
-          <li><span class="ru">1823–1872: I–IV пандемии — масштаб катастрофы</span><span class="en">1823–1872: 1st–4th pandemics — catastrophic scale</span></li>
-          <li><span class="ru">1892: V пандемия — пик смертности в Российской империи</span><span class="en">1892: 5th pandemic — peak mortality in the Russian Empire</span></li>
-          <li><span class="ru">1910: VI пандемия — последняя крупная волна</span><span class="en">1910: 6th pandemic — last major wave</span></li>
-          <li><span class="ru">Смертность по губерниям и корреляция с водопроводом</span><span class="en">Provincial mortality correlated with waterworks presence</span></li>
+          <li><span class="ru">1823–1872: I–IV пандемии - масштаб катастрофы</span><span class="en">1823–1872: the first through fourth pandemics - catastrophic mortality</span></li>
+          <li><span class="ru">1892: V пандемия - пик смертности в Российской империи</span><span class="en">1892: the fifth pandemic - peak mortality in the Russian Empire</span></li>
+          <li><span class="ru">1910: VI пандемия - последняя крупная волна</span><span class="en">1910: the sixth pandemic - the last major wave</span></li>
+          <li><span class="ru">Смертность по губерниям и корреляция с водопроводом</span><span class="en">Provincial mortality in relation to the presence of waterworks</span></li>
         </ul>
         <div class="s-cta">
           <a class="cta-primary" href="cholera_ranking.html">
@@ -979,13 +984,13 @@ body::before{
         </h2>
         <p class="s-desc">
           <span class="ru" style="color: #6F6761">Детальная база данных по 11 городам губернии: постановления городских дум, данные об эпидемиях, городах и инфраструктуре, санитарные расходы.</span>
-          <span class="en">Deep-dive database of 11 cities: decrees of municipal councils, epidemic and urban infrastrutures records, sanitary expenditures, 1870–1917.</span>
+          <span class="en">An in-depth database covering 11 cities: municipal council decrees, epidemic records, urban infrastructure records, and sanitary expenditures, 1870–1917.</span>
         </p>
         <ul class="s-feats">
-          <li><span class="ru">Новгород, Старая Русса — водопровод; 9 городов — без водопровода</span><span class="en">Novgorod, Staraya Russa — waterworks; 9 cities — without</span></li>
-          <li><span class="ru">Постановления городских дум о благоустройстве</span><span class="en">Municipal council decrees on urban beautification</span></li>
+          <li><span class="ru">Новгород, Старая Русса - водопровод; 9 городов - без водопровода</span><span class="en">Novgorod and Staraya Russa had waterworks; nine cities did not</span></li>
+          <li><span class="ru">Постановления городских дум о благоустройстве</span><span class="en">Municipal council decrees concerning urban improvements</span></li>
           <li><span class="ru">Данные об эпидемиях в губернии, 1870–1910&nbsp;гг.</span><span class="en">Epidemic records for the province, 1870–1910</span></li>
-          <li><span class="ru">Сравнение городов: временные шкалы и показатели</span><span class="en">City-by-city comparison: timelines and indicators</span></li>
+          <li><span class="ru">Сравнение городов: временные шкалы и показатели</span><span class="en">City-by-city comparisons of timelines and indicators</span></li>
         </ul>
         <div class="s-cta">
           <a class="cta-primary" href="empire/RussianEmpire.html">
@@ -1018,12 +1023,12 @@ body::before{
         <span class="qi-tag"><span class="ru">Рейтинг · статистика</span><span class="en">Rankings · statistics</span></span>
         <span class="qi-title"><span class="ru">Холерные эпидемии</span><span class="en">Cholera epidemics</span></span>
       </a>
-      <a class="qi" href="empire/RussianEmpire.html">
-        <span class="qi-tag"><span class="ru">MVP · Региональный кейс</span><span class="en">MVP · Regional case study</span></span>
-        <span class="qi-title"><span class="ru">Новгородская губерния</span><span class="en">Novgorod Province</span></span>
+      <a class="qi" href="tools.html">
+        <span class="qi-tag"><span class="ru">Бесплатно · для исследователей</span><span class="en">Free · for researchers</span></span>
+        <span class="qi-title"><span class="ru">Инструменты и курс</span><span class="en">Tools &amp; course</span></span>
       </a>
     </div>
-    <div class="howto-body">
+    <div class="howto-inner">
     <p class="sec-tag" style="color:var(--copper)"><span class="ru">Как использовать ресурс</span><span class="en">How to use this resource</span></p>
     <h2 class="sec-h2" style="color:var(--ink);font-family:var(--display)">
       <span class="ru">Ресурс для исследователей</span>
@@ -1031,33 +1036,39 @@ body::before{
     </h2>
     <div class="howto-grid">
       <div class="howto-card">
-        <div class="howto-icon">
-          <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-        </div>
         <span class="howto-role"><span class="ru">Преподаватели</span><span class="en">Educators</span></span>
-        <h3 class="howto-h3"><span class="ru">Карты и таблицы для аудитории</span><span class="en">Maps and tables for teaching</span></h3>
+        <div class="howto-head">
+          <div class="howto-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          </div>
+          <h3 class="howto-h3"><span class="ru">Карты и таблицы для аудитории</span><span class="en">Maps and tables for teaching</span></h3>
+        </div>
         <p class="howto-body">
           <span class="ru" style="color: #6F6761">Используйте интерактивные карты и сортируемые таблицы в курсах по городской истории и истории окружающей среды. Визуальные данные сразу готовы к показу в аудитории.</span>
-          <span class="en">Use interactive maps and sortable tables in urban and environmental history courses. Visual data is ready for in-class display and discussion.</span>
+          <span class="en">Use interactive maps and sortable tables in urban and environmental history courses. The visual data are ready for classroom use and discussion.</span>
         </p>
       </div>
       <div class="howto-card">
-        <div class="howto-icon">
-          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-        </div>
         <span class="howto-role"><span class="ru">Исследователи</span><span class="en">Researchers</span></span>
-        <h3 class="howto-h3"><span class="ru">Экспорт данных и анализ</span><span class="en">Data export and analysis</span></h3>
+        <div class="howto-head">
+          <div class="howto-icon">
+            <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          </div>
+          <h3 class="howto-h3"><span class="ru">Экспорт данных и анализ</span><span class="en">Data export and analysis</span></h3>
+        </div>
         <p class="howto-body">
-          <span class="ru" style="color: #6F6761">Прослеживайте диффузию инфраструктуры, коррелируйте с показателями смертности, экспортируйте данные. Все источники и методы задокументированы.</span>
-          <span class="en">Trace infrastructure diffusion, correlate with mortality data, export datasets. All sources and methods are fully documented.</span>
+          <span class="ru" style="color: #6F6761">Прослеживайте диффузию инфраструктуры, коррелируйте с показателями смертности, экспортируйте данные. Все источники и методы задокументированы. Для подготовки данных доступны бесплатные браузерные инструменты, а основам количественного анализа посвящён отдельный учебный курс.</span>
+          <span class="en">Trace the diffusion of infrastructure, compare it with mortality data, and export datasets. All sources and methods are fully documented. Free browser-based tools can help users prepare their data, and a dedicated course covers the basics of quantitative analysis.</span>
         </p>
       </div>
       <div class="howto-card">
-        <div class="howto-icon">
-          <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-        </div>
         <span class="howto-role"><span class="ru">Краеведы</span><span class="en">Local historians</span></span>
-        <h3 class="howto-h3"><span class="ru">История вашего города</span><span class="en">Your city's infrastructure history</span></h3>
+        <div class="howto-head">
+          <div class="howto-icon">
+            <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <h3 class="howto-h3"><span class="ru">История вашего города</span><span class="en">The infrastructure history of your city</span></h3>
+        </div>
         <p class="howto-body">
           <span class="ru" style="color: #6F6761">Найдите свой город на карте водопроводов, изучите историю холерных эпидемий в губернии, сравните с региональным кейсом Новгородской губернии.</span>
           <span class="en">Find your city on the waterworks map, explore your province's cholera history, compare with the Novgorod regional case study.</span>
@@ -1077,18 +1088,23 @@ body::before{
       <span class="en">About the database and sources</span>
     </h2>
     <p class="sec-lead">
-      <span class="ru" style="color: #6F6761">Ресурс основан на оригинальном архивном исследовании и опубликованных источниках XIX — начала XX века. Все данные верифицированы и задокументированы.</span>
-      <span class="en">This resource is based on original archival research and published sources from the 19th–early 20th centuries. All data are verified and fully documented.</span>
+      <span class="ru" style="color: #6F6761">Ресурс основан на оригинальном архивном исследовании и опубликованных источниках XIX - начала XX века. Все данные верифицированы и задокументированы.</span>
+      <span class="en">This resource is based on original archival research and published sources from the nineteenth to the early twentieth centuries. All data are verified and fully documented.</span>
+    </p>
+    <p style="margin:-22px 0 32px">
+      <a class="cta-link" href="how-to-choose-method.html">
+        <span class="ru">Как выбрать статистический метод - краткий гид</span><span class="en">How to choose a statistical method - a short guide</span> <span class="arr">→</span>
+      </a>
     </p>
     <div class="methods-grid">
       <div class="method-sources">
         <div class="ms-item">
           <div class="ms-key"><span class="ru">Численность населения</span><span class="en">Urban Population</span></div>
-          <div class="ms-val"><span class="ru" style="color: #6F6761">Первая всеобщая перепись населения Российской империи 1897 г.; Сборники "Города России в 1904 г." и "Города России в 1910 г." — основа базы данных 950 городов</span><span class="en">First General Census of the Russian Empire, 1897; Goroda Rossii v 1904 godu [Cities of Russia in 1904]; Goroda Rossii v 1910 godu [Cities of Russia in 1910] — basis of the 950-city database</span></div>
+          <div class="ms-val"><span class="ru" style="color: #6F6761">Первая всеобщая перепись населения Российской империи 1897 г.; Сборники "Города России в 1904 г." и "Города России в 1910 г." - основа базы данных 950 городов</span><span class="en">First General Census of the Russian Empire, 1897; Goroda Rossii v 1904 godu [Cities of Russia in 1904]; Goroda Rossii v 1910 godu [Cities of Russia in 1910] - the basis for the 950-city database</span></div>
         </div>
         <div class="ms-item">
           <div class="ms-key">GIS</div>
-          <div class="ms-val">RISTAT GIS 1897 · Kessler &amp; Markevich — <span class="ru" style="color: #6F6761">картографическая основа</span><span class="en">cartographic base</span></div>
+          <div class="ms-val">RISTAT GIS 1897 · Kessler &amp; Markevich - <span class="ru" style="color: #6F6761">картографическая основа</span><span class="en">cartographic base map</span></div>
         </div>
         <div class="ms-item">
           <div class="ms-key"><span class="ru">Думы</span><span class="en">Councils</span></div>
@@ -1106,17 +1122,17 @@ body::before{
       <div class="methods-side">
         <div class="methods-numbers">
           <div class="mn-row">
-            <span class="mn-label"><span class="ru">Городов в базе</span><span class="en">Cities in database</span></span>
+            <span class="mn-label"><span class="ru">Городов в базе</span><span class="en">Cities in the database</span></span>
             <span class="mn-val">950</span>
           </div>
           <hr class="mn-divider">
           <div class="mn-row">
-            <span class="mn-label"><span class="ru">С водопроводом</span><span class="en">With waterworks</span></span>
+            <span class="mn-label"><span class="ru">С водопроводом</span><span class="en">Cities with waterworks</span></span>
             <span class="mn-val">187</span>
           </div>
           <hr class="mn-divider">
           <div class="mn-row">
-            <span class="mn-label"><span class="ru">Городов в данных 1910&nbsp;г.</span><span class="en">Cities in 1910 data</span></span>
+            <span class="mn-label"><span class="ru">Городов в данных 1910&nbsp;г.</span><span class="en">Cities covered by the 1910 dataset</span></span>
             <span class="mn-val">1231</span>
           </div>
           <hr class="mn-divider">
@@ -1136,7 +1152,7 @@ body::before{
             <span class="ru">Примечание об источниках</span><span class="en">Note on sources</span>
           </p>
           <p style="font:300 .82rem/1.7 var(--serif);color:#6B4A32">
-            <span class="ru"><strong style="color:var(--ink);font-weight:600">950</strong> — населённые пункты, официально числящиеся городами в источнике «Города России в 1910&nbsp;г.» (в т.&thinsp;ч. негородские поселения с городским управлением). <strong style="color:var(--ink);font-weight:600">1&thinsp;231</strong> — города и поселения с населением свыше 10&thinsp;000&nbsp;чел. по данным той же статистики благоустройства.</span>
+            <span class="ru"><strong style="color:var(--ink);font-weight:600">950</strong> - населённые пункты, официально числящиеся городами в источнике «Города России в 1910&nbsp;г.» (в т.&thinsp;ч. негородские поселения с городским управлением). <strong style="color:var(--ink);font-weight:600">1&thinsp;231</strong> - города и поселения с населением свыше 10&thinsp;000&nbsp;чел. по данным той же статистики благоустройства.</span>
             <span class="en"><strong style="color:var(--ink);font-weight:600">950</strong> = settlements officially classified as cities in <em>Cities of Russia in 1910</em> (including non-urban settlements with a city administration). <strong style="color:var(--ink);font-weight:600">1,231</strong> = cities and settlements with a population over 10,000, as recorded in the same urban services census.</span>
           </p>
         </div>
@@ -1146,7 +1162,7 @@ body::before{
           <button type="button" class="cite-btn" id="cite-btn" onclick="toggleCite()">
             <span class="ru">📋 Как сослаться</span><span class="en">📋 How to cite</span>
           </button>
-          <a class="contact-btn" href="mailto:a.b.agafonova@gmail.com?subject=Transmission%20—%20enquiry">
+          <a class="contact-btn" href="mailto:a.b.agafonova@gmail.com?subject=Transmission%20-%20enquiry">
             <span class="ru">✉ Написать исследователю</span><span class="en">✉ Contact the researcher</span>
           </a>
         </div>
@@ -1187,11 +1203,11 @@ body::before{
         </h3>
         <p class="rc-role">
           <span class="ru">к.и.н. · независимый исследователь · специалист по городской экологической истории</span>
-          <span class="en">PhD (History) · independent researcher · specialist in urban environmental history</span>
+          <span class="en">PhD in History · independent researcher · specialist in urban environmental history</span>
         </p>
         <p class="rc-bio">
           <span class="ru">Специалист в области городской экологической истории Российской империи и раннего СССР (1870–1930-е гг.). Сфера интересов: история водоснабжения и санитарных реформ, гидроэнергетика, городское самоуправление. Руководитель грантов РНФ (2022–2023) и РФФИ (2019), автор более 50 научных работ (в т.ч. публикации в Scopus и Web of Science). Доклады: EAUH (Антверп, 2022), ESEH (Бристоль, 2022; Таллин, 2019; Загреб, 2017), ICOHTEC (Острава, 2022; Катовице, 2019; Порту, 2016), ИИЕТ РАН (2023, 2025), ВДНХ-XIX (ЕУ СПб, 2026).</span>
-          <span class="en">Specialist in the urban environmental history of Russian and Soviet cities (1870s–1930s). Research interests: water supply and sanitary reform, hydropower development, municipal self-government. PI on grants from the Russian Science Foundation (2022–23) and RFBR (2019). Author of 50+ scholarly publications (including articles indexed in Scopus and Web of Science). Conferences: EAUH (Antwerp, 2022), ESEH (Bristol, 2022; Tallinn, 2019; Zagreb, 2017), ICOHTEC (Ostrava, 2022; Katowice, 2019; Porto, 2016), IIET RAS (2023, 2025), VDNKh-XIX (EU SPb, 2026).</span>
+          <span class="en">She specialises in the urban environmental history of Russian and Soviet cities (1870s–1930s). Research interests: water supply and sanitary reform, hydropower development, municipal self-government. Principal investigator on grants from the Russian Science Foundation (2022–23) and RFBR (2019). Author of 50+ scholarly publications (including articles indexed in Scopus and Web of Science). Conferences: EAUH (Antwerp, 2022), ESEH (Bristol, 2022; Tallinn, 2019; Zagreb, 2017), ICOHTEC (Ostrava, 2022; Katowice, 2019; Porto, 2016), IIET RAS (2023, 2025), VDNKh-XIX (EU SPb, 2026).</span>
         </p>
         <div class="rc-links">
           <a class="rc-link" href="https://orcid.org/0000-0003-3021-4002" target="_blank" rel="noopener noreferrer">ORCID</a>
@@ -1553,7 +1569,7 @@ function drawNovg(){
     }
   });
 
-  /* Waterworks cities — pulsing beacon rings */
+  /* Waterworks cities - pulsing beacon rings */
   cities.filter(c=>c.w).forEach((c,i)=>{
     [0,.73,1.46].forEach((d,j)=>{
       h+=`<circle class="ngr" cx="${c.x}" cy="${c.y}" r="5" fill="none"
@@ -1671,7 +1687,7 @@ function copyCite(){
 
   burger.addEventListener('click', function(e){ e.stopPropagation(); toggleMenu(); });
 
-  // Закрыть по клику на ссылку (включая data-soon — там уже preventDefault)
+  // Закрыть по клику на ссылку (включая data-soon - там уже preventDefault)
   dropdown.querySelectorAll('a').forEach(function(a){
     a.addEventListener('click', function(){ closeMenu(); });
   });

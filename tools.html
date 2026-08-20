@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<!-- Хаб "Инструменты и курс" (двуязычный RU/EN). Файл tools.html. Ассеты в assets/.
+     Размер текста инструментов: .tool-sub (строка ~101) и .more-inner (строка ~109) - меняй font-size там.
+     Шрифт названий инструментов: --display (Cinzel). Название курса - Cambria (класс .tool-name.serif). -->
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Инструменты и курс - Transmission</title>
+<meta name="description" content="Бесплатные браузерные инструменты для исследователей и практический курс по количественным методам для историков: Codebook & Survey Tidier, TurnPDF, курс 'Основы статистики для историков'.">
+<link rel="canonical" href="https://urbantransmission.org/tools.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Transmission">
+<meta property="og:title" content="Инструменты и курс - Transmission">
+<meta property="og:description" content="Бесплатные браузерные инструменты для анализа данных и курс по статистике для историков.">
+<meta property="og:url" content="https://urbantransmission.org/tools.html">
+<meta property="og:locale" content="ru_RU">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&display=swap');
+:root{
+  --display:'Playfair Display', Cambria, Georgia, serif;
+  --page-cream:#F6EFDC; --page-ochre:#E8D5A8; --page-turq:#BED5CF; --page-sky:#D8E3E1;
+  --glass-tint:rgba(250,244,228,0.72); --glass-edge:rgba(20,36,60,0.18);
+  --ink:#1A2B47; --ink-soft:#2B4773; --muted:#6F7D95; --copper:#8B5E3C; --turq:#4F8781; --terra:#B24A34;
+  --line:rgba(20,36,60,0.12); --line-copper:rgba(139,94,60,0.30);
+  --serif:Cambria,'Palatino Linotype',Georgia,serif;
+  --sans:system-ui,-apple-system,'Segoe UI',sans-serif;
+  --shadow:rgba(26,43,71,0.08);
+  --paper-url:url('assets/paper.jpg');
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{ color:var(--ink); font-family:var(--serif); font-size:17px; line-height:1.8;
+  background:var(--page-cream);
+  background-image:
+    radial-gradient(1100px 700px at 8% 4%, var(--page-sky) 0%, rgba(216,227,225,0) 55%),
+    radial-gradient(900px 600px at 95% 3%, var(--page-turq) 0%, rgba(190,213,207,0) 60%),
+    radial-gradient(1200px 900px at 50% 110%, var(--page-ochre) 0%, rgba(232,213,168,0) 55%),
+    linear-gradient(180deg, var(--page-cream) 0%, var(--page-cream) 30%, rgba(232,213,168,0.45) 70%, rgba(190,213,207,0.35) 100%);
+  min-height:100vh; margin:0; display:flex; flex-direction:column; }
+main.page{ flex:1 0 auto; padding:26px 16px 44px; }
+a{color:var(--turq);} a:hover{color:var(--ink);}
+
+/* i18n */
+[data-en] .ru{display:none;} [data-en] .en{display:inline;}
+.en{display:none;} .ru{display:inline;}
+[data-en] .ru-b{display:none;} [data-en] .en-b{display:block;}
+.en-b{display:none;} .ru-b{display:block;}
+
+/* ── HEADER (единый стиль сайта) ── */
+header{ position:relative; z-index:10; padding:20px 32px 22px;
+  background:var(--glass-tint); backdrop-filter:blur(18px) saturate(1.2);
+  border-bottom:1px solid var(--glass-edge);
+  box-shadow:0 1px 0 rgba(255,255,255,.55) inset, 0 4px 16px rgba(30,40,70,.07);}
+header::before, header::after, .hdr-bl, .hdr-br{
+  content:''; position:absolute; width:28px; height:28px;
+  border:1px solid var(--line-copper); pointer-events:none;}
+header::before{ top:7px; left:7px;  border-right:none; border-bottom:none; }
+header::after { top:7px; right:7px; border-left:none;  border-bottom:none; }
+.hdr-bl{ bottom:7px; left:7px;  border-right:none; border-top:none; }
+.hdr-br{ bottom:7px; right:7px; border-left:none;  border-top:none; }
+.header-inner{ max-width:900px; margin:0 auto; display:flex; align-items:center; gap:20px; }
+.header-icon{ width:52px; height:52px; flex-shrink:0; color:var(--copper); opacity:.88; }
+.header-icon svg{ width:100%; height:100%; display:block; }
+.header-text{ flex:1; text-align:center; position:relative; padding:4px 0; }
+.header-text::before, .header-text::after{ content:''; position:absolute; left:6%; right:6%; height:1px;
+  background:repeating-linear-gradient(90deg, var(--line-copper) 0 7px, transparent 7px 11px); }
+.header-text::before{ top:-2px; }
+.header-text::after { bottom:-4px; }
+.header-text h1{ font-family:Cambria,'Palatino Linotype',Georgia,serif; font-weight:500; font-variant:small-caps;
+  font-size:1.9rem; letter-spacing:.05em; color:var(--ink); line-height:1.1; margin:0; }
+.header-text h1 em{ color:var(--copper); font-style:italic; font-variant:normal; }
+.header-text .sub{ margin-top:5px; font-size:.60rem; font-weight:500; letter-spacing:.22em; text-transform:uppercase;
+  color:var(--muted); display:flex; gap:14px; justify-content:center; align-items:center; flex-wrap:wrap; }
+.header-text .sub .sep{ color:var(--copper); opacity:.6; }
+.header-back{ display:inline-flex; align-items:center; gap:6px; padding:7px 14px; border-radius:999px;
+  background:rgba(246,239,220,0.6); border:1px solid var(--line-copper); color:var(--ink-soft);
+  font-family:var(--sans); font-size:.72rem; font-weight:600; letter-spacing:.05em; text-decoration:none;
+  transition:all .18s; flex-shrink:0; }
+.header-back:hover{ background:var(--ink); color:var(--page-cream); border-color:var(--ink); }
+.header-back svg{ width:14px; height:14px; }
+.lang-sw{ display:flex; gap:4px; flex-shrink:0; }
+.lang-sw button{ background:rgba(26,43,71,0.06); border:1px solid var(--line); color:var(--muted);
+  font:700 .68rem/1 var(--sans); letter-spacing:.06em; padding:5px 9px; cursor:pointer; transition:all .15s; border-radius:3px; }
+.lang-sw button.on{ color:var(--page-cream); background:var(--ink); border-color:var(--ink); }
+.lang-sw button:hover:not(.on){ color:var(--ink); border-color:var(--ink-soft); }
+@media(max-width:768px){ header{ padding:14px 18px 16px; } .header-text h1{ font-size:1.35rem; } .header-icon{ width:44px; height:44px; } }
+@media(max-width:480px){ .header-text h1{ font-size:1.12rem; } .header-text .sub{ font-size:.54rem; gap:9px; } }
+
+/* paper sheet */
+.sheet{ max-width:900px; margin:0 auto; border-radius:7px; overflow:hidden;
+  border:1px solid var(--line-copper);
+  box-shadow:0 18px 50px rgba(26,43,71,0.16), 0 2px 0 rgba(255,255,255,.6) inset;
+  background-color:#FBF7EC;
+  background-image:linear-gradient(rgba(251,247,236,0.82),rgba(251,247,236,0.82)), var(--paper-url);
+  background-repeat:no-repeat, repeat; background-size:cover, 720px auto; }
+.pad{padding:44px clamp(20px,4vw,46px);}
+
+.kicker{font-family:var(--sans); font-size:.62rem; letter-spacing:.18em; text-transform:uppercase; color:var(--copper); margin-bottom:12px; text-align:center;}
+h1{font-family:var(--serif); font-weight:600; font-size:clamp(1.8rem,4.6vw,2.6rem); line-height:1.14; margin-bottom:16px; color:var(--ink); text-align:center;}
+.lead{font-size:1.12rem; color:var(--ink-soft); line-height:1.75; max-width:660px; margin:0 auto 12px; text-align:center;}
+.trust{font-family:var(--sans); font-size:.82rem; color:var(--muted); text-align:center; margin-bottom:8px;}
+.trust b{color:var(--ink);}
+.hr{height:1px; background:var(--line-copper); margin:30px 0 6px;}
+
+.btn{display:inline-block; font-family:var(--sans); font-weight:600; font-size:.95rem; letter-spacing:.02em;
+  background:var(--ink); color:var(--page-cream); padding:12px 26px; border-radius:999px; text-decoration:none;
+  transition:background .18s, transform .18s; box-shadow:0 6px 18px rgba(26,43,71,.18);}
+.btn:hover{background:var(--copper); color:#fff; transform:translateY(-2px);}
+.btn.ghost{background:transparent; color:var(--ink); border:1px solid var(--line-copper); box-shadow:none;}
+.btn.ghost:hover{background:var(--ink); color:var(--page-cream); border-color:var(--ink);}
+
+/* TOOL BLOCK */
+.tool{ margin:46px 0; }
+.tool-art{ display:block; width:100%; height:auto; border:0; border-bottom:3px solid var(--terra);
+  box-shadow:0 18px 40px rgba(26,43,71,.18); cursor:zoom-in; }
+.tool-name{ font-family:var(--display); font-weight:600; letter-spacing:.04em; text-transform:uppercase;
+  font-size:clamp(1.6rem,4.6vw,2.15rem); line-height:1.18; color:var(--ink); margin:24px 0 8px; }
+.tool-name.serif{ font-family:var(--serif); letter-spacing:.01em; }   /* название курса - Cambria */
+.name-note{ font-family:var(--sans); font-size:.9rem; font-weight:600; letter-spacing:.02em; text-transform:none; color:var(--copper); white-space:nowrap; }
+.free-pill{ display:inline-block; font-family:var(--sans); font-size:.62rem; font-weight:700; letter-spacing:.05em;
+  color:var(--turq); border:1px solid var(--turq); border-radius:999px; padding:2px 8px; margin-left:8px; vertical-align:middle; text-transform:uppercase; }
+.tool-sub{ font-size:1.2rem; line-height:1.5; color:var(--ink-soft); margin-bottom:14px; }        /* -25% */
+.tool details{ margin-bottom:16px; }
+.tool summary{ list-style:none; cursor:pointer; font-family:var(--sans); font-weight:600; font-size:.9rem;
+  color:var(--copper); display:inline-flex; align-items:center; gap:7px; user-select:none; }
+.tool summary::-webkit-details-marker{ display:none; }
+.tool summary::before{ content:"+"; font-size:1.05rem; line-height:1; width:16px; text-align:center; }
+.tool details[open] summary::before{ content:"\2013"; }
+.tool summary:hover{ color:var(--ink); }
+.more-inner{ padding-top:10px; color:var(--ink); font-size:1.13rem; line-height:1.6; max-width:680px; } /* -25% */
+.more-inner p{ margin:0 0 12px; }
+.more-link{ margin-top:12px; font-family:var(--sans); font-size:.92rem; }
+.more-link a{ color:var(--copper); text-decoration:none; border-bottom:1px solid var(--line-copper); padding-bottom:1px; transition:color .18s, border-color .18s; }
+.more-link a:hover{ color:var(--ink); border-color:var(--ink); }
+
+/* лайтбокс */
+.lb{position:fixed; inset:0; z-index:100; background:rgba(20,28,45,.93); display:none; align-items:center; justify-content:center; padding:20px; overflow:auto;}
+.lb.open{display:flex;}
+.lb img{max-width:96vw; max-height:92vh; box-shadow:0 24px 70px rgba(0,0,0,.55); cursor:zoom-in;}
+.lb img.zoomed{max-width:none; max-height:none; cursor:zoom-out;}
+.lb-close{position:fixed; top:16px; right:20px; z-index:101; width:44px; height:44px; border-radius:50%; cursor:pointer;
+  font-family:var(--sans); font-size:1.5rem; line-height:1; color:#fff; background:rgba(255,255,255,.14); border:1px solid rgba(255,255,255,.35);}
+.lb-hint{position:fixed; bottom:18px; left:0; right:0; text-align:center; font-family:var(--sans); font-size:.8rem; color:rgba(255,255,255,.6);}
+
+/* по запросу */
+.byreq{ margin:40px 0 6px; }
+.byreq .s-label{font-family:var(--sans); font-size:.60rem; letter-spacing:.18em; text-transform:uppercase; color:var(--copper); margin-bottom:8px;}
+.byreq h3{font-family:var(--serif); font-weight:600; font-size:1.15rem; color:var(--ink); margin-bottom:6px;}
+.byreq p{margin:0 0 12px; color:var(--ink-soft); font-size:.98rem; max-width:660px;}
+
+/* footer */
+.tx-footer{ background:var(--ink); color:rgba(255,255,255,.40); padding:28px 32px; border-top:2px solid var(--turq); font:300 .82rem/1.7 var(--serif); margin-top:auto; }
+.tx-footer-inner{ max-width:900px; margin:0 auto; display:flex; flex-wrap:wrap; gap:10px 24px; justify-content:space-between; align-items:center; }
+.tx-footer strong{ color:rgba(255,255,255,.75); }
+.tx-footer a{ color:rgba(255,255,255,.5); text-decoration:none; }
+.tx-footer a:hover{ color:#fff; }
+.tx-footer-nav{ display:flex; gap:16px; flex-wrap:wrap; }
+
+.reveal{opacity:0; transform:translateY(24px); transition:opacity .7s ease, transform .7s ease;}
+.reveal.visible{opacity:1; transform:none;}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none;} html{scroll-behavior:auto;}}
+</style>
+</head>
+<body>
+
+<header class="reveal">
+  <div class="hdr-bl"></div>
+  <div class="hdr-br"></div>
+  <div class="header-inner">
+    <div class="header-icon">
+      <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="30" cy="30" r="28" stroke="currentColor" stroke-width="0.8" opacity="0.25"/>
+        <path d="M30 20 C25 17 18 17 12 19 L12 41 C18 39 25 39 30 42 C35 39 42 39 48 41 L48 19 C42 17 35 17 30 20 Z" stroke="currentColor" stroke-width="1.4" fill="none"/>
+        <line x1="30" y1="20" x2="30" y2="42" stroke="currentColor" stroke-width="1.1" opacity="0.7"/>
+      </svg>
+    </div>
+    <div class="header-text">
+      <h1><span class="ru">Инструменты <em>&amp;</em> курс</span><span class="en">Tools <em>&amp;</em> Course</span></h1>
+      <div class="sub">
+        <span><span class="ru">Исследовательские сервисы</span><span class="en">Research tools</span></span>
+        <span class="sep">·</span>
+        <span><span class="ru">Курс статистики</span><span class="en">Statistics course</span></span>
+        <span class="sep">·</span>
+        <span><span class="ru">950 городов империи</span><span class="en">950 cities of the empire</span></span>
+      </div>
+    </div>
+    <div class="lang-sw" role="group" aria-label="Language / Язык">
+      <button type="button" data-lang="ru" class="on" onclick="setLang('ru')">РУ</button>
+      <button type="button" data-lang="en" onclick="setLang('en')">EN</button>
+    </div>
+    <a href="https://urbantransmission.org/" class="header-back">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10 12L6 8l4-4"/></svg>
+      <span class="ru">На главную</span><span class="en">Home</span>
+    </a>
+  </div>
+</header>
+
+<main class="page">
+<article class="sheet reveal">
+  <div class="pad">
+
+    <p class="kicker"><span class="ru">Инструменты и обучение</span><span class="en">Tools &amp; training</span></p>
+    <h1><span class="ru">Инструменты и обучение для работы с историческими источниками и данными</span><span class="en">Tools and training for working with historical sources and data</span></h1>
+    <p class="lead"><span class="ru">В ходе работы над данными о 950 городах Российской империи я создала инструменты, которых не хватало для анализа. Теперь это бесплатные браузерные сервисы и практический курс по количественным методам для гуманитариев.</span><span class="en">While working on data for 950 cities of the Russian Empire, I built the tools I had been missing. They are now free browser-based services and a practical course on quantitative methods for the humanities.</span></p>
+    <p class="trust"><span class="ru">Датасет на Zenodo · <b>950 городов</b> · Инструменты работают <b>прямо в браузере</b></span><span class="en">Dataset on Zenodo · <b>950 cities</b> · Tools run <b>right in your browser</b></span></p>
+
+    <div class="hr"></div>
+
+    <!-- 1. CODEBOOK -->
+    <section class="tool reveal">
+      <img class="tool-art" src="assets/Codebook_art.png" alt="Codebook &amp; Survey Tidier">
+      <h3 class="tool-name">Codebook &amp; Survey Tidier <span class="free-pill"><span class="ru">Бесплатно</span><span class="en">Free</span></span></h3>
+      <p class="tool-sub"><span class="ru">Инструмент помогает подготовить табличные данные к количественному анализу.</span><span class="en">A tool that prepares tabular data for quantitative analysis.</span></p>
+      <details>
+        <summary><span class="ru">Подробнее - чем инструмент полезен историку</span><span class="en">More - why historians use it</span></summary>
+        <div class="more-inner">
+          <div class="ru-b">
+            <p>Исследователи, работающие с анкетами и массовыми источниками, тратят часы на ручную рутину: привести длинные вопросы (имена переменных) к аккуратным названиям, разнести список текстовых переменных в бинарные переменные 0/1 (см. изображение выше), посчитать пропуски, найти ошибки кодировки, создать Codebook. Сервис делает это за секунды - и сразу готовит файлы для SPSS и jamovi, а также машиночитаемые метаданные (Tabular Data Package) для публикации данных по принципам FAIR (Zenodo и другие репозитории).</p>
+            <p>Всё обрабатывается <strong>прямо в вашем браузере</strong>: файлы не загружаются ни на сервер, ни автору - это важно, когда в документе есть персональные или чувствительные ответы. Работает с данными на любом языке, значения в кодбуке показываются в родном алфавите.</p>
+          </div>
+          <div class="en-b">
+            <p>Researchers working with surveys and mass sources spend hours on manual routine: turning long survey questions into concise variable names, splitting "select all that apply" into 0/1 binary variables, counting missing values, catching coding errors, building a codebook. The tool does this in seconds - and immediately prepares files for SPSS and jamovi, plus machine-readable metadata (Tabular Data Package) for preparing datasets for publication in line with FAIR principles, including on Zenodo and other repositories.</p>
+            <p>Everything is processed <strong>right in your browser</strong>: files are never uploaded to a server or shared with the author - important when the dataset contains personal or sensitive responses. It works with data in any language, and codebook values are shown in their original script.</p>
+          </div>
+        </div>
+      </details>
+      <a class="btn" href="https://codebook.urbantransmission.org/"><span class="ru">Открыть Codebook</span><span class="en">Open Codebook</span></a>
+    </section>
+
+    <!-- 2. TurnPDF -->
+    <section class="tool reveal">
+      <img class="tool-art" src="assets/TurnPDF_art.png" alt="TurnPDF">
+      <h3 class="tool-name">TurnPDF <span class="free-pill"><span class="ru">Бесплатно</span><span class="en">Free</span></span></h3>
+      <p class="tool-sub"><span class="ru">Поворот страниц PDF прямо в браузере - для «боком» сохранённых сканов.</span><span class="en">Rotate PDF pages right in the browser - ideal for scans saved sideways.</span></p>
+      <details>
+        <summary><span class="ru">Подробнее - чем инструмент полезен историку</span><span class="en">More - why historians use it</span></summary>
+        <div class="more-inner">
+          <div class="ru-b">
+            <p>Инструмент полезен тем, кто работает со сканами в PDF, где страницы сохранены боком или вверх ногами. TurnPDF решает это в пару кликов: загрузили многостраничный скан, повернули нужные страницы на 90° или 180°, скачали исправленный файл.</p>
+            <p>Ничего не нужно устанавливать, файлы остаются на вашем компьютере. Удобно готовить сканы к чтению, распознаванию или подготовке иллюстраций и приложений к статье. Переворачивать страницы можно как во всём документе сразу, так и только в нужной части документа, указав диапазон страниц.</p>
+          </div>
+          <div class="en-b">
+            <p>Useful for anyone working with PDF scans where pages are saved sideways or upside down. TurnPDF fixes this in a couple of clicks: upload a multi-page scan, rotate the pages you need by 90° or 180°, download the corrected file.</p>
+            <p>Nothing to install, and files stay on your computer. Handy for preparing scans for reading, OCR, or figures and appendices for an article. You can rotate the whole document at once or just selected pages.</p>
+          </div>
+        </div>
+      </details>
+      <a class="btn" href="https://pdf.urbantransmission.org/"><span class="ru">Открыть TurnPDF</span><span class="en">Open TurnPDF</span></a>
+    </section>
+
+    <!-- 3. КУРС -->
+    <section class="tool reveal">
+      <img class="tool-art" src="assets/Course_art.png" alt="Основы статистики для историков">
+      <h3 class="tool-name"><span class="ru">Основы статистики для историков</span><span class="en">Basics of Statistics for Historians <span class="name-note">(in Russian)</span></span></h3>
+      <p class="tool-sub"><span class="ru">Количественные методы для гуманитариев - без формул и без страха.</span><span class="en">Quantitative methods for the humanities - without formulas or fear.</span></p>
+      <details>
+        <summary><span class="ru">Подробнее - чем курс полезен историку</span><span class="en">More - what the course gives you</span></summary>
+        <div class="more-inner">
+          <div class="ru-b">
+            <p>Практический курс поможет пройти весь путь исследования: превратить источник в корректную базу данных, выбрать подходящий метод, посчитать его в бесплатной программе jamovi и оформить методологический раздел. Без формул, программирования и платных программ.</p>
+            <p>Все примеры выросли из реальных исторических исследований, но методы одинаково работают в социологии, филологии, культурологии. К курсу прилагаются учебный датасет, кодбук, справочники «какой метод выбрать» и шаблоны методраздела. Сейчас - со скидкой к новому учебному году.</p>
+          </div>
+          <div class="en-b">
+            <p>A practical course that walks you through the whole research cycle: turn historical material into a clean, analysis-ready dataset, choose the right method, run it in the free program jamovi, and write up the methodology section. No formulas, no programming, no paid software. <em>The course is taught in Russian.</em></p>
+            <p>All examples are drawn from real historical research, but the methods work just as well in sociology, philology and cultural studies. The course comes with a teaching dataset, a codebook, "which method to choose" guides and methodology templates.</p>
+          </div>
+        </div>
+      </details>
+      <a class="btn" href="course.html"><span class="ru">Подробнее о курсе</span><span class="en">About the course</span></a>
+      <p class="more-link"><a href="how-to-choose-method.html"><span class="ru">Бесплатный гид: как выбрать статистический метод &rarr;</span><span class="en">Free guide: how to choose a statistical method &rarr;</span></a></p>
+    </section>
+
+    <div class="byreq reveal">
+      <p class="s-label"><span class="ru">В разработке - по запросу</span><span class="en">In development - on request</span></p>
+      <h3><span class="ru">Распознавание и правка дореволюционных текстов</span><span class="en">OCR and editing of pre-revolutionary texts</span></h3>
+      <p><span class="ru">ИИ-инструменты, которые распознают текст с фото и сканов дореволюционных и современных изданий и приводят дореволюционную орфографию к современной. Пока доступны по индивидуальному запросу - как услуга.</span><span class="en">AI tools that recognize text from photos and scans of pre-revolutionary and modern editions and convert pre-revolutionary orthography into modern Russian spelling. Currently available on individual request - as a service.</span></p>
+      <a class="btn ghost" href="mailto:a.b.agafonova@gmail.com?subject=OCR"><span class="ru">Написать автору</span><span class="en">Contact the author</span></a>
+    </div>
+
+  </div>
+</article>
+</main>
+
+<footer class="tx-footer">
+  <div class="tx-footer-inner">
+    <div><strong>Transmission</strong> · Urban Infrastructures of the Russian Empire, 1870-1914<br>© 2026 <span class="ru">Анна Б. Агафонова</span><span class="en">Anna B. Agafonova</span></div>
+    <nav class="tx-footer-nav" aria-label="Footer navigation">
+      <a href="/"><span class="ru">Главная</span><span class="en">Home</span></a>
+      <a href="/about.html"><span class="ru">Об авторе</span><span class="en">About</span></a>
+      <a href="how-to-choose-method.html"><span class="ru">Материалы</span><span class="en">Materials</span></a>
+      <a href="/personal-data.html"><span class="ru">Политика ПД</span><span class="en">Privacy</span></a>
+    </nav>
+  </div>
+</footer>
+
+<div class="lb" id="lb"><button class="lb-close" id="lbClose" aria-label="Close">&times;</button><img id="lbImg" alt=""><div class="lb-hint"><span class="ru">Клик по изображению - приблизить · Esc - закрыть</span><span class="en">Click the image to zoom · Esc to close</span></div></div>
+
+<script>
+function setLang(l){
+  var h=document.documentElement;
+  if(l==='en'){ h.setAttribute('data-en',''); h.lang='en'; } else { h.removeAttribute('data-en'); h.lang='ru'; }
+  try{ localStorage.setItem('tx_lang', l); }catch(e){}
+  document.querySelectorAll('.lang-sw button').forEach(function(b){ b.classList.toggle('on', b.dataset.lang===l); });
+}
+window.setLang=setLang;
+try{ var s=localStorage.getItem('tx_lang'); if(s) setLang(s); }catch(e){}
+(function(){
+  var els=document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('visible');});return;}
+  var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('visible');io.unobserve(x.target);}});},{threshold:0.12});
+  els.forEach(function(e){io.observe(e);});
+  var lb=document.getElementById('lb'), lbImg=document.getElementById('lbImg');
+  document.querySelectorAll('.tool-art').forEach(function(im){ im.addEventListener('click', function(){ lbImg.src=im.src; lbImg.alt=im.alt||''; lbImg.classList.remove('zoomed'); lb.classList.add('open'); document.body.style.overflow='hidden'; }); });
+  function closeLb(){ lb.classList.remove('open'); document.body.style.overflow=''; }
+  document.getElementById('lbClose').addEventListener('click', closeLb);
+  lb.addEventListener('click', function(e){ if(e.target===lb) closeLb(); });
+  lbImg.addEventListener('click', function(e){ e.stopPropagation(); lbImg.classList.toggle('zoomed'); });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeLb(); });
+})();
+</script>
+</body>
+</html>
