@@ -88,6 +88,15 @@ header::after { top:7px; right:7px; border-left:none;  border-bottom:none; }
 .lang-sw button:hover:not(.on){ color:var(--ink); border-color:var(--ink-soft); }
 @media(max-width:768px){ header{ padding:14px 18px 16px; } .header-text h1{ font-size:1.35rem; } .header-icon{ width:44px; height:44px; } }
 @media(max-width:480px){ .header-text h1{ font-size:1.12rem; } .header-text .sub{ font-size:.54rem; gap:9px; } }
+@media(max-width:560px){
+  body{ overflow-x:hidden; }
+  .header-inner{ flex-wrap:wrap; gap:8px 10px; }
+  .header-text{ order:5; flex-basis:100%; }
+  .header-icon{ width:36px; height:36px; }
+  .header-back{ padding:6px 11px; margin-left:auto; }
+  .tablecard table{ min-width:540px; }
+  .pad{ padding:32px 18px; }
+}
 
 /* PAPER SHEET */
 .sheet{
