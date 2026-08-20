@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<!--
+  Лендинг курса для urbantransmission.org. Адрес: /statistics-for-historians/
+  ВАЖНО: положи paper.jpg рядом со страницей (или поправь --paper-url).
+  Кнопки ведут на скидочную авторскую ссылку Stepik. Скидка действует до 31 августа 2026.
+-->
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Основы статистики для историков - курс по количественным методам в jamovi</title>
+<meta name="description" content="Практический курс по статистике для историков и гуманитариев: от источника и кодбука до анализа данных в jamovi, графиков и методологического раздела статьи. Без формул и платных программ.">
+<link rel="canonical" href="https://urbantransmission.org/course.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Transmission">
+<meta property="og:title" content="Основы статистики для историков - курс по количественным методам">
+<meta property="og:description" content="От источника к базе данных, расчёты в бесплатной jamovi и готовый методологический раздел для статьи или гранта.">
+<meta property="og:url" content="https://urbantransmission.org/course.html">
+<meta property="og:locale" content="ru_RU">
+<style>
+:root{
+  --page-cream:#F6EFDC; --page-ochre:#E8D5A8; --page-turq:#BED5CF; --page-sky:#D8E3E1;
+  --glass-tint:rgba(250,244,228,0.72); --glass-edge:rgba(20,36,60,0.18);
+  --ink:#1A2B47; --ink-soft:#2B4773; --muted:#6F7D95; --copper:#8B5E3C; --turq:#4F8781; --terra:#B24A34;
+  --line:rgba(20,36,60,0.12); --line-copper:rgba(139,94,60,0.30);
+  --serif:Cambria,'Palatino Linotype',Georgia,serif;
+  --sans:system-ui,-apple-system,'Segoe UI',sans-serif;
+  --shadow:rgba(26,43,71,0.08);
+  --paper-url:url('assets/paper.jpg');
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  color:var(--ink); font-family:var(--serif); font-size:17px; line-height:1.8;
+  background:var(--page-cream);
+  background-image:
+    radial-gradient(1100px 700px at 8% 4%, var(--page-sky) 0%, rgba(216,227,225,0) 55%),
+    radial-gradient(900px 600px at 95% 3%, var(--page-turq) 0%, rgba(190,213,207,0) 60%),
+    radial-gradient(1200px 900px at 50% 110%, var(--page-ochre) 0%, rgba(232,213,168,0) 55%),
+    linear-gradient(180deg, var(--page-cream) 0%, var(--page-cream) 30%, rgba(232,213,168,0.45) 70%, rgba(190,213,207,0.35) 100%);
+  min-height:100vh; margin:0; display:flex; flex-direction:column;
+}
+main.page{ flex:1 0 auto; padding:26px 16px 44px; }
+a{color:var(--turq);} a:hover{color:var(--ink);}
+
+/* ── HEADER (единый стиль сайта) ── */
+header{ position:relative; z-index:10; padding:20px 32px 22px;
+  background:var(--glass-tint); backdrop-filter:blur(18px) saturate(1.2);
+  border-bottom:1px solid var(--glass-edge);
+  box-shadow:0 1px 0 rgba(255,255,255,.55) inset, 0 4px 16px rgba(30,40,70,.07);}
+header::before, header::after, .hdr-bl, .hdr-br{
+  content:''; position:absolute; width:28px; height:28px;
+  border:1px solid var(--line-copper); pointer-events:none;}
+header::before{ top:7px; left:7px;  border-right:none; border-bottom:none; }
+header::after { top:7px; right:7px; border-left:none;  border-bottom:none; }
+.hdr-bl{ bottom:7px; left:7px;  border-right:none; border-top:none; }
+.hdr-br{ bottom:7px; right:7px; border-left:none;  border-top:none; }
+.header-inner{ max-width:860px; margin:0 auto; display:flex; align-items:center; gap:20px; }
+.header-icon{ width:52px; height:52px; flex-shrink:0; color:var(--copper); opacity:.88; }
+.header-icon svg{ width:100%; height:100%; display:block; }
+.header-text{ flex:1; text-align:center; position:relative; padding:4px 0; }
+.header-text::before, .header-text::after{ content:''; position:absolute; left:6%; right:6%; height:1px;
+  background:repeating-linear-gradient(90deg, var(--line-copper) 0 7px, transparent 7px 11px); }
+.header-text::before{ top:-2px; }
+.header-text::after { bottom:-4px; }
+.header-text h1{ font-family:Cambria,'Palatino Linotype',Georgia,serif; font-weight:500; font-variant:small-caps;
+  font-size:1.9rem; letter-spacing:.05em; color:var(--ink); line-height:1.1; margin:0; }
+.header-text h1 em{ color:var(--copper); font-style:italic; font-variant:normal; }
+.header-text .sub{ margin-top:5px; font-size:.60rem; font-weight:500; letter-spacing:.22em; text-transform:uppercase;
+  color:var(--muted); display:flex; gap:14px; justify-content:center; align-items:center; flex-wrap:wrap; }
+.header-text .sub .sep{ color:var(--copper); opacity:.6; }
+.header-back{ display:inline-flex; align-items:center; gap:6px; padding:7px 14px; border-radius:999px;
+  background:rgba(246,239,220,0.6); border:1px solid var(--line-copper); color:var(--ink-soft);
+  font-family:var(--sans); font-size:.72rem; font-weight:600; letter-spacing:.05em; text-decoration:none;
+  transition:all .18s; flex-shrink:0; }
+.header-back:hover{ background:var(--ink); color:var(--page-cream); border-color:var(--ink); }
+.header-back svg{ width:14px; height:14px; }
+@media(max-width:768px){ header{ padding:14px 18px 16px; } .header-text h1{ font-size:1.35rem; } .header-icon{ width:44px; height:44px; } }
+@media(max-width:480px){ .header-text h1{ font-size:1.12rem; } .header-text .sub{ font-size:.54rem; gap:9px; } }
+
+/* paper sheet */
+.sheet{ max-width:860px; margin:0 auto; border-radius:7px; overflow:hidden;
+  border:1px solid var(--line-copper);
+  box-shadow:0 18px 50px rgba(26,43,71,0.16), 0 2px 0 rgba(255,255,255,.6) inset;
+  background-color:#FBF7EC;
+  background-image:linear-gradient(rgba(251,247,236,0.82),rgba(251,247,236,0.82)), var(--paper-url);
+  background-repeat:no-repeat, repeat; background-size:cover, 720px auto; }
+.pad{padding:44px clamp(22px,5vw,60px);}
+
+.kicker{font-family:var(--sans); font-size:.62rem; letter-spacing:.18em; text-transform:uppercase; color:var(--copper); margin-bottom:12px;}
+h1{font-family:var(--serif); font-weight:600; font-size:clamp(1.7rem,4.4vw,2.5rem); line-height:1.16; margin-bottom:16px; color:var(--ink);}
+.lead{font-size:1.12rem; color:var(--ink-soft); line-height:1.75; margin-bottom:26px;}
+.s-label{font-family:var(--sans); font-size:.60rem; letter-spacing:.18em; text-transform:uppercase; color:var(--copper); margin:36px 0 8px;}
+h2{font-family:var(--serif); font-weight:600; font-size:clamp(1.25rem,2.6vw,1.7rem); color:var(--ink); margin-bottom:14px;}
+p{margin:0 0 14px;}
+
+.btn{display:inline-block; font-family:var(--sans); font-weight:600; font-size:1rem; letter-spacing:.02em;
+  background:var(--ink); color:var(--page-cream); padding:14px 28px; border-radius:999px; text-decoration:none;
+  transition:background .18s, transform .18s; box-shadow:0 6px 18px rgba(26,43,71,.18);}
+.btn:hover{background:var(--copper); color:#fff; transform:translateY(-2px);}
+.fine{font-family:var(--sans); font-size:.8rem; color:var(--muted);}
+.hero-links{font-family:var(--sans); font-size:.9rem; margin-top:-8px; margin-bottom:24px;}
+.sticky-cta{position:fixed; right:18px; bottom:18px; z-index:20; background:var(--ink); color:var(--page-cream);
+  font-family:var(--sans); font-weight:600; font-size:.9rem; padding:11px 18px; border-radius:999px; text-decoration:none;
+  box-shadow:0 8px 22px rgba(26,43,71,.28); opacity:0; transform:translateY(12px); pointer-events:none;
+  transition:opacity .3s, transform .3s;}
+.sticky-cta.show{opacity:1; transform:none; pointer-events:auto;}
+.sticky-cta:hover{background:var(--copper); color:#fff;}
+.sticky-cta small{font-weight:400; opacity:.82;}
+@media(max-width:560px){ .sticky-cta{right:12px; bottom:12px; font-size:.82rem; padding:10px 14px;} }
+
+/* price card */
+.price{ position:relative; background:rgba(250,246,238,0.92); border:1px solid var(--line-copper);
+  border-radius:12px; padding:26px 28px; margin:8px 0 6px; box-shadow:0 4px 18px var(--shadow); text-align:center; }
+.badge{ display:inline-block; background:var(--terra); color:#fff; font-family:var(--sans); font-weight:700;
+  font-size:.78rem; letter-spacing:.02em; padding:5px 13px; border-radius:999px; margin-bottom:14px; }
+.price-row{ display:flex; align-items:baseline; gap:12px; justify-content:center; margin-bottom:18px; }
+.price-now{ font-family:var(--serif); font-weight:700; font-size:2.4rem; color:var(--terra); line-height:1; }
+.price-old{ font-size:1.15rem; color:var(--muted); text-decoration:line-through; }
+
+/* stats */
+.stats-row{ display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin:18px 0; }
+@media(max-width:640px){ .stats-row{grid-template-columns:repeat(2,1fr);} }
+.stat-card{ background:rgba(250,246,238,0.72); border:1px solid var(--line-copper); border-radius:10px; padding:14px 16px; text-align:center; }
+.stat-num{ font-family:var(--serif); font-weight:700; font-size:1.5rem; color:var(--ink); line-height:1; margin-bottom:5px; }
+.stat-label{ font-family:var(--sans); font-size:.72rem; color:var(--muted); line-height:1.35; }
+
+/* lists */
+.tick{list-style:none; padding:0; margin:0 0 14px;}
+.tick li{position:relative; padding:7px 0 7px 26px;}
+.tick li:before{content:"\2192"; position:absolute; left:0; color:var(--copper); font-weight:700;}
+
+/* callouts / faq */
+.callout{border-radius:10px; padding:20px 24px; margin:16px 0; background:rgba(232,213,168,0.25);}
+.faq dt{font-family:var(--serif); font-weight:700; color:var(--ink); margin-top:16px;}
+.faq dd{margin:4px 0 0; color:var(--ink-soft);}
+
+.ctaband{background:rgba(250,246,238,0.9); border:1px solid var(--line-copper); border-radius:12px; padding:34px 28px; text-align:center; margin:26px 0 6px; box-shadow:0 4px 18px var(--shadow);}
+.ctaband p{color:var(--ink-soft); max-width:560px; margin:0 auto 20px;}
+
+/* English summary note */
+.en-note{ margin:6px 0 24px; padding:15px 20px; border-left:3px solid var(--turq);
+  background:rgba(79,135,129,0.07); border-radius:8px;
+  font-family:var(--sans); font-size:.92rem; line-height:1.55; color:var(--ink-soft); }
+.en-note strong{ color:var(--ink); }
+.en-note .lang-tag{ display:block; font-size:.6rem; font-weight:700; letter-spacing:.16em;
+  text-transform:uppercase; color:var(--turq); margin-bottom:7px; }
+
+/* footer */
+.tx-footer{ background:var(--ink); color:rgba(255,255,255,.40); padding:28px 32px; border-top:2px solid var(--turq); font:300 .82rem/1.7 var(--serif); margin-top:auto; }
+.tx-footer-inner{ max-width:860px; margin:0 auto; display:flex; flex-wrap:wrap; gap:10px 24px; justify-content:space-between; align-items:center; }
+.tx-footer strong{ color:rgba(255,255,255,.75); }
+.tx-footer a{ color:rgba(255,255,255,.5); text-decoration:none; }
+.tx-footer a:hover{ color:#fff; }
+.tx-footer-nav{ display:flex; gap:16px; flex-wrap:wrap; }
+
+.reveal{opacity:0; transform:translateY(22px); transition:opacity .7s ease, transform .7s ease;}
+.reveal.visible{opacity:1; transform:none;}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none;} html{scroll-behavior:auto;}}
+</style>
+</head>
+<body>
+
+<header class="reveal">
+  <div class="hdr-bl"></div>
+  <div class="hdr-br"></div>
+  <div class="header-inner">
+    <div class="header-icon">
+      <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="30" cy="30" r="28" stroke="currentColor" stroke-width="0.8" opacity="0.25"/>
+        <path d="M17 43 L43 43 M17 43 L17 17" stroke="currentColor" stroke-width="1.2"/>
+        <rect x="21" y="33" width="4.5" height="10" fill="currentColor" opacity="0.22"/>
+        <rect x="29" y="27" width="4.5" height="16" fill="currentColor" opacity="0.22"/>
+        <rect x="37" y="21" width="4.5" height="22" fill="currentColor" opacity="0.22"/>
+        <path d="M23 34 L31 28 L39 22" stroke="currentColor" stroke-width="1.4" fill="none"/>
+      </svg>
+    </div>
+    <div class="header-text">
+      <h1>Статистика <em>для</em> историков</h1>
+      <div class="sub">
+        <span>Количественные методы в jamovi</span>
+        <span class="sep">·</span>
+        <span>Без формул</span>
+        <span class="sep">·</span>
+        <span>Для гуманитариев</span>
+      </div>
+    </div>
+    <a href="https://urbantransmission.org/" class="header-back">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10 12L6 8l4-4"/></svg>
+      На главную
+    </a>
+  </div>
+</header>
+
+<main class="page">
+<article class="sheet reveal">
+  <div class="pad">
+
+    <p class="kicker">Практический курс</p>
+    <h1>Основы статистики для историков</h1>
+    <p class="lead">Количественные методы для гуманитариев - без формул и без страха. От источника к базе данных, расчёты в бесплатной программе jamovi и готовый методологический раздел для статьи или гранта.</p>
+    <p class="hero-links reveal"><a href="#zapis">Цена и запись &darr;</a> &nbsp;·&nbsp; <a href="https://stepik.org/course/295414/promo">Попробовать первый модуль бесплатно</a></p>
+
+    <div class="en-note reveal">
+      <span class="lang-tag">In English</span>
+      A practical course on quantitative methods for historians and humanities scholars: turning a source into a clean dataset, choosing the right method, running it in the free software jamovi, and writing up the methodology section - without formulas or programming. All examples come from real historical research, and the methods transfer to sociology, philology, and cultural studies. <strong>The course is taught in Russian.</strong>
+    </div>
+
+    <div class="stats-row reveal">
+      <div class="stat-card"><div class="stat-num">47</div><div class="stat-label">уроков</div></div>
+      <div class="stat-card"><div class="stat-num">162</div><div class="stat-label">теста и практикума</div></div>
+      <div class="stat-card"><div class="stat-num">6</div><div class="stat-label">модулей + бонусы</div></div>
+      <div class="stat-card"><div class="stat-num">1</div><div class="stat-label">капстоун на своих данных</div></div>
+    </div>
+
+    <p class="s-label reveal">Зачем это историку</p>
+    <h2 class="reveal">Почему недостаточно «просто посчитать»</h2>
+    <p class="reveal">Количественный метод - это не про формулы, а про дисциплину рассуждения. Он заставляет ответить на неудобные вопросы: что именно я считаю за один случай, на скольких объектах и что будет считаться опровержением. Одни и те же архивные цифры при разном выборе единицы анализа дают разные - иногда противоположные - выводы. Курс учит проходить весь исследовательский цикл целиком: <strong>источник → база данных → анализ → исторический вывод → публикация или грант</strong>.</p>
+
+    <p class="s-label reveal">Результат</p>
+    <h2 class="reveal">Чему вы научитесь видеть по-новому</h2>
+    <ul class="tick reveal">
+      <li>Почему средняя «температура по больнице» обманывает - и когда честнее медиана.</li>
+      <li>Как выбор единицы наблюдения меняет вывод ещё до всякого расчёта.</li>
+      <li>Как отличить статистически значимую связь от исторически осмысленной.</li>
+      <li>Как прочитать таблицу регрессии в чужой статье и понять, что там сказано на самом деле.</li>
+      <li>Как оформить анализ так, чтобы его мог воспроизвести и проверить другой исследователь.</li>
+    </ul>
+
+    <div class="price reveal" id="zapis">
+      <span class="badge">−48% · до 31 августа</span>
+      <div class="price-row"><span class="price-now">1490 ₽</span><span class="price-old">2890 ₽</span></div>
+      <a class="btn" href="https://stepik.org/a/295414/pay?promo=b7202a14ee2530b4">Купить курс со скидкой</a>
+      <p class="fine" style="margin-top:14px;">Скидка применяется по ссылке автоматически. Промокод HISTORY - при ручном оформлении. Возврат в течение 30 дней.</p>
+    </div>
+
+    <p class="s-label reveal">Основа</p>
+    <h2 class="reveal">Из чего вырос этот курс</h2>
+    <p class="reveal">Курс построен на реальной исследовательской практике, а не на учебных задачках. Для своего проекта я собрала количественную базу по <strong>950 городам Российской империи (84 переменные)</strong> и провела на ней исследование городской водопроводной инфраструктуры с применением непараметрических методов и логистической регрессии (аналитические результаты сейчас проходят рецензирование, поэтому здесь делюсь подходом и данными, а выводами - после выхода статьи). Параллельно я сделала бесплатный инструмент <a href="https://codebook.urbantransmission.org/">Codebook &amp; Survey Tidier</a> для очистки данных и построения кодбуков. Всё, чему учит курс, я применяю в собственной работе.</p>
+
+    <p class="s-label reveal">Программа</p>
+    <h2 class="reveal">Шесть модулей от простого к сложному</h2>
+    <p class="reveal">От источника к базе данных → честная описательная статистика → связи и корреляции → сравнение групп (непараметрика) → чтение регрессии → как связать число с историческим аргументом и с грантом. Плюс справочные материалы, учебный датасет, кодбук, шаблоны методологического раздела и итоговый капстоун-проект на ваших данных.</p>
+
+    <p class="s-label reveal">Автор</p>
+    <h2 class="reveal">Кто ведёт курс</h2>
+    <p class="reveal">Анна Агафонова - кандидат исторических наук (РГГУ), специалист по городской экологической истории и истории гидроэнергетики; постдок и научный сотрудник НИУ ВШЭ (2020–2023), руководитель грантов РНФ и РФФИ, автор статей в журналах Scopus и Web of Science. Историк, который сам собирает данные и применяет количественные методы, - и учит им на языке гуманитария: практично, ясно и с уважением к строгости метода.</p>
+
+    <p class="s-label reveal">Что входит</p>
+    <h2 class="reveal">Что вы получаете</h2>
+    <ul class="tick reveal">
+      <li>Практический навык количественного анализа и сертификат Stepik.</li>
+      <li>Учебный датасет, кодбук и справочники «какой метод выбрать», шпаргалки jamovi и SPSS.</li>
+      <li>Готовые шаблоны методологического раздела статьи и грантовой заявки.</li>
+      <li>Уверенность читать и обсуждать количественные работы коллег на равных.</li>
+    </ul>
+
+    <p class="s-label reveal">Частые вопросы</p>
+    <h2 class="reveal">FAQ</h2>
+    <dl class="faq reveal">
+      <dt>Нужна ли математическая подготовка?</dt>
+      <dd>Нет. Курс рассчитан на гуманитариев без математического и программистского бэкграунда. Формулы вручную мы не выводим - расчёты делает программа, а вы учитесь выбирать метод и читать результат.</dd>
+      <dt>Какая программа используется?</dt>
+      <dd>Бесплатная jamovi (устанавливаем в ходе курса). Платный SPSS не нужен; даётся и шпаргалка jamovi ↔ SPSS.</dd>
+      <dt>Подойдёт ли курс не историкам?</dt>
+      <dd>Да. Примеры исторические, но методы работают в социологии, филологии, культурологии - в любой науке о человеке.</dd>
+      <dt>Что если курс не подойдёт?</dt>
+      <dd>Stepik возвращает деньги в течение 30 дней после покупки.</dd>
+    </dl>
+
+    <div class="ctaband reveal">
+      <h2>Старт к учебному году</h2>
+      <p>1490 ₽ вместо 2890 ₽ до 31 августа. Попробовать первый модуль можно бесплатно, прежде чем решать.</p>
+      <a class="btn" href="https://stepik.org/a/295414/pay?promo=b7202a14ee2530b4">Открыть курс на Stepik</a>
+      <p class="fine" style="margin-top:14px;">Скидка по ссылке применяется автоматически · промокод HISTORY при ручном оформлении.</p>
+    </div>
+
+  </div>
+</article>
+</main>
+
+<a class="sticky-cta" id="stickyCta" href="https://stepik.org/a/295414/pay?promo=b7202a14ee2530b4">1490 ₽ · Записаться <small>−48%</small></a>
+
+<footer class="tx-footer">
+  <div class="tx-footer-inner">
+    <div><strong>Transmission</strong> · Urban Infrastructures of the Russian Empire, 1870-1914<br>© 2026 Анна Б. Агафонова</div>
+    <nav class="tx-footer-nav" aria-label="Footer navigation">
+      <a href="/">Главная</a>
+      <a href="/about.html">Об авторе</a>
+      <a href="/materialy/kak-vybrat-statisticheskiy-metod/">Как выбрать метод</a>
+      <a href="https://codebook.urbantransmission.org/">Codebook</a>
+      <a href="/personal-data.html">Политика ПД</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var els=document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('visible');});return;}
+  var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('visible');io.unobserve(x.target);}});},{threshold:0.12});
+  els.forEach(function(e){io.observe(e);});
+  var sc=document.getElementById('stickyCta');
+  if(sc){ window.addEventListener('scroll', function(){ sc.classList.toggle('show', window.scrollY>440); }, {passive:true}); }
+})();
+</script>
+</body>
+</html>
